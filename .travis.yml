@@ -12,7 +12,7 @@ node_js:
   - "9"
 
 before_install:
-  - curl -o- -L https://yarnpkg.com/install.sh | bash
+  - npm i -g yarn
   - export PATH=`yarn global bin`:$PATH
   - npm config set //registry.npmjs.org/:_authToken $NPM_TOKEN
   - yarn global add greenkeeper-lockfile@2
@@ -39,8 +39,8 @@ script:
 after_script:
   - greenkeeper-lockfile-upload
 
-after_success:
-  - yarn ci:coveralls
+#after_success:
+#  - yarn ci:coveralls
 
 branches:
   only:
