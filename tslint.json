@@ -1,0 +1,24 @@
+{
+    "extends": [
+        "tslint:latest"
+    ],
+    "paths": [
+        "packages/*/src/**.ts",
+        "packages/*/src/**.tsx"
+    ],
+    "rules": {
+        "object-literal-sort-keys": false,
+        "member-ordering": [
+            true,
+            {
+                "order": "fields-first"
+            }
+        ]
+    },
+    "linterOptions": {
+        "include": [
+            "packages/*/src/**.ts",
+            "packages/*/src/**.tsx"
+        ]
+    }
+}

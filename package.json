@@ -1,0 +1,39 @@
+{
+    "name": "reform",
+    "version": "0.2.0",
+    "private": true,
+    "repository": "https://github.com/izatop/reform",
+    "author": {
+        "name": "Artur Bier",
+        "email": "izatop@gmail.com"
+    },
+    "workspaces": [
+        "packages/*"
+    ],
+    "scripts": {
+        "publish": "lerna publish --conventional-commits --yes",
+        "clean": "lerna run build:clean",
+        "ci:coveralls": "cat ./coverage/lcov.info | yarn coveralls",
+        "lint": "tslint 'packages/*/{src,test}/**/*.ts'",
+        "lint:fix": "tslint --fix 'packages/*/{src,test}/**/*.ts'",
+        "test": "yarn test:clean && jest --config jest.json --coverage",
+        "test:clean": "rimraf coverage",
+        "test:watch": "jest --config jest.json --watch",
+        "test:snapshot": "jest --config jest.json --updateSnapshot",
+        "doc:play": "lerna run --scope=doc play",
+        "bootstrap": "lerna bootstrap"
+    },
+    "devDependencies": {
+        "@types/jest": "^23.3.3",
+        "coveralls": "^3.0.2",
+        "husky": "^1.1.1",
+        "jest": "^23.6.0",
+        "jest-serializer-path": "^0.1.15",
+        "lerna": "^3.4.1",
+        "rimraf": "^2.6.2",
+        "ts-jest": "^23.10.4",
+        "tslint": "^5.11.0",
+        "typescript": "^3.1.1"
+    },
+    "license": "MIT"
+}

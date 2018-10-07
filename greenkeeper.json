@@ -1,0 +1,9 @@
+{
+    "groups": {
+        "default": {
+            "packages": [
+                "packages/forms/package.json"
+            ]
+        }
+    }
+}

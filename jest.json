@@ -1,0 +1,27 @@
+{
+    "roots": [
+        "<rootDir>/packages/api/test"
+    ],
+    "snapshotSerializers": [
+        "jest-serializer-path"
+    ],
+    "transform": {
+        "^.+\\.ts$": "ts-jest"
+    },
+    "testRegex": "/test[^/]*\\.tsx?$",
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+        "/node_modules/"
+    ],
+    "moduleFileExtensions": [
+        "ts",
+        "tsx",
+        "json",
+        "js"
+    ],
+    "globals": {
+        "ts-jest": {
+            "tsConfig": "tsconfig.test.json"
+        }
+    }
+}

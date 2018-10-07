@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es2017",
+        "declaration": true,
+        "lib": ["esnext"],
+        "esModuleInterop": true,
+        "sourceMap": true,
+        "strict": true,
+        "strictNullChecks": true,
+        "forceConsistentCasingInFileNames": true,
+        "noImplicitThis": true,
+        "noImplicitAny": true,
+        "strictPropertyInitialization": true,
+        "strictFunctionTypes": true,
+        "experimentalDecorators": true,
+        "noEmit": true
+    }
+}

@@ -1,0 +1,15 @@
+{
+    "extends": "../../tsconfig.base.json",
+    "compilerOptions": {
+        "jsx": "react",
+        "rootDir": "src",
+        "outDir": "dist",
+        "lib": ["dom", "dom.iterable", "esnext"],
+        "declaration": false,
+        "experimentalDecorators": true
+    },
+    "include": [
+        "src"
+    ],
+    "exclude": ["webpack.config.ts"]
+}

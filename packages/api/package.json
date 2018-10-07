@@ -1,0 +1,30 @@
+{
+    "name": "@reform/api",
+    "version": "0.0.0-development",
+    "repository": "https://github.com/izatop/reform",
+    "author": {
+        "name": "Artur Bier",
+        "email": "izatop@gmail.com"
+    },
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "files": [
+        "dist/"
+    ],
+    "publishConfig": {
+        "access": "public"
+    },
+    "scripts": {
+        "ci:build": "yarn clean && yarn build",
+        "clean": "yarn build:clean",
+        "build": "yarn build:clean && tsc",
+        "build:clean": "rimraf dist",
+        "build:watch": "yarn build --watch"
+    },
+    "dependencies": {
+        "@sirian/ts-extra-types": "^3.7.0",
+        "@types/react": "^16.4.15",
+        "react": "^16.5.2"
+    },
+    "license": "MIT"
+}

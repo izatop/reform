@@ -1,0 +1,42 @@
+{
+    "name": "doc",
+    "version": "0.0.0-development",
+    "author": {
+        "name": "Artur Bier",
+        "email": "izatop@gmail.com"
+    },
+    "private": true,
+    "scripts": {
+        "dev": "webpack-dev-server --watch",
+        "play": "webpack-dev-server --watch --open"
+    },
+    "dependencies": {
+        "@reform/api": "^0.0.0-development",
+        "react": "^16.5.2",
+        "react-dom": "^16.5.2"
+    },
+    "license": "MIT",
+    "devDependencies": {
+        "@reform/api": "^0.0.0-development",
+        "@types/html-webpack-plugin": "^3.2.0",
+        "@types/prismjs": "^1.9.0",
+        "@types/react": "^16.4.15",
+        "@types/react-dom": "^16.0.8",
+        "@types/webpack": "^4.4.14",
+        "@types/webpack-dev-server": "^3.1.1",
+        "css-loader": "^1.0.0",
+        "html-webpack-plugin": "^3.2.0",
+        "normalize.css": "^8.0.0",
+        "prismjs": "^1.15.0",
+        "raw-loader": "^0.5.1",
+        "react": "^16.5.2",
+        "react-dom": "^16.5.2",
+        "style-loader": "^0.23.0",
+        "ts-loader": "^5.2.1",
+        "ts-node": "^7.0.1",
+        "webpack": "^4.20.2",
+        "webpack-cli": "^3.1.2",
+        "webpack-dev-server": "^3.1.9",
+        "webpack-html-plugin": "^0.1.1"
+    }
+}
