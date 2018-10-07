@@ -41,7 +41,7 @@ export class TextInputComponent extends Component {
 
     protected getDefaultProps() {
         return {
-            className: `${this.className} ${this.props.className}`,
+            className: this.className,
             onChange: this.onChange,
             value: this.value,
             name: this.name,
@@ -57,7 +57,7 @@ export const TextInput = receiver(TextInputComponent);
 
 ```typescript jsx
 import * as React from "react";
-import {Component, IFormSource, FormOnChange, Store} from "@reform/api";
+import {Component, FormOnChange, Store} from "@reform/api";
 import {TextComonent} from "./TextInput.tsx";
 
 interface ISource {
@@ -84,7 +84,7 @@ export default () => {
         <Form defaultSource={defaultSource}
               onSubmit={console.log}
               onChange={console.log}>
-            <p><TextComonent name={"name"}/></p>
+            <p><TextInput name={"name"}/></p>
             <p><button>Submit</button></p>
         </Form>
     );
