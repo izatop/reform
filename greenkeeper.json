@@ -2,7 +2,7 @@
     "groups": {
         "default": {
             "packages": [
-                "packages/forms/package.json"
+                "packages/api/package.json"
             ]
         }
     }
