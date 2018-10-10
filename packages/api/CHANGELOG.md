@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.1](https://github.com/izatop/reform/compare/@reform/api@0.1.0...@reform/api@0.1.1) (2018-10-10)
+
+
+### Bug Fixes
+
+* form validation ([46d4a03](https://github.com/izatop/reform/commit/46d4a03))
+
+
+
+
+
 # [0.1.0](https://github.com/izatop/reform/compare/@reform/api@0.0.2...@reform/api@0.1.0) (2018-10-10)
 
 
