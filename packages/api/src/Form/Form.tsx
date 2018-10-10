@@ -101,6 +101,15 @@ export class Form<T extends IFormSource, P = {}> extends React.Component<IFormPr
     }
 
     protected getExceptionView(error: Error, info: React.ErrorInfo) {
+        if (process.env.NODE_ENV === "production") {
+            return (
+                <div>
+                    <h1>Form processing unexpected error</h1>
+                    <pre>{error.message}</pre>
+                </div>
+            );
+        }
+
         return (
             <div>
                 <h1>{error.message}</h1>
@@ -108,7 +117,7 @@ export class Form<T extends IFormSource, P = {}> extends React.Component<IFormPr
                 <pre>{error.stack}</pre>
 
                 <p>React stack</p>
-                <pre>{info.componentStack}</pre>
+                {info && <pre>{info.componentStack}</pre>}
             </div>
         );
     }
