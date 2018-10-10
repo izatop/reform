@@ -1,6 +1,6 @@
 {
     "name": "doc",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "author": {
         "name": "Artur Bier",
         "email": "izatop@gmail.com"
@@ -11,7 +11,7 @@
         "play": "webpack-dev-server --watch --open"
     },
     "dependencies": {
-        "@reform/api": "^0.0.1",
+        "@reform/api": "^0.0.2",
         "react": "^16.5.2",
         "react-dom": "^16.5.2"
     },
