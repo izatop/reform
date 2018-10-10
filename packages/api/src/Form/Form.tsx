@@ -71,19 +71,20 @@ export class Form<T extends IFormSource, P = {}> extends React.Component<IFormPr
     protected onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         this.store.begin();
+        let success = false;
         if (this.props.onSubmit) {
             try {
-                const response = await this.props.onSubmit(this.store.toObject(), this.store);
-                if (!response) {
-                    return;
-                }
+                success = await this.props.onSubmit(this.store.toObject(), this.store);
             } catch (error) {
                 this.setState({exception: {error}});
-                return;
             }
         }
 
-        this.commit();
+        if (success) {
+            this.commit();
+        } else {
+            this.store.unlock();
+        }
     }
 
     protected onReset = (e: React.FormEvent<HTMLFormElement>) => {
