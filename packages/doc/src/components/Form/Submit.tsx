@@ -19,7 +19,7 @@ export class SubmitComponent extends BaseButton {
         return "";
     }
 
-    render() {
+    public render() {
         return (
             <button disabled={this.disabled}
                     className={this.className}

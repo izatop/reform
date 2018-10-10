@@ -15,13 +15,8 @@ export abstract class Component<T = any, P = {}> extends Receiver<P & IComponent
             this.props.name,
             {
                 defaultValue: this.props.defaultValue,
-                required: this.props.required,
             },
         );
-
-        this.link.listen(({value, valid, changed}) => {
-            this.setState({value, valid, changed});
-        });
 
         this.state = {
             value: this.link.value,
@@ -29,6 +24,11 @@ export abstract class Component<T = any, P = {}> extends Receiver<P & IComponent
             version: this.props.store.version,
             changed: false,
         };
+
+        this.link.update(this.link.value, this.state.valid, this.state.changed);
+        this.link.listen(({value, valid, changed}) => {
+            this.setState({value, valid, changed});
+        });
     }
 
     public get value() {

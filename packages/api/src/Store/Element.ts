@@ -20,6 +20,8 @@ export class Element<T extends IFormSource = IFormSource, V = any> {
         }
 
         this.initial = this.value;
+        this.valid = typeof options.valid === "undefined" ? this.valid : options.valid;
+        this.changed = typeof options.changed === "undefined" ? this.changed : options.changed;
     }
 
     public commit() {

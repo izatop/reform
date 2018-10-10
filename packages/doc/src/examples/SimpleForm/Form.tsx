@@ -10,7 +10,6 @@ import {submitForm} from "../../util/submitForm";
 
 export default () => {
     const source = {
-        name: "Default name",
         address: {
             city: "New-York",
         },

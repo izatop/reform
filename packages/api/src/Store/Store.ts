@@ -11,11 +11,9 @@ export interface IFormSource {
 }
 
 export interface IMountOptions<T extends IFormSource = IFormSource, K extends KeyOf<T> = KeyOf<T>> {
-    parse?: (value: any) => T[K];
-    serialize?: (value: T[K]) => React.ReactNode;
-    validate?: (value: T[K]) => boolean | Promise<boolean>;
-    required?: boolean;
     defaultValue?: T[K];
+    valid?: boolean;
+    changed?: boolean;
 }
 
 export interface IStoreFlags {
@@ -73,6 +71,10 @@ export class Store<T extends IFormSource = IFormSource,
     }
 
     public commit() {
+        if (0 === this.children.size) {
+            return ;
+        }
+
         this.children.forEach((child) => child.commit());
 
         this.flags.ready = true;
@@ -172,6 +174,8 @@ export class Store<T extends IFormSource = IFormSource,
                 key,
                 element as any,
             );
+
+            this.compute();
         }
 
         return this.children.get(key)!;

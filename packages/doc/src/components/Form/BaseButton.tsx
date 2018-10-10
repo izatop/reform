@@ -20,14 +20,14 @@ export abstract class BaseButton extends Receiver<{}> {
         return !this.state.valid || !this.state.ready;
     }
 
-    render() {
+    public render() {
         return (
             <button disabled={this.disabled}
                     className={this.className}
                     type={this.type}>
                 {this.props.children}
             </button>
-        )
+        );
     }
 
     protected onStoreUpdate() {
