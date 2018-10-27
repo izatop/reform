@@ -1,18 +1,18 @@
 import * as React from "react";
-import {Store} from "../Store";
-import {FormContext} from "./Contexts";
+import {ElementIterable, Store} from "../Store";
+import {FormContext, IterableContext} from "./Contexts";
 
-export abstract class Receiver<P = {}, S = any> extends React.PureComponent<P, S> {
-    public static contextType = FormContext;
+export abstract class IterableReceiver<P = {}, S = any> extends React.PureComponent<P, S> {
+    public static contextType = IterableContext;
 
-    public context!: { store: Store, version: number };
+    public context!: { iterator: ElementIterable, version: number };
 
     constructor(props: P, context: any) {
         super(props, context);
     }
 
     public get store() {
-        return this.context.store;
+        return this.context.iterator;
     }
 
     public componentDidMount() {

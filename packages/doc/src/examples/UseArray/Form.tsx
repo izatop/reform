@@ -1,7 +1,9 @@
 /* @id Form.tsx */
-import {Form, List, ListContext, MapContext, Resolve} from "@reform/api";
+
+import {Form, Has, List, Map, Not, Size, Then} from "@reform/api";
 import * as React from "react";
 import {NumberInput} from "../../components/Form/NumberInput";
+import {Placeholder} from "../../components/Form/Placeholder";
 import {Reset} from "../../components/Form/Reset";
 import {Submit} from "../../components/Form/Submit";
 import {TextInput} from "../../components/Form/TextInput";
@@ -31,7 +33,7 @@ export default () => {
                 price: 31,
                 quantity: 1,
             },
-        ]
+        ],
     };
 
     return (
@@ -42,28 +44,41 @@ export default () => {
                 <TextInput name={"recipient"} required/>
             </label>
 
-            <h4>Products</h4>
             <List name={"products"}>
-                <table>
+                <List.NonIdealState>
+                    <h4>Non Ideal State</h4>
+                </List.NonIdealState>
+
+                <List.IdealState>
+                    <h4>List Ideal State</h4>
+                    <table>
                     <thead>
                     <tr>
-                        <th>Product</th>
+                        <th style={{width: "50%"}}>Name</th>
                         <th>Price</th>
                         <th>Quantity</th>
                         <th>Total</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <MapContext>
+                    <Map.Context>
                         {(store, helper) => (
                             <tr>
-                                <td><Resolve name={"name"}/></td>
+                                <td><Placeholder name={"name"}/></td>
                                 <td>
-                                    <Resolve name={"price"} render={(value) => (
+                                    <Placeholder name={"price"} render={(value) => (
                                         value > 0 ? <span>{value}&nbsp;USD</span> : "Free!"
                                     )}/>
                                 </td>
                                 <td>
+                                    <Has name={"freeze"}>
+                                        <Then>Only one</Then>
+                                        <Not><NumberInput max={10}
+                                                          min={1}
+                                                          style={{width: "60px"}}
+                                                          name={"quantity"}
+                                                          required/></Not>
+                                    </Has>
                                     {store.exists("freeze")
                                         ? "Only one"
                                         : <NumberInput max={10}
@@ -74,8 +89,8 @@ export default () => {
                                     }
                                 </td>
                                 <td>
-                                    <Resolve name={"price"} render={(value, s) => (
-                                        value > 0
+                                    <Placeholder name={"price"} render={(value, s) => (
+                                        s.resolve("quantity") > 0 && value > 0
                                             ? <span>{value * s.resolve("quantity")}&nbsp;USD</span>
                                             : "-"
                                     )}/>
@@ -85,20 +100,27 @@ export default () => {
                                 </td>
                             </tr>
                         )}
-                    </MapContext>
+                    </Map.Context>
                     </tbody>
+                    <tfoot>
+                    <tr>
+                        <td colSpan={2}>Size</td>
+                        <td colSpan={3} style={{textAlign: "right"}}><Size/></td>
+                    </tr>
+                    </tfoot>
                 </table>
-                <ListContext>
+                </List.IdealState>
+                <List.Context>
                     {(iterator) => !iterator.some((item) => item.id === 100)
                         ? <>
-                            <h4>You have a gift!</h4>
-                            <button type={"button"}
+                            <p>You have a gift! <button type={"button"}
                                     onClick={() => iterator.persist(gift)}>Add a gift
                             </button>
+                            </p>
                         </>
-                        : <h4>You have taken the gift!</h4>
+                        : <p>You have taken the gift!</p>
                     }
-                </ListContext>
+                </List.Context>
             </List>
 
             <footer>

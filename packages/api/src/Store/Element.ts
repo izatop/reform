@@ -1,4 +1,4 @@
-import {IFormSource, IMountOptions, Store} from "./Store";
+import {IFormSource, IMountOptions, Store, StoreListener} from "./Store";
 
 export type ElementListener<T, V> = <E extends Element<T, V>>(e: E) => void;
 
@@ -54,6 +54,10 @@ export class Element<T extends IFormSource = IFormSource, V = any> {
 
     public listen(listener: (e: Element<T, V>) => void) {
         this.listeners.push(listener);
+    }
+
+    public off(listener: StoreListener) {
+        this.listeners = this.listeners.filter((fn) => fn !== listener);
     }
 
     public destroy() {

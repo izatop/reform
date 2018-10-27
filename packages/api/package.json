@@ -24,7 +24,10 @@
     "dependencies": {
         "@sirian/ts-extra-types": "^3.7.0",
         "@types/react": "^16.4.16",
-        "react": "^16.5.2"
+        "react": "^16.6.0"
+    },
+    "peerDependencies": {
+        "react": ">= 16.6.0"
     },
     "license": "MIT"
 }

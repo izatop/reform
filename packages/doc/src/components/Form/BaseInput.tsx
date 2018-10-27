@@ -11,12 +11,6 @@ export interface IBaseProps {
 }
 
 export abstract class BaseInput<T, P = {}> extends Component<T, P & IBaseProps> {
-    protected abstract type: string;
-
-    protected onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        this.update(e.target.value);
-    }
-
     protected get className() {
         if (!this.valid) {
             return "is-not-valid";
@@ -29,8 +23,14 @@ export abstract class BaseInput<T, P = {}> extends Component<T, P & IBaseProps> 
         return "";
     }
 
+    protected abstract type: string;
+
     public render() {
         return <input {...this.getDefaultInputProps()}/>;
+    }
+
+    protected onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        this.update(e.target.value);
     }
 
     protected getDefaultInputProps() {
@@ -43,6 +43,6 @@ export abstract class BaseInput<T, P = {}> extends Component<T, P & IBaseProps> 
             value: this.value,
             name: this.name,
             type: this.type,
-        }
+        };
     }
 }

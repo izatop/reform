@@ -1,7 +1,6 @@
 import {KeyOf} from "@sirian/ts-extra-types";
-import * as React from "react";
+import {IElementType} from "../interfaces";
 import {Element} from "./Element";
-import {IElementType} from "./IElementType";
 
 export type ET<E extends Element<T>, T extends IFormSource = IFormSource> = IElementType<E, T>;
 export type StoreListener = (props: IStoreFlags) => void;
@@ -72,7 +71,7 @@ export class Store<T extends IFormSource = IFormSource,
 
     public commit() {
         if (0 === this.children.size) {
-            return ;
+            return;
         }
 
         this.children.forEach((child) => child.commit());
@@ -96,7 +95,7 @@ export class Store<T extends IFormSource = IFormSource,
 
         this.fire();
 
-        return ++this.flags.version;
+        return this.flags.version;
     }
 
     public toObject<R extends T = T>(): R {
@@ -117,7 +116,7 @@ export class Store<T extends IFormSource = IFormSource,
         return {source: this.source, key};
     }
 
-    public getNested<V>(ns: string): {key: string, source: IFormSource} {
+    public getNested<V>(ns: string): { key: string, source: IFormSource } {
         const keys: string[] = ns.split(".");
         const key = keys.pop()!;
 

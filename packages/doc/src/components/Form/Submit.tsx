@@ -1,10 +1,9 @@
 /* @id Submit.tsx */
 
-import {receiver} from "@reform/api";
 import * as React from "react";
 import {BaseButton} from "./BaseButton";
 
-export class SubmitComponent extends BaseButton {
+export class Submit extends BaseButton {
     protected type = "submit";
 
     protected get className() {
@@ -29,8 +28,6 @@ export class SubmitComponent extends BaseButton {
                     : "Submitting..."
                 }
             </button>
-        )
+        );
     }
 }
-
-export const Submit = receiver(SubmitComponent);

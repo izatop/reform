@@ -1,24 +1,30 @@
 import * as React from "react";
 import {IterableContext, Receiver} from "../Context";
-import {Iterator} from "../Store";
-import {receiver} from "./receiver";
+import {ElementIterable} from "../Store";
+import {IdealState} from "./List/IdealState";
+import {NonIdealState} from "./List/NonIdealState";
+import {ListContext} from "./ListContext";
 
 export interface IListProps {
     name: string;
 }
 
-export class ListComponent extends Receiver<IListProps> {
+export class List extends Receiver<IListProps> {
+    public static Context = ListContext;
+    public static IdealState = IdealState;
+    public static NonIdealState = NonIdealState;
+
     public state = {version: 1};
 
-    protected iterator: Iterator;
+    protected iterator: ElementIterable;
 
-    constructor(props: any) {
-        super(props);
+    constructor(props: any, context: any) {
+        super(props, context);
 
-        this.iterator = this.props.store.mount(this.props.name, Iterator);
+        this.iterator = this.store.mount(this.props.name, ElementIterable);
         this.iterator.listen(() => {
-            this.setState({version: this.state.version++}, () => {
-                this.props.store.compute();
+            this.setState({version: this.iterator.version}, () => {
+                this.store.compute();
             });
         });
     }
@@ -31,5 +37,3 @@ export class ListComponent extends Receiver<IListProps> {
         );
     }
 }
-
-export const List = receiver(ListComponent);

@@ -4,31 +4,14 @@ import {IComponentProps, IComponentState} from "../interfaces";
 import {Element} from "../Store";
 
 export abstract class Component<T = any, P = {}> extends Receiver<P & IComponentProps, IComponentState<T>> {
-    public state: IComponentState<T>;
+    public state!: IComponentState<T>;
 
-    protected link: Element;
+    protected link!: Element;
 
-    constructor(props: P & IComponentProps) {
-        super(props);
+    constructor(props: P & IComponentProps, context: any) {
+        super(props, context);
 
-        this.link = this.props.store.mount(
-            this.props.name,
-            {
-                defaultValue: this.props.defaultValue,
-            },
-        );
-
-        this.state = {
-            value: this.link.value,
-            valid: this.validate(this.link.value),
-            version: this.props.store.version,
-            changed: false,
-        };
-
-        this.link.update(this.link.value, this.state.valid, this.state.changed);
-        this.link.listen(({value, valid, changed}) => {
-            this.setState({value, valid, changed});
-        });
+        this.initialize();
     }
 
     public get value() {
@@ -92,11 +75,32 @@ export abstract class Component<T = any, P = {}> extends Receiver<P & IComponent
 
     public componentWillUnmount() {
         super.componentWillUnmount();
-        this.props.store.unmount(this.props.name);
+        this.store.unmount(this.props.name);
     }
 
     public hasChanges(value?: T) {
         return value !== this.link.value;
+    }
+
+    protected initialize() {
+        this.link = this.store.mount(
+            this.props.name,
+            {
+                defaultValue: this.props.defaultValue,
+            },
+        );
+
+        this.state = {
+            value: this.link.value,
+            valid: this.validate(this.link.value),
+            version: this.store.version,
+            changed: false,
+        };
+
+        this.link.update(this.link.value, this.state.valid, this.state.changed);
+        this.link.listen(({value, valid, changed}) => {
+            this.setState({value, valid, changed});
+        });
     }
 
     protected update(rawValue: any) {

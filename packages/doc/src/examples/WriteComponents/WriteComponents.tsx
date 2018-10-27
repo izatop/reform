@@ -12,11 +12,8 @@ export const WriteComponents: React.StatelessComponent<{ title: string }> = (pro
         <Code open code={require("../../components/Form/BaseInput?code")}/>
 
         <p>
-            Now, look at <Tilda>TextInput</Tilda> component which inherit from <Tilda>BaseInput</Tilda>.
-            Use HOC <Tilda>receiver</Tilda> to attach your components to the <Tilda>Context.Consumer</Tilda>.
+            Now, look at <Tilda>TextInput</Tilda> component which inherit <Tilda>BaseInput</Tilda>.
         </p>
-
-        <p><u>Do not use your components without <Tilda>receiver</Tilda></u>.</p>
 
         <Form>
             <label>

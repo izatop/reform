@@ -1,24 +1,24 @@
 import * as React from "react";
-import {Context, IterableContext} from "../../Context";
+import {FormContext, IterableContext} from "../../Context";
+import {MapContext} from "./MapContext";
 
 export interface IMapProps {
-    any?: true;
-    state?: boolean;
     children: React.ReactNode;
 }
 
 export class Map<P = {}> extends React.Component<IMapProps & P> {
+    public static Context = MapContext;
+
     public render() {
         return (
             <IterableContext.Consumer>
                 {({iterator, version}) => (
                     iterator.map(
                         (store, id) => (
-                            <Context.Provider key={id} value={{store, version}}>
+                            <FormContext.Provider key={id} value={{store, version}}>
                                 {this.props.children}
-                            </Context.Provider>
+                            </FormContext.Provider>
                         ),
-                        this.props.any ? undefined : this.props.state || true,
                     )
                 )}
             </IterableContext.Consumer>

@@ -5,9 +5,9 @@ import * as React from "react";
 
 export abstract class BaseButton extends Receiver<{}> {
     public state = {
-        valid: this.props.store.valid,
-        changed: this.props.store.changed,
-        ready: this.props.store.ready,
+        valid: this.store.valid,
+        changed: this.store.changed,
+        ready: this.store.ready,
     };
 
     protected abstract type = "button";
@@ -31,7 +31,7 @@ export abstract class BaseButton extends Receiver<{}> {
     }
 
     protected onStoreUpdate() {
-        const {valid, changed, ready} = this.props.store;
+        const {valid, changed, ready} = this.store;
         this.setState({valid, changed, ready});
     }
 }

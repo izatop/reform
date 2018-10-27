@@ -1,7 +1,7 @@
 import * as React from "react";
-import {Context} from "../Context";
+import {FormContext} from "../Context/index";
 import {FormOnChange, IFormProps} from "../interfaces";
-import {IFormSource, Store} from "../Store";
+import {IFormSource, Store} from "../Store/index";
 
 export interface IFormState {
     version: number;
@@ -52,7 +52,7 @@ export class Form<T extends IFormSource, P = {}> extends React.Component<IFormPr
             return this.getExceptionView(error, info);
         }
 
-        const {Provider} = Context;
+        const {Provider} = FormContext;
         const {style, className} = this.props;
         const context = {store: this.store, version: this.state.version};
 
@@ -100,11 +100,17 @@ export class Form<T extends IFormSource, P = {}> extends React.Component<IFormPr
         this.setState({version: this.store.reset()});
     }
 
+    /**
+     * Render form error
+     *
+     * @param error
+     * @param info
+     */
     protected getExceptionView(error: Error, info: React.ErrorInfo) {
         if (process.env.NODE_ENV === "production") {
             return (
                 <div>
-                    <h1>Form processing unexpected error</h1>
+                    <h1>Form error</h1>
                     <pre>{error.message}</pre>
                 </div>
             );

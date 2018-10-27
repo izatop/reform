@@ -1,6 +1,5 @@
 /* @id NumberInput.tsx */
 
-import {receiver} from "@reform/api";
 import * as React from "react";
 import {BaseInput} from "./BaseInput";
 
@@ -9,7 +8,7 @@ export interface INumberInputProps {
     max?: number;
 }
 
-export class NumberInputComponent extends BaseInput<number, INumberInputProps> {
+export class NumberInput extends BaseInput<number, INumberInputProps> {
     protected type = "number";
 
     public parse(value?: string) {
@@ -41,8 +40,6 @@ export class NumberInputComponent extends BaseInput<number, INumberInputProps> {
             ...super.getDefaultInputProps(),
             max: this.props.max,
             min: this.props.min,
-        }
+        };
     }
 }
-
-export const NumberInput = receiver(NumberInputComponent);

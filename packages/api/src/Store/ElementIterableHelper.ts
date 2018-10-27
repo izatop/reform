@@ -1,8 +1,8 @@
-import {Iterator} from "./Iterator";
+import {ElementIterable} from "./ElementIterable";
 import {Store} from "./Store";
 
-export class IteratorHelper {
-    constructor(protected iterator: Iterator, protected store: Store) {
+export class ElementIterableHelper {
+    constructor(protected iterator: ElementIterable, protected store: Store) {
     }
 
     public delete = () => {
