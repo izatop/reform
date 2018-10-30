@@ -18,7 +18,7 @@ Main usage
 **TextInput.tsx**
 ```typescript jsx
 import * as React from "react";
-import {Component, receiver} from "@reform/api";
+import {Component} from "@reform/api";
 
 export class TextInput extends Component {
     protected onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -58,7 +58,7 @@ export class TextInput extends Component {
 ```typescript jsx
 import * as React from "react";
 import {Component, Store} from "@reform/api";
-import {TextComonent} from "./TextInput.tsx";
+import {TextInput} from "./TextInput.tsx";
 
 interface ISource {
   name: string;
