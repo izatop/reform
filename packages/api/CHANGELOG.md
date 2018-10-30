@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.1](https://github.com/izatop/reform/compare/@reform/api@0.2.0...@reform/api@0.2.1) (2018-10-30)
+
+
+### Bug Fixes
+
+* discard changes after the Form was unmounted ([39a9c6d](https://github.com/izatop/reform/commit/39a9c6d))
+
+
+
+
+
 # [0.2.0](https://github.com/izatop/reform/compare/@reform/api@0.1.1...@reform/api@0.2.0) (2018-10-27)
 
 
