@@ -93,11 +93,15 @@ export class Form<T extends IFormSource, P = {}> extends React.Component<IFormPr
     }
 
     protected commit() {
-        this.setState({version: this.store.commit()});
+        if (this.store) {
+            this.setState({version: this.store.commit()});
+        }
     }
 
     protected reset() {
-        this.setState({version: this.store.reset()});
+        if (this.store) {
+            this.setState({version: this.store.reset()});
+        }
     }
 
     /**
