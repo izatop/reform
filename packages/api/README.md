@@ -1,13 +1,15 @@
 # @reform/api
 
-Simple and powerful React Form API. 
-Write React Form Components faster, more simple and clear.
+Simple and powerful React forms API.
+Write forms faster, more simple and clear.
   
 ## Install
 
 ```bash
 npm install @reform/api
-```  
+```
+
+*This package requires `react@16.6+`.
 
 ## Usage
 
@@ -16,9 +18,9 @@ Main usage
 **TextInput.tsx**
 ```typescript jsx
 import * as React from "react";
-import {Component, receiver} from "@reform/api";
+import {Component} from "@reform/api";
 
-export class TextInputComponent extends Component {
+export class TextInput extends Component {
     protected onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         this.update(e.target.value);
     }
@@ -49,16 +51,14 @@ export class TextInputComponent extends Component {
         }
     }
 }
-
-export const TextInput = receiver(TextInputComponent);
 ```
 
 **Form.tsx**
 
 ```typescript jsx
 import * as React from "react";
-import {Component, FormOnChange, Store} from "@reform/api";
-import {TextComonent} from "./TextInput.tsx";
+import {Component, Store} from "@reform/api";
+import {TextInput} from "./TextInput.tsx";
 
 interface ISource {
   name: string;
@@ -93,4 +93,4 @@ export default () => {
 
 ## Examples
 
-Clone this repository, install dependencies `npm run bootstrap` and run `npm run doc:play`.
+Setup `npm run bootstrap` and play `npm run doc:play`.
