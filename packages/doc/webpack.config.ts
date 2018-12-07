@@ -1,9 +1,8 @@
 import * as HTMLPlugin from "html-webpack-plugin";
 import {resolve} from "path";
-import {Configuration} from "webpack";
 
 const path = (...paths: string[]) => resolve(__dirname, ...paths);
-const config: Configuration = {
+const config = {
     mode: "development",
     entry: path("src/index.tsx"),
     output: {
