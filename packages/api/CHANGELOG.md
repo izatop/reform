@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.4](https://github.com/izatop/reform/compare/@reform/api@0.2.3...@reform/api@0.2.4) (2018-12-27)
+
+
+### Bug Fixes
+
+* update deps and imports ([750eb75](https://github.com/izatop/reform/commit/750eb75))
+
+
+
+
+
 ## [0.2.3](https://github.com/izatop/reform/compare/@reform/api@0.2.2...@reform/api@0.2.3) (2018-12-04)
 
 **Note:** Version bump only for package @reform/api
