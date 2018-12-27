@@ -1,7 +1,7 @@
 import * as React from "react";
-import {FormContext} from "../Context/index";
+import {FormContext} from "../Context";
 import {FormOnChange, IFormProps} from "../interfaces";
-import {IFormSource, Store} from "../Store/index";
+import {IFormSource, Store} from "../Store";
 
 export interface IFormState {
     version: number;
