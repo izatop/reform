@@ -16,10 +16,10 @@
         "ci:coveralls": "cat ./coverage/lcov.info | yarn coveralls",
         "lint": "tslint 'packages/*/{src,test}/**/*.ts'",
         "lint:fix": "tslint --fix 'packages/*/{src,test}/**/*.ts'",
-        "test": "yarn test:clean && jest --config jest.json --coverage",
+        "test": "yarn test:clean && jest --passWithNoTests --config jest.json --coverage",
         "test:clean": "rimraf coverage",
-        "test:watch": "jest --config jest.json --watch",
-        "test:snapshot": "jest --config jest.json --updateSnapshot",
+        "test:watch": "jest --passWithNoTests --config jest.json --watch",
+        "test:snapshot": "jest --passWithNoTests --config jest.json --updateSnapshot",
         "doc:play": "lerna run --scope=doc play",
         "bootstrap": "lerna bootstrap"
     },
