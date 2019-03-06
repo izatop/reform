@@ -1,0 +1,28 @@
+{
+    "name": "@reform/webpack",
+    "version": "0.0.0-development",
+    "main": "src/index.ts",
+    "types": "src/index.ts",
+    "private": true,
+    "author": {
+        "name": "Artur Bier",
+        "email": "izatop@gmail.com"
+    },
+    "dependencies": {
+        "@types/html-webpack-plugin": "^3.2.0",
+        "@types/mini-css-extract-plugin": "^0.2.0",
+        "@types/webpack": "^4.4.25",
+        "@types/webpack-dev-server": "^3.1.2",
+        "css-loader": "^2.1.0",
+        "file-loader": "^3.0.1",
+        "html-loader": "^0.5.5",
+        "html-webpack-plugin": "^3.2.0",
+        "mini-css-extract-plugin": "^0.5.0",
+        "node-sass": "^4.11.0",
+        "sass-loader": "^7.1.0",
+        "ts-loader": "^5.3.3",
+        "webpack": "^4.29.6",
+        "webpack-bundle": "^0.9.9"
+    },
+    "license": "MIT"
+}

@@ -1,0 +1,38 @@
+{
+    "name": "@reform/dashboard",
+    "version": "0.0.0-development",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "author": {
+        "name": "Artur Bier",
+        "email": "izatop@gmail.com"
+    },
+    "private": true,
+    "scripts": {
+        "play": "yarn run dev:watch --open",
+        "dev:watch": "webpack-dev-server --watch",
+        "dev:build": "webpack-cli"
+    },
+    "devDependencies": {},
+    "dependencies": {
+        "@reach/router": "^1.2.1",
+        "@reform/api": "^0.2.5",
+        "@reform/components": "0.0.0-development",
+        "@reform/webpack": "0.0.0-development",
+        "@types/reach__router": "^1.2.3",
+        "@types/react": "^16.8.6",
+        "@types/react-dom": "^16.8.2",
+        "apollo-cache-inmemory": "^1.5.1",
+        "apollo-client": "^2.5.1",
+        "apollo-link-http": "^1.5.11",
+        "bulma": "^0.7.4",
+        "graphql": "^14.1.1",
+        "graphql-tag": "^2.10.1",
+        "react": "^16.8.3",
+        "react-dom": "^16.8.3",
+        "webpack": "^4.29.6",
+        "webpack-cli": "^3.2.3",
+        "webpack-dev-server": "^3.2.1"
+    },
+    "license": "MIT"
+}

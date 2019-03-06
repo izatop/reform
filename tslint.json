@@ -1,6 +1,6 @@
 {
     "extends": [
-        "tslint:latest"
+        "tslint:recommended"
     ],
     "paths": [
         "packages/*/src/**.ts",

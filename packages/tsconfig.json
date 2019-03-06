@@ -1,0 +1,15 @@
+{
+    "files": [],
+    "include": [],
+    "references": [
+        {
+            "path": "api"
+        },
+        {
+            "path": "components"
+        },
+        {
+            "path": "webpack"
+        }
+    ]
+}

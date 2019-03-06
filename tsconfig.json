@@ -4,8 +4,7 @@
         "target": "es2017",
         "declaration": true,
         "lib": ["esnext"],
-        "rootDir": "src",
-        "outDir": "dist",
+        "esModuleInterop": true,
         "sourceMap": true,
         "strict": true,
         "strictNullChecks": true,
@@ -14,8 +13,8 @@
         "noImplicitAny": true,
         "strictPropertyInitialization": true,
         "strictFunctionTypes": true,
-        "experimentalDecorators": true
-    },
-    "include": ["src"],
-    "exclude": ["webpack.config.ts"]
+        "experimentalDecorators": true,
+        "skipLibCheck": true,
+        "noEmit": true
+    }
 }
