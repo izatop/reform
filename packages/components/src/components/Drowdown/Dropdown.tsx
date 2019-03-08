@@ -2,39 +2,17 @@ import * as React from "react";
 import {calcClasses} from "../../helpers";
 import {DropdownOptions, DropdownProps} from "./props";
 
-const renderButton = (button: React.ReactNode, active?: boolean) => {
-    if (React.isValidElement<{ children: any }>(button)) {
-        const props = {
-            ...button.props,
-            "aria-haspopup": "true",
-            "aria-controls": "dropdown-menu",
-        };
-
-        return React.cloneElement(
-            button,
-            props,
-            <>
-                <span>{props.children}</span>
-                <span className="icon">
-                    <i className={`fas fa-angle-${active ? "up" : "down"}`}
-                       aria-hidden={"true"}/>
-                </span>
-            </>,
-        );
-    }
-
-    return (
-        <button className="button"
-                aria-haspopup="true"
-                aria-controls="dropdown-menu">
-            <span>{button}</span>
-            <span className="icon is-small">
-                <i className={`fas fa-angle-${active ? "up" : "down"}`}
+const renderButton = (title: string, active?: boolean) => (
+    <button className="button"
+            aria-haspopup="true"
+            aria-controls="dropdown-menu">
+        <span>{title}</span>
+        <span className="icon is-small">
+            <i className={`fas fa-angle-${active ? "up" : "down"}`}
                aria-hidden={"true"}/>
-            </span>
-        </button>
-    );
-};
+        </span>
+    </button>
+);
 
 export const Dropdown: React.FunctionComponent<DropdownProps> = (props) => {
     const [active, setActive] = React.useState(props.defaultActive || false);
@@ -74,10 +52,14 @@ export const Dropdown: React.FunctionComponent<DropdownProps> = (props) => {
         );
     }
 
+    const button = React.isValidElement(props.button)
+        ? props.button
+        : renderButton(props.button as string, active);
+
     return (
         <div {...dropdownProps}>
             <div {...triggerProps} className="dropdown-trigger">
-                {renderButton(props.button, active)}
+                {button}
             </div>
             <div className="dropdown-menu" role="menu">
                 <div className="dropdown-content">
