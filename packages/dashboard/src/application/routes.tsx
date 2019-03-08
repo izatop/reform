@@ -5,4 +5,5 @@ export type Route = React.ComponentType<RouteComponentProps>;
 
 export const ComponentsRoute = React.lazy<Route>(() => import("./components/ComponentsPage"));
 export const ElementsRoute = React.lazy<Route>(() => import("./components/ElementsPage"));
+export const FormsRoute = React.lazy<Route>(() => import("./components/FormsPage"));
 export const TemplateRoute = React.lazy<Route>(() => import("./components/TemplatePage"));

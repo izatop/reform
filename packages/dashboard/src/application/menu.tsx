@@ -11,7 +11,7 @@ menu.add(new MenuNode(
         children: [
             new MenuNode(<Link to={"/columns"}>Columns</Link>),
             new MenuNode(<Link to={"/layout"}>Layout</Link>),
-            new MenuNode("Forms", {
+            new MenuNode(<Link to={"/forms/"}>Forms</Link>, {
                 children: [
                     new MenuNode(<Link to={"/forms/#general"}>General</Link>),
                     new MenuNode(<Link to={"/forms/#input"}>Input</Link>),

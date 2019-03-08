@@ -20,7 +20,7 @@ import * as React from "react";
 import {SessionContext} from "../store/context";
 import {IAuthorized, SessionState, SessionType} from "../store/SessionState";
 import {menu} from "./menu";
-import {ComponentsRoute, ElementsRoute} from "./routes";
+import {ComponentsRoute, ElementsRoute, FormsRoute} from "./routes";
 
 export default class Application extends React.Component {
     public static contextType = SessionContext;
@@ -70,6 +70,7 @@ export default class Application extends React.Component {
                                 <a><span>Page Name</span></a>
                             </Breadcrumbs>
                             <Router>
+                                <FormsRoute path={"/forms"}/>
                                 <ElementsRoute path={"/elements"}/>
                                 <ComponentsRoute path={"/components"}/>
                             </Router>

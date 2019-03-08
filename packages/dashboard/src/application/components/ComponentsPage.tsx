@@ -27,17 +27,16 @@ import {
     PaginationPager,
     PaginationPrevious,
     Tabs,
+    TabsElement,
     Title,
     Title1,
 } from "@reform/components";
 
-import {TabsElement} from "@reform/components/dist/components/Tabs/TabsElement";
 import * as React from "react";
-import {useState} from "react";
 import {Placeholder} from "../../vendor/Placeholder";
 
 const ComponentsPage: React.FC = (props) => {
-    const [active, setActive] = useState(false);
+    const [active, setActive] = React.useState(false);
 
     return (
         <>
@@ -112,9 +111,18 @@ const ComponentsPage: React.FC = (props) => {
                 </LevelItem>
                 <LevelItem centered>
                     <div>
-                        <p>Hoverable, right</p>
-                        <Dropdown right hoverable button={"Hover me"}>
+                        <p>Hoverable</p>
+                        <Dropdown hoverable button={"Hover me"}>
                             <DropdownElement><a>Action</a></DropdownElement>
+                        </Dropdown>
+                    </div>
+                </LevelItem>
+                <LevelItem centered>
+                    <div>
+                        <p>Inline, right</p>
+                        <Dropdown right button={<a>Click me</a>}>
+                            <DropdownElement><a>Action</a></DropdownElement>
+                            <DropdownElement active><a>Active</a></DropdownElement>
                         </Dropdown>
                     </div>
                 </LevelItem>

@@ -12,6 +12,7 @@ import {
     Image,
     ImageRatio,
     Notification,
+    Progress,
     Size,
     Subtitle,
     Subtitle1,
@@ -19,6 +20,11 @@ import {
     Subtitle3,
     Subtitle4,
     Subtitle5,
+    Table,
+    TableBody,
+    TableHead,
+    Tag,
+    TagList,
     Title,
     Title1,
     Title2,
@@ -26,9 +32,6 @@ import {
     Title4,
     Title5,
 } from "@reform/components";
-import {Progress, Table, Tag, TagList} from "@reform/components/dist";
-import {TableBody} from "@reform/components/dist/elements/Table/TableBody";
-import {TableHead} from "@reform/components/dist/elements/Table/TableHead";
 import * as React from "react";
 import {Placeholder} from "../../vendor/Placeholder";
 
@@ -124,7 +127,7 @@ const ElementsPage: React.FC = (props) => {
 
                 <p>Progress component example</p>
 
-                <Progress value={10} size={Size.Small} max={100}/>
+                <Progress size={Size.Small} max={100}/>
                 <Progress color={Color.Primary} value={20} max={100}/>
                 <Progress color={Color.Danger} size={Size.Large} value={30} max={100}/>
             </Content>
@@ -153,7 +156,7 @@ const ElementsPage: React.FC = (props) => {
                     <Tag>Tag 1</Tag>
                     <Tag>
                         Tag 2
-                        <Delete size={ButtonSize.Small}/>
+                        <Delete size={Size.Small}/>
                     </Tag>
                     <Tag delete color={Color.Danger}/>
                 </TagList>
@@ -173,16 +176,16 @@ const ElementsPage: React.FC = (props) => {
                 <Subtitle1>Subtitle1</Subtitle1>
                 <br/>
                 <Title2>Title2</Title2>
-                <Subtitle2>Subtitle1</Subtitle2>
+                <Subtitle2>Subtitle2</Subtitle2>
                 <br/>
                 <Title3>Title3</Title3>
-                <Subtitle3>Subtitle1</Subtitle3>
+                <Subtitle3>Subtitle3</Subtitle3>
                 <br/>
                 <Title4>Title4</Title4>
-                <Subtitle4>Subtitle1</Subtitle4>
+                <Subtitle4>Subtitle4</Subtitle4>
                 <br/>
                 <Title5>Title5</Title5>
-                <Subtitle5>Subtitle1</Subtitle5>
+                <Subtitle5>Subtitle5</Subtitle5>
             </Content>
         </>
     );
