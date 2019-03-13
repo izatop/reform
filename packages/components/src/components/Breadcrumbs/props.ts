@@ -19,8 +19,8 @@ export type BreadcrumbNode = React.ReactChild | {} | string;
 export type BreadcrumbPath = [string, BreadcrumbNode, string?] | BreadcrumbNode;
 
 export type BreadcrumbsProps = MakeProps<{
+    size?: Size;
     align?: Align;
     style?: BreadcrumbsStyle;
-    size?: Size;
     paths?: BreadcrumbPath[];
 }>;

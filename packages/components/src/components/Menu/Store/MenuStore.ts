@@ -8,12 +8,31 @@ export class MenuStore extends MenuTrigger<MenuStoreEvents> {
 
     private selected?: MenuNode;
 
-    constructor(children: MenuNode[] = []) {
+    constructor(children: MenuNode[] = [], options: {select?: {key: string, value: any}} = {}) {
         super();
 
         for (const child of children) {
             this.add(child);
         }
+
+        if (options.select) {
+            const {key, value} = options.select;
+            for (const child of this.children) {
+                const node = child.find(key, value);
+                if (node) {
+                    node.enter();
+                    break;
+                }
+            }
+        }
+    }
+
+    public paths() {
+        if (this.selected) {
+            return this.selected.paths();
+        }
+
+        return [];
     }
 
     public add(group: MenuNode) {
@@ -30,7 +49,7 @@ export class MenuStore extends MenuTrigger<MenuStoreEvents> {
         });
 
         if (group.isActive()) {
-            group.emit("enter");
+            group.emit("enter", group);
         }
     }
 

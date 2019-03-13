@@ -1,7 +1,7 @@
 import * as React from "react";
-import {Helpers} from "../../helpers";
 import {Icon} from "../../elements/Icon";
 import {Size} from "../../enum";
+import {Helpers} from "../../helpers";
 import {BreadcrumbPath, BreadcrumbsOptions, BreadcrumbsProps} from "./props";
 
 export const renderIcon = (name?: string | null) => {
@@ -12,27 +12,29 @@ export const renderIcon = (name?: string | null) => {
     return <Icon name={name} size={Size.Small}/>;
 };
 
-export const renderPath = (path: BreadcrumbPath, index: number, array: BreadcrumbPath[]) => {
-    const [uri, node, icon = null] = (Array.isArray(path) ? path : ["#", path]);
+export const renderNode = (path: BreadcrumbPath, index: number, array: BreadcrumbPath[]) => {
+    const props = {key: index, className: ""};
     if (array.length - 1 === index) {
+        props.className = "is-active";
+    }
+
+    if (Array.isArray(path)) {
+        const [uri, children, icon = null] = path;
         return (
-            <li key={index} className={"is-active"}>
-                <a href={uri} aria-current={"page"}>
+            <li {...props}>
+                <a href={uri}>
                     {renderIcon(icon)}
-                    <span>{node}</span>
+                    <span>{children}</span>
                 </a>
             </li>
         );
     }
 
-    return (
-        <li key={index}>
-            <a href={uri}>
-                {renderIcon(icon)}
-                <span>{node}</span>
-            </a>
-        </li>
-    );
+    if (React.isValidElement(path)) {
+        return <li {...props}>{path}</li>;
+    }
+
+    return <li {...props}><a>{path}</a></li>;
 };
 
 /**
@@ -41,14 +43,16 @@ export const renderPath = (path: BreadcrumbPath, index: number, array: Breadcrum
  * @param props
  * @constructor
  */
-export const Breadcrumbs: React.FunctionComponent<BreadcrumbsProps> = (props) => (
-    <nav className={Helpers.calcClasses(props, BreadcrumbsOptions)} aria-label={"breadcrumbs"}>
-        <ul>{props.paths
-            ? props.paths.map(renderPath)
-            : React.Children.map(props.children, (child, key) => (
-                <li className={key + 1 === React.Children.count(props.children) ? "is-active" : ""}
-                    key={key}>{child}</li>
-            ))
-        }</ul>
-    </nav>
-);
+export const Breadcrumbs: React.FunctionComponent<BreadcrumbsProps> = (props) => {
+    const childrenCount = React.Children.count(props.children);
+    return (
+        <nav className={Helpers.calcClasses(props, BreadcrumbsOptions)} aria-label={"breadcrumbs"}>
+            <ul>{props.paths
+                ? props.paths.map(renderNode)
+                : React.Children.map(props.children, (child, key) => (
+                    <li className={key + 1 === childrenCount ? "is-active" : ""} key={key}>{child}</li>
+                ))
+            }</ul>
+        </nav>
+    );
+};

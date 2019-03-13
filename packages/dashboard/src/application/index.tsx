@@ -8,6 +8,7 @@ import {
     Columns,
     Icon,
     Menu,
+    MenuNode,
     Navbar,
     NavbarDropdown,
     NavbarLeft,
@@ -23,12 +24,25 @@ import {IAuthorized, SessionState, SessionType} from "../store/SessionState";
 import {menu} from "./menu";
 import {ComponentsRoute, ElementsRoute, FormsRoute} from "./routes";
 
-export default class Application extends React.Component {
+interface IState {
+    active: boolean;
+    paths: MenuNode[];
+}
+
+export default class Application extends React.Component<IState> {
     public static contextType = SessionContext;
 
-    public state = {active: false};
+    public state: IState = {active: false, paths: []};
 
     public context!: SessionType<IAuthorized>;
+
+    public componentDidMount() {
+        menu.listen("change", () => {
+            this.setState({paths: menu.paths()});
+        });
+
+        this.setState({paths: menu.paths()});
+    }
 
     public render() {
         return (
@@ -66,10 +80,7 @@ export default class Application extends React.Component {
                             <Menu store={menu}/>
                         </Column>
                         <Column>
-                            <Breadcrumbs>
-                                <Link to={"/"}><Icon name={"home"}/><span>Dashboard</span></Link>
-                                <a><span>Page Name</span></a>
-                            </Breadcrumbs>
+                            <Breadcrumbs paths={this.state.paths.map(({node}) => node)} />
                             <Router>
                                 <FormsRoute path={"/forms"}/>
                                 <ElementsRoute path={"/elements"}/>

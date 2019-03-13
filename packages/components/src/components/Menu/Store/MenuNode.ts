@@ -1,24 +1,49 @@
-import {ReactNode} from "react";
+import {isValidElement, ReactChild} from "react";
 import {MenuTrigger} from "./MenuTrigger";
 
 let increment = 0;
+
+export interface IMenuNodeDefaults {
+    children?: MenuNode[];
+    selected?: boolean;
+}
 
 export class MenuNode extends MenuTrigger {
     public readonly id = ++increment;
 
     public readonly children: MenuNode[] = [];
 
+    public readonly parent?: MenuNode;
+
+    public readonly node: ReactChild | {};
+
     private selected = false;
 
-    constructor(public readonly node: ReactNode,
-                defaults: { children?: MenuNode[], selected?: boolean } = {}) {
+    constructor(node: MenuNode,
+                defaults: IMenuNodeDefaults = {}) {
         super();
+
+        this.node = node;
+        if (defaults.selected) {
+            this.selected = true;
+        }
 
         for (const child of defaults.children || []) {
             this.add(child);
         }
+    }
 
-        this.selected = defaults.selected || false;
+    public find(key: string, value: any): MenuNode | undefined {
+        if (isValidElement(this.node) && Reflect.get(this.node.props, key) === value) {
+            return this;
+        }
+
+        for (const child of this.children) {
+            const node = child.find(key, value);
+            if (node) {
+                return node;
+            }
+        }
     }
 
     public isActive() {
@@ -27,7 +52,7 @@ export class MenuNode extends MenuTrigger {
 
     public select(value: boolean) {
         if (value === this.selected) {
-            return ;
+            return;
         }
 
         this.selected = value;
@@ -47,10 +72,19 @@ export class MenuNode extends MenuTrigger {
         this.emit("add", this);
 
         node.listen(["enter", "child:enter"], (child) => this.emit("child:enter", child));
-
         if (node.isActive()) {
-            node.emit("enter");
+            requestAnimationFrame(() => node.emit("enter", node));
         }
+
+        Reflect.set(node, "parent", this);
+    }
+
+    public paths(): MenuNode[] {
+        if (this.parent) {
+            return [...this.parent.paths(), this];
+        }
+
+        return [this];
     }
 
     public remove(node: MenuNode) {
