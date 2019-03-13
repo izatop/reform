@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.1](https://github.com/izatop/reform/compare/@reform/components@0.0.1...@reform/components@0.1.1) (2019-03-13)
+
+
+### Bug Fixes
+
+* update version ([3aa32d6](https://github.com/izatop/reform/commit/3aa32d6))
+
+
+
+
+
 ## [0.0.1](https://github.com/izatop/reform/compare/@reform/components@0.0.0...@reform/components@0.0.1) (2019-03-13)
 
 **Note:** Version bump only for package @reform/components
