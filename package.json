@@ -14,7 +14,7 @@
         "publish": "lerna publish --conventional-commits --yes",
         "clean": "lerna run build:clean",
         "watch": "sh ./watch.sh",
-        "build": "sh ./build.sh",
+        "ci:build": "sh ./build.sh",
         "ci:coveralls": "cat ./coverage/lcov.info | yarn coveralls",
         "lint": "tslint 'packages/*/{src,test}/**/*.ts'",
         "lint:fix": "tslint --fix 'packages/*/{src,test}/**/*.ts'",

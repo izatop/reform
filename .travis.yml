@@ -19,7 +19,7 @@ before_install:
   - yarn global add lerna
 
 install:
-  - lerna bootstrap
+  - yarn run bootstrap
 
 before_script:
   - greenkeeper-lockfile-update
@@ -30,8 +30,8 @@ before_script:
   - git checkout master
 
 script:
-  - lerna run ci:build
   - yarn lint
+  - yarn ci:build
   #- yarn test
   - git status
   - lerna publish --conventional-commits --yes
