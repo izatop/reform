@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/izatop/reform/compare/@reform/api@0.2.5...@reform/api@0.3.0) (2019-03-13)
+
+
+### Features
+
+* initial components commit ([76f1f14](https://github.com/izatop/reform/commit/76f1f14))
+* update form components ([35bb4a0](https://github.com/izatop/reform/commit/35bb4a0))
+
+
+
+
+
 ## [0.2.5](https://github.com/izatop/reform/compare/@reform/api@0.2.4...@reform/api@0.2.5) (2019-01-30)
 
 
