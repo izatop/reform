@@ -24,7 +24,7 @@
         "test:snapshot": "jest --passWithNoTests --config jest.json --updateSnapshot",
         "api-example:play": "lerna run play --scope=@reform/api-example",
         "dashboard:play": "lerna run play --scope=@reform/dashboard",
-        "bootstrap": "lerna bootstrap"
+        "bootstrap": "lerna bootstrap && lerna link"
     },
     "devDependencies": {
         "@types/jest": "^24.0.11",
