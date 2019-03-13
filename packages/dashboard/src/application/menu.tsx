@@ -11,16 +11,7 @@ menu.add(new MenuNode(
         children: [
             new MenuNode(<Link to={"/columns"}>Columns</Link>),
             new MenuNode(<Link to={"/layout"}>Layout</Link>),
-            new MenuNode(<Link to={"/forms/"}>Forms</Link>, {
-                children: [
-                    new MenuNode(<Link to={"/forms/#general"}>General</Link>),
-                    new MenuNode(<Link to={"/forms/#input"}>Input</Link>),
-                    new MenuNode(<Link to={"/forms/#textarea"}>Textarea</Link>),
-                    new MenuNode(<Link to={"/forms/#select"}>Select</Link>),
-                    new MenuNode(<Link to={"/forms/#checkbox"}>Checkbox</Link>),
-                    new MenuNode(<Link to={"/forms/#radio"}>Radio</Link>),
-                ],
-            }),
+            new MenuNode(<Link to={"/forms/"}>Forms</Link>),
             new MenuNode(<Link to={"/elements/"}>Elements</Link>, {
                 children: [
                     new MenuNode(<Link to={"/elements/#box"}>Box</Link>),

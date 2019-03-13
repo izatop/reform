@@ -1,10 +1,10 @@
 import React from "react";
-import {calcClasses} from "../../helpers";
+import {Helpers} from "../../helpers";
 import {HeroOptions, HeroProps} from "./props";
 
 export const Hero: React.FC<HeroProps> = (props) => {
     return (
-        <section className={calcClasses(props, HeroOptions)}>
+        <section className={Helpers.calcClasses(props, HeroOptions)}>
             {props.children}
         </section>
     );

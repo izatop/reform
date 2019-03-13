@@ -1,5 +1,5 @@
 import * as React from "react";
-import {calcClasses} from "../../helpers";
+import {Helpers} from "../../helpers";
 import {TableRowOptions, TableRowProps} from "./props";
 import {TableRowContext} from "./TableRowContext";
 
@@ -16,7 +16,7 @@ export const TableRow: React.FunctionComponent<TableRowProps> = (props) => {
     }
 
     return (
-        <tr className={calcClasses(props, TableRowOptions)}>
+        <tr className={Helpers.calcClasses(props, TableRowOptions)}>
             {props.children}
         </tr>
     );

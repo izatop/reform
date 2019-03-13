@@ -1,5 +1,5 @@
 import React from "react";
-import {calcProps} from "../../helpers";
+import {Helpers} from "../../helpers";
 import {ITagAnchorProps, MakeElementProps} from "../../interfaces";
 import {ButtonOptions, IButtonThemeProps} from "./props";
 
@@ -8,5 +8,5 @@ export interface ILinkButtonProps extends MakeElementProps<IButtonThemeProps, IT
 }
 
 export const LinkButton: React.FunctionComponent<ILinkButtonProps> = (props) => (
-    <a href={props.href} {...calcProps(props, ButtonOptions)}>{props.children}</a>
+    <a href={props.href} {...Helpers.calcProps(props, ButtonOptions)}>{props.children}</a>
 );

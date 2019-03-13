@@ -1,5 +1,5 @@
 import * as React from "react";
-import {calcClasses} from "../../helpers";
+import {Helpers} from "../../helpers";
 
 export interface ITabElementProps {
     children: React.ReactNode;
@@ -7,7 +7,7 @@ export interface ITabElementProps {
 }
 
 export const TabsElement: React.FC<ITabElementProps> = (props) => (
-    <li className={calcClasses(props, {is: ["active"]})}>{props.children}</li>
+    <li className={Helpers.calcClasses(props, {is: ["active"]})}>{props.children}</li>
 );
 
 TabsElement.displayName = "TabsElement";

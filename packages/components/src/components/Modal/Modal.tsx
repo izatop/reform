@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import {calcClasses} from "../../helpers";
+import {Helpers} from "../../helpers";
 import {ModalOptions, ModalProps} from "./props";
 
 const MODAL_PORTAL_ID = "reform-portal-id";
@@ -47,7 +47,7 @@ export class Modal extends React.Component<ModalProps, IModalState> {
         }
 
         return ReactDOM.createPortal(
-            <div className={calcClasses(this.props, ModalOptions)}>
+            <div className={Helpers.calcClasses(this.props, ModalOptions)}>
                 <div className="modal-background" onClick={this.close}/>
                 {this.getContent()}
                 <button onClick={this.close} className="modal-close is-large" aria-label="close"/>

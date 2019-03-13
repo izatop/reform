@@ -1,5 +1,5 @@
 import React from "react";
-import {calcClasses} from "../../helpers";
+import {Helpers} from "../../helpers";
 import {MakeBreakpointProps} from "../../interfaces";
 
 const LevelItemOptions = {
@@ -11,5 +11,5 @@ const LevelItemOptions = {
 
 export type LevelItemProps = MakeBreakpointProps<{ centered?: true }>;
 export const LevelItem: React.FunctionComponent<LevelItemProps> = (props) => (
-    <nav className={calcClasses(props, LevelItemOptions)}>{props.children}</nav>
+    <nav className={Helpers.calcClasses(props, LevelItemOptions)}>{props.children}</nav>
 );

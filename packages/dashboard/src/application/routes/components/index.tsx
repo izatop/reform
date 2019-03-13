@@ -33,7 +33,7 @@ import {
 } from "@reform/components";
 
 import * as React from "react";
-import {Placeholder} from "../../vendor/Placeholder";
+import {Placeholder} from "../../../vendor/Placeholder";
 
 const ComponentsPage: React.FC = (props) => {
     const [active, setActive] = React.useState(false);

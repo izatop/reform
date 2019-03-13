@@ -3,9 +3,8 @@ import {Fallback} from "./components/Fallback";
 import {SessionContext} from "./store/context";
 import {SessionState, SessionStatus, SessionType} from "./store/SessionState";
 
-const Authorization = React.lazy(() => import(/* webpackChunkName: "authorization" */ "./authorization"));
-
-const Application = React.lazy(() => import(/* webpackChunkName: "application" */ "./application"));
+const Authorization = React.lazy(() => import("./authorization"));
+const Application = React.lazy(() => import("./application"));
 
 export class Entry extends React.Component {
     public static contextType = SessionContext;

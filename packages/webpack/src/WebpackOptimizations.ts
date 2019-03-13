@@ -6,17 +6,11 @@ export class WebpackOptimizations extends Options.Optimization {
             splitChunks: {
                 chunks: "all",
                 cacheGroups: {
+                    default: false,
                     vendor: {
                         chunks: "all",
-                        test: /node_modules/,
+                        test: (m) => /\/node_modules\//.test(m.context),
                         name: "vendor",
-                        priority: 20,
-                    },
-                    ui: {
-                        chunks: "all",
-                        test: /\/@reform\/components\//,
-                        name: "ui",
-                        enforce: true,
                     },
                 },
             },

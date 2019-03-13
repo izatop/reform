@@ -4,4 +4,4 @@ export const PanelOptions = {
     name: "panel",
 };
 
-export type PanelProps = MakeProps<{}>;
+export type PanelProps = MakeProps;

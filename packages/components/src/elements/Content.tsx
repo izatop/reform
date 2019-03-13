@@ -1,5 +1,5 @@
 import React from "react";
-import {calcClasses} from "../helpers";
+import {Helpers} from "../helpers";
 import {Size} from "../enum";
 import {MakeProps} from "../interfaces";
 
@@ -11,5 +11,5 @@ export type ContentProps = MakeProps<{
 }>;
 
 export const Content: React.FunctionComponent<ContentProps> = (props) => (
-    <div className={calcClasses(props, options)}>{props.children}</div>
+    <div className={Helpers.calcClasses(props, options)}>{props.children}</div>
 );

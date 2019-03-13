@@ -1,5 +1,5 @@
 import {Children, cloneElement, createContext, createElement, isValidElement, ReactElement, ReactNode} from "react";
-import {calcProps} from "../../helpers";
+import {Helpers} from "../../helpers";
 import {Color} from "../../enum";
 import {MakeBreakpointProps, MakeProps} from "../../interfaces";
 
@@ -59,23 +59,23 @@ export const NavbarWithChild = (children: ReactElement | {} | ReactNode): ReactN
     return Children.map(children, (child) => {
 
         if (isValidElement(child)) {
-            return cloneElement(child, calcProps(child.props, NavbarItemOptions));
+            return cloneElement(child, Helpers.calcProps(child.props, NavbarItemOptions));
         }
 
-        return createElement("span", calcProps({}, NavbarItemOptions), child);
+        return createElement("span", Helpers.calcProps({}, NavbarItemOptions), child);
     });
 };
 
 export const NavbarDropdownWithChild = (children: ReactElement | {} | ReactNode): ReactNode => {
     return Children.map(children, (child) => {
         if (isValidElement(child) && child.type === "hr") {
-            return cloneElement(child, calcProps(child.props, {name: "navbar-divider"}));
+            return cloneElement(child, Helpers.calcProps(child.props, {name: "navbar-divider"}));
         }
 
         if (isValidElement(child)) {
-            return cloneElement(child, calcProps(child.props, NavbarItemOptions));
+            return cloneElement(child, Helpers.calcProps(child.props, NavbarItemOptions));
         }
 
-        return createElement("span", calcProps({}, NavbarItemOptions), [child]);
+        return createElement("span", Helpers.calcProps({}, NavbarItemOptions), [child]);
     });
 };

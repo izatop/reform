@@ -1,5 +1,5 @@
 import {cloneElement, createElement, isValidElement, ReactElement, ReactNode} from "react";
-import {mergeProps} from "../../helpers";
+import {Helpers} from "../../helpers";
 import {MakeProps} from "../../interfaces";
 
 export const CardOptions = {
@@ -25,7 +25,7 @@ export type CardHeaderProps = MakeProps<{
  */
 export const renderCardChild = (props: object, child?: React.ReactNode) => {
     if (child && isValidElement<any>(child)) {
-        return cloneElement(child, mergeProps(child.props, props));
+        return cloneElement(child, Helpers.mergeProps(child.props, props));
     }
 
     if (child) {

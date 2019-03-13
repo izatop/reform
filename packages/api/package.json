@@ -23,8 +23,8 @@
     },
     "dependencies": {
         "@sirian/ts-extra-types": "^3.13.0",
-        "@types/react": "^16.8.6",
-        "react": "^16.7.0"
+        "@types/react": "^16.8.8",
+        "react": "^16.8.4"
     },
     "peerDependencies": {
         "react": ">= 16.6.0"

@@ -1,9 +1,9 @@
 import * as React from "react";
-import {calcClasses} from "../../helpers";
+import {Helpers} from "../../helpers";
 import {MessageContentOptions, MessageContentProps} from "./props";
 
 export const MessageContent: React.FunctionComponent<MessageContentProps> = (props) => (
-    <div className={calcClasses(props, MessageContentOptions)}>
+    <div className={Helpers.calcClasses(props, MessageContentOptions)}>
         {props.children}
     </div>
 );

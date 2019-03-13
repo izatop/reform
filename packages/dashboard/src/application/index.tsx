@@ -10,12 +10,13 @@ import {
     Menu,
     Navbar,
     NavbarDropdown,
-    NavbarLeft, NavbarLogo,
+    NavbarLeft,
+    NavbarLogo,
     NavbarMenu,
     NavbarRight,
+    NavbarTab,
     Section,
 } from "@reform/components";
-import {NavbarTab} from "@reform/components/dist/components/Navbar/NavbarTab";
 import * as React from "react";
 import {SessionContext} from "../store/context";
 import {IAuthorized, SessionState, SessionType} from "../store/SessionState";
@@ -61,7 +62,7 @@ export default class Application extends React.Component {
                 </Navbar>
                 <Section>
                     <Columns>
-                        <Column span={3}>
+                        <Column narrow>
                             <Menu store={menu}/>
                         </Column>
                         <Column>

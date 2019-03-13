@@ -33,7 +33,7 @@ import {
     Title5,
 } from "@reform/components";
 import * as React from "react";
-import {Placeholder} from "../../vendor/Placeholder";
+import {Placeholder} from "../../../vendor/Placeholder";
 
 const ElementsPage: React.FC = (props) => {
     return (
@@ -102,9 +102,10 @@ const ElementsPage: React.FC = (props) => {
                 <Title anchor={"image"}>Image</Title>
 
                 <p>Image component example</p>
-
-                <Image ratio={ImageRatio.R2by1} src={Placeholder.fetch(720, 240)}/>
             </Content>
+
+            <Image ratio={ImageRatio.R2by1}
+                   src={Placeholder.fetch(720, 240)}/>
 
             <hr/>
 

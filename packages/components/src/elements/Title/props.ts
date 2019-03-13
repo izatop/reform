@@ -1,5 +1,5 @@
 import * as React from "react";
-import {calcClasses} from "../../helpers";
+import {Helpers} from "../../helpers";
 import {MakeProps} from "../../interfaces";
 
 export type TitleSize = 1 | 2 | 3 | 4 | 5 | 6;
@@ -8,7 +8,7 @@ export type TitleFactory = (props: React.PropsWithoutRef<TitleProps>) => React.R
 export const createTitle = (name: string, size: TitleSize, factory: TitleFactory) => (
     (props: TitleProps) => {
         const titleProps = {
-            className: calcClasses({...props, size}, {
+            className: Helpers.calcClasses({...props, size}, {
                 name,
                 is: ["spaced"],
             }),

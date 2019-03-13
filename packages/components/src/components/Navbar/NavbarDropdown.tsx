@@ -1,5 +1,5 @@
 import * as React from "react";
-import {calcProps} from "../../helpers";
+import {Helpers} from "../../helpers";
 import {NavbarDropdownOptions, NavbarDropdownProps, NavbarDropdownWithChild} from "./props";
 
 export const NavbarDropdown: React.FC<NavbarDropdownProps> = (props) => {
@@ -39,8 +39,8 @@ export const NavbarDropdown: React.FC<NavbarDropdownProps> = (props) => {
     }
 
     return (
-        <div {...calcProps(itemProps, NavbarDropdownOptions)}>
-            {React.cloneElement(button, calcProps(buttonProps, {name: "navbar-link"}))}
+        <div {...Helpers.calcProps(itemProps, NavbarDropdownOptions)}>
+            {React.cloneElement(button, Helpers.calcProps(buttonProps, {name: "navbar-link"}))}
             <div className="navbar-dropdown">
                 {NavbarDropdownWithChild(children)}
             </div>

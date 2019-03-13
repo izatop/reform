@@ -1,5 +1,5 @@
 import * as React from "react";
-import {calcClasses} from "../../helpers";
+import {Helpers} from "../../helpers";
 import {
     createPaginationState,
     getPaginationDependencies,
@@ -37,7 +37,7 @@ export const Pagination: React.FunctionComponent<PaginationProps> = (props) => {
     );
 
     return (
-        <nav className={calcClasses(props, PaginationOptions)}>
+        <nav className={Helpers.calcClasses(props, PaginationOptions)}>
             <Provider value={{state, set}}>
                 {props.children}
             </Provider>

@@ -1,4 +1,4 @@
-import {Content, Icon, Title} from "@reform/components";
+import {Content, Icon, Title} from "../../../../../components/dist";
 import * as React from "react";
 
 const TemplatePage: React.FC = (props) => (

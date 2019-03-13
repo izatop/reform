@@ -1,5 +1,5 @@
 import * as React from "react";
-import {calcClasses} from "../../helpers";
+import {Helpers} from "../../helpers";
 import {Icon} from "../../elements/Icon";
 import {Size} from "../../enum";
 import {BreadcrumbPath, BreadcrumbsOptions, BreadcrumbsProps} from "./props";
@@ -42,7 +42,7 @@ export const renderPath = (path: BreadcrumbPath, index: number, array: Breadcrum
  * @constructor
  */
 export const Breadcrumbs: React.FunctionComponent<BreadcrumbsProps> = (props) => (
-    <nav className={calcClasses(props, BreadcrumbsOptions)} aria-label={"breadcrumbs"}>
+    <nav className={Helpers.calcClasses(props, BreadcrumbsOptions)} aria-label={"breadcrumbs"}>
         <ul>{props.paths
             ? props.paths.map(renderPath)
             : React.Children.map(props.children, (child, key) => (

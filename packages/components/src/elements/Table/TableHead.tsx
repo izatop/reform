@@ -1,5 +1,5 @@
 import * as React from "react";
-import {calcClasses} from "../../helpers";
+import {Helpers} from "../../helpers";
 import {MakeProps} from "../../interfaces";
 import {TableHeadCell} from "./TableHeadCell";
 import {TableRow} from "./TableRow";
@@ -10,7 +10,7 @@ export type TableHeadProps = MakeProps<{
 }>;
 
 export const TableHead: React.FunctionComponent<TableHeadProps> = (props) => (
-    <thead className={calcClasses(props)}>
+    <thead className={Helpers.calcClasses(props)}>
     <TableRowContext.Provider value={TableHeadCell}>
         {props.cells ? <TableRow cells={props.cells}/> : props.children}
     </TableRowContext.Provider>

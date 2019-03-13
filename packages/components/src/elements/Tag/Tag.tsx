@@ -1,5 +1,5 @@
 import * as React from "react";
-import {calcClasses} from "../../helpers";
+import {Helpers} from "../../helpers";
 import {Color} from "../../enum";
 import {MakeProps} from "../../interfaces";
 
@@ -23,6 +23,6 @@ export const TagOptions = {
 
 export const Tag: React.FunctionComponent<TagProps> = (props) => (
     props.delete
-        ? <a className={calcClasses(props, TagOptions)} />
-        : <span className={calcClasses(props, TagOptions)}>{props.children}</span>
+        ? <a className={Helpers.calcClasses(props, TagOptions)} />
+        : <span className={Helpers.calcClasses(props, TagOptions)}>{props.children}</span>
 );
