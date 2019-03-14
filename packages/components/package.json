@@ -1,9 +1,11 @@
 {
     "name": "@reform/components",
-    "version": "0.1.3",
+    "version": "0.1.4",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
+    "repository": "https://github.com/izatop/reform",
     "description": "Pure React UI components based on Bulma css framework",
+    "keywords": ["pure", "react", "bulma", "typescript"],
     "author": {
         "name": "Artur Bier",
         "email": "izatop@gmail.com"
@@ -12,6 +14,9 @@
         "clean": "yarn build:clean",
         "build:scss": "copy-and-watch \"src/**/*.scss\" \"sass\"",
         "build:clean": "rimraf dist sass"
+    },
+    "publishConfig": {
+        "access": "public"
     },
     "devDependencies": {
         "copy-and-watch": "^0.1.2"
