@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/izatop/reform/compare/@reform/api-example@0.3.2...@reform/api-example@0.4.0) (2019-03-17)
+
+
+### Features
+
+* add controlled forms and some improvements ([c39e123](https://github.com/izatop/reform/commit/c39e123))
+
+
+
+
+
 ## [0.3.2](https://github.com/izatop/reform/compare/@reform/api-example@0.3.1...@reform/api-example@0.3.2) (2019-03-14)
 
 **Note:** Version bump only for package @reform/api-example
