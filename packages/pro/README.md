@@ -1,11 +1,11 @@
-# @reform/components
+# @reform/pro
 
-Pure React UI components based on Bulma css framework 
+Extended forms for `@reform/components` based on `@reform/api`
 
 ## Getting Started
 
 Just install
-`yarn add @reform/components`
+`yarn add @reform/pro`
 and follow typings. Documentation coming soon.
 
 ### Playground
