@@ -36,7 +36,7 @@ export class Helpers {
                 if (typeof item === "string" && Reflect.has(props, item)) {
                     const value = Reflect.get(props, item);
 
-                    if (typeof value === "string") {
+                    if (typeof value === "string" && value) {
                         classes.push(`${prefix}-${value}${suffix}`);
                     } else if (typeof value === "boolean" && value) {
                         classes.push(`${prefix}-${item.toLowerCase()}${suffix}`);
@@ -51,6 +51,7 @@ export class Helpers {
                             const result = resolve(Reflect.get(props, key));
                             classes.push(
                                 ...(Array.isArray(result) ? result : [result])
+                                    .filter((value) => !!value)
                                     .map((name) => `${prefix}-${name}${suffix}`),
                             );
                         }

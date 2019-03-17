@@ -33,9 +33,10 @@ import {
 } from "@reform/components";
 
 import * as React from "react";
+import {createRouteComponent} from "../../../vendor/createRouteComponent";
 import {Placeholder} from "../../../vendor/Placeholder";
 
-const ComponentsPage: React.FC = (props) => {
+export default createRouteComponent(() => {
     const [active, setActive] = React.useState(false);
 
     return (
@@ -65,7 +66,7 @@ const ComponentsPage: React.FC = (props) => {
                 <CardImage>
                     <Image ratio={ImageRatio.R3by1}
                            title={"Image example"}
-                           src={Placeholder.fetch(720, 240)}/>
+                           src={Placeholder.getFigurePlaceholder(720, 240)}/>
                 </CardImage>
                 <CardHeader>
                     <p>Card Title</p>
@@ -210,6 +211,4 @@ const ComponentsPage: React.FC = (props) => {
             </Tabs>
         </>
     );
-};
-
-export default ComponentsPage;
+});

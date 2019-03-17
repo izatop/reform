@@ -3,8 +3,9 @@ import {Helpers} from "../../helpers";
 import {ITagButtonProps, MakeElementProps} from "../../interfaces";
 import {ButtonOptions, IButtonThemeProps} from "./props";
 
+export type ButtonType = "button" | "submit" | "reset";
 export interface IButtonProps extends MakeElementProps<IButtonThemeProps, ITagButtonProps> {
-    type?: "button" | "submit" | "reset";
+    type?: ButtonType;
     disabled?: boolean;
 }
 

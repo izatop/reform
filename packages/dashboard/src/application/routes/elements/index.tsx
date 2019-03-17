@@ -33,9 +33,10 @@ import {
     Title5,
 } from "@reform/components";
 import * as React from "react";
+import {createRouteComponent} from "../../../vendor/createRouteComponent";
 import {Placeholder} from "../../../vendor/Placeholder";
 
-const ElementsPage: React.FC = (props) => {
+export default createRouteComponent(() => {
     return (
         <>
             <Title1>Elements</Title1>
@@ -105,7 +106,7 @@ const ElementsPage: React.FC = (props) => {
             </Content>
 
             <Image ratio={ImageRatio.R2by1}
-                   src={Placeholder.fetch(720, 240)}/>
+                   src={Placeholder.getFigurePlaceholder(720, 240)}/>
 
             <hr/>
 
@@ -190,6 +191,4 @@ const ElementsPage: React.FC = (props) => {
             </Content>
         </>
     );
-};
-
-export default ElementsPage;
+});

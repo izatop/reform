@@ -1,5 +1,5 @@
 import * as React from "react";
-import {Helpers} from "../../../helpers";
+import {Helpers} from "../../helpers";
 
 export type RadioProps = React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>,
     HTMLInputElement>;

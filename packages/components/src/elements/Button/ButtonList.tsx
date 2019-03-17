@@ -1,6 +1,6 @@
 import * as React from "react";
+import {Align, Size} from "../../enum";
 import {Helpers} from "../../helpers";
-import {Size} from "../../enum";
 import {MakeProps} from "../../interfaces";
 
 const options = {
@@ -10,15 +10,10 @@ const options = {
     has: ["addons"],
 };
 
-export enum ButtonListAlign {
-    Center = "centered",
-    Right = "right",
-}
-
 export type ButtonListProps = MakeProps<{
     size?: Size;
     addons?: boolean;
-    align?: ButtonListAlign;
+    align?: Align;
 }>;
 
 export const ButtonList: React.FunctionComponent<ButtonListProps> = (props) => (

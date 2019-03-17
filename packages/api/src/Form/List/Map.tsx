@@ -1,5 +1,6 @@
 import * as React from "react";
 import {FormContext, IterableContext} from "../../Context";
+import {ListContextType} from "../List";
 import {MapContext} from "./MapContext";
 
 export interface IMapProps {
@@ -12,16 +13,18 @@ export class Map<P = {}> extends React.Component<IMapProps & P> {
     public render() {
         return (
             <IterableContext.Consumer>
-                {({iterator, version}) => (
-                    iterator.map(
-                        (store, id) => (
-                            <FormContext.Provider key={id} value={{store, version}}>
-                                {this.props.children}
-                            </FormContext.Provider>
-                        ),
-                    )
-                )}
+                {this.iterate}
             </IterableContext.Consumer>
         );
     }
+
+    private iterate: ListContextType = (iterator) => (
+        iterator.map(
+            (store, id) => (
+                <FormContext.Provider key={id} value={store}>
+                    {this.props.children}
+                </FormContext.Provider>
+            ),
+        )
+    )
 }

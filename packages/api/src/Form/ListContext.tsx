@@ -3,14 +3,14 @@ import {IterableContext} from "../Context";
 import {ElementIterable} from "../Store/ElementIterable";
 
 export interface IListContextProps {
-    children: (iterator: ElementIterable, version: number) => React.ReactNode;
+    children: (iterator: ElementIterable) => React.ReactNode;
 }
 
 export class ListContext extends React.PureComponent<IListContextProps> {
     public render() {
         return (
             <IterableContext.Consumer>
-                {({iterator, version}) => this.props.children(iterator, version)}
+                {(iterator) => this.props.children(iterator)}
             </IterableContext.Consumer>
         );
     }

@@ -3,7 +3,7 @@ import {MakeProps} from "../../interfaces";
 
 export const IconOptions = {
     name: "icon",
-    is: ["size"],
+    is: ["size", "right", "left", "align"],
     has: [{color: (v: Color) => `text-${v}`}],
 };
 
@@ -24,6 +24,9 @@ export type IconProps = MakeProps<{
     weight?: IconWeight;
     color?: Color;
     rotate?: number;
+    align?: "right" | "left";
+    left?: boolean;
+    right?: boolean;
     flip?: IconFlip;
 }>;
 

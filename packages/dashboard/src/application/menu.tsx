@@ -13,7 +13,12 @@ export const menu = new MenuStore(
                 children: [
                     /*new MenuNode(<Link to={"/columns"}>Columns</Link>),
                     new MenuNode(<Link to={"/layout"}>Layout</Link>),*/
-                    new MenuNode(<Link to={"/forms/"}>Forms</Link>),
+                    new MenuNode(<Link to={"/forms/"}>Forms</Link>, {
+                        children: [
+                            new MenuNode(<Link to={"/forms/#general"}>General</Link>),
+                            new MenuNode(<Link to={"/forms/controlled"}>Controlled</Link>),
+                        ],
+                    }),
                     new MenuNode(<Link to={"/elements/"}>Elements</Link>, {
                         children: [
                             new MenuNode(<Link to={"/elements/#box"}>Box</Link>),

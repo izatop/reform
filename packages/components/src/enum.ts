@@ -101,8 +101,4 @@ export enum TextAlign {
     Right = "right",
 }
 
-export enum Align {
-    Center = "centered",
-    Left = "left",
-    Right = "right",
-}
+export type Align = "centered" | "right";

@@ -3,7 +3,7 @@ import {IterableReceiver} from "../../Context";
 
 export class NonIdealState extends IterableReceiver {
     public render() {
-        if (this.store.count() > 0) {
+        if (this.context.count() > 0) {
             return null;
         }
 

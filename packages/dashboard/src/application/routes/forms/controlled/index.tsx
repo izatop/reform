@@ -1,0 +1,32 @@
+import {Content, Title, Title1, Title4} from "@reform/components";
+import * as React from "react";
+import {FormExample} from "./FormExample";
+
+export default class extends React.PureComponent {
+    public state = {};
+
+    private defaultSource = {name: "Name", age: 32, address: [{city: "City", address: "My Address", house: 12}]};
+
+    public render() {
+        return (
+            <>
+                <Title1>Forms</Title1>
+                <Content>
+                    <Title>Controlled</Title>
+
+                    <FormExample defaultSource={this.defaultSource}
+                                 onChange={this.onChange}/>
+
+                    <Title4>Output</Title4>
+                    <pre>
+                        {JSON.stringify(this.state, null, "  ")}
+                    </pre>
+                </Content>
+            </>
+        );
+    }
+
+    private onChange = (data: any) => {
+        this.setState(data);
+    }
+}

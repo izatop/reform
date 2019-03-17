@@ -20,7 +20,7 @@ export class Entry extends React.Component {
         );
 
         if (this.context.isSigned()) {
-            this.context.setState(SessionStatus.Authorized, {user: "Guest Auto"});
+            this.context.setState(SessionStatus.Authorized, {user: "Guest"});
         }
     }
 

@@ -1,15 +1,24 @@
 import * as React from "react";
 import {Element} from "./Element";
-import {IFormSource, Store} from "./Store";
+import {IMountOptions, Store} from "./Store";
 
-export class ElementIterable<T extends IFormSource = IFormSource> extends Element<T, any[]> {
+export interface IIterableContainer<T> {
+    id: string;
+    store: Store<T>;
+    changed: boolean;
+    valid: boolean;
+    added: boolean;
+}
+
+let ELEMENT_ID = 0;
+
+export class ElementIterable<T = any> extends Element<T, any[]> {
     public version = 1;
-    public id = 0;
 
-    protected children: Array<{id: string, store: Store<T>}> = [];
+    protected children: Array<IIterableContainer<T>> = [];
 
-    constructor(store: Store<T>, iterable?: any[]) {
-        super(store, iterable);
+    constructor(store: Store<T>, iterable: any[], options: IMountOptions) {
+        super(store, iterable, {defaultValue: [], ...options});
         for (const source of this.value || []) {
             this.children.push(this.factory(source));
         }
@@ -22,53 +31,56 @@ export class ElementIterable<T extends IFormSource = IFormSource> extends Elemen
     }
 
     public commit() {
-        const deleted = this.children.filter(({store}) => false === store.ready);
+        const deleted = this.children.filter(({store}) => !store.ready);
         deleted.forEach(({store}) => store.destroy());
 
         this.children = this.children.filter(({store}) => store.ready);
         this.children.forEach(({store}) => store.commit());
-        this.version++;
         return super.commit();
     }
 
     public reset() {
-        this.children.forEach(({store}) => store.reset());
+        this.children.filter((child) => child.added)
+            .forEach(({store}) => store.destroy());
 
-        const children = this.children
-            .filter(({store}) => false === store.ready);
+        this.children.filter((child) => child.changed)
+            .forEach(({store}) => store.reset());
 
-        for (const {store} of children) {
-            store.unlock();
-        }
+        this.children.filter(({store}) => !store.ready)
+            .forEach(({store}) => store.unlock());
 
+        this.children = this.children.filter((child) => !child.added);
         this.compute();
-        this.version++;
         return this.value;
     }
 
-    public restore(pointer: Store<T>) {
+    public restore(target: Store<T>) {
         for (const child of this.children) {
-            if (child.store === pointer) {
+            if (child.store === target) {
                 child.store.unlock();
             }
         }
 
-        this.version++;
         return this.compute();
     }
 
-    public delete(pointer: Store<T>) {
+    public delete(target: Store<T>) {
         if (!this.context.ready) {
+            return;
+        }
+
+        const container = this.children.find(({store}) => store === target);
+        if (!container) {
             return ;
         }
 
-        for (const child of this.children) {
-            if (child.store === pointer) {
-                child.store.lock();
-            }
+        if (container.added) {
+            this.children = this.children.filter((child) => child !== container);
+            container.store.destroy();
+        } else {
+            container.store.lock();
         }
 
-        this.version++;
         return this.compute();
     }
 
@@ -80,16 +92,20 @@ export class ElementIterable<T extends IFormSource = IFormSource> extends Elemen
 
     public add(value: any) {
         this.value!.push(value);
-        this.children.push(this.factory(value));
+        this.children.push(this.factory(value, true));
         return this.compute();
     }
 
     public persist(value: any) {
         this.value!.push(value);
         this.children.push(this.factory(value));
-        this.version++;
         this.commit();
         return this.compute();
+    }
+
+    public mapAll(fn: (store: Store<T>, id: string) => React.ReactNode) {
+        return this.children
+            .map(({store, id}) => fn(store, id));
     }
 
     public map(fn: (store: Store<T>, id: string) => React.ReactNode) {
@@ -105,33 +121,37 @@ export class ElementIterable<T extends IFormSource = IFormSource> extends Elemen
     }
 
     protected compute() {
-        for (const {store} of this.children) {
-            this.valid = store.valid;
-            this.changed = store.changed;
-            if (this.changed || !this.valid) {
-                break;
-            }
-        }
-
-        if (!this.changed) {
-            this.changed = this.children.some(({store}) => false === store.ready);
-        }
+        this.valid = !this.children.some((container) => !container.valid);
+        this.changed = this.children.some((container) => (
+            container.changed || container.added || !container.store.ready
+        ));
 
         this.value = this.children
             .filter(({store}) => store.ready)
             .map(({store}) => store.toObject());
 
-        this.listeners.forEach((fn) => fn(this));
+        this.fire();
 
         return this.value;
     }
 
-    protected factory(source: T) {
+    protected factory(source: any, added = false) {
         const store = new Store<T>(source);
+        const container = {
+            added,
+            store,
+            id: `${ELEMENT_ID++}`,
+            valid: store.valid,
+            changed: store.changed,
+        };
+
         store.listen(() => {
+            container.valid = store.valid;
+            container.changed = store.changed;
+
             this.compute();
         });
 
-        return {store, state: true, id: `${this.id++}`};
+        return container;
     }
 }

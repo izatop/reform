@@ -1,8 +1,7 @@
 import {KeyOf} from "@sirian/ts-extra-types";
-import {IElementType} from "../interfaces";
 import {Element} from "./Element";
+import {ElementIterable} from "./ElementIterable";
 
-export type ET<E extends Element<T>, T extends IFormSource = IFormSource> = IElementType<E, T>;
 export type StoreListener = (props: IStoreFlags) => void;
 
 export interface IFormSource {
@@ -13,6 +12,8 @@ export interface IMountOptions<T extends IFormSource = IFormSource, K extends Ke
     defaultValue?: T[K];
     valid?: boolean;
     changed?: boolean;
+    validate: (value: T[K]) => boolean;
+    compare: (value: T[K], compare: T[K]) => boolean;
 }
 
 export interface IStoreFlags {
@@ -23,12 +24,11 @@ export interface IStoreFlags {
 }
 
 export class Store<T extends IFormSource = IFormSource,
-    K extends KeyOf<T> = KeyOf<T>,
-    E extends Element = Element> {
+    K extends KeyOf<T> = KeyOf<T>> {
 
     protected listeners: StoreListener[] = [];
 
-    protected readonly children = new Map<K | string, E>();
+    protected readonly children = new Map<K | string, Element<T> | ElementIterable<T>>();
 
     protected readonly flags: IStoreFlags = {
         version: 1,
@@ -66,7 +66,6 @@ export class Store<T extends IFormSource = IFormSource,
 
     public begin() {
         this.flags.ready = false;
-        this.fire();
     }
 
     public commit() {
@@ -88,14 +87,9 @@ export class Store<T extends IFormSource = IFormSource,
 
     public reset() {
         this.children.forEach((child) => child.reset());
+        this.compute();
 
-        this.flags.valid = true;
-        this.flags.changed = false;
-        this.source = this.toObject();
-
-        this.fire();
-
-        return this.flags.version;
+        return ++this.flags.version;
     }
 
     public toObject<R extends T = T>(): R {
@@ -142,28 +136,28 @@ export class Store<T extends IFormSource = IFormSource,
         return source[key];
     }
 
-    public mount(key: K | string, options?: IMountOptions): E;
-    public mount<V extends Element<T>, S extends ET<V, T>>(key: K | string, type: S, options?: IMountOptions): V;
-    public mount(key: K | string, ...args: any[]) {
-        const options: IMountOptions = {};
-        let Type = Element;
-        if (args.length === 1) {
-            if (args[0].constructor.name === "Object") {
-                Object.assign(options, args[0]);
-            }
-
-            if (Element.isPrototypeOf(args[0])) {
-                Type = args[0];
-            }
-        }
-
-        if (args.length === 2) {
-            Type = args[0];
-            Object.assign(options, args[1]);
-        }
-
+    public mountArray(key: K | string, options: IMountOptions): ElementIterable<T> {
         if (!this.children.has(key)) {
-            const element = new Type<T>(
+            const element = new ElementIterable<T>(
+                this,
+                this.resolve(key, options.defaultValue),
+                options,
+            );
+
+            this.children.set(
+                key,
+                element as any,
+            );
+
+            this.compute();
+        }
+
+        return this.children.get(key) as ElementIterable<T>;
+    }
+
+    public mount(key: K | string, options: IMountOptions) {
+        if (!this.children.has(key)) {
+            const element = new Element<T>(
                 this,
                 this.resolve(key, options.defaultValue),
                 options,

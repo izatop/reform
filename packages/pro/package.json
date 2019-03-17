@@ -1,0 +1,32 @@
+{
+    "name": "@reform/pro",
+    "version": "0.0.0-development",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "repository": "https://github.com/izatop/reform",
+    "description": "Extended forms for @reform/components",
+    "keywords": ["forms", "react", "bulma", "typescript"],
+    "author": {
+        "name": "Artur Bier",
+        "email": "izatop@gmail.com"
+    },
+    "scripts": {
+        "clean": "yarn build:clean",
+        "build:scss": "copy-and-watch \"src/**/*.scss\" \"sass\"",
+        "build:clean": "rimraf dist sass"
+    },
+    "publishConfig": {
+        "access": "public"
+    },
+    "devDependencies": {
+        "copy-and-watch": "^0.1.2"
+    },
+    "dependencies": {
+        "@fortawesome/fontawesome-free": "^5.7.2",
+        "@reform/api": "^0.3.1",
+        "@reform/components": "^0.1.4",
+        "@types/react": "^16.8.8",
+        "react": "^16.8.4"
+    },
+    "license": "MIT"
+}

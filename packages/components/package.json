@@ -21,9 +21,6 @@
     "devDependencies": {
         "copy-and-watch": "^0.1.2"
     },
-    "peerDependencies": {
-        "bulma": ">= 0.7.4"
-    },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.7.2",
         "@reform/api": "^0.3.1",

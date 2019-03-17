@@ -1,11 +1,12 @@
 import * as React from "react";
-import {MakeProps} from "../../../interfaces";
+import {Align} from "../../enum";
+import {MakeProps} from "../../interfaces";
 
 /**
  * @private
  * @param type
  */
-export const resolveAlign = (type: string) => (value: boolean | FieldAlign) => {
+export const resolveAlign = (type: string) => (value: boolean | Align) => {
     if (value === true) {
         return type;
     }
@@ -15,13 +16,12 @@ export const resolveAlign = (type: string) => (value: boolean | FieldAlign) => {
     }
 };
 
-export type FieldAlign = "centered" | "right";
-
 export interface IFieldProps<T = React.ReactElement> extends MakeProps {
     children: React.ReactElement | [React.ReactElement, ...React.ReactElement[]];
-    addons?: boolean | FieldAlign;
-    group?: boolean | FieldAlign | "multiline";
-    horizontal?: boolean;
+    addons?: boolean | Align;
+    group?: boolean | Align | "multiline";
+    label?: string;
+    help?: string;
 }
 
 export const FieldOptions = {

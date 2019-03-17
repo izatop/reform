@@ -9,6 +9,9 @@
             "path": "components"
         },
         {
+            "path": "pro"
+        },
+        {
             "path": "webpack"
         }
     ]

@@ -1,6 +1,6 @@
 import * as React from "react";
-import {Color, Size} from "../../../enum";
-import {Helpers} from "../../../helpers";
+import {Color, Size} from "../../enum";
+import {Helpers} from "../../helpers";
 
 export enum InputStyle {
     Round = "rounded",
@@ -24,8 +24,9 @@ export interface IInputProps {
     state?: InputState;
     disabled?: boolean;
     readOnly?: boolean;
+    autoComplete?: string;
     placeholder?: string;
-    type?: "text" | "password" | "email" | "tel" | string;
+    type?: ("text" | "password" | "email" | "tel") & string;
 }
 
 const InputOptions = {
@@ -36,6 +37,7 @@ const InputOptions = {
 export const Input: React.FC<IInputProps> = (props) => (
     <input disabled={props.disabled}
            readOnly={props.readOnly}
+           autoComplete={props.autoComplete}
            placeholder={props.placeholder}
            {...Helpers.calcProps(props, InputOptions)}/>
 );

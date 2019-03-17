@@ -4,14 +4,17 @@ import {IComponentProps, IComponentState} from "../interfaces";
 import {Element} from "../Store";
 
 export abstract class Component<T = any, P = {}> extends Receiver<P & IComponentProps, IComponentState<T>> {
-    public state!: IComponentState<T>;
+    public state: IComponentState<T>;
 
     protected link!: Element;
 
+    protected get defaultValue(): T | undefined {
+        return ;
+    }
+
     constructor(props: P & IComponentProps, context: any) {
         super(props, context);
-
-        this.initialize();
+        this.state = this.initialize();
     }
 
     public get value() {
@@ -46,10 +49,10 @@ export abstract class Component<T = any, P = {}> extends Receiver<P & IComponent
      */
     public serialize(value?: T): any {
         if (typeof value === "undefined" || value === null) {
-            return "";
+            return this.defaultValue;
         }
 
-        return value.toString();
+        return value;
     }
 
     /**
@@ -73,42 +76,37 @@ export abstract class Component<T = any, P = {}> extends Receiver<P & IComponent
         return initial == value;
     }
 
-    public componentWillUnmount() {
-        super.componentWillUnmount();
-        this.store.unmount(this.props.name);
+    public shouldComponentUpdate(nextProps: Readonly<P & IComponentProps>, nextState: Readonly<IComponentState<T>>, nextContext: any): boolean {
+        return nextState.value !== this.state.value;
     }
 
-    public hasChanges(value?: T) {
-        return value !== this.link.value;
-    }
-
-    protected initialize() {
-        this.link = this.store.mount(
-            this.props.name,
-            {
-                defaultValue: this.props.defaultValue,
-            },
-        );
-
-        this.state = {
-            value: this.link.value,
-            valid: this.validate(this.link.value),
-            version: this.store.version,
-            changed: false,
-        };
-
-        this.link.update(this.link.value, this.state.valid, this.state.changed);
+    public componentDidMount() {
+        super.componentDidMount();
         this.link.listen(({value, valid, changed}) => {
             this.setState({value, valid, changed});
         });
     }
 
+    public componentWillUnmount() {
+        super.componentWillUnmount();
+        this.context.unmount(this.props.name);
+    }
+
+    protected initialize() {
+        this.link = this.context.mount(
+            this.props.name,
+            {
+                defaultValue: this.props.defaultValue || this.defaultValue,
+                validate: (value) => this.validate(value),
+                compare: (v1, v2) => this.compare(v1, v2),
+            },
+        );
+
+        return this.link.state;
+    }
+
     protected update(rawValue: any) {
         const value = this.parse(rawValue);
-        if (this.hasChanges(value)) {
-            const valid = this.validate(value);
-            const changed = !this.compare(this.link.initial, value);
-            this.link.update(value, valid, changed);
-        }
+        this.setState(this.link.update(value));
     }
 }

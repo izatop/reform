@@ -1,7 +1,7 @@
 import * as React from "react";
-import {Color, Size} from "../../../enum";
-import {Helpers} from "../../../helpers";
-import {MakeProps} from "../../../interfaces";
+import {Align, Color, Size} from "../../enum";
+import {Helpers} from "../../helpers";
+import {MakeProps} from "../../interfaces";
 
 export type FileUploadProps = React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>,
     HTMLInputElement>;
@@ -13,7 +13,7 @@ export interface IFileUploadProps extends MakeProps {
     disabled?: boolean;
     name?: string;
     children?: string;
-    align?: "right" | "centered";
+    align?: Align;
     fullwidth?: boolean;
     multiple?: boolean;
     box?: boolean;

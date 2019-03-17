@@ -4,18 +4,23 @@ import {
     Color,
     Content,
     Control,
-    Field, FileUpload,
+    Field,
+    FileUpload,
     Input,
     InputStyle,
-    Label, Radio, Select,
+    Label,
+    Radio,
+    Select,
     Size,
-    Subtitle, TextArea,
+    Subtitle,
+    TextArea,
     Title,
-    Title1
+    Title1,
 } from "@reform/components";
 import * as React from "react";
+import {createRouteComponent} from "../../../vendor/createRouteComponent";
 
-const FormsPage: React.FC = (props) => (
+export default createRouteComponent(() => (
     <>
         <Title1>Forms</Title1>
 
@@ -54,7 +59,7 @@ const FormsPage: React.FC = (props) => (
             <Field>
                 <Label>Static</Label>
                 <Control>
-                    <Input style={InputStyle.Static} placeholder={"Rounded"}/>
+                    <Input style={InputStyle.Static} props={{defaultValue: "static"}} placeholder={"Static"}/>
                 </Control>
             </Field>
             <Field>
@@ -179,6 +184,4 @@ const FormsPage: React.FC = (props) => (
             </Field>
         </Content>
     </>
-);
-
-export default FormsPage;
+));

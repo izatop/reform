@@ -2,30 +2,26 @@ import * as React from "react";
 import {Store} from "../Store";
 import {FormContext} from "./Contexts";
 
-export abstract class Receiver<P = {}, S = any> extends React.PureComponent<P, S> {
+export abstract class Receiver<P = {}, S = any> extends React.Component<P, S> {
     public static contextType = FormContext;
 
-    public context!: { store: Store, version: number };
+    public context!: Store;
+
+    protected disposable?: () => void;
 
     constructor(props: P, context: any) {
         super(props, context);
     }
 
-    public get store() {
-        return this.context.store;
-    }
-
     public componentDidMount() {
-        this.store.listen(this.disposable);
+        if (this.disposable) {
+            this.context.listen(this.disposable);
+        }
     }
 
     public componentWillUnmount() {
-        this.store.off(this.disposable);
-    }
-
-    protected disposable = () => this.onStoreUpdate();
-
-    protected onStoreUpdate() {
-        return;
+        if (this.disposable) {
+            this.context.off(this.disposable);
+        }
     }
 }

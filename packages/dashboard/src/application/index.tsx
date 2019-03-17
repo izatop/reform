@@ -22,14 +22,14 @@ import * as React from "react";
 import {SessionContext} from "../store/context";
 import {IAuthorized, SessionState, SessionType} from "../store/SessionState";
 import {menu} from "./menu";
-import {ComponentsRoute, ElementsRoute, FormsRoute} from "./routes";
+import {ComponentsRoute, ElementsRoute, FormsControlledRoute, FormsRoute} from "./routes";
 
 interface IState {
     active: boolean;
     paths: MenuNode[];
 }
 
-export default class Application extends React.Component<IState> {
+export default class Application extends React.Component<{}, IState> {
     public static contextType = SessionContext;
 
     public state: IState = {active: false, paths: []};
@@ -85,6 +85,7 @@ export default class Application extends React.Component<IState> {
                                 <FormsRoute path={"/forms"}/>
                                 <ElementsRoute path={"/elements"}/>
                                 <ComponentsRoute path={"/components"}/>
+                                <FormsControlledRoute path={"/forms/controlled"}/>
                             </Router>
                         </Column>
                     </Columns>

@@ -12,6 +12,7 @@ export interface IFormProps<T extends IFormSource> {
     defaultSource?: T;
     onSubmit?: FormOnSubmit<T>;
     onChange?: FormOnChange<T>;
+    onMount?: FormOnChange<T>;
     className?: string;
     style?: React.CSSProperties;
     children?: FormChildren<T>;
@@ -24,7 +25,7 @@ export interface IComponentProps<T = any> {
 }
 
 export interface IComponentState<T = any> {
-    value?: T;
+    value: T | undefined;
     valid: boolean;
     changed: boolean;
     version: number;

@@ -1,6 +1,6 @@
 import * as React from "react";
-import {Color, Size} from "../../../enum";
-import {Helpers} from "../../../helpers";
+import {Color, Size} from "../../enum";
+import {Helpers} from "../../helpers";
 
 export enum TextAreaState {
     Hover = "hovered",

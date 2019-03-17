@@ -1,8 +1,8 @@
-import {IFormSource, IMountOptions, Store, StoreListener} from "./Store";
+import {IMountOptions, Store, StoreListener} from "./Store";
 
 export type ElementListener<T, V> = <E extends Element<T, V>>(e: E) => void;
 
-export class Element<T extends IFormSource = IFormSource, V = any> {
+export class Element<T = any, V = T[keyof T]> {
     public value?: V;
 
     public initial?: V;
@@ -13,43 +13,53 @@ export class Element<T extends IFormSource = IFormSource, V = any> {
 
     protected listeners: Array<ElementListener<T, V>> = [];
 
-    constructor(protected context: Store<T>, value?: any, protected options: IMountOptions = {}) {
+    constructor(protected context: Store<T>, value: V, protected options: IMountOptions) {
         this.value = value;
-        if (!this.isDefined()) {
-            this.value = options.defaultValue;
+        this.initial = this.value;
+        this.valid = this.options.validate(this.value);
+        this.changed = this.options.changed || false;
+    }
+
+    public get state() {
+        return {
+            valid: this.valid,
+            value: this.value,
+            changed: this.changed,
+            version: this.context.version,
+        };
+    }
+
+    public update(value: V | undefined) {
+        if (!this.context.ready) {
+            return this.state;
         }
 
-        this.initial = this.value;
-        this.valid = typeof options.valid === "undefined" ? this.valid : options.valid;
-        this.changed = typeof options.changed === "undefined" ? this.changed : options.changed;
+        this.value = value;
+        this.valid = this.options.validate(this.value);
+        this.changed = !this.options.compare(this.initial, this.value);
+        this.fire();
+
+        this.context.compute();
+
+        return this.state;
     }
 
     public commit() {
         this.valid = true;
         this.changed = false;
         this.initial = this.value;
-        this.listeners.forEach((listener) => listener(this));
+        this.fire();
+
         return this.value;
     }
 
     public reset() {
-        this.valid = true;
-        this.changed = false;
         this.value = this.initial;
-        this.listeners.forEach((listener) => listener(this));
+        this.valid = this.options.validate(this.value);
+        this.changed = false;
+        this.fire();
+
         return this.value;
-    }
-
-    public update(value: V | undefined, valid: boolean, changed: boolean) {
-        if (!this.context.ready) {
-            return;
-        }
-
-        this.value = value;
-        this.valid = valid;
-        this.changed = changed;
-        this.listeners.forEach((listener) => listener(this));
-        this.context.compute();
     }
 
     public listen(listener: (e: Element<T, V>) => void) {
@@ -60,13 +70,13 @@ export class Element<T extends IFormSource = IFormSource, V = any> {
         this.listeners = this.listeners.filter((fn) => fn !== listener);
     }
 
+    public fire() {
+        this.listeners.forEach((listener) => listener(this));
+    }
+
     public destroy() {
         this.listeners.length = 0;
         delete this.context;
         delete this.value;
-    }
-
-    public isDefined() {
-        return typeof this.value !== "undefined";
     }
 }

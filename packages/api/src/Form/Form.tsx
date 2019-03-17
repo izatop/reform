@@ -3,17 +3,7 @@ import {FormContext} from "../Context";
 import {FormOnChange, IFormProps} from "../interfaces";
 import {IFormSource, Store} from "../Store";
 
-export interface IFormState {
-    version: number;
-    exception?: {
-        error: Error;
-        info: React.ErrorInfo;
-    };
-}
-
-export class Form<T extends IFormSource, P = {}> extends React.Component<IFormProps<T> & P> {
-    public state: IFormState;
-
+export class Form<T extends IFormSource, P = {}> extends React.PureComponent<IFormProps<T> & P> {
     protected store: Store<T>;
 
     constructor(props: IFormProps<T> & P) {
@@ -23,22 +13,19 @@ export class Form<T extends IFormSource, P = {}> extends React.Component<IFormPr
             this.props.defaultStore as Store<T>
             || new Store<T>(this.props.defaultSource || {})
         );
+    }
 
-        this.state = {
-            version: this.store.version,
-            exception: undefined,
-        };
-
+    public componentDidMount() {
         if (this.props.onChange) {
             const onChange = this.props.onChange as FormOnChange<T>;
             this.store.listen(() => {
                 onChange(this.store);
             });
         }
-    }
 
-    public componentDidCatch(error: Error, info: React.ErrorInfo) {
-        this.setState({exception: {error, info}});
+        if (this.props.onMount) {
+            this.props.onMount(this.store);
+        }
     }
 
     public componentWillUnmount() {
@@ -47,23 +34,14 @@ export class Form<T extends IFormSource, P = {}> extends React.Component<IFormPr
     }
 
     public render() {
-        if (this.state.exception) {
-            const {error, info} = this.state.exception;
-            return this.getExceptionView(error, info);
-        }
-
-        const {Provider} = FormContext;
-        const {style, className} = this.props;
-        const context = {store: this.store, version: this.state.version};
-
         return (
-            <form style={style}
-                  className={className}
+            <form style={this.props.style}
+                  className={this.props.className}
                   onSubmit={this.onSubmit}
                   onReset={this.onReset}>
-                <Provider value={context}>
+                <FormContext.Provider value={this.store}>
                     {this.props.children}
-                </Provider>
+                </FormContext.Provider>
             </form>
         );
     }
@@ -71,20 +49,17 @@ export class Form<T extends IFormSource, P = {}> extends React.Component<IFormPr
     protected onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         this.store.begin();
-        let success = false;
         if (this.props.onSubmit) {
             try {
-                success = await this.props.onSubmit(this.store.toObject(), this.store);
+                await this.props.onSubmit(this.store.toObject(), this.store);
+                this.commit();
             } catch (error) {
-                this.setState({exception: {error}});
+                // tslint:disable-next-line:no-console
+                console.error(error);
             }
         }
 
-        if (success) {
-            this.commit();
-        } else {
-            this.store.unlock();
-        }
+        this.store.unlock();
     }
 
     protected onReset = (e: React.FormEvent<HTMLFormElement>) => {
@@ -94,41 +69,13 @@ export class Form<T extends IFormSource, P = {}> extends React.Component<IFormPr
 
     protected commit() {
         if (this.store) {
-            this.setState({version: this.store.commit()});
+            this.store.commit();
         }
     }
 
     protected reset() {
         if (this.store) {
-            this.setState({version: this.store.reset()});
+            this.store.reset();
         }
-    }
-
-    /**
-     * Render form error
-     *
-     * @param error
-     * @param info
-     */
-    protected getExceptionView(error: Error, info: React.ErrorInfo) {
-        if (process.env.NODE_ENV === "production") {
-            return (
-                <div>
-                    <h1>Form error</h1>
-                    <pre>{error.message}</pre>
-                </div>
-            );
-        }
-
-        return (
-            <div>
-                <h1>{error.message}</h1>
-                <p>Error stack</p>
-                <pre>{error.stack}</pre>
-
-                <p>React stack</p>
-                {info && <pre>{info.componentStack}</pre>}
-            </div>
-        );
     }
 }

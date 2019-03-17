@@ -9,29 +9,39 @@ export interface IListProps {
     name: string;
 }
 
+export type ListContextType = (data: ElementIterable) => React.ReactNode;
+
 export class List extends Receiver<IListProps> {
     public static Context = ListContext;
+
     public static IdealState = IdealState;
+
     public static NonIdealState = NonIdealState;
 
-    public state = {version: 1};
-
-    protected iterator: ElementIterable;
+    protected iterator!: ElementIterable;
 
     constructor(props: any, context: any) {
         super(props, context);
 
-        this.iterator = this.store.mount(this.props.name, ElementIterable);
+        this.iterator = this.context.mountArray(
+            this.props.name,
+            {
+                validate: (value: any[]) => Array.isArray(value),
+                compare: (v1, v2) => v1 === v2,
+            },
+        );
+    }
+
+    public componentDidMount() {
+        super.componentDidMount();
         this.iterator.listen(() => {
-            this.setState({version: this.iterator.version}, () => {
-                this.store.compute();
-            });
+            this.context.compute();
         });
     }
 
     public render() {
         return (
-            <IterableContext.Provider value={{iterator: this.iterator, version: this.iterator.version}}>
+            <IterableContext.Provider value={this.iterator}>
                 {this.props.children}
             </IterableContext.Provider>
         );

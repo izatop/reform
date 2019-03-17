@@ -1,5 +1,5 @@
 import * as React from "react";
-import {Helpers} from "../../../helpers";
+import {Helpers} from "../../helpers";
 import {FieldOptions, IFieldProps} from "./props";
 
 const LabelOptions = {
@@ -7,9 +7,9 @@ const LabelOptions = {
     is: ["size"],
 };
 
-export type FieldHorizontalProps = IFieldProps<[React.ReactElement, ...React.ReactElement[]]>;
+export type HorizontalProps = IFieldProps<[React.ReactElement, ...React.ReactElement[]]>;
 
-export const FieldHorizontal: React.FC<FieldHorizontalProps> = (props) => {
+export const Horizontal: React.FC<HorizontalProps> = (props) => {
     const [label, ...children] = React.Children.toArray<React.ReactElement>(props.children);
     return (
         <div className={Helpers.calcClasses(props, FieldOptions)}>

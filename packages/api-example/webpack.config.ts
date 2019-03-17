@@ -1,4 +1,4 @@
-import * as HTMLPlugin from "html-webpack-plugin";
+import HTMLPlugin from "html-webpack-plugin";
 import {resolve} from "path";
 
 const path = (...paths: string[]) => resolve(__dirname, ...paths);

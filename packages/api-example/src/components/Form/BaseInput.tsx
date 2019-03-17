@@ -10,7 +10,11 @@ export interface IBaseProps {
     className?: string;
 }
 
-export abstract class BaseInput<T, P = {}> extends Component<T, P & IBaseProps> {
+export abstract class BaseInput<P = {}> extends Component<string | number, P & IBaseProps> {
+    public get defaultValue() {
+        return "";
+    }
+
     protected get className() {
         if (!this.valid) {
             return "is-not-valid";

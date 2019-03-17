@@ -1,7 +1,7 @@
 import * as React from "react";
-import {Color, Size} from "../../../enum";
-import {Helpers} from "../../../helpers";
-import {MakeProps} from "../../../interfaces";
+import {Color, Size} from "../../enum";
+import {Helpers} from "../../helpers";
+import {MakeProps} from "../../interfaces";
 
 export enum SelectStyle {
     Round = "rounded",
@@ -19,7 +19,7 @@ export type SelectProps = React.DetailedHTMLProps<React.InputHTMLAttributes<HTML
 
 export type SelectOptionType = string
     | number
-    | {key?: string | number, value: string | number, label: string | number};
+    | { key?: string | number, value: string | number, label: string | number };
 
 export interface ISelectProps extends MakeProps {
     props?: SelectProps;
@@ -47,11 +47,11 @@ const mapOptionToSelect = (value: SelectOptionType, key?: number | string) => {
 
 export const Select: React.FC<ISelectProps> = (props) => (
     <div className={Helpers.calcClasses(props, SelectOptions)}>
-    <select disabled={props.disabled}
-            multiple={!!props.multiple}
-            size={typeof props.multiple === "number" ? props.multiple : undefined}
-            {...Helpers.calcProps(props, {})}>
-        {props.options.map(mapOptionToSelect)}
-    </select>
+        <select disabled={props.disabled}
+                multiple={!!props.multiple}
+                size={typeof props.multiple === "number" ? props.multiple : undefined}
+                {...Helpers.calcProps(props, {})}>
+            {props.options.map(mapOptionToSelect)}
+        </select>
     </div>
 );

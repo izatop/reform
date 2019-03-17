@@ -1,13 +1,18 @@
 import React from "react";
+import {Align, Size} from "../enum";
 import {Helpers} from "../helpers";
-import {Size} from "../enum";
 import {MakeProps} from "../interfaces";
 
-const options = {name: "content", is: ["size"]};
+const options = {
+    name: "content",
+    is: ["size"],
+    has: [{align: (v: string) => `text-${v}`}],
+};
 
 export type ContentProps = MakeProps<{
     size?: Size;
     children: React.ReactNode | React.ReactNode[];
+    align?: Align;
 }>;
 
 export const Content: React.FunctionComponent<ContentProps> = (props) => (

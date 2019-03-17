@@ -5,11 +5,11 @@ export class Size<P = {}> extends IterableReceiver {
     public static contextType = IterableContext;
 
     public state = {
-        count: this.store.count(),
+        count: this.context.count(),
     };
 
     public onStoreUpdate() {
-        this.setState({count: this.store.count()});
+        this.setState({count: this.context.count()});
     }
 
     public render() {

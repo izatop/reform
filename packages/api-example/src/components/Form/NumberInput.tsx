@@ -8,7 +8,7 @@ export interface INumberInputProps {
     max?: number;
 }
 
-export class NumberInput extends BaseInput<number, INumberInputProps> {
+export class NumberInput extends BaseInput<INumberInputProps> {
     protected type = "number";
 
     public parse(value?: string) {

@@ -2,6 +2,6 @@ import * as React from "react";
 import {ElementIterable, Store} from "../Store";
 
 const defaultValue: any = {};
-export const FormContext = React.createContext<{store: Store, version: number}>(defaultValue);
-export const IterableContext = React.createContext<{ iterator: ElementIterable<any>, version: number}>(defaultValue);
+export const FormContext = React.createContext<Store<any>>(defaultValue);
+export const IterableContext = React.createContext<ElementIterable<any>>(defaultValue);
 export const TestContext = React.createContext(false);
