@@ -19,3 +19,5 @@ export type ButtonListProps = MakeProps<{
 export const ButtonList: React.FunctionComponent<ButtonListProps> = (props) => (
     <div className={Helpers.calcClasses(props, options)}>{props.children}</div>
 );
+
+ButtonList.displayName = "ButtonList";

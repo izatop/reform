@@ -7,3 +7,5 @@ export type MediaContentProps = MakeProps;
 export const MediaContent: React.FunctionComponent<MediaContentProps> = (props) => (
     <figure className={Helpers.calcClasses(props, options)}>{props.children}</figure>
 );
+
+MediaContent.displayName = "MediaContent";

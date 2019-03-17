@@ -56,3 +56,5 @@ export const Breadcrumbs: React.FunctionComponent<BreadcrumbsProps> = (props) =>
         </nav>
     );
 };
+
+Breadcrumbs.displayName = "Breadcrumbs";

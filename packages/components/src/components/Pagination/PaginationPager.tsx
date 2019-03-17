@@ -35,3 +35,5 @@ export const PaginationPager: React.FC<PaginationPagerProps> = (props) => (
         </Consumer>
     </ul>
 );
+
+PaginationPager.displayName = "PaginationPager";

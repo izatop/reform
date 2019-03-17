@@ -13,12 +13,12 @@ export interface IIterableContainer<T> {
 let ELEMENT_ID = 0;
 
 export class ElementIterable<T = any> extends Element<T, any[]> {
-    public version = 1;
+    public version = 0;
 
     protected children: Array<IIterableContainer<T>> = [];
 
     constructor(store: Store<T>, iterable: any[], options: IMountOptions) {
-        super(store, iterable, {defaultValue: [], ...options});
+        super(store, iterable, options);
         for (const source of this.value || []) {
             this.children.push(this.factory(source));
         }
@@ -31,15 +31,29 @@ export class ElementIterable<T = any> extends Element<T, any[]> {
     }
 
     public commit() {
+        if (!this.changed) {
+            return;
+        }
+
         const deleted = this.children.filter(({store}) => !store.ready);
         deleted.forEach(({store}) => store.destroy());
 
+        this.children.filter((container) => container.added)
+            .forEach((container) => container.added = false);
+
         this.children = this.children.filter(({store}) => store.ready);
         this.children.forEach(({store}) => store.commit());
-        return super.commit();
+        this.version++;
+        this.compute();
+
+        this.initial = this.value;
     }
 
     public reset() {
+        if (!this.changed) {
+            return;
+        }
+
         this.children.filter((child) => child.added)
             .forEach(({store}) => store.destroy());
 
@@ -51,7 +65,6 @@ export class ElementIterable<T = any> extends Element<T, any[]> {
 
         this.children = this.children.filter((child) => !child.added);
         this.compute();
-        return this.value;
     }
 
     public restore(target: Store<T>) {
@@ -61,7 +74,7 @@ export class ElementIterable<T = any> extends Element<T, any[]> {
             }
         }
 
-        return this.compute();
+        this.compute();
     }
 
     public delete(target: Store<T>) {
@@ -71,7 +84,7 @@ export class ElementIterable<T = any> extends Element<T, any[]> {
 
         const container = this.children.find(({store}) => store === target);
         if (!container) {
-            return ;
+            return;
         }
 
         if (container.added) {
@@ -81,7 +94,7 @@ export class ElementIterable<T = any> extends Element<T, any[]> {
             container.store.lock();
         }
 
-        return this.compute();
+        this.compute();
     }
 
     public some(fn: (item: any) => boolean) {
@@ -100,7 +113,6 @@ export class ElementIterable<T = any> extends Element<T, any[]> {
         this.value!.push(value);
         this.children.push(this.factory(value));
         this.commit();
-        return this.compute();
     }
 
     public mapAll(fn: (store: Store<T>, id: string) => React.ReactNode) {
@@ -121,9 +133,9 @@ export class ElementIterable<T = any> extends Element<T, any[]> {
     }
 
     protected compute() {
-        this.valid = !this.children.some((container) => !container.valid);
+        this.valid = this.children.every((container) => container.valid);
         this.changed = this.children.some((container) => (
-            container.changed || container.added || !container.store.ready
+            container.added || !container.store.ready || container.changed
         ));
 
         this.value = this.children
@@ -131,8 +143,6 @@ export class ElementIterable<T = any> extends Element<T, any[]> {
             .map(({store}) => store.toObject());
 
         this.fire();
-
-        return this.value;
     }
 
     protected factory(source: any, added = false) {
@@ -145,9 +155,9 @@ export class ElementIterable<T = any> extends Element<T, any[]> {
             changed: store.changed,
         };
 
-        store.listen(() => {
-            container.valid = store.valid;
-            container.changed = store.changed;
+        store.listen(({valid, changed}) => {
+            container.valid = valid;
+            container.changed = changed;
 
             this.compute();
         });

@@ -1,8 +1,10 @@
+import {Store} from "@reform/api";
 import {Content, Title, Title1, Title4} from "@reform/components";
 import * as React from "react";
+import {createRouteComponent} from "../../../../vendor/createRouteComponent";
 import {FormExample} from "./FormExample";
 
-export default class extends React.PureComponent {
+export default createRouteComponent(class extends React.PureComponent {
     public state = {};
 
     private defaultSource = {name: "Name", age: 32, address: [{city: "City", address: "My Address", house: 12}]};
@@ -26,7 +28,7 @@ export default class extends React.PureComponent {
         );
     }
 
-    private onChange = (data: any) => {
-        this.setState(data);
+    private onChange = (data: Store) => {
+        this.setState({valid: data.valid, changed: data.changed, data: data.toObject()});
     }
-}
+});

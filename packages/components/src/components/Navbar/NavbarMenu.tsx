@@ -14,3 +14,5 @@ export const NavbarMenu: React.FunctionComponent<NavbarMenuProps> = (props) => (
         )}
     </Consumer>
 );
+
+NavbarMenu.displayName = "NavbarMenu";

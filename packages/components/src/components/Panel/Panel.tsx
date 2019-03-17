@@ -7,3 +7,5 @@ export const Panel: React.FunctionComponent<PanelProps> = (props) => (
         {props.children}
     </div>
 );
+
+Panel.displayName = "Panel";

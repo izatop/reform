@@ -11,7 +11,9 @@ export interface IButtonProps extends MakeElementProps<IButtonThemeProps, ITagBu
 
 export const Button: React.FunctionComponent<IButtonProps> = (props) => (
     <button disabled={props.disabled}
-            type={props.type}
+            type={props.type || "button"}
             onClick={props.onClick}
             {...Helpers.calcProps(props, ButtonOptions)}>{props.children}</button>
 );
+
+Button.displayName = "Button";

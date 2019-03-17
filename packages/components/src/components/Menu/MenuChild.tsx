@@ -33,3 +33,5 @@ export const MenuChild: React.FunctionComponent<{ node: MenuNode }> = ({node}) =
 
     return <a {...add} className={classes.join(" ")}>{node.node}</a>;
 };
+
+MenuChild.displayName = "MenuChild";

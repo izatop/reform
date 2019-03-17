@@ -20,3 +20,5 @@ export const Horizontal: React.FC<HorizontalProps> = (props) => {
         </div>
     );
 };
+
+Horizontal.displayName = "Horizontal";

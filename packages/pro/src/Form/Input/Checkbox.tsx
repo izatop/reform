@@ -9,7 +9,7 @@ export interface ICheckbox {
 }
 
 export abstract class Checkbox<P = {}> extends AbstractControl<boolean, P & ICheckbox> {
-    protected get defaultValue() {
+    protected get initialValue() {
         return false;
     }
 

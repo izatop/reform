@@ -21,3 +21,8 @@ export const HeroContent: React.FC = (props) => (
 export const HeroFoot: React.FC = (props) => (
     <div className={"hero-foot"}>{props.children}</div>
 );
+
+Hero.displayName = "Hero";
+HeroHead.displayName = "HeroHead";
+HeroContent.displayName = "HeroContent";
+HeroFoot.displayName = "HeroFoot";

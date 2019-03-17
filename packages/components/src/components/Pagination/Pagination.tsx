@@ -44,3 +44,5 @@ export const Pagination: React.FunctionComponent<PaginationProps> = (props) => {
         </nav>
     );
 };
+
+Pagination.displayName = "Pagination";

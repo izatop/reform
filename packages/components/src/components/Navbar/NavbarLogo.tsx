@@ -28,3 +28,5 @@ export const NavbarLogo: React.FunctionComponent<NavbarLogoProps> = (props) => (
         </Consumer>
     </div>
 );
+
+NavbarLogo.displayName = "NavbarLogo";

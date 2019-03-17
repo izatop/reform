@@ -7,3 +7,5 @@ export type MediaRightProps = MakeProps;
 export const MediaRight: React.FunctionComponent<MediaRightProps> = (props) => (
     <div className={Helpers.calcClasses(props, options)}>{props.children}</div>
 );
+
+MediaRight.displayName = "MediaRight";

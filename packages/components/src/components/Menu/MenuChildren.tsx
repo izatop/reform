@@ -15,3 +15,5 @@ export const MenuChildren: React.FunctionComponent<MenuChildrenProps> = (props) 
         </ul>
     );
 };
+
+MenuChildren.displayName = "MenuChildren";

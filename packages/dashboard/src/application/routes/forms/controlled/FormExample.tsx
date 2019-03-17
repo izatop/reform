@@ -22,10 +22,8 @@ interface IFormExample {
 export const FormExample: React.FC<IFormExample> = (props) => (
     <>
         <Form defaultSource={props.defaultSource}
-              onMount={(store) => props.onChange(store.toObject())}
-              onChange={(store) => {
-                  props.onChange(store.toObject());
-              }}>
+              onMount={props.onChange}
+              onChange={props.onChange}>
             <Field label={"Login"}>
                 <Control>
                     <Input placeholder={"name"} autoComplete={"name"} name={"name"}/>
@@ -42,6 +40,12 @@ export const FormExample: React.FC<IFormExample> = (props) => (
             <Field label={"Age"}>
                 <Control>
                     <Numeric required name={"age"}/>
+                </Control>
+            </Field>
+
+            <Field label={"Default Value"} help={"A default value marks input as changed"}>
+                <Control>
+                    <Numeric defaultValue={123} name={"defaultValue"}/>
                 </Control>
             </Field>
 

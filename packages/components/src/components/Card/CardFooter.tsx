@@ -19,3 +19,5 @@ export const CardFooter: React.FC<ICardFooterProps> = (props) => {
         </footer>
     );
 };
+
+CardFooter.displayName = "CardFooter";

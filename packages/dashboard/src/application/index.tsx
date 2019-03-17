@@ -21,6 +21,7 @@ import {
 import * as React from "react";
 import {SessionContext} from "../store/context";
 import {IAuthorized, SessionState, SessionType} from "../store/SessionState";
+import {ComponentsUtil} from "../vendor/ComponentsUtil";
 import {menu} from "./menu";
 import {ComponentsRoute, ElementsRoute, FormsControlledRoute, FormsRoute} from "./routes";
 
@@ -32,16 +33,12 @@ interface IState {
 export default class Application extends React.Component<{}, IState> {
     public static contextType = SessionContext;
 
-    public state: IState = {active: false, paths: []};
+    public state: IState = {active: false, paths: menu.paths()};
 
     public context!: SessionType<IAuthorized>;
 
     public componentDidMount() {
-        menu.listen("change", () => {
-            this.setState({paths: menu.paths()});
-        });
-
-        this.setState({paths: menu.paths()});
+        ComponentsUtil.attach(this, menu.listen("change", this.onMenuChange));
     }
 
     public render() {
@@ -80,7 +77,7 @@ export default class Application extends React.Component<{}, IState> {
                             <Menu store={menu}/>
                         </Column>
                         <Column>
-                            <Breadcrumbs paths={this.state.paths.map(({node}) => node)} />
+                            <Breadcrumbs paths={this.state.paths.map(({node}) => node)}/>
                             <Router>
                                 <FormsRoute path={"/forms"}/>
                                 <ElementsRoute path={"/elements"}/>
@@ -92,5 +89,9 @@ export default class Application extends React.Component<{}, IState> {
                 </Section>
             </>
         );
+    }
+
+    private onMenuChange = () => {
+        this.setState({paths: menu.paths()});
     }
 }

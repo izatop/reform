@@ -7,3 +7,5 @@ export interface ICardImageProps {
 export const CardImage: React.FC<ICardImageProps> = (props) => (
     <div className={"card-image"}>{props.children}</div>
 );
+
+CardImage.displayName = "CardImage";

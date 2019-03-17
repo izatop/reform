@@ -14,3 +14,5 @@ export const CardHeader: React.FC<CardHeaderProps> = (props) => {
         </header>
     );
 };
+
+CardHeader.displayName = "CardHeader";

@@ -87,3 +87,5 @@ export const Dropdown: React.FunctionComponent<DropdownProps> = (props) => {
         </div>
     );
 };
+
+Dropdown.displayName = "Dropdown";

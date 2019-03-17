@@ -47,3 +47,5 @@ export const FileUpload: React.FC<IFileUploadProps> = (props) => (
         </label>
     </div>
 );
+
+FileUpload.displayName = "FileUpload";

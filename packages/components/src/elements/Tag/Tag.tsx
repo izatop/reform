@@ -26,3 +26,5 @@ export const Tag: React.FunctionComponent<TagProps> = (props) => (
         ? <a className={Helpers.calcClasses(props, TagOptions)} />
         : <span className={Helpers.calcClasses(props, TagOptions)}>{props.children}</span>
 );
+
+Tag.displayName = "Tag";

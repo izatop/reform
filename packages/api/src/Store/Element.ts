@@ -11,13 +11,24 @@ export class Element<T = any, V = T[keyof T]> {
 
     public changed = false;
 
+    public version = 0;
+
     protected listeners: Array<ElementListener<T, V>> = [];
 
     constructor(protected context: Store<T>, value: V, protected options: IMountOptions) {
         this.value = value;
-        this.initial = this.value;
+        this.initial = value;
+
+        if (typeof value === "undefined") {
+            this.value = typeof options.defaultValue === "undefined"
+                ? this.options.initialValue
+                : this.options.defaultValue;
+
+            this.initial = this.options.initialValue;
+        }
+
         this.valid = this.options.validate(this.value);
-        this.changed = this.options.changed || false;
+        this.changed = !this.options.compare(this.initial, this.value);
     }
 
     public get state() {
@@ -25,7 +36,7 @@ export class Element<T = any, V = T[keyof T]> {
             valid: this.valid,
             value: this.value,
             changed: this.changed,
-            version: this.context.version,
+            version: this.version,
         };
     }
 
@@ -35,31 +46,30 @@ export class Element<T = any, V = T[keyof T]> {
         }
 
         this.value = value;
-        this.valid = this.options.validate(this.value);
-        this.changed = !this.options.compare(this.initial, this.value);
-        this.fire();
-
-        this.context.compute();
+        this.version++;
+        this.compute();
 
         return this.state;
     }
 
     public commit() {
-        this.valid = true;
-        this.changed = false;
-        this.initial = this.value;
-        this.fire();
+        if (this.options.compare(this.initial, this.value)) {
+            return;
+        }
 
-        return this.value;
+        this.initial = this.value;
+        this.version++;
+        this.compute();
     }
 
     public reset() {
-        this.value = this.initial;
-        this.valid = this.options.validate(this.value);
-        this.changed = false;
-        this.fire();
+        if (this.options.compare(this.initial, this.value)) {
+            return;
+        }
 
-        return this.value;
+        this.value = this.initial;
+        this.version++;
+        this.compute();
     }
 
     public listen(listener: (e: Element<T, V>) => void) {
@@ -75,8 +85,14 @@ export class Element<T = any, V = T[keyof T]> {
     }
 
     public destroy() {
-        this.listeners.length = 0;
+        this.listeners.splice(0, this.listeners.length);
         delete this.context;
         delete this.value;
+    }
+
+    protected compute() {
+        this.valid = this.options.validate(this.value);
+        this.changed = !this.options.compare(this.initial, this.value);
+        this.fire();
     }
 }

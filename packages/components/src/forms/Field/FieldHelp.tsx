@@ -9,3 +9,5 @@ export interface IFieldHelpProps extends MakeProps {
 export const FieldHelp: React.FC<IFieldHelpProps> = (props) => (
     <p className={Helpers.calcClasses(props, {name: "help"})}>{props.children}</p>
 );
+
+FieldHelp.displayName = "FieldHelp";

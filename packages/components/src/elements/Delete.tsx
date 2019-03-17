@@ -7,3 +7,5 @@ export type DeleteProps = MakeProps<{ size?: Size }>;
 export const Delete: React.FunctionComponent<DeleteProps> = (props) => {
     return <a className={Helpers.calcClasses(props, {name: "delete", is: ["size"]})}>{props.children}</a>;
 };
+
+Delete.displayName = "Delete";

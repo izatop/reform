@@ -3,12 +3,13 @@ import {FormContext} from "../Context";
 import {FormOnChange, IFormProps} from "../interfaces";
 import {IFormSource, Store} from "../Store";
 
-export class Form<T extends IFormSource, P = {}> extends React.PureComponent<IFormProps<T> & P> {
+export class Form<T extends IFormSource, P = {}> extends React.Component<IFormProps<T> & P> {
     protected store: Store<T>;
 
     constructor(props: IFormProps<T> & P) {
         super(props);
 
+        this.state = {};
         this.store = (
             this.props.defaultStore as Store<T>
             || new Store<T>(this.props.defaultSource || {})
@@ -57,6 +58,8 @@ export class Form<T extends IFormSource, P = {}> extends React.PureComponent<IFo
                 // tslint:disable-next-line:no-console
                 console.error(error);
             }
+        } else {
+            this.commit();
         }
 
         this.store.unlock();

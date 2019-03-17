@@ -7,3 +7,5 @@ export const Card: React.FunctionComponent<CardProps> = (props) => (
         {props.children}
     </div>
 );
+
+Card.displayName = "Card";

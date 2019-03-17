@@ -7,6 +7,7 @@ import {ListContext} from "./ListContext";
 
 export interface IListProps {
     name: string;
+    defaultValue?: any[];
 }
 
 export type ListContextType = (data: ElementIterable) => React.ReactNode;
@@ -26,6 +27,8 @@ export class List extends Receiver<IListProps> {
         this.iterator = this.context.mountArray(
             this.props.name,
             {
+                initialValue: [],
+                defaultValue: this.props.defaultValue,
                 validate: (value: any[]) => Array.isArray(value),
                 compare: (v1, v2) => v1 === v2,
             },

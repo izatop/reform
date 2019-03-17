@@ -11,7 +11,7 @@ document.body.append(container);
 ReactDOM.render(
     <React.StrictMode>
         <SessionContext.Provider value={SessionState}>
-                <Entry/>
+            <Entry/>
         </SessionContext.Provider>
     </React.StrictMode>,
     container,

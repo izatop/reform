@@ -19,3 +19,5 @@ export const TableBody: React.FunctionComponent<TableBodyProps> = (props) => (
         </TableRowContext.Provider>
     </tbody>
 );
+
+TableBody.displayName = "TableBody";

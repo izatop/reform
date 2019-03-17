@@ -38,3 +38,5 @@ export const TextArea: React.FC<ITextAreaProps> = (props) => (
         {props.children}
     </textarea>
 );
+
+TextArea.displayName = "TextArea";

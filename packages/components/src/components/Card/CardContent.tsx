@@ -7,3 +7,5 @@ export interface ICardContentProps {
 export const CardContent: React.FC<ICardContentProps> = (props) => (
     <div className={"card-content"}>{props.children}</div>
 );
+
+CardContent.displayName = "CardContent";

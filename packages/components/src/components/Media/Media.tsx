@@ -7,3 +7,5 @@ export type MediaProps = MakeBreakpointProps;
 export const Media: React.FunctionComponent<MediaProps> = (props) => (
     <article className={Helpers.calcClasses(props, options)}>{props.children}</article>
 );
+
+Media.displayName = "Media";

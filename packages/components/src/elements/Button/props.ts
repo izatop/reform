@@ -25,7 +25,7 @@ export enum ButtonStyle {
 
 export const ButtonOptions = {
     name: "button",
-    is: ["color", "size", "fullwidth", {style: (v: ButtonStyle | ButtonStyle[]) => v}],
+    is: ["color", "style", "state", "size", "fullwidth", {style: (v: ButtonStyle | ButtonStyle[]) => v}],
 };
 
 export interface IButtonThemeProps {

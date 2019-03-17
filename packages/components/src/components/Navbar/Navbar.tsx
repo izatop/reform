@@ -15,3 +15,5 @@ export const Navbar: React.FunctionComponent<NavbarProps> = (props) => {
         </div>
     );
 };
+
+Navbar.displayName = "Navbar";

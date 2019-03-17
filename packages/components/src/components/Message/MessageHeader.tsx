@@ -7,3 +7,5 @@ export const MessageHeader: React.FunctionComponent<MessageHeaderProps> = (props
         {props.children}
     </div>
 );
+
+MessageHeader.displayName = "MessageHeader";

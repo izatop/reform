@@ -5,8 +5,8 @@ import {MakeProps} from "../../interfaces";
 export type TitleSize = 1 | 2 | 3 | 4 | 5 | 6;
 export type TitleProps = MakeProps<{children: React.ReactNode, spaced?: boolean, anchor?: string}>;
 export type TitleFactory = (props: React.PropsWithoutRef<TitleProps>) => React.ReactElement;
-export const createTitle = (name: string, size: TitleSize, factory: TitleFactory) => (
-    (props: TitleProps) => {
+export const createTitle = (name: string, size: TitleSize, factory: TitleFactory) => {
+    const fn: React.FC<TitleProps> = (props) => {
         const titleProps = {
             className: Helpers.calcClasses({...props, size}, {
                 name,
@@ -17,5 +17,9 @@ export const createTitle = (name: string, size: TitleSize, factory: TitleFactory
         };
 
         return React.cloneElement(factory(props), titleProps);
-    }
-);
+    };
+
+    fn.displayName = name.replace(/^\w/, (n) => n.toUpperCase());
+
+    return fn;
+};

@@ -14,14 +14,19 @@ export class Entry extends React.Component {
     public state = SessionState.getState();
 
     public componentDidMount() {
+        if (this.context.isSigned()) {
+            this.context.setState(
+                SessionStatus.Authorized,
+                {user: "Guest"},
+            );
+
+            this.setState(this.context.getState());
+        }
+
         this.context.listen(
             (state) => this.setState(state),
             this,
         );
-
-        if (this.context.isSigned()) {
-            this.context.setState(SessionStatus.Authorized, {user: "Guest"});
-        }
     }
 
     public render() {

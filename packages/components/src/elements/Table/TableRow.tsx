@@ -21,3 +21,5 @@ export const TableRow: React.FunctionComponent<TableRowProps> = (props) => {
         </tr>
     );
 };
+
+TableRow.displayName = "TableRow";

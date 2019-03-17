@@ -7,3 +7,5 @@ export const Progress: React.FunctionComponent<ProgressProps> = (props) => (
         {props.children || (props.value && `${props.value}%`)}
     </progress>
 );
+
+Progress.displayName = "Progress";

@@ -47,3 +47,5 @@ export const NavbarDropdown: React.FC<NavbarDropdownProps> = (props) => {
         </div>
     );
 };
+
+NavbarDropdown.displayName = "NavbarDropdown";

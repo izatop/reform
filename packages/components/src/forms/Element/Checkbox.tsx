@@ -20,3 +20,5 @@ export const Checkbox: React.FC<ICheckboxProps> = (props) => (
         &nbsp;{props.children}
     </label>
 );
+
+Checkbox.displayName = "Checkbox";

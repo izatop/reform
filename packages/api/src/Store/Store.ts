@@ -1,4 +1,5 @@
 import {KeyOf} from "@sirian/ts-extra-types";
+import {debounce} from "../utils";
 import {Element} from "./Element";
 import {ElementIterable} from "./ElementIterable";
 
@@ -9,9 +10,10 @@ export interface IFormSource {
 }
 
 export interface IMountOptions<T extends IFormSource = IFormSource, K extends KeyOf<T> = KeyOf<T>> {
-    defaultValue?: T[K];
     valid?: boolean;
     changed?: boolean;
+    defaultValue?: T[K];
+    initialValue?: T[K];
     validate: (value: T[K]) => boolean;
     compare: (value: T[K], compare: T[K]) => boolean;
 }
@@ -33,11 +35,12 @@ export class Store<T extends IFormSource = IFormSource,
     protected readonly flags: IStoreFlags = {
         version: 1,
         changed: false,
+        valid: false,
         ready: true,
-        valid: true,
     };
 
     constructor(private source: Partial<T>) {
+        this.compute = debounce(this.compute.bind(this), 100);
     }
 
     get valid() {
@@ -74,19 +77,15 @@ export class Store<T extends IFormSource = IFormSource,
         }
 
         this.children.forEach((child) => child.commit());
-
-        this.flags.ready = true;
-        this.flags.valid = true;
-        this.flags.changed = false;
         this.source = this.toObject();
-
-        this.fire();
-
-        return ++this.flags.version;
+        this.flags.version++;
+        this.compute();
     }
 
     public reset() {
+        this.lock();
         this.children.forEach((child) => child.reset());
+        this.unlock();
         this.compute();
 
         return ++this.flags.version;
@@ -140,7 +139,7 @@ export class Store<T extends IFormSource = IFormSource,
         if (!this.children.has(key)) {
             const element = new ElementIterable<T>(
                 this,
-                this.resolve(key, options.defaultValue),
+                this.resolve(key, []),
                 options,
             );
 
@@ -149,6 +148,7 @@ export class Store<T extends IFormSource = IFormSource,
                 element as any,
             );
 
+            element.listen(() => this.compute());
             this.compute();
         }
 
@@ -159,7 +159,7 @@ export class Store<T extends IFormSource = IFormSource,
         if (!this.children.has(key)) {
             const element = new Element<T>(
                 this,
-                this.resolve(key, options.defaultValue),
+                this.resolve(key),
                 options,
             );
 
@@ -168,28 +168,11 @@ export class Store<T extends IFormSource = IFormSource,
                 element as any,
             );
 
+            element.listen(() => this.compute());
             this.compute();
         }
 
-        return this.children.get(key)!;
-    }
-
-    public compute() {
-        for (const child of this.children.values()) {
-            this.flags.valid = child.valid;
-            if (!this.flags.valid) {
-                break;
-            }
-        }
-
-        for (const child of this.children.values()) {
-            this.flags.changed = child.changed;
-            if (this.flags.changed) {
-                break;
-            }
-        }
-
-        this.fire();
+        return this.children.get(key) as Element<T>;
     }
 
     public unmount(key: K) {
@@ -221,6 +204,13 @@ export class Store<T extends IFormSource = IFormSource,
         this.children.forEach((child) => child.destroy());
         this.children.clear();
         delete this.source;
+    }
+
+    public compute() {
+        const children = [...this.children.values()];
+        this.flags.valid = children.every((child) => child.valid);
+        this.flags.changed = children.some((child) => child.changed);
+        this.fire();
     }
 
     protected fire() {

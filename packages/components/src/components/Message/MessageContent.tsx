@@ -7,3 +7,5 @@ export const MessageContent: React.FunctionComponent<MessageContentProps> = (pro
         {props.children}
     </div>
 );
+
+MessageContent.displayName = "MessageContent";

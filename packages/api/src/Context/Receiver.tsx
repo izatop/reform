@@ -1,5 +1,6 @@
 import * as React from "react";
 import {Store} from "../Store";
+import {debounce} from "../utils";
 import {FormContext} from "./Contexts";
 
 export abstract class Receiver<P = {}, S = any> extends React.Component<P, S> {
@@ -15,7 +16,7 @@ export abstract class Receiver<P = {}, S = any> extends React.Component<P, S> {
 
     public componentDidMount() {
         if (this.disposable) {
-            this.context.listen(this.disposable);
+            this.context.listen(debounce(this.disposable));
         }
     }
 

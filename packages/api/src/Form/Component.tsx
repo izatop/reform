@@ -8,10 +8,6 @@ export abstract class Component<T = any, P = {}> extends Receiver<P & IComponent
 
     protected link!: Element;
 
-    protected get defaultValue(): T | undefined {
-        return ;
-    }
-
     constructor(props: P & IComponentProps, context: any) {
         super(props, context);
         this.state = this.initialize();
@@ -33,6 +29,10 @@ export abstract class Component<T = any, P = {}> extends Receiver<P & IComponent
         return this.state.changed;
     }
 
+    protected get initialValue(): T | undefined {
+        return;
+    }
+
     /**
      * Parse value from controls to store.
      *
@@ -49,7 +49,7 @@ export abstract class Component<T = any, P = {}> extends Receiver<P & IComponent
      */
     public serialize(value?: T): any {
         if (typeof value === "undefined" || value === null) {
-            return this.defaultValue;
+            return this.initialValue;
         }
 
         return value;
@@ -77,13 +77,13 @@ export abstract class Component<T = any, P = {}> extends Receiver<P & IComponent
     }
 
     public shouldComponentUpdate(nextProps: Readonly<P & IComponentProps>, nextState: Readonly<IComponentState<T>>, nextContext: any): boolean {
-        return nextState.value !== this.state.value;
+        return nextState.version > this.state.version;
     }
 
     public componentDidMount() {
         super.componentDidMount();
-        this.link.listen(({value, valid, changed}) => {
-            this.setState({value, valid, changed});
+        this.link.listen((store) => {
+            this.setState(store.state);
         });
     }
 
@@ -96,7 +96,8 @@ export abstract class Component<T = any, P = {}> extends Receiver<P & IComponent
         this.link = this.context.mount(
             this.props.name,
             {
-                defaultValue: this.props.defaultValue || this.defaultValue,
+                initialValue: this.initialValue,
+                defaultValue: this.props.defaultValue,
                 validate: (value) => this.validate(value),
                 compare: (v1, v2) => this.compare(v1, v2),
             },

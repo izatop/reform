@@ -12,3 +12,5 @@ export const Image: React.FunctionComponent<ImageProps> = (props) => (
              sizes={props.sizes}/>
     </figure>
 );
+
+Image.displayName = "Image";

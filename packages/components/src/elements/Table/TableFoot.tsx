@@ -16,3 +16,5 @@ export const TableFoot: React.FunctionComponent<TableFootProps> = (props) => (
     </TableRowContext.Provider>
     </tfoot>
 );
+
+TableFoot.displayName = "TableFoot";

@@ -7,3 +7,5 @@ export type ContainerProps = MakeBreakpointProps<{ fluid?: true }>;
 export const Container: React.FunctionComponent<ContainerProps> = (props) => {
     return <div className={Helpers.calcClasses(props, ContainerOptions)}>{props.children}</div>;
 };
+
+Container.displayName = "Container";

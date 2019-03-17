@@ -18,3 +18,5 @@ export type ContentProps = MakeProps<{
 export const Content: React.FunctionComponent<ContentProps> = (props) => (
     <div className={Helpers.calcClasses(props, options)}>{props.children}</div>
 );
+
+Content.displayName = "Content";

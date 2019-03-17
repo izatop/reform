@@ -16,3 +16,5 @@ const LabelOptions = {
 export const Label: React.FC<ILabelProps> = (props) => (
     <label className={Helpers.calcClasses(props, LabelOptions)}>{props.children}</label>
 );
+
+Label.displayName = "Label";

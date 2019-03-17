@@ -13,7 +13,7 @@ export interface IInput {
 export class Input<P = {}> extends AbstractControl<string | number, P & IInput> {
     protected type: string = "input";
 
-    protected get defaultValue() {
+    protected get initialValue() {
         return "";
     }
 

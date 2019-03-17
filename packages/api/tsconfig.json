@@ -5,7 +5,8 @@
         "rootDir": "src",
         "outDir": "dist",
         "skipLibCheck": true,
-        "composite": true
+        "composite": true,
+        "lib": ["dom", "dom.iterable"]
     },
     "include": [
         "src"

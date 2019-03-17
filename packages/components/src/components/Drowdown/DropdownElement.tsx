@@ -11,3 +11,5 @@ export const DropdownElement: React.FunctionComponent<DropdownElementProps> = (p
         },
     );
 };
+
+DropdownElement.displayName = "DropdownElement";

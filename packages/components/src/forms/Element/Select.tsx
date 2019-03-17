@@ -55,3 +55,5 @@ export const Select: React.FC<ISelectProps> = (props) => (
         </select>
     </div>
 );
+
+Select.displayName = "Select";

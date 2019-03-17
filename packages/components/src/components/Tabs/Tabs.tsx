@@ -16,3 +16,5 @@ export const Tabs: React.FunctionComponent<TabsProps> = (props) => (
         </ul>
     </div>
 );
+
+Tabs.displayName = "Tabs";

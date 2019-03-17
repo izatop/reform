@@ -8,3 +8,5 @@ export const Menu: React.FunctionComponent<MenuProps> = (props) => (
         {props.store.children.map((node) => <MenuGroup key={node.id} node={node}/>)}
     </aside>
 );
+
+Menu.displayName = "Menu";

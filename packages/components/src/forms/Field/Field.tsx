@@ -11,3 +11,5 @@ export const Field: React.FC<IFieldProps> = (props) => (
         {props.help && <FieldHelp>{props.help}</FieldHelp>}
     </div>
 );
+
+Field.displayName = "Field";

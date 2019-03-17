@@ -20,3 +20,5 @@ export const Radio: React.FC<IRadioProps> = (props) => (
         &nbsp;{props.children}
     </label>
 );
+
+Radio.displayName = "Radio";

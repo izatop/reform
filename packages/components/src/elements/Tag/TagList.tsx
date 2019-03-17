@@ -1,6 +1,5 @@
 import * as React from "react";
 import {Helpers} from "../../helpers";
-import {Color} from "../../enum";
 import {MakeProps} from "../../interfaces";
 import {TagSize} from "./";
 
@@ -18,3 +17,5 @@ export const TagListOptions = {
 export const TagList: React.FunctionComponent<TagListProps> = (props) => (
     <span className={Helpers.calcClasses(props, TagListOptions)}>{props.children}</span>
 );
+
+TagList.displayName = "TagList";

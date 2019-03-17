@@ -21,3 +21,5 @@ export const MenuGroup: React.FunctionComponent<MenuGroupProps> = (props) => (
         </MenuChildren>
     </>
 );
+
+MenuGroup.displayName = "MenuGroup";

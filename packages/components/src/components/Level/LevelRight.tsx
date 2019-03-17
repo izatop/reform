@@ -7,3 +7,5 @@ export type LevelRightProps = MakeBreakpointProps;
 export const LevelRight: React.FunctionComponent<LevelRightProps> = (props) => (
     <nav className={Helpers.calcClasses(props, LevelRightOptions)}>{props.children}</nav>
 );
+
+LevelRight.displayName = "LevelRight";

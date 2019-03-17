@@ -7,3 +7,5 @@ export const NavbarLeft: React.FunctionComponent<NavbarLeftProps> = (props) => (
         {NavbarWithChild(props.children)}
     </div>
 );
+
+NavbarLeft.displayName = "NavbarLeft";

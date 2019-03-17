@@ -12,3 +12,5 @@ export const PaginationNext: React.FC = (props) => (
         }}
     </Consumer>
 );
+
+PaginationNext.displayName = "PaginationNext";

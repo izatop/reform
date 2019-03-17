@@ -7,3 +7,5 @@ export const Table: React.FunctionComponent<TableProps> = (props) => (
         {props.children}
     </table>
 );
+
+Table.displayName = "Table";

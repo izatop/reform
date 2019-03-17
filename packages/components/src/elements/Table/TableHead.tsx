@@ -16,3 +16,5 @@ export const TableHead: React.FunctionComponent<TableHeadProps> = (props) => (
     </TableRowContext.Provider>
     </thead>
 );
+
+TableHead.displayName = "TableHead";

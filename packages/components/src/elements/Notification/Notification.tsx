@@ -7,3 +7,5 @@ export const Notification: React.FunctionComponent<NotificationProps> = (props) 
         {props.children}
     </div>
 );
+
+Notification.displayName = "Notification";

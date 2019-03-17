@@ -56,3 +56,5 @@ export const Control: React.FC<IControlProps> = (props) => {
         </div>
     );
 };
+
+Control.displayName = "Control";

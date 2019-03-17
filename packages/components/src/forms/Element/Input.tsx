@@ -41,3 +41,5 @@ export const Input: React.FC<IInputProps> = (props) => (
            placeholder={props.placeholder}
            {...Helpers.calcProps(props, InputOptions)}/>
 );
+
+Input.displayName = "Input";
