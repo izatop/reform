@@ -57,12 +57,13 @@ export class Form<T extends IFormSource, P = {}> extends React.Component<IFormPr
             } catch (error) {
                 // tslint:disable-next-line:no-console
                 console.error(error);
+                if (this.store) {
+                    this.store.unlock();
+                }
             }
         } else {
             this.commit();
         }
-
-        this.store.unlock();
     }
 
     protected onReset = (e: React.FormEvent<HTMLFormElement>) => {
