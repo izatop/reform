@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.1](https://github.com/izatop/reform/compare/@reform/dashboard@0.1.0...@reform/dashboard@0.1.1) (2019-03-18)
+
+
+### Bug Fixes
+
+* Form.onSubmit fixes ([44fde94](https://github.com/izatop/reform/commit/44fde94))
+
+
+
+
+
 # [0.1.0](https://github.com/izatop/reform/compare/@reform/dashboard@0.0.5...@reform/dashboard@0.1.0) (2019-03-17)
 
 
