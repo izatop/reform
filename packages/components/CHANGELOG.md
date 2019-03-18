@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.2](https://github.com/izatop/reform/compare/@reform/components@0.2.1...@reform/components@0.2.2) (2019-03-18)
+
+
+### Bug Fixes
+
+* update Navbar component ([af28d97](https://github.com/izatop/reform/commit/af28d97))
+
+
+
+
+
 ## [0.2.1](https://github.com/izatop/reform/compare/@reform/components@0.2.0...@reform/components@0.2.1) (2019-03-18)
 
 **Note:** Version bump only for package @reform/components
