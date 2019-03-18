@@ -37,7 +37,7 @@ export type NavbarRightProps = MakeProps<{ children: ReactElement[] | ReactEleme
 export const NavbarItemOptions = {name: "navbar-item"};
 
 export const NavbarDropdownOptions = {
-    is: ["hoverable", "active"],
+    is: ["hoverable", "active", "right"],
     has: ["dropdown"],
 };
 
@@ -46,6 +46,7 @@ export type NavbarDropdownProps = MakeProps<{
     defaultActive?: boolean;
     mouseLeaveTimeout?: number;
     children: [ReactElement, ...ReactElement[]];
+    right?: boolean;
 }>;
 
 export type NavbarTabProps = MakeProps<{
