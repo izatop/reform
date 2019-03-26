@@ -7,13 +7,14 @@ export type TitleSize = 1 | 2 | 3 | 4 | 5 | 6;
 
 export interface ITitle {
     "is-spaced"?: boolean;
+    "is-size"?: TitleSize;
 }
 
 const createTitle = (name: string, size: TitleSize) => {
     const config = ElementFactory.create({component: name});
     return config.factory<MakeProps<ITitle>, XProps<"h1">>(({props, children}) => (
         React.createElement(`h${size}`, props, children)
-    ));
+    ), {"is-size": size});
 };
 
 export const Title = createTitle("title", 3);

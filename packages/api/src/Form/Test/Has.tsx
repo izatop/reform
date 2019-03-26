@@ -1,7 +1,7 @@
 import * as React from "react";
 import {Receiver, TestContext} from "../../Context";
 
-export class Has extends Receiver<{name: string}> {
+export class Has extends Receiver<{ name: string }> {
     public render() {
         if (this.context.has(this.props.name)) {
             const {Provider} = TestContext;

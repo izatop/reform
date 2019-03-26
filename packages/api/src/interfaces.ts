@@ -32,4 +32,4 @@ export interface IComponentState<T = any> {
 }
 
 export type IElementType<E extends Element<T>, T extends IFormSource = IFormSource> = new
-    (context: Store<T>, value: any, options?: IMountOptions) => E;
+(context: Store<T>, value: any, options?: IMountOptions) => E;

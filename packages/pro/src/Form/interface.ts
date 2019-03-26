@@ -16,4 +16,4 @@ export type HTMLAutoCompleteType = "on" | "off" | "name" | "honorific-prefix"
     | "bday-month" | "bday-year" | "sex" | "tel" | "tel-country-code"
     | "tel-national" | "tel-area-code" | "tel-local" | "tel-local-suffix"
     | "tel-local-prefix" | "tel-extension" | "impp" | "url" | "photo"
-;
+    ;
