@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.1](https://github.com/izatop/reform/compare/@reform/pro@0.1.0...@reform/pro@0.1.1) (2019-03-26)
+
+
+### Bug Fixes
+
+* fix title component ([815d1b8](https://github.com/izatop/reform/commit/815d1b8))
+
+
+
+
+
 # [0.1.0](https://github.com/izatop/reform/compare/@reform/pro@0.0.2...@reform/pro@0.1.0) (2019-03-26)
 
 
