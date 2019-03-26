@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/izatop/reform/compare/@reform/webpack@0.1.0...@reform/webpack@0.2.0) (2019-03-26)
+
+
+### Features
+
+* improve type system for components ([a6363d6](https://github.com/izatop/reform/commit/a6363d6))
+
+
+
+
+
 # [0.1.0](https://github.com/izatop/reform/compare/@reform/webpack@0.0.1...@reform/webpack@0.1.0) (2019-03-17)
 
 
