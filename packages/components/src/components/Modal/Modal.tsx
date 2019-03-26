@@ -1,5 +1,5 @@
-import {ReactElement} from "react";
 import * as React from "react";
+import {ReactElement} from "react";
 import * as ReactDOM from "react-dom";
 import {MakeProps} from "../../type";
 import {ClassNameResolver, ElementFactory} from "../../utils";

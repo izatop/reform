@@ -14,6 +14,14 @@ export abstract class PaginationState {
         return this.page === 1;
     }
 
+    public abstract get next(): number;
+
+    public abstract get previous(): number;
+
+    public abstract get page(): number;
+
+    public abstract get pages(): number;
+
     public getRange(pages: number, useful?: boolean) {
         let edge = Math.floor(pages / 2);
         let start = 1;
@@ -56,14 +64,6 @@ export abstract class PaginationState {
 
         return range;
     }
-
-    public abstract get next(): number;
-
-    public abstract get previous(): number;
-
-    public abstract get page(): number;
-
-    public abstract get pages(): number;
 
     public abstract setPage(page: number): PaginationState;
 }

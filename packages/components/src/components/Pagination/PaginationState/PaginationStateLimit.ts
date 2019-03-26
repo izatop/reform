@@ -3,6 +3,7 @@ import {IPaginationLimitState} from "../props";
 
 export class PaginationStateLimit extends PaginationState {
     protected state: Required<IPaginationLimitState>;
+
     public constructor(state: IPaginationLimitState) {
         super();
 

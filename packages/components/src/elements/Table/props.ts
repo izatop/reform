@@ -1,5 +1,5 @@
-import {ReactNode} from "react";
 import * as React from "react";
+import {ReactNode} from "react";
 import {MakeProps} from "../../type";
 
 export interface ITable {
@@ -15,5 +15,5 @@ export type TableRowProps = MakeProps<{
     cells?: React.ReactNode[];
 }>;
 
-export type TableCellProps = MakeProps<{key?: string | number; children: ReactNode}>;
+export type TableCellProps = MakeProps<{ key?: string | number; children: ReactNode }>;
 export type TableCellFactory = React.FunctionComponent<TableCellProps>;

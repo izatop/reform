@@ -1,4 +1,4 @@
-import {isValidElement, ReactChild, ReactNode} from "react";
+import {isValidElement, ReactChild} from "react";
 import {MenuTrigger} from "./MenuTrigger";
 
 let increment = 0;

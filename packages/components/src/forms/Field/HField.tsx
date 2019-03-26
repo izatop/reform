@@ -4,7 +4,6 @@ import {MakeProps} from "../../type";
 import {ElementFactory} from "../../utils";
 import {Field} from "./Field";
 import {HLabel} from "./HLabel";
-import {Label} from "./Label";
 
 export type HFieldProps = XProps<"div"> & {
     label?: string | React.ReactElement;

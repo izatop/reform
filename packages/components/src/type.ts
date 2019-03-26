@@ -64,7 +64,7 @@ export interface IComponentConfig {
     displayName?: string;
     resolvers: IPropertyResolvers;
     dependencies?: string[];
-    mutations: {[key: string]: string};
+    mutations: { [key: string]: string };
 }
 
 export interface InProps extends IProps {
