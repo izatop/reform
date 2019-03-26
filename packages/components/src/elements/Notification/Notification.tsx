@@ -1,11 +1,14 @@
 import * as React from "react";
-import {Helpers} from "../../helpers";
-import {NotificationOptions, NotificationProps} from "./props";
+import {ColorType} from "../../options";
+import {MakeProps} from "../../type";
+import {ElementFactory} from "../../utils";
 
-export const Notification: React.FunctionComponent<NotificationProps> = (props) => (
-    <div className={Helpers.calcClasses(props, NotificationOptions)}>
-        {props.children}
-    </div>
-);
+export interface INotification {
+    "is-color"?: ColorType;
+}
 
-Notification.displayName = "Notification";
+const config = ElementFactory.create({component: "notification"});
+
+export const Notification = config.factory<MakeProps<INotification>>(({props, children}) => (
+    <div {...props}>{children}</div>
+));

@@ -1,19 +1,32 @@
 import * as React from "react";
-import {Helpers} from "../../helpers";
-import {NavbarContext, NavbarOptions, NavbarProps} from "./props";
+import {ReactElement} from "react";
+import {Color} from "../../options";
+import {MakeBreakpoint} from "../../type";
+import {ElementFactory} from "../../utils";
+import {NavbarContext} from "./props";
 
 const {Provider} = NavbarContext;
-export const Navbar: React.FunctionComponent<NavbarProps> = (props) => {
+
+export interface INavbar {
+    "has-shadow"?: boolean;
+    "is-color"?: Color;
+    "is-transparent"?: boolean;
+}
+
+export interface INavbarProps {
+    children: ReactElement | [ReactElement, ReactElement];
+}
+
+const config = ElementFactory.create({component: "navbar"});
+export const Navbar = config.factory<MakeBreakpoint<INavbar>, INavbarProps>(({props, children}) => {
     const [state, setState] = React.useState(false);
     return (
-        <div className={Helpers.calcClasses(props, NavbarOptions)}
+        <div {...props}
              aria-label="main navigation"
              role="navigation">
             <Provider value={{state, toggle: () => setState(!state)}}>
-                {props.children}
+                {children}
             </Provider>
         </div>
     );
-};
-
-Navbar.displayName = "Navbar";
+});

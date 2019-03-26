@@ -1,6 +1,23 @@
 import * as React from "react";
-import {Helpers} from "../../helpers";
-import {DropdownOptions, DropdownProps} from "./props";
+import {ReactElement} from "react";
+import {XProps} from "../../interfaces";
+import {MakeProps} from "../../type";
+import {ClassNameResolver, ElementFactory} from "../../utils";
+
+export interface IDropdownOptions {
+    "is-arrowless"?: boolean;
+    "is-hoverable"?: boolean;
+    "is-right"?: boolean;
+    "is-up"?: boolean;
+}
+
+export interface IDropdown {
+    defaultActive?: boolean;
+    mouseLeaveTimeout?: number;
+    button: string | ReactElement;
+}
+
+export type DropdownProps = XProps<"div"> & IDropdown;
 
 const renderButton = (button: React.ReactNode, active?: boolean) => {
     if (React.isValidElement<{ children: any }>(button)) {
@@ -30,24 +47,23 @@ const renderButton = (button: React.ReactNode, active?: boolean) => {
             <span>{button}</span>
             <span className="icon is-small">
                 <i className={`fas fa-angle-${active ? "up" : "down"}`}
-               aria-hidden={"true"}/>
+                   aria-hidden={"true"}/>
             </span>
         </button>
     );
 };
 
-export const Dropdown: React.FunctionComponent<DropdownProps> = (props) => {
-    const [active, setActive] = React.useState(props.defaultActive || false);
-    const dropdownProps: any = {
-        className: Helpers.calcClasses({active, ...props}, DropdownOptions),
-    };
+const config = ElementFactory.create({component: "dropdown"});
 
-    const triggerProps: any = {};
+export const Dropdown = config.factory<MakeProps<IDropdownOptions>, DropdownProps>(({props, children, options}) => {
+    const {defaultActive, mouseLeaveTimeout, button, ...p} = props;
+    const [active, setActive] = React.useState(defaultActive || false);
+    const trigger: any = {};
 
-    if (!props.hoverable) {
+    if (!options["is-hoverable"]) {
         let timer: any;
 
-        triggerProps.onClick = React.useCallback(
+        trigger.onClick = React.useCallback(
             () => {
                 if (active) {
                     clearTimeout(timer);
@@ -58,34 +74,37 @@ export const Dropdown: React.FunctionComponent<DropdownProps> = (props) => {
             [active],
         );
 
-        dropdownProps.onMouseLeave = React.useCallback(
+        p.onMouseLeave = React.useCallback(
             () => {
                 timer = setTimeout(
                     () => active && setActive(false),
-                    props.mouseLeaveTimeout || 500,
+                    mouseLeaveTimeout || 500,
                 );
             },
             [active],
         );
 
-        dropdownProps.onMouseEnter = React.useCallback(
+        p.onMouseEnter = React.useCallback(
             () => clearTimeout(timer),
             [active],
         );
     }
 
+    p.className = React.useMemo(() => ClassNameResolver.resolveClassName(
+        {...options, "is-active": active},
+        config.config,
+    ), [active]);
+
     return (
-        <div {...dropdownProps}>
-            <div {...triggerProps} className="dropdown-trigger">
-                {renderButton(props.button, active)}
+        <div {...p}>
+            <div {...trigger} className="dropdown-trigger">
+                {renderButton(button, active)}
             </div>
             <div className="dropdown-menu" role="menu">
                 <div className="dropdown-content">
-                    {props.children}
+                    {children}
                 </div>
             </div>
         </div>
     );
-};
-
-Dropdown.displayName = "Dropdown";
+});

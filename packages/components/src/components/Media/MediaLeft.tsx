@@ -1,11 +1,8 @@
 import React from "react";
-import {Helpers} from "../../helpers";
-import {MakeProps} from "../../interfaces";
+import {ElementFactory} from "../../utils";
 
-const options = {name: "media-left"};
-export type MediaLeftProps = MakeProps;
-export const MediaLeft: React.FunctionComponent<MediaLeftProps> = (props) => (
-    <figure className={Helpers.calcClasses(props, options)}>{props.children}</figure>
-);
+const config = ElementFactory.create({component: "media-left"});
 
-MediaLeft.displayName = "MediaLeft";
+export const MediaLeft = config.factory(({props, children}) => (
+    <figure {...props}>{children}</figure>
+));

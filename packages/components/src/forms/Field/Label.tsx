@@ -1,20 +1,19 @@
 import * as React from "react";
-import {Size} from "../../enum";
-import {Helpers} from "../../helpers";
-import {MakeProps} from "../../interfaces";
+import {XProps} from "../../interfaces";
+import {SizeType} from "../../options";
+import {MakeProps} from "../../type";
+import {ElementFactory} from "../../utils";
 
-export interface ILabelProps extends MakeProps {
-    children: string;
-    size?: Size;
+export interface ILabel {
+    "is-size"?: SizeType;
 }
 
-const LabelOptions = {
-    name: "label",
-    is: ["size"],
+export type LabelProps = XProps<"label"> & {
+    children: React.ReactNode;
 };
 
-export const Label: React.FC<ILabelProps> = (props) => (
-    <label className={Helpers.calcClasses(props, LabelOptions)}>{props.children}</label>
-);
+const config = ElementFactory.create({component: "label"});
 
-Label.displayName = "Label";
+export const Label = config.factory<MakeProps<ILabel>, LabelProps>(({props, children}) => (
+    <label {...props}>{children}</label>
+));

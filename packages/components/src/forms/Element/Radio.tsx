@@ -1,24 +1,14 @@
 import * as React from "react";
-import {Helpers} from "../../helpers";
+import {XProps} from "../../interfaces";
+import {MakeProps} from "../../type";
+import {ElementFactory} from "../../utils";
 
-export type RadioProps = React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>,
-    HTMLInputElement>;
+const config = ElementFactory.create({component: "radio"});
 
-export interface IRadioProps {
-    props?: RadioProps;
-    disabled?: boolean;
-}
-
-export const Radio: React.FC<IRadioProps> = (props) => (
-    <label {...Helpers.calcProps(
-        {props: {disabled: props.disabled}},
-        {name: "radio"},
-    )}>
+export const Radio = config.factory<MakeProps, XProps<"input">>(({props, children}) => (
+    <label className={"radio"}>
         <input type={"radio"}
-               disabled={props.disabled}
-               {...Helpers.calcProps(props, {name: "radio"})} />
-        &nbsp;{props.children}
+               {...props} />
+        &nbsp;{children}
     </label>
-);
-
-Radio.displayName = "Radio";
+));

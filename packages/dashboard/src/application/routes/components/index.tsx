@@ -6,17 +6,19 @@ import {
     CardContent,
     CardFooter,
     CardHeader,
+    CardHeaderIcon,
+    CardHeaderTitle,
     CardImage,
     Color,
     Content,
     Dropdown,
     DropdownDivider,
     DropdownElement,
+    Figure,
     Icon,
-    Image,
     ImageRatio,
     Level,
-    LevelItem,
+    LevelElement,
     Message,
     MessageContent,
     MessageHeader,
@@ -25,9 +27,8 @@ import {
     Pagination,
     PaginationNext,
     PaginationPager,
-    PaginationPrevious,
+    PaginationPrevious, Tab,
     Tabs,
-    TabsElement,
     Title,
     Title1,
 } from "@reform/components";
@@ -48,8 +49,8 @@ export default createRouteComponent(() => {
                 See the example
             </Content>
 
-            <Breadcrumbs>
-                <a><Icon name={"home"}/><span>Home</span></a>
+            <Breadcrumbs has-separator={"arrow"}>
+                <a><Icon icon={"home"}/><span>Home</span></a>
                 <a>Section 1</a>
                 <a>Section 2</a>
                 <a>Section 3</a>
@@ -64,21 +65,21 @@ export default createRouteComponent(() => {
 
             <Card>
                 <CardImage>
-                    <Image ratio={ImageRatio.R3by1}
-                           title={"Image example"}
-                           src={Placeholder.getFigurePlaceholder(720, 240)}/>
+                    <Figure icon-ratio={ImageRatio.R3by1}
+                            title={"Image example"}
+                            src={Placeholder.getFigurePlaceholder(720, 240)}/>
                 </CardImage>
                 <CardHeader>
-                    <p>Card Title</p>
-                    <p><Icon name={"times"}/></p>
+                    <CardHeaderTitle>Card Title</CardHeaderTitle>
+                    <CardHeaderIcon icon={"times"}/>
                 </CardHeader>
                 <CardContent>
                     Content of the card
                 </CardContent>
                 <CardFooter>
-                    <p><Button fullwidth>Button</Button></p>
-                    <p>Some text</p>
-                    <p>...</p>
+                    <Button is-fullwidth>Button</Button>
+                    <span>Some text</span>
+                    <span>...</span>
                 </CardFooter>
             </Card>
 
@@ -91,42 +92,42 @@ export default createRouteComponent(() => {
             </Content>
 
             <Level>
-                <LevelItem centered>
+                <LevelElement has-text-centered>
                     <div>
                         <p>Default</p>
                         <Dropdown button={"Click me"}>
                             <DropdownElement><a>Action</a></DropdownElement>
                         </Dropdown>
                     </div>
-                </LevelItem>
-                <LevelItem centered>
+                </LevelElement>
+                <LevelElement has-text-centered>
                     <div>
                         <p>Active item</p>
                         <Dropdown button={"Click me"}>
-                            <DropdownElement active><a>Menu item 1</a></DropdownElement>
+                            <DropdownElement is-active><a>Menu item 1</a></DropdownElement>
                             <DropdownElement><a>Menu item 2</a></DropdownElement>
                             <DropdownDivider/>
                             <DropdownElement><a>Menu item 3</a></DropdownElement>
                         </Dropdown>
                     </div>
-                </LevelItem>
-                <LevelItem centered>
+                </LevelElement>
+                <LevelElement has-text-centered>
                     <div>
                         <p>Hoverable</p>
-                        <Dropdown hoverable button={"Hover me"}>
+                        <Dropdown is-hoverable button={"Hover me"}>
                             <DropdownElement><a>Action</a></DropdownElement>
                         </Dropdown>
                     </div>
-                </LevelItem>
-                <LevelItem centered>
+                </LevelElement>
+                <LevelElement has-text-centered>
                     <div>
                         <p>Inline, right</p>
-                        <Dropdown right button={<a>Click me</a>}>
+                        <Dropdown is-right button={<a>Click me</a>}>
                             <DropdownElement><a>Action</a></DropdownElement>
-                            <DropdownElement active><a>Active</a></DropdownElement>
+                            <DropdownElement is-active><a>Active</a></DropdownElement>
                         </Dropdown>
                     </div>
-                </LevelItem>
+                </LevelElement>
             </Level>
 
             <hr/>
@@ -155,8 +156,8 @@ export default createRouteComponent(() => {
                 <Title anchor={"modal"}>Modal</Title>
                 <p>Example of a simple modal dialog</p>
                 <p>
-                    <Button fullwidth
-                            color={Color.Primary}
+                    <Button is-fullwidth
+                            is-color={Color.Primary}
                             onClick={() => setActive(true)}>Open</Button>
                 </p>
             </Content>
@@ -181,7 +182,7 @@ export default createRouteComponent(() => {
                 <p>Example of Pagination component</p>
             </Content>
 
-            <Pagination centered
+            <Pagination is-centered
                         type={"page"}
                         count={10}>
                 <PaginationPrevious>Previous</PaginationPrevious>
@@ -206,7 +207,7 @@ export default createRouteComponent(() => {
 
             <Tabs>
                 <a>Tab One</a>
-                <TabsElement active><a>Tab Two</a></TabsElement>
+                <Tab is-active><a>Tab Two</a></Tab>
                 <a>Tab Three</a>
             </Tabs>
         </>

@@ -30,9 +30,9 @@
         "build:watch": "yarn build --watch"
     },
     "dependencies": {
-        "@sirian/ts-extra-types": "^3.13.0",
+        "@sirian/ts-extra-types": "^3.18.2",
         "@types/react": "^16.8.8",
-        "react": "^16.8.4"
+        "react": "^16.8.5"
     },
     "peerDependencies": {
         "react": ">= 16.6.0"

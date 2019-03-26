@@ -2,8 +2,9 @@
     "compilerOptions": {
         "module": "commonjs",
         "target": "es2017",
-        "declaration": true,
+        "jsx": "react",
         "lib": ["esnext"],
+        "declaration": true,
         "esModuleInterop": true,
         "sourceMap": true,
         "strict": true,

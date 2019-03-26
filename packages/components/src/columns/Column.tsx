@@ -1,9 +1,30 @@
 import React from "react";
-import {Helpers} from "../helpers";
-import {ColumnOptions, ColumnProps} from "./props";
+import {MakeProps} from "../type";
+import {ElementFactory} from "../utils";
 
-export const Column: React.FunctionComponent<ColumnProps> = (props) => (
-    <div className={Helpers.calcClasses(props, ColumnOptions)}>{props.children}</div>
-);
+export enum ColumnName {
+    ThreeQuarters = "three-quarters",
+    TwoThirds = "two-thirds",
+    Half = "half",
+    OneThird = "one-third",
+    OneQuarter = "one-quarter",
+    Full = "full",
+    FourFifths = "four-fifths",
+    ThreeFifths = "three-fifths",
+    TwoFifths = "two-fifths",
+    OneFifth = "one-fifth",
+}
 
-Column.displayName = "Column";
+export type ColumnSize = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
+
+export interface IColumn {
+    "is-offset"?: ColumnSize | ColumnName | string;
+    "is-size"?: ColumnSize | ColumnName | string;
+    "is-narrow"?: true;
+}
+
+const config = ElementFactory.create({component: "column"});
+
+export const Column = config.factory<MakeProps<IColumn, "is-size">>(({props, children}) => (
+    <div {...props}>{children}</div>
+));

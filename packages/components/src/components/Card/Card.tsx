@@ -1,11 +1,14 @@
 import * as React from "react";
-import {Helpers} from "../../helpers";
-import {CardOptions, CardProps} from "./props";
+import {ReactElement} from "react";
+import {MakeProps} from "../../type";
+import {ElementFactory} from "../../utils";
 
-export const Card: React.FunctionComponent<CardProps> = (props) => (
-    <div className={Helpers.calcClasses(props, CardOptions)}>
-        {props.children}
-    </div>
-);
+export interface ICardProps {
+    children: ReactElement | ReactElement[];
+}
 
-Card.displayName = "Card";
+const config = ElementFactory.create({component: "card"});
+
+export const Card = config.factory<MakeProps, ICardProps>(({props, children}) => (
+    <div {...props}>{children}</div>
+));

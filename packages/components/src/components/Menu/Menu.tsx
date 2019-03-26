@@ -1,12 +1,24 @@
 import * as React from "react";
-import {Helpers} from "../../helpers";
+import {XProps} from "../../interfaces";
+import {MakeProps} from "../../type";
+import {ElementFactory} from "../../utils";
 import {MenuGroup} from "./MenuGroup";
-import {MenuOptions, MenuProps} from "./props";
+import {MenuStore} from "./Store/MenuStore";
 
-export const Menu: React.FunctionComponent<MenuProps> = (props) => (
-    <aside className={Helpers.calcClasses(props, MenuOptions)}>
-        {props.store.children.map((node) => <MenuGroup key={node.id} node={node}/>)}
-    </aside>
-);
+export interface IMenu {
+    store: MenuStore;
+}
 
-Menu.displayName = "Menu";
+const config = ElementFactory.create({
+    component: "menu",
+    dependencies: ["store"],
+});
+
+export const Menu = config.factory<MakeProps, IMenu & XProps<"aside">>(({props}) => {
+    const {store, ...p} = props;
+    return (
+        <aside {...p}>
+            {store.children.map((node) => <MenuGroup key={node.id} node={node}/>)}
+        </aside>
+    );
+});

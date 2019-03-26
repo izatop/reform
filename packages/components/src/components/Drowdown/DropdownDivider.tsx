@@ -1,9 +1,9 @@
 import * as React from "react";
-import {Helpers} from "../../helpers";
-import {DropdownDividerOptions, DropdownDividerProps} from "./props";
+import {XProps} from "../../interfaces";
+import {ElementFactory} from "../../utils";
 
-export const DropdownDivider: React.FunctionComponent<DropdownDividerProps> = (props) => (
-    <hr className={Helpers.calcClasses(props, DropdownDividerOptions)}/>
-);
+const config = ElementFactory.create({component: "dropdown-divider"});
 
-DropdownDivider.displayName = "DropdownDivider";
+export const DropdownDivider = config.factory<{}, XProps<"hr">>(({props}) => (
+    <hr {...props}/>
+));

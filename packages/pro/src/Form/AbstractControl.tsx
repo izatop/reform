@@ -2,8 +2,6 @@ import {Component} from "@reform/api";
 import {Color} from "@reform/components";
 import * as React from "react";
 
-export type EL<T> = React.DetailedHTMLProps<React.InputHTMLAttributes<T>, T>;
-
 export interface IAbstractControl {
     className?: string;
     style?: React.CSSProperties;
@@ -26,17 +24,11 @@ export abstract class AbstractControl<T, P = {}> extends Component<T, P & IAbstr
 
     protected getControlProps() {
         return {
-            color: this.color,
-            className: this.props.className,
-        };
-    }
-
-    protected createProps<ET>(props: EL<ET>) {
-        return {
-            ...props,
-            style: this.props.style,
-            name: this.props.name,
-            value: this.value,
+            "is-color": this.color,
+            "className": this.props.className,
+            "style": this.props.style,
+            "name": this.props.name,
+            "value": this.value,
         };
     }
 }

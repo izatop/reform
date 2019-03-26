@@ -2,7 +2,6 @@ import {Link, Router} from "@reach/router";
 import {
     Breadcrumbs,
     Button,
-    ButtonSize,
     Color,
     Column,
     Columns,
@@ -18,6 +17,7 @@ import {
     NavbarTab,
     Section,
 } from "@reform/components";
+import {NavbarLink} from "@reform/components/dist/components/Navbar/NavbarLink";
 import * as React from "react";
 import {SessionContext} from "../store/context";
 import {IAuthorized, SessionState, SessionType} from "../store/SessionState";
@@ -44,36 +44,36 @@ export default class Application extends React.Component<{}, IState> {
     public render() {
         return (
             <>
-                <Navbar shadow>
+                <Navbar has-shadow>
                     <NavbarLogo>
                         <p>Hello, {this.context.getState().user}</p>
                     </NavbarLogo>
                     <NavbarMenu>
                         <NavbarLeft>
                             <NavbarDropdown>
-                                <p>
-                                    <Button size={ButtonSize.Small}
-                                            color={Color.Warning}>
-                                        <Icon name={"bell"}/>
+                                <NavbarLink is-arrowless>
+                                    <Button is-size={"small"}
+                                            is-color={Color.Warning}>
+                                        <Icon icon={"bell"}/>
                                         <span>5</span>
                                     </Button>
-                                </p>
+                                </NavbarLink>
                                 <p>No new message</p>
                             </NavbarDropdown>
-                            <NavbarTab active><Link to={"/"}>Dashboard</Link></NavbarTab>
+                            <NavbarTab is-active><Link to={"/"}>Dashboard</Link></NavbarTab>
                             <NavbarTab><Link to={"/"}>Account Settings</Link></NavbarTab>
                         </NavbarLeft>
                         <NavbarRight>
                             <p>
                                 <Button onClick={() => SessionState.logout()}
-                                        color={Color.Grey}>Logout</Button>
+                                        is-color={Color.Grey}>Logout</Button>
                             </p>
                         </NavbarRight>
                     </NavbarMenu>
                 </Navbar>
                 <Section>
                     <Columns>
-                        <Column narrow>
+                        <Column is-narrow>
                             <Menu store={menu}/>
                         </Column>
                         <Column>

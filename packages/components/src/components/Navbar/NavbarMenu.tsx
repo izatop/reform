@@ -1,18 +1,27 @@
 import * as React from "react";
-import {Helpers} from "../../helpers";
-import {NavbarContext, NavbarMenuOptions, NavbarMenuProps} from "./props";
+import {ReactElement} from "react";
+import {MakeProps} from "../../type";
+import {ClassNameResolver, ElementFactory} from "../../utils";
+import {NavbarContext} from "./props";
 
-const {Consumer} = NavbarContext;
-export const NavbarMenu: React.FunctionComponent<NavbarMenuProps> = (props) => (
-    <Consumer>
+export interface INavbarMenu {
+    children: ReactElement | [ReactElement, ReactElement];
+}
+
+const config = ElementFactory.create({component: "navbar-menu"});
+const getClassName = (options: any, isActive?: boolean) => {
+    return ClassNameResolver.resolveClassName({...options, "is-active": isActive}, config.config);
+};
+
+export const NavbarMenu = config.factory<MakeProps, INavbarMenu>(({props, options, children}) => (
+    <NavbarContext.Consumer>
         {({state}) => (
-            <div className={Helpers.calcClasses({...props, active: state}, NavbarMenuOptions)}
+            <div {...props}
+                 className={getClassName(options, state)}
                  aria-label="main navigation"
                  role="navigation">
-                {props.children}
+                {children}
             </div>
         )}
-    </Consumer>
-);
-
-NavbarMenu.displayName = "NavbarMenu";
+    </NavbarContext.Consumer>
+));

@@ -32,7 +32,7 @@ before_script:
 script:
   - yarn lint
   - yarn ci:build
-  #- yarn test
+  - yarn test
   - git status
   - lerna publish --conventional-commits --yes
 

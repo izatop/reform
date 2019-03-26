@@ -1,23 +1,18 @@
 import * as React from "react";
-import {renderCardChild} from "./props";
+import {MakeProps} from "../../type";
+import {ElementFactory} from "../../utils";
+import {CardFooterItem} from "./CardFooterItem";
 
-export interface ICardFooterProps {
+export interface ICardFooter {
     children: React.ReactElement[] | React.ReactElement;
 }
 
-const itemProps = {
-    className: "card-footer-item",
-};
+const config = ElementFactory.create({component: "card-footer"});
 
-export const CardFooter: React.FC<ICardFooterProps> = (props) => {
-    const children = React.Children.toArray(props.children);
-    return (
-        <footer className={"card-footer"}>
-            {children.map((child, key) => (
-                renderCardChild({...itemProps, key}, child)
-            ))}
-        </footer>
-    );
-};
-
-CardFooter.displayName = "CardFooter";
+export const CardFooter = config.factory<MakeProps, ICardFooter>(({props, children}) => (
+    <footer {...props}>
+        {React.Children.toArray(children).map((child, key) => (
+            <CardFooterItem key={key}>{child}</CardFooterItem>
+        ))}
+    </footer>
+));

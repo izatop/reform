@@ -1,3 +1,3 @@
 
 export * from "./Tag";
-export * from "./TagList";
+export * from "./Tags";

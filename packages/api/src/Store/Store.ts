@@ -40,7 +40,7 @@ export class Store<T extends IFormSource = IFormSource,
     };
 
     constructor(private source: Partial<T>) {
-        this.compute = debounce(this.compute.bind(this), 100);
+        this.compute = debounce(this.compute.bind(this), 20);
     }
 
     get valid() {

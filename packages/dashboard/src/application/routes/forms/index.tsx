@@ -6,8 +6,9 @@ import {
     Control,
     Field,
     FileUpload,
+    HField,
+    HLabel,
     Input,
-    InputStyle,
     Label,
     Radio,
     Select,
@@ -35,7 +36,7 @@ export default createRouteComponent(() => (
             <Field>
                 <Label>Primary color</Label>
                 <Control>
-                    <Input color={Color.Primary} placeholder={"Primary"}/>
+                    <Input is-color={Color.Primary} placeholder={"Primary"}/>
                 </Control>
             </Field>
             <Field>
@@ -47,7 +48,7 @@ export default createRouteComponent(() => (
             <Field>
                 <Label>Round</Label>
                 <Control>
-                    <Input style={InputStyle.Round} placeholder={"Rounded"}/>
+                    <Input is-rounded placeholder={"Rounded"}/>
                 </Control>
             </Field>
             <Field>
@@ -59,25 +60,25 @@ export default createRouteComponent(() => (
             <Field>
                 <Label>Static</Label>
                 <Control>
-                    <Input style={InputStyle.Static} props={{defaultValue: "static"}} placeholder={"Static"}/>
+                    <Input is-static defaultValue={"static"} placeholder={"Static"}/>
                 </Control>
             </Field>
             <Field>
                 <Label>Checkbox</Label>
                 <Control>
-                    <Checkbox props={{name: "checkbox", defaultChecked: true}}>Checkbox</Checkbox>
+                    <Checkbox name={"checkbox"} defaultChecked={true}>Checkbox</Checkbox>
                 </Control>
             </Field>
             <Field>
-                <Label size={Size.Medium}>Sizes</Label>
+                <Label is-size={Size.Medium}>Sizes</Label>
                 <Control>
-                    <Input props={{name: "name"}} size={Size.Medium} placeholder={"Meduim"}/>
+                    <Input name={"name"} is-size={"medium"} placeholder={"Meduim"}/>
                 </Control>
             </Field>
 
             <br/>
             <Subtitle>Grouped</Subtitle>
-            <Field group>
+            <Field is-grouped>
                 <Control>
                     <Input placeholder={"Primary"}/>
                 </Control>
@@ -85,7 +86,7 @@ export default createRouteComponent(() => (
                     <Button>Normal</Button>
                 </Control>
             </Field>
-            <Field group={"centered"}>
+            <Field is-grouped={"centered"}>
                 <Control>
                     <Input placeholder={"Primary"}/>
                 </Control>
@@ -93,7 +94,7 @@ export default createRouteComponent(() => (
                     <Button>Centered</Button>
                 </Control>
             </Field>
-            <Field group={"right"}>
+            <Field is-grouped={"right"}>
                 <Control>
                     <Input placeholder={"Primary"}/>
                 </Control>
@@ -104,7 +105,7 @@ export default createRouteComponent(() => (
 
             <br/>
             <Subtitle>Addons</Subtitle>
-            <Field addons>
+            <Field has-addons>
                 <Control>
                     <Input placeholder={"Primary"}/>
                 </Control>
@@ -112,12 +113,20 @@ export default createRouteComponent(() => (
                     <Button>Button</Button>
                 </Control>
             </Field>
-            <Field addons>
-                <Control expand>
+            <Field has-addons={"right"}>
+                <Control>
+                    <Input placeholder={"Primary"}/>
+                </Control>
+                <Control>
+                    <Button>Button</Button>
+                </Control>
+            </Field>
+            <Field has-addons>
+                <Control is-expanded>
                     <Input placeholder={"Expanded"}/>
                 </Control>
                 <Control>
-                    <Button color={Color.Primary}>Primary Button</Button>
+                    <Button is-color={Color.Primary}>Primary Button</Button>
                 </Control>
             </Field>
 
@@ -125,8 +134,7 @@ export default createRouteComponent(() => (
 
             <Subtitle>Horizontal</Subtitle>
 
-            <Field horizontal>
-                <Label>Label</Label>
+            <HField label={"Label"}>
                 <Field>
                     <Control>
                         <Input placeholder={"Input 1"}/>
@@ -137,9 +145,8 @@ export default createRouteComponent(() => (
                         <Input placeholder={"Input 2"}/>
                     </Control>
                 </Field>
-            </Field>
-            <Field horizontal>
-                <Label>Select</Label>
+            </HField>
+            <HField label={"Select"}>
                 <Field>
                     <Control>
                         <Select options={["Value 1", "Value 2"]}/>
@@ -147,41 +154,46 @@ export default createRouteComponent(() => (
                 </Field>
                 <Field>
                     <Control>
-                        <Select multiple={2} options={["Value 1", "Value 2"]}/>
+                        <Select size={2} multiple options={["Value 1", "Value 2"]}/>
                     </Control>
                 </Field>
-            </Field>
-            <Field horizontal>
-                <Label>TextArea</Label>
+            </HField>
+            <HField>
+                <HLabel>TextArea</HLabel>
                 <Field>
                     <Control>
-                        <TextArea fixed placeholder={"Enter text"}/>
+                        <TextArea is-fixed placeholder={"Enter text"}/>
                     </Control>
                 </Field>
-            </Field>
-            <Field horizontal>
-                <Label>Radio</Label>
+            </HField>
+            <HField>
+                <HLabel>Radio</HLabel>
                 <Field>
                     <Control>
-                        <Radio props={{name: "foo"}}>Foo</Radio>
-                        <Radio props={{name: "foo"}}>Bar</Radio>
-                        <Radio props={{name: "foo"}}>Baz</Radio>
+                        <Radio name={"foo"}>Foo</Radio>
+                        <Radio name={"foo"}>Bar</Radio>
+                        <Radio name={"foo"}>Baz</Radio>
                     </Control>
                 </Field>
-            </Field>
-            <Field horizontal>
-                <Label>File</Label>
+            </HField>
+            <HField>
+                <HLabel>File</HLabel>
                 <Field>
                     <Control>
-                        <FileUpload name={"File.zip"}>Select file</FileUpload>
+                        <FileUpload files={"File.zip"} label={"Select a file"}/>
                     </Control>
                 </Field>
                 <Field>
                     <Control>
-                        <FileUpload box name={"Boxed File Upload.png"}>Select file</FileUpload>
+                        <FileUpload is-boxed
+                                    is-size={"normal"}
+                                    is-color={"primary"}
+                                    files={"Boxed File Upload.png"}
+                                    label={"Select files"}
+                                    multiple/>
                     </Control>
                 </Field>
-            </Field>
+            </HField>
         </Content>
     </>
 ));

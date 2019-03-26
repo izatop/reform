@@ -1,51 +1,79 @@
 import * as React from "react";
-import {Helpers} from "../../helpers";
-import {NavbarDropdownOptions, NavbarDropdownProps, NavbarDropdownWithChild} from "./props";
+import {ReactElement} from "react";
+import {XProps} from "../../interfaces";
+import {MakeProps} from "../../type";
+import {ClassNameResolver, ElementFactory} from "../../utils";
+import {NavbarWithChild} from "./props";
 
-export const NavbarDropdown: React.FC<NavbarDropdownProps> = (props) => {
-    const [button, ...children] = React.Children.toArray(props.children) as React.ReactElement[];
-    const [active, setActive] = React.useState(props.defaultActive || false);
-    const buttonProps = {...button.props, props: {} as any};
-    const itemProps = {...props, props: {} as any, active, dropdown: true};
+export interface INavbarDropdown {
+    "is-hoverable"?: boolean;
+    "is-right"?: boolean;
+}
 
-    if (!props.hoverable) {
-        let timer: any;
-
-        buttonProps.props.onClick = React.useCallback(
-            () => {
-                if (active) {
-                    clearTimeout(timer);
-                }
-
-                setActive(!active);
-            },
-            [active],
-        );
-
-        itemProps.props.onMouseLeave = React.useCallback(
-            () => {
-                timer = setTimeout(
-                    () => active && setActive(false),
-                    props.mouseLeaveTimeout || 500,
-                );
-            },
-            [active],
-        );
-
-        itemProps.props.onMouseEnter = React.useCallback(
-            () => clearTimeout(timer),
-            [active],
-        );
-    }
-
-    return (
-        <div {...Helpers.calcProps(itemProps, NavbarDropdownOptions)}>
-            {React.cloneElement(button, Helpers.calcProps(buttonProps, {name: "navbar-link"}))}
-            <div className="navbar-dropdown">
-                {NavbarDropdownWithChild(children)}
-            </div>
-        </div>
-    );
+export type NavbarDropdownProps = XProps<"div"> & {
+    defaultActive?: boolean;
+    mouseLeaveTimeout?: number;
+    button?: string;
+    children: [ReactElement, ...ReactElement[]];
 };
 
-NavbarDropdown.displayName = "NavbarDropdown";
+const config = ElementFactory.create({
+    displayName: "NavbarDropdown",
+});
+
+export const NavbarDropdown = config.factory<MakeProps<INavbarDropdown>, NavbarDropdownProps>(
+    ({props, children, options}) => {
+        const {defaultActive, mouseLeaveTimeout, ...p} = props;
+        const [button, ...elements] = React.Children.toArray<React.ReactElement>(children);
+        const [active, setActive] = React.useState(defaultActive || false);
+
+        const buttonProps = {...button.props};
+        if (!options["is-hoverable"]) {
+            let timer: any;
+
+            buttonProps.onClick = React.useCallback(
+                () => {
+                    if (active) {
+                        clearTimeout(timer);
+                    }
+
+                    setActive(!active);
+                },
+                [active],
+            );
+
+            p.onMouseLeave = React.useCallback(
+                () => {
+                    timer = setTimeout(
+                        () => active && setActive(false),
+                        mouseLeaveTimeout || 500,
+                    );
+                },
+                [active],
+            );
+
+            p.onMouseEnter = React.useCallback(
+                () => clearTimeout(timer),
+                [active],
+            );
+        }
+
+        p.className = React.useMemo(() => ClassNameResolver.resolveClassName(
+            {...p, "is-active": active, "has-dropdown": true},
+            config.config,
+        ), [active]);
+
+        return (
+            <div {...p}>
+                {React.cloneElement(
+                    button,
+                    {...buttonProps, className: `${buttonProps.className || ""} navbar-link`},
+                    buttonProps.children,
+                )}
+                <div className="navbar-dropdown">
+                    {NavbarWithChild(elements)}
+                </div>
+            </div>
+        );
+    },
+);

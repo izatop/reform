@@ -1,11 +1,10 @@
 import * as React from "react";
-import {Helpers} from "../../helpers";
-import {PanelOptions, PanelProps} from "./props";
+import {ElementFactory} from "../../utils";
 
-export const Panel: React.FunctionComponent<PanelProps> = (props) => (
-    <div className={Helpers.calcClasses(props, PanelOptions)}>
-        {props.children}
+const config = ElementFactory.create({component: "panel"});
+
+export const Panel = config.factory(({props, children}) => (
+    <div {...props}>
+        {children}
     </div>
-);
-
-Panel.displayName = "Panel";
+));

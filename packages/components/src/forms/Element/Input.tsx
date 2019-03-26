@@ -1,11 +1,8 @@
 import * as React from "react";
-import {Color, Size} from "../../enum";
-import {Helpers} from "../../helpers";
-
-export enum InputStyle {
-    Round = "rounded",
-    Static = "static",
-}
+import {XProps} from "../../interfaces";
+import {ColorType, SizeType} from "../../options";
+import {MakeProps} from "../../type";
+import {ElementFactory} from "../../utils";
 
 export enum InputState {
     Hover = "hovered",
@@ -13,33 +10,19 @@ export enum InputState {
     Load = "loading",
 }
 
-export type InputProps = React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>,
-    HTMLInputElement>;
+export type InputStateType = InputState | "hovered" | "focused" | "loading";
 
-export interface IInputProps {
-    props?: InputProps;
-    size?: Size;
-    color?: Color;
-    style?: InputStyle;
-    state?: InputState;
-    disabled?: boolean;
-    readOnly?: boolean;
-    autoComplete?: string;
-    placeholder?: string;
-    type?: ("text" | "password" | "email" | "tel") & string;
+interface IInput {
+    "is-size"?: SizeType;
+    "is-color"?: ColorType;
+    "is-state"?: InputStateType;
+    "is-rounded"?: boolean;
+    "is-static"?: boolean;
+    "is-loading"?: boolean;
 }
 
-const InputOptions = {
-    name: "input",
-    is: ["size", "color", "style"],
-};
+const config = ElementFactory.create({component: "input"});
 
-export const Input: React.FC<IInputProps> = (props) => (
-    <input disabled={props.disabled}
-           readOnly={props.readOnly}
-           autoComplete={props.autoComplete}
-           placeholder={props.placeholder}
-           {...Helpers.calcProps(props, InputOptions)}/>
-);
-
-Input.displayName = "Input";
+export const Input = config.factory<MakeProps<IInput>, XProps<"input">>(({props}) => (
+    <input {...props}/>
+));

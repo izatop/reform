@@ -1,11 +1,13 @@
 import React from "react";
-import {Helpers} from "../helpers";
-import {MakeBreakpointProps} from "../interfaces";
+import {MakeProps} from "../type";
+import {ElementFactory} from "../utils";
 
-const ContainerOptions = {name: "container", is: ["fluid"]};
-export type ContainerProps = MakeBreakpointProps<{ fluid?: true }>;
-export const Container: React.FunctionComponent<ContainerProps> = (props) => {
-    return <div className={Helpers.calcClasses(props, ContainerOptions)}>{props.children}</div>;
-};
+interface IContainer {
+    "is-fluid"?: boolean;
+}
 
-Container.displayName = "Container";
+const config = ElementFactory.create({component: "container"});
+
+export const Container = config.factory<MakeProps<IContainer>>(({props, children}) => (
+    <div {...props}>{children}</div>
+));

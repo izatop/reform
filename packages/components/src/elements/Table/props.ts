@@ -1,32 +1,19 @@
 import {ReactNode} from "react";
 import * as React from "react";
-import {MakeProps} from "../../interfaces";
+import {MakeProps} from "../../type";
 
-export enum TableStyle {
-    Bordered = "bordered",
-    Striped = "striped",
-    Narrow = "narrow",
-    Hoverable = "hoverable",
+export interface ITable {
+    "is-fullwidth"?: boolean;
+    "is-bordered"?: boolean;
+    "is-striped"?: boolean;
+    "is-narrow"?: boolean;
+    "is-hoverable"?: boolean;
 }
-
-export type TableProps = MakeProps<{
-    style?: TableStyle | TableStyle;
-    fullwidth?: boolean;
-}>;
-
-export const TableOptions = {
-    name: "table",
-    is: ["style", "fullwidth"],
-};
 
 export type TableRowProps = MakeProps<{
     selected?: boolean;
     cells?: React.ReactNode[];
 }>;
-
-export const TableRowOptions = {
-    is: ["selected"],
-};
 
 export type TableCellProps = MakeProps<{key?: string | number; children: ReactNode}>;
 export type TableCellFactory = React.FunctionComponent<TableCellProps>;

@@ -1,5 +1,5 @@
 import {Form, List, ListContext, Map, Store} from "@reform/api";
-import {Button, ButtonList, Control, Field, Icon, Label} from "@reform/components";
+import {Button, Buttons, Control, Field, Help, Icon, Label} from "@reform/components";
 import {
     Checkbox,
     Email,
@@ -19,41 +19,50 @@ interface IFormExample {
     onChange: (data: Store) => void;
 }
 
+const ban = <Icon has-color={"danger"} icon={"ban"}/>;
+const user = <Icon has-color={"primary"} icon={"user"}/>;
+
 export const FormExample: React.FC<IFormExample> = (props) => (
     <>
         <Form defaultSource={props.defaultSource}
               onMount={props.onChange}
               onChange={props.onChange}>
-            <Field label={"Login"}>
-                <Control>
+            <Field>
+                <Label>Login</Label>
+                <Control state={ban} type={user}>
                     <Input placeholder={"name"} autoComplete={"name"} name={"name"}/>
                 </Control>
             </Field>
 
-            <Field help={"Email input with default autoComplete=email"}
-                   label={"Email"}>
-                <Control type={"user"}>
+            <Field>
+                <Label>Email</Label>
+                <Control type={"at"} state={"check"}>
                     <Email placeholder={"Email"} name={"email"}/>
                 </Control>
+                <Help>Email input with default autoComplete=email</Help>
             </Field>
 
-            <Field label={"Age"}>
+            <Field>
+                <Label>Age</Label>
                 <Control>
                     <Numeric required name={"age"}/>
                 </Control>
             </Field>
 
-            <Field label={"Default Value"} help={"A default value marks input as changed"}>
+            <Field>
+                <Label>Default Value</Label>
                 <Control>
                     <Numeric defaultValue={123} name={"defaultValue"}/>
                 </Control>
+                <Help>A default value marks input as changed</Help>
             </Field>
 
-            <Field help={"Required field hobby"}
-                   label={"Hobby"}>
-                <Control type={"exclamation-triangle"}>
+            <Field>
+                <Label>Hobby</Label>
+                <Control>
                     <Input name={"me.hobby"} placeholder={"Enter your hobby"} required/>
                 </Control>
+                <Help is-color={"danger"}>Required field hobby</Help>
             </Field>
 
             <Field>
@@ -63,7 +72,7 @@ export const FormExample: React.FC<IFormExample> = (props) => (
             </Field>
 
             <Label>Select</Label>
-            <Field group>
+            <Field is-grouped>
                 <Control>
                     <MultipleSelect name={"multiple"} size={3} options={[1, 2, 5]}/>
                 </Control>
@@ -72,7 +81,8 @@ export const FormExample: React.FC<IFormExample> = (props) => (
                 </Control>
             </Field>
 
-            <Field label={"Long text"}>
+            <Field>
+                <Label>Long text</Label>
                 <Control>
                     <TextArea name={"text"} placeholder={"Enter text..."}/>
                 </Control>
@@ -89,19 +99,19 @@ export const FormExample: React.FC<IFormExample> = (props) => (
 
                 <Map.Context>
                     {(store, h) => (
-                        <Field group>
-                            <Control expand>
+                        <Field is-grouped>
+                            <Control is-expanded>
                                 <Input required name={"city"}/>
                             </Control>
                             <Control>
                                 <Input required name={"address"}/>
                             </Control>
-                            <Control expand>
+                            <Control is-expanded>
                                 <Input required name={"house"}/>
                             </Control>
-                            <Control expand>
-                                <Button props={{onClick: h.delete}}>
-                                    <Icon name={"trash-alt"}/>
+                            <Control is-expanded>
+                                <Button onClick={h.delete}>
+                                    <Icon icon={"trash-alt"}/>
                                 </Button>
                             </Control>
                         </Field>
@@ -109,17 +119,17 @@ export const FormExample: React.FC<IFormExample> = (props) => (
                 </Map.Context>
                 <ListContext>
                     {(store) => (
-                        <ButtonList align={"right"}>
-                            <Button props={{onClick: () => store.add({})}}>Add</Button>
-                        </ButtonList>
+                        <Buttons is-align={"right"}>
+                            <Button onClick={() => store.add({})}>Add</Button>
+                        </Buttons>
                     )}
                 </ListContext>
             </List>
 
-            <ButtonList align={"right"}>
+            <Buttons is-align={"right"}>
                 <Reset>Reset</Reset>
                 <Submit>Submit</Submit>
-            </ButtonList>
+            </Buttons>
         </Form>
     </>
-)
+);

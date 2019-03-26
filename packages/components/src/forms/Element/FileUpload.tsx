@@ -1,51 +1,49 @@
 import * as React from "react";
-import {Align, Color, Size} from "../../enum";
-import {Helpers} from "../../helpers";
-import {MakeProps} from "../../interfaces";
+import {XProps} from "../../interfaces";
+import {Align, ColorType, SizeType} from "../../options";
+import {MakeProps} from "../../type";
+import {ElementFactory} from "../../utils";
 
-export type FileUploadProps = React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>,
-    HTMLInputElement>;
-
-export interface IFileUploadProps extends MakeProps {
-    props?: FileUploadProps;
-    color?: Color;
-    size?: Size;
-    disabled?: boolean;
-    name?: string;
-    children?: string;
-    align?: Align;
-    fullwidth?: boolean;
-    multiple?: boolean;
-    box?: boolean;
+interface IFileUpload {
+    "is-align"?: Align;
+    "is-color"?: ColorType;
+    "is-size"?: SizeType;
+    "is-centered"?: boolean;
+    "is-right"?: boolean;
+    "is-fullwidth"?: boolean;
+    "is-boxed"?: boolean;
 }
 
-const FileUploadOptions = {
-    name: "file",
-    has: [{name: () => "name"}],
-    is: ["fullwidth", "align", "color", "size", {box: () => "boxed"}],
+export type FileUploadProps = XProps<"input"> & {
+    files?: string | string[];
+    children?: string;
+    label?: string;
 };
 
-const FileUploadInputOptions = {
-    name: "file-input",
-};
+const config = ElementFactory.create({
+    component: "file",
+    displayName: "FileUpload",
+    mutations: {
+        files: "has-name",
+    },
+});
 
-export const FileUpload: React.FC<IFileUploadProps> = (props) => (
-    <div className={Helpers.calcClasses(props, FileUploadOptions)}>
-        <label className="file-label">
-            <input type="file"
-                   multiple={props.multiple}
-                   {...Helpers.calcProps(props, FileUploadInputOptions)}/>
-            <span className="file-cta">
+export const FileUpload = config.factory<MakeProps<IFileUpload>, FileUploadProps>(({props, children}) => {
+    const {files, label, ...p} = props;
+    return (
+        <div className={p.className}>
+            <label className="file-label">
+                <input {...p} className={`file-input`} type="file"/>
+                <span className="file-cta">
               <span className="file-icon">
                 <i className="fas fa-upload"/>
               </span>
                 <span className="file-label">
-                    {props.children}
+                    {label || children}
                 </span>
             </span>
-            {props.name && <span className="file-name">{props.name}</span>}
-        </label>
-    </div>
-);
-
-FileUpload.displayName = "FileUpload";
+                {files && <span className="file-name">{files}</span>}
+            </label>
+        </div>
+    );
+});

@@ -13,17 +13,18 @@ export abstract class MultipleSelect<P = {}> extends AbstractControl<Array<strin
     }
 
     public render() {
-        const props = this.createProps<HTMLSelectElement>({
-            onChange: (e) => this.update(
-                [...e.target.selectedOptions].map((option) => option.value),
-            ),
-        });
-
         return (
             <SelectComponent {...this.getControlProps()}
-                             multiple={this.props.size || true}
-                             options={this.props.options}
-                             props={props}/>
+                             onChange={this.onChange}
+                             multiple={true}
+                             size={this.props.size}
+                             options={this.props.options}/>
+        );
+    }
+
+    private onChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        this.update(
+            [...e.currentTarget.selectedOptions].map((option) => option.value),
         );
     }
 }

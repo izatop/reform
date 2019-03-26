@@ -1,6 +1,6 @@
 import {Input as InputComponent} from "@reform/components";
 import * as React from "react";
-import {AbstractControl, EL} from "../AbstractControl";
+import {AbstractControl} from "../AbstractControl";
 import {HTMLAutoCompleteType} from "../interface";
 
 export interface IInput {
@@ -30,22 +30,22 @@ export class Input<P = {}> extends AbstractControl<string | number, P & IInput> 
     }
 
     public render() {
-        const props = this.createProps<HTMLInputElement>({
-            onChange: (e) => this.update(e.target.value),
-            type: this.type,
-        });
-
-        return <InputComponent {...this.getControlProps()}
-                               props={props}/>;
+        return <InputComponent onChange={this.onChange}
+                               {...this.getControlProps()}/>;
     }
 
-    protected createProps<ET>(props: EL<ET>) {
+    protected getControlProps() {
         return {
-            ...super.createProps(props),
+            ...super.getControlProps(),
+            type: this.type,
             placeholder: this.props.placeholder,
             autoComplete: this.props.autoComplete || "off",
             disabled: this.props.disabled,
             readOnly: this.props.readOnly,
         };
+    }
+
+    private onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        this.update(e.currentTarget.value);
     }
 }

@@ -1,11 +1,8 @@
 import React from "react";
-import {Helpers} from "../../helpers";
-import {MakeBreakpointProps} from "../../interfaces";
+import {ElementFactory} from "../../utils";
 
-const LevelRightOptions = {name: "level-right"};
-export type LevelRightProps = MakeBreakpointProps;
-export const LevelRight: React.FunctionComponent<LevelRightProps> = (props) => (
-    <nav className={Helpers.calcClasses(props, LevelRightOptions)}>{props.children}</nav>
-);
+const config = ElementFactory.create({component: "level-right"});
 
-LevelRight.displayName = "LevelRight";
+export const LevelRight = config.factory(({props, children}) => (
+    <div {...props}>{children}</div>
+));

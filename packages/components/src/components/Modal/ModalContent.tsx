@@ -1,9 +1,8 @@
 import * as React from "react";
-import {Helpers} from "../../helpers";
-import {ModalContentOptions, ModalContentProps} from "./props";
+import {ElementFactory} from "../../utils";
 
-export const ModalContent: React.FC<ModalContentProps> = (props) => (
-    <div className={Helpers.calcClasses(props, ModalContentOptions)}>{props.children}</div>
-);
+const config = ElementFactory.create({component: "modal-content"});
 
-ModalContent.displayName = "ModalContent";
+export const ModalContent = config.factory(({props, children}) => (
+    <div {...props}>{children}</div>
+));

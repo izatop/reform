@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Columns 1`] = `
+<div
+  className="columns is-8 is-1-mobile"
+/>
+`;
+
+exports[`Columns 2`] = `
+<div
+  className="columns is-gapless is-fullhd"
+/>
+`;

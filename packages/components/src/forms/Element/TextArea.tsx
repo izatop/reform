@@ -1,6 +1,8 @@
 import * as React from "react";
-import {Color, Size} from "../../enum";
-import {Helpers} from "../../helpers";
+import {XProps} from "../../interfaces";
+import {ColorType, SizeType} from "../../options";
+import {MakeProps} from "../../type";
+import {ElementFactory} from "../../utils";
 
 export enum TextAreaState {
     Hover = "hovered",
@@ -8,35 +10,18 @@ export enum TextAreaState {
     Load = "loading",
 }
 
-export type TextAreaProps = React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLTextAreaElement>,
-    HTMLTextAreaElement>;
+export type TextAreaStateType = TextAreaState | "hovered" | "focused" | "loading";
 
-export interface ITextAreaProps {
-    props?: TextAreaProps;
-    size?: Size;
-    color?: Color;
-    state?: TextAreaState;
-    placeholder?: string;
-    rows?: number;
-    fixed?: boolean;
-    disabled?: boolean;
-    readOnly?: boolean;
+export interface ITextArea {
+    "is-size"?: SizeType;
+    "is-color"?: ColorType;
+    "is-state"?: TextAreaStateType;
+    "is-fixed-size"?: boolean;
+    "is-loading"?: boolean;
 }
 
-const TextAreaOptions = {
-    name: "textarea",
-    is: ["size", "color", "style"],
-    has: [{fixed: () => "fixed-size"}],
-};
+const config = ElementFactory.create({component: "textarea"});
 
-export const TextArea: React.FC<ITextAreaProps> = (props) => (
-    <textarea disabled={props.disabled}
-              readOnly={props.readOnly}
-              rows={props.rows}
-              placeholder={props.placeholder}
-              {...Helpers.calcProps(props, TextAreaOptions)}>
-        {props.children}
-    </textarea>
-);
-
-TextArea.displayName = "TextArea";
+export const TextArea = config.factory<MakeProps<ITextArea>, XProps<"textarea">>(({props, children}) => (
+    <textarea {...props}>{children}</textarea>
+));

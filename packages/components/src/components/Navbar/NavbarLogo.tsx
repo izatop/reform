@@ -1,32 +1,20 @@
 import * as React from "react";
-import {Helpers} from "../../helpers";
-import {NavbarContext, NavbarLogoOptions, NavbarLogoProps, NavbarWithChild} from "./props";
+import {ReactNode} from "react";
+import {MakeProps} from "../../type";
+import {ElementFactory} from "../../utils";
+import {NavbarBurger} from "./NavbarBurger";
+import {NavbarContext, NavbarWithChild} from "./props";
 
-const {Consumer} = NavbarContext;
-const BurgerOptions = {
-    name: "navbar-burger burger",
-    is: ["active"],
-};
+const config = ElementFactory.create({component: "navbar-brand"});
 
-export const NavbarLogo: React.FunctionComponent<NavbarLogoProps> = (props) => (
-    <div className={Helpers.calcClasses(props, NavbarLogoOptions)}>
-        {NavbarWithChild(props.children)}
+export const NavbarLogo = config.factory<MakeProps, { children: ReactNode }>(({props, children}) => (
+    <div {...props}>
+        {NavbarWithChild(children)}
 
-        <Consumer>
+        <NavbarContext.Consumer>
             {({state, toggle}) => (
-                <a role="button"
-                   onClick={() => toggle()}
-                   className={Helpers.calcClasses({active: state}, BurgerOptions)}
-                   aria-label="menu"
-                   aria-expanded="false"
-                   data-target="navbarBasicExample">
-                    <span aria-hidden="true"/>
-                    <span aria-hidden="true"/>
-                    <span aria-hidden="true"/>
-                </a>
+                <NavbarBurger onClick={toggle} is-active={state}/>
             )}
-        </Consumer>
+        </NavbarContext.Consumer>
     </div>
-);
-
-NavbarLogo.displayName = "NavbarLogo";
+));

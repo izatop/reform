@@ -1,5 +1,4 @@
-import {Column, Columns, Icon} from "@reform/components";
-import {Content, Subtitle2, Subtitle3, Title1} from "@reform/components/dist";
+import {Column, Columns, Content, Icon, Subtitle3, TextAlign, Title1} from "@reform/components";
 import * as React from "react";
 
 interface INonIdealState {
@@ -9,15 +8,17 @@ interface INonIdealState {
 }
 
 export const NonIdealState: React.FC<INonIdealState> = (props) => (
-    <Columns centered gap={false}>
-        <Column narrow>
-            <Content align={"centered"}>
+    <Columns is-centered is-gap={false}>
+        <Column is-narrow>
+            <Content has-text-align={TextAlign.Center}>
                 {props.icon && (
                     <Title1>
                         {
-                            React.isValidElement(props.icon)
-                                ? props.icon
-                                : <Icon name={props.icon as string}/>
+                            typeof props.icon === "string"
+                                ? <Icon is-size={"large"}
+                                        icon-weight={"lg"}
+                                        icon={props.icon}/>
+                                : props.icon
                         }
                     </Title1>
                 )}

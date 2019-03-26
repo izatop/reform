@@ -1,16 +1,17 @@
 {
     "roots": [
-        "<rootDir>/packages/api/test"
+        "<rootDir>/packages/components/test"
     ],
     "snapshotSerializers": [
         "jest-serializer-path"
     ],
     "transform": {
-        "^.+\\.ts$": "ts-jest"
+        "^.+\\.tsx?$": "ts-jest"
     },
     "testRegex": "/test[^/]*\\.tsx?$",
     "testEnvironment": "node",
     "coveragePathIgnorePatterns": [
+        "/webpack-bundle/dist/",
         "/node_modules/"
     ],
     "moduleFileExtensions": [

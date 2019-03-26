@@ -1,11 +1,13 @@
 import * as React from "react";
+import {MakeProps} from "../../type";
+import {ElementFactory} from "../../utils";
 
-export interface ICardContentProps {
+export interface ICardContent {
     children: React.ReactNode;
 }
 
-export const CardContent: React.FC<ICardContentProps> = (props) => (
-    <div className={"card-content"}>{props.children}</div>
-);
+const config = ElementFactory.create({component: "card-content"});
 
-CardContent.displayName = "CardContent";
+export const CardContent = config.factory<MakeProps, ICardContent>(({props, children}) => (
+    <div {...props}>{children}</div>
+));

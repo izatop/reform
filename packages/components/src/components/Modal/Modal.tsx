@@ -1,7 +1,8 @@
+import {ReactElement} from "react";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import {Helpers} from "../../helpers";
-import {ModalOptions, ModalProps} from "./props";
+import {MakeProps} from "../../type";
+import {ClassNameResolver, ElementFactory} from "../../utils";
 
 const MODAL_PORTAL_ID = "reform-portal-id";
 
@@ -9,12 +10,22 @@ interface IModalState {
     state: boolean;
 }
 
-export class Modal extends React.Component<ModalProps, IModalState> {
+export interface IModal {
+    "is-clipped"?: boolean;
+    onClose?: () => void;
+    active: boolean;
+    detach?: boolean;
+    children: ReactElement;
+}
+
+const config = ElementFactory.createConfig({component: "modal"});
+
+export class Modal extends React.Component<MakeProps<IModal>, IModalState> {
     public state = this.resolveState(this.props.active || false);
 
     private node = document.createElement("div");
 
-    public static getDerivedStateFromProps(props: ModalProps) {
+    public static getDerivedStateFromProps(props: MakeProps<IModal>) {
         return {state: props.active};
     }
 
@@ -46,8 +57,16 @@ export class Modal extends React.Component<ModalProps, IModalState> {
             return null;
         }
 
+        const className = ClassNameResolver.resolveClassName(
+            {
+                ...this.props,
+                "is-active": this.state.state,
+            },
+            config,
+        );
+
         return ReactDOM.createPortal(
-            <div className={Helpers.calcClasses(this.props, ModalOptions)}>
+            <div className={className}>
                 <div className="modal-background" onClick={this.close}/>
                 {this.getContent()}
                 <button onClick={this.close} className="modal-close is-large" aria-label="close"/>

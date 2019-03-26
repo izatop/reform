@@ -1,48 +1,53 @@
 import * as React from "react";
-import {Helpers} from "../../helpers";
+import {MakeProps} from "../../type";
+import {ElementFactory} from "../../utils";
 import {
     createPaginationState,
     getPaginationDependencies,
+    IPaginationOptions,
     PaginationContext,
-    PaginationOptions,
     PaginationProps,
+    PaginationVariants,
 } from "./props";
 
 const {Provider} = PaginationContext;
 
-export const Pagination: React.FunctionComponent<PaginationProps> = (props) => {
-    const dependencies = getPaginationDependencies(props);
-    const defaultState = React.useMemo(
-        () => createPaginationState(props),
-        dependencies,
-    );
+const config = ElementFactory.create({component: "pagination"});
 
-    const [state, setState] = React.useState(defaultState);
-    const set = React.useCallback(
-        async (value: number) => {
-            let valid = true;
-            if (props.onSelect) {
-                valid = await props.onSelect(value);
-            }
+export const Pagination = config.factory<MakeProps<IPaginationOptions>, PaginationProps>(
+    ({props, children}) => {
+        const {onPageChange, onPageSelect, ...p} = props;
+        const deps = getPaginationDependencies(p as PaginationVariants);
+        const defaultState = React.useMemo(
+            () => createPaginationState(p as PaginationVariants),
+            deps,
+        );
 
-            if (valid) {
-                const newState = state.setPage(value);
-                setState(newState);
-                if (props.onChange) {
-                    props.onChange(newState.page);
+        const [state, setState] = React.useState(defaultState);
+        const set = React.useCallback(
+            async (value: number) => {
+                let valid = true;
+                if (onPageSelect) {
+                    valid = await onPageSelect(value);
                 }
-            }
-        },
-        dependencies,
-    );
 
-    return (
-        <nav className={Helpers.calcClasses(props, PaginationOptions)}>
-            <Provider value={{state, set}}>
-                {props.children}
-            </Provider>
-        </nav>
-    );
-};
+                if (valid) {
+                    const newState = state.setPage(value);
+                    setState(newState);
+                    if (onPageChange) {
+                        onPageChange(newState.page);
+                    }
+                }
+            },
+            deps,
+        );
 
-Pagination.displayName = "Pagination";
+        return (
+            <nav {...p}>
+                <Provider value={{state, set}}>
+                    {children}
+                </Provider>
+            </nav>
+        );
+    },
+);

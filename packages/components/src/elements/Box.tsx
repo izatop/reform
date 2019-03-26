@@ -1,10 +1,8 @@
 import React from "react";
-import {Helpers} from "../helpers";
-import {MakeProps} from "../interfaces";
+import {ElementFactory} from "../utils";
 
-export type BoxProps = MakeProps;
-export const Box: React.FunctionComponent<BoxProps> = (props) => {
-    return <div className={Helpers.calcClasses(props, {name: "box"})}>{props.children}</div>;
-};
+const config = ElementFactory.create({component: "box"});
 
-Box.displayName = "Box";
+export const Box = config.factory(({props, children}) => {
+    return <div {...props}>{children}</div>;
+});

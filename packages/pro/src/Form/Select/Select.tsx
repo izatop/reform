@@ -9,7 +9,7 @@ export interface ISelect {
 export class Select<P = {}> extends AbstractControl<string | number, P & ISelect> {
     protected get defaultValue() {
         if (!this.props.options.length) {
-            return ;
+            return;
         }
 
         const [value] = [...this.props.options].slice(0, 1);
@@ -22,18 +22,14 @@ export class Select<P = {}> extends AbstractControl<string | number, P & ISelect
     }
 
     public render() {
-        const props = this.createProps<HTMLSelectElement>({
-            onChange: (e) => this.update(e.target.value),
-        });
-
         return (
             <SelectComponent {...this.getControlProps()}
-                             options={this.props.options}
-                             props={props} />
+                             onChange={this.onChange}
+                             options={this.props.options}/>
         );
     }
 
     protected onChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        this.update(e.target.value);
+        this.update(e.currentTarget.value);
     }
 }

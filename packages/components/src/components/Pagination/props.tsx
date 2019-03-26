@@ -1,6 +1,6 @@
 import {createContext} from "react";
-import {Size} from "../../enum";
-import {MakeProps} from "../../interfaces";
+import {XProps} from "../../interfaces";
+import {Size} from "../../options";
 import {PaginationState} from "./PaginationState";
 import {PaginationStateLimit} from "./PaginationState/PaginationStateLimit";
 import {PaginationStatePage} from "./PaginationState/PaginationStatePage";
@@ -12,19 +12,17 @@ interface IPagination {
 
 export const PaginationContext = createContext({} as IPagination);
 
-export const PaginationOptions = {
-    name: "pagination",
-    is: ["size", "rounded", "centered"],
-};
+export interface IPaginationOptions {
+    "is-size"?: Size;
+    "is-rounded"?: boolean;
+    "is-centered"?: boolean;
+}
 
-interface IPaginationProps {
-    size?: Size;
-    rounded?: boolean;
-    centered?: boolean;
+export interface IPaginationProps {
     navigation?: boolean;
     label?: (page: number) => string;
-    onSelect?: (page: number) => Promise<boolean> | boolean;
-    onChange?: (page: number) => void;
+    onPageSelect?: (page: number) => Promise<boolean> | boolean;
+    onPageChange?: (page: number) => void;
 }
 
 export interface IPaginationPageState {
@@ -46,18 +44,15 @@ export interface IPaginationLimitProps extends IPaginationLimitState, IPaginatio
     type: "limit";
 }
 
-export type PaginationProps = MakeProps<IPaginationPageProps | IPaginationLimitProps>;
+export type PaginationVariants = IPaginationPageProps | IPaginationLimitProps;
+export type PaginationProps = XProps<"nav"> & PaginationVariants;
 
-export type PaginationPagerProps = MakeProps<{
+export interface IPaginationPagerProps {
     pages?: number;
     useful?: boolean;
-}>;
+}
 
-export const PaginationPagerOptions = {
-    name: "pagination-list",
-};
-
-export const getPaginationDependencies = (props: PaginationProps) => {
+export const getPaginationDependencies = (props: PaginationVariants) => {
     if (props.type === "page") {
         const {page, count} = props;
         return [page, count];
@@ -71,7 +66,7 @@ export const getPaginationDependencies = (props: PaginationProps) => {
     throw new Error("Invalid pagination props");
 };
 
-export const createPaginationState = (props: PaginationProps): PaginationState => {
+export const createPaginationState = (props: PaginationVariants): PaginationState => {
     if (props.type === "page") {
         const {page, count} = props;
         return new PaginationStatePage({page, count});

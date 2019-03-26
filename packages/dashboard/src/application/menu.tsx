@@ -5,7 +5,7 @@ import * as React from "react";
 
 export const menu = new MenuStore(
     [
-        new MenuNode(<Link to={"/"}><Icon name={"home"}/><span>Dashboard</span></Link>),
+        new MenuNode(<Link to={"/"}><Icon icon={"home"}/><span>Dashboard</span></Link>),
         // new MenuNode("Pro Components"),
         new MenuNode(
             "UI Library",

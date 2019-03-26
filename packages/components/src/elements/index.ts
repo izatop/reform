@@ -1,7 +1,6 @@
-
 export * from "./Button";
 export * from "./Icon";
-export * from "./Image";
+export * from "./Figure";
 export * from "./Notification";
 export * from "./Progress";
 export * from "./Table";

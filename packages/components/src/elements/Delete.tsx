@@ -1,11 +1,14 @@
 import * as React from "react";
-import {Size} from "../enum";
-import {Helpers} from "../helpers";
-import {MakeProps} from "../interfaces";
+import {XProps} from "../interfaces";
+import {SizeType} from "../options";
+import {MakeProps} from "../type";
+import {ElementFactory} from "../utils";
 
-export type DeleteProps = MakeProps<{ size?: Size }>;
-export const Delete: React.FunctionComponent<DeleteProps> = (props) => {
-    return <a className={Helpers.calcClasses(props, {name: "delete", is: ["size"]})}>{props.children}</a>;
-};
+export interface IDelete {
+    "is-size"?: SizeType;
+}
 
-Delete.displayName = "Delete";
+const config = ElementFactory.create({component: "delete"});
+export const Delete = config.factory<MakeProps<IDelete>, XProps<"a">>(({props, children}) => {
+    return <a {...props}>{children}</a>;
+});

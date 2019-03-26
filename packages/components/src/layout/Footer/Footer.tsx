@@ -1,9 +1,9 @@
 import React from "react";
-import {Helpers} from "../../helpers";
-import {FooterOptions, FooterProps} from "./props";
+import {XProps} from "../../interfaces";
+import {MakeProps} from "../../type";
+import {ElementFactory} from "../../utils";
 
-export const Footer: React.FunctionComponent<FooterProps> = (props) => {
-    return <section className={Helpers.calcClasses(props, FooterOptions)}>{props.children}</section>;
-};
-
-Footer.displayName = "Footer";
+const config = ElementFactory.create({component: "section"});
+export const Footer = config.factory<MakeProps, XProps<"section">>(({props, children}) => (
+    <section {...props}>{children}</section>
+));

@@ -1,15 +1,30 @@
 import * as React from "react";
-import {Helpers} from "../../helpers";
-import {DropdownElementOptions, DropdownElementProps} from "./props";
+import {ReactElement} from "react";
+import {MakeProps} from "../../type";
+import {ElementFactory} from "../../utils";
 
-export const DropdownElement: React.FunctionComponent<DropdownElementProps> = (props) => {
-    return React.cloneElement(
-        props.children,
-        {
-            ...props.children.props,
-            className: Helpers.calcClasses(props, DropdownElementOptions),
-        },
-    );
-};
+export interface IDropdownElement {
+    "is-active"?: boolean;
+}
 
-DropdownElement.displayName = "DropdownElement";
+export interface IDropdownElementProps {
+    children: ReactElement;
+}
+
+const config = ElementFactory.create({component: "dropdown-item"});
+
+export const DropdownElement = config.factory<MakeProps<IDropdownElement>, IDropdownElementProps>(
+    ({props, children}) => (
+        React.useMemo(() => (
+                React.cloneElement(
+                    children,
+                    {
+                        ...children.props,
+                        ...props,
+                    },
+                )
+            ),
+            [props.className],
+        )
+    ),
+);

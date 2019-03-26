@@ -1,28 +1,39 @@
-import React from "react";
-import {Helpers} from "../../helpers";
-import {HeroOptions, HeroProps} from "./props";
+import React, {ReactElement} from "react";
+import {XProps} from "../../interfaces";
+import {ColorType} from "../../options";
+import {MakeProps} from "../../type";
+import {ElementFactory} from "../../utils";
 
-export const Hero: React.FC<HeroProps> = (props) => {
-    return (
-        <section className={Helpers.calcClasses(props, HeroOptions)}>
-            {props.children}
-        </section>
-    );
+export enum HeroSize {
+    Medium = "medium",
+    Large = "large",
+    FullHeight = "fullheight",
+}
+
+export type HeroSizeType = HeroSize | "medium" | "large" | "fullheight";
+
+export interface IHero {
+    "is-size"?: HeroSizeType;
+    "is-color"?: ColorType;
+    "is-bold"?: boolean;
+    "is-navbar"?: boolean;
+}
+
+export type HeroProps = XProps<"section"> & {
+    children: ReactElement | [ReactElement, ReactElement?, ReactElement?];
 };
 
-export const HeroHead: React.FC = (props) => (
-    <div className={"hero-head"}>{props.children}</div>
-);
+const config = ElementFactory.create({
+    component: "hero",
+    resolvers: {
+        navbar: () => "fullheight-with-navbar",
+    },
+});
 
-export const HeroContent: React.FC = (props) => (
-    <div className={"hero-body"}>{props.children}</div>
-);
-
-export const HeroFoot: React.FC = (props) => (
-    <div className={"hero-foot"}>{props.children}</div>
-);
-
-Hero.displayName = "Hero";
-HeroHead.displayName = "HeroHead";
-HeroContent.displayName = "HeroContent";
-HeroFoot.displayName = "HeroFoot";
+export const Hero = config.factory<MakeProps<IHero>, HeroProps>(({props, children}) => {
+    return (
+        <section {...props}>
+            {children}
+        </section>
+    );
+});

@@ -1,11 +1,8 @@
 import * as React from "react";
-import {Helpers} from "../../helpers";
-import {MessageHeaderOptions, MessageHeaderProps} from "./props";
+import {ElementFactory} from "../../utils";
 
-export const MessageHeader: React.FunctionComponent<MessageHeaderProps> = (props) => (
-    <div className={Helpers.calcClasses(props, MessageHeaderOptions)}>
-        {props.children}
-    </div>
-);
+const config = ElementFactory.create({component: "message-header"});
 
-MessageHeader.displayName = "MessageHeader";
+export const MessageHeader = config.factory(({props, children}) => (
+    <div {...props}>{children}</div>
+));

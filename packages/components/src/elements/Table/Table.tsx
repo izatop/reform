@@ -1,11 +1,11 @@
 import * as React from "react";
-import {Helpers} from "../../helpers";
-import {TableOptions, TableProps} from "./props";
+import {XProps} from "../../interfaces";
+import {MakeProps} from "../../type";
+import {ElementFactory} from "../../utils";
+import {ITable} from "./props";
 
-export const Table: React.FunctionComponent<TableProps> = (props) => (
-    <table className={Helpers.calcClasses(props, TableOptions)}>
-        {props.children}
-    </table>
-);
+const config = ElementFactory.create({component: "table"});
 
-Table.displayName = "Table";
+export const Table = config.factory<MakeProps<ITable>, XProps<"table">>(({props, children}) => (
+    <table {...props}>{children}</table>
+));

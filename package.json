@@ -33,11 +33,15 @@
         "jest": "^24.5.0",
         "jest-serializer-path": "^0.1.15",
         "lerna": "^3.13.1",
+        "react-test-renderer": "^16.8.5",
         "rimraf": "^2.6.3",
         "ts-jest": "^24.0.0",
         "ts-node": "8.0.2",
         "tslint": "^5.14.0",
-        "typescript": "^3.3.3333"
+        "typescript": "^3.3.4000"
     },
-    "license": "MIT"
+    "license": "MIT",
+    "dependencies": {
+        "@types/react-test-renderer": "^16.8.1"
+    }
 }

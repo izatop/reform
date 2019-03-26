@@ -1,11 +1,8 @@
 import React from "react";
-import {Helpers} from "../../helpers";
-import {MakeProps} from "../../interfaces";
+import {ElementFactory} from "../../utils";
 
-const options = {name: "media-right"};
-export type MediaRightProps = MakeProps;
-export const MediaRight: React.FunctionComponent<MediaRightProps> = (props) => (
-    <div className={Helpers.calcClasses(props, options)}>{props.children}</div>
-);
+const config = ElementFactory.create({component: "media-right"});
 
-MediaRight.displayName = "MediaRight";
+export const MediaRight = config.factory(({props, children}) => (
+    <div {...props}>{children}</div>
+));

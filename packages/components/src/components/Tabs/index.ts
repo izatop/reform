@@ -1,4 +1,2 @@
-
-export * from "./TabsElement";
+export * from "./Tab";
 export * from "./Tabs";
-export * from "./props";

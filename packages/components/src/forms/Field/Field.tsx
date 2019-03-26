@@ -1,15 +1,26 @@
 import * as React from "react";
-import {Helpers} from "../../helpers";
-import {FieldHelp} from "./FieldHelp";
-import {Label} from "./Label";
-import {FieldOptions, IFieldProps} from "./props";
+import {XProps} from "../../interfaces";
+import {ElementFactory} from "../../utils";
 
-export const Field: React.FC<IFieldProps> = (props) => (
-    <div className={Helpers.calcClasses(props, FieldOptions)}>
-        {props.label && <Label>{props.label}</Label>}
-        {props.children}
-        {props.help && <FieldHelp>{props.help}</FieldHelp>}
+export interface IField {
+    "is-grouped"?: boolean | "centered" | "right" | "multiline";
+    "has-addons"?: boolean | "centered" | "right";
+}
+
+export type FieldProps = XProps<"div"> & {
+    children: React.ReactElement | [React.ReactElement, ...React.ReactElement[]];
+};
+
+const config = ElementFactory.create({
+    component: "field",
+    resolvers: {
+        addons: (v) => typeof v === "string" ? ["addons", `addons-${v}`] : v,
+        grouped: (v) => typeof v === "string" ? ["grouped", `grouped-${v}`] : v,
+    },
+});
+
+export const Field = config.factory<IField, FieldProps>(({props, children}) => (
+    <div {...props}>
+        {children}
     </div>
-);
-
-Field.displayName = "Field";
+));

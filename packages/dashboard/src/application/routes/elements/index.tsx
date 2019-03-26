@@ -1,15 +1,12 @@
 import {
     Box,
     Button,
-    ButtonList,
-    ButtonSize,
-    ButtonStyle,
+    Buttons,
     Color,
     Content,
     Delete,
+    Figure,
     Icon,
-    IconWeight,
-    Image,
     ImageRatio,
     Notification,
     Progress,
@@ -24,7 +21,7 @@ import {
     TableBody,
     TableHead,
     Tag,
-    TagList,
+    Tags,
     Title,
     Title1,
     Title2,
@@ -61,12 +58,12 @@ export default createRouteComponent(() => {
                 <Title anchor={"button"}>Button</Title>
 
                 <p>Button component example</p>
-                <ButtonList>
-                    <Button size={ButtonSize.Small} color={Color.Warning}>Small</Button>
-                    <Button color={Color.Primary} style={ButtonStyle.Round}>Primary rounded</Button>
-                    <Button color={Color.Dark} style={ButtonStyle.Invert}>Dark inverted</Button>
-                    <Button size={ButtonSize.Large} style={ButtonStyle.Static}>Large static</Button>
-                </ButtonList>
+                <Buttons>
+                    <Button is-size={"small"} is-color={Color.Warning}>Small</Button>
+                    <Button is-color={Color.Primary} is-rounded>Primary rounded</Button>
+                    <Button is-color={"dark"} is-inverted>Dark inverted</Button>
+                    <Button is-size={"large"} is-static>Large static</Button>
+                </Buttons>
             </Content>
 
             <hr/>
@@ -83,7 +80,7 @@ export default createRouteComponent(() => {
                 <Title anchor={"delete"}>Delete</Title>
 
                 <p>Delete component example</p>
-                <Delete size={Size.Small}/> <Delete/> <Delete size={Size.Large}/>
+                <Delete is-size={"small"}/> <Delete/> <Delete is-size={Size.Large}/>
             </Content>
 
             <hr/>
@@ -93,8 +90,10 @@ export default createRouteComponent(() => {
 
                 <p>Icon component example</p>
 
-                <Icon name={"arrow-up"}/>
-                <Icon name={"arrow-down"} weight={IconWeight.Large} size={Size.Large}/>
+                <Icon icon={"arrow-up"} has-color={"danger"}/>
+                <Icon icon={"arrow-down"}
+                      icon-weight={"lg"}
+                      is-size={Size.Large}/>
             </Content>
 
             <hr/>
@@ -105,8 +104,9 @@ export default createRouteComponent(() => {
                 <p>Image component example</p>
             </Content>
 
-            <Image ratio={ImageRatio.R2by1}
-                   src={Placeholder.getFigurePlaceholder(720, 240)}/>
+            <Figure is-d={ImageRatio.R2by1}>
+                <img src={Placeholder.getFigurePlaceholder(720, 240)}/>
+            </Figure>
 
             <hr/>
 
@@ -116,7 +116,7 @@ export default createRouteComponent(() => {
                 <p>Notification component example</p>
 
                 <Notification>Notification message</Notification>
-                <Notification color={Color.Warning}>
+                <Notification is-color={Color.Warning}>
                     <Delete/>
                     Warning notification message
                 </Notification>
@@ -129,9 +129,9 @@ export default createRouteComponent(() => {
 
                 <p>Progress component example</p>
 
-                <Progress size={Size.Small} max={100}/>
-                <Progress color={Color.Primary} value={20} max={100}/>
-                <Progress color={Color.Danger} size={Size.Large} value={30} max={100}/>
+                <Progress is-size={Size.Small} max={100}/>
+                <Progress is-color={Color.Primary} value={20} max={100}/>
+                <Progress is-color={"danger"} is-size={"large"} value={30} max={100}/>
             </Content>
 
             <hr/>
@@ -141,7 +141,7 @@ export default createRouteComponent(() => {
 
                 <p>Table component example</p>
 
-                <Table>
+                <Table is-bordered is-striped is-hoverable>
                     <TableHead cells={["Col 1", "Col 2"]}/>
                     <TableBody values={[[1, 2], [3, 4]]}/>
                 </Table>
@@ -154,14 +154,14 @@ export default createRouteComponent(() => {
 
                 <p>Tag component example</p>
 
-                <TagList>
+                <Tags>
                     <Tag>Tag 1</Tag>
                     <Tag>
                         Tag 2
-                        <Delete size={Size.Small}/>
+                        <Delete is-size={Size.Small}/>
                     </Tag>
-                    <Tag delete color={Color.Danger}/>
-                </TagList>
+                    <Tag is-delete is-color={"danger"}/>
+                </Tags>
             </Content>
 
             <hr/>

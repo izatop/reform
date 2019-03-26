@@ -1,18 +1,20 @@
 import * as React from "react";
-import {Helpers} from "../../helpers";
-import {CardHeaderOptions, CardHeaderProps, renderCardChild} from "./props";
+import {XProps} from "../../interfaces";
+import {MakeProps} from "../../type";
+import {ElementFactory} from "../../utils";
 
-const iconProps = {"className": "card-header-icon", "aria-label": "more options"};
-const titleProps = {className: "card-header-title"};
+export interface ICardHeader {
+    children?: React.ReactElement | [React.ReactElement, React.ReactElement];
+}
 
-export const CardHeader: React.FC<CardHeaderProps> = (props) => {
-    const [title, icon] = React.Children.toArray(props.children);
+export type CardHeaderProps = XProps<"header"> & ICardHeader;
+
+const config = ElementFactory.create({component: "card-header"});
+
+export const CardHeader = config.factory<MakeProps, CardHeaderProps>(({props, children}) => {
     return (
-        <header className={Helpers.calcClasses(props, CardHeaderOptions)}>
-            {renderCardChild(titleProps, title)}
-            {renderCardChild(iconProps, icon)}
+        <header {...props}>
+            {children}
         </header>
     );
-};
-
-CardHeader.displayName = "CardHeader";
+});

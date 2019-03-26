@@ -4,10 +4,16 @@ import * as React from "react";
 import {createRouteComponent} from "../../../../vendor/createRouteComponent";
 import {FormExample} from "./FormExample";
 
-export default createRouteComponent(class extends React.PureComponent {
+export default createRouteComponent(class extends React.Component {
     public state = {};
 
-    private defaultSource = {name: "Name", age: 32, address: [{city: "City", address: "My Address", house: 12}]};
+    private defaultSource = {
+        name: "Name",
+        age: 32,
+        address: [
+            {city: "City", address: "My Address", house: 12},
+        ],
+    };
 
     public render() {
         return (

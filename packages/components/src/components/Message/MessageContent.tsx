@@ -1,11 +1,8 @@
 import * as React from "react";
-import {Helpers} from "../../helpers";
-import {MessageContentOptions, MessageContentProps} from "./props";
+import {ElementFactory} from "../../utils";
 
-export const MessageContent: React.FunctionComponent<MessageContentProps> = (props) => (
-    <div className={Helpers.calcClasses(props, MessageContentOptions)}>
-        {props.children}
-    </div>
-);
+const config = ElementFactory.create({component: "message-body"});
 
-MessageContent.displayName = "MessageContent";
+export const MessageContent = config.factory(({props, children}) => (
+    <div {...props}>{children}</div>
+));

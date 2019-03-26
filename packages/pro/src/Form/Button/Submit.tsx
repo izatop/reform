@@ -1,9 +1,9 @@
-import {ButtonType, Color} from "@reform/components";
+import {Color} from "@reform/components";
 import * as React from "react";
 import {Button} from "./Button";
 
 export class Submit extends Button {
-    protected type: ButtonType = "submit";
+    protected type = "submit";
 
     protected get color() {
         if (!this.state.valid) {

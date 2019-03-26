@@ -1,11 +1,13 @@
 import * as React from "react";
+import {XProps} from "../../interfaces";
+import {ElementFactory} from "../../utils";
 
-export interface IFieldStateProps {
-    state?: boolean;
-}
+export type FieldStateProps = XProps<"fieldset">;
 
-export const FieldState: React.FC<IFieldStateProps> = (props) => (
-    <fieldset disabled={props.state === false}>{props.children}</fieldset>
-);
+export const config = ElementFactory.create({displayName: "FieldState"});
 
-FieldState.displayName = "FieldState";
+export const FieldState = config.factory<{}, FieldStateProps>(({props, children}) => {
+    return (
+        <fieldset {...props}>{children}</fieldset>
+    );
+});

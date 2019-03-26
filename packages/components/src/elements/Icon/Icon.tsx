@@ -1,9 +1,38 @@
 import * as React from "react";
-import {Helpers} from "../../helpers";
-import {calcIconProps, IconOptions, IconProps} from "./props";
+import {ColorType, SizeType} from "../../options";
+import {MakeProps} from "../../type";
+import {ElementFactory} from "../../utils";
+import {FontAwesome} from "./FontAwesome";
 
-export const Icon: React.FunctionComponent<IconProps> = (props) => (
-    <span className={Helpers.calcClasses(props, IconOptions)}><i {...calcIconProps(props)} /></span>
-);
+export type IconWeight = "lg" | "2x" | "3x";
 
-Icon.displayName = "Icon";
+export interface IIcon {
+    "icon"?: string;
+    "icon-weight"?: IconWeight;
+    "icon-flip"?: "v" | "h";
+    "icon-rotate"?: number;
+}
+
+export interface IIconInput {
+    "is-size"?: SizeType;
+    "is-align"?: "right" | "left";
+    "is-right"?: boolean;
+    "is-left"?: boolean;
+    "has-color"?: ColorType;
+}
+
+const config = ElementFactory.create({
+    component: "icon",
+    resolvers: {
+        color: (v) => `text-${v}`,
+    },
+});
+
+export type IconProps = MakeProps<IIconInput>;
+
+export const Icon = config.factory<IconProps, IIcon>(({props: {className, ...props}, children}) => (
+    <>
+        <span className={className}><FontAwesome {...props}/></span>
+        {React.Children.count(children) > 0 && <span>children</span>}
+    </>
+));

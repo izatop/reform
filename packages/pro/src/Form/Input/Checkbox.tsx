@@ -14,14 +14,15 @@ export abstract class Checkbox<P = {}> extends AbstractControl<boolean, P & IChe
     }
 
     public render() {
-        const props = this.createProps<HTMLInputElement>({
-            onChange: (e) => this.update(e.target.checked),
-        });
-
         return (
-            <CheckboxComponent {...this.getControlProps()} props={props}>
+            <CheckboxComponent onChange={this.onChange}
+                               {...this.getControlProps()}>
                 {this.props.children}
             </CheckboxComponent>
         );
+    }
+
+    private onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        this.update(e.currentTarget.checked);
     }
 }

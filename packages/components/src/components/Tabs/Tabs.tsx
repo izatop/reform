@@ -1,20 +1,26 @@
 import * as React from "react";
-import {Helpers} from "../../helpers";
-import {TabsOptions, TabsProps} from "./props";
-import {TabsElement} from "./TabsElement";
+import {ReactElement} from "react";
+import {XProps} from "../../interfaces";
+import {MakeProps} from "../../type";
+import {ElementFactory} from "../../utils";
+import {Tab} from "./Tab";
 
-export const Tabs: React.FunctionComponent<TabsProps> = (props) => (
-    <div className={Helpers.calcClasses(props, TabsOptions)}>
+export type TabsProps = XProps<"div"> & {
+    children: ReactElement | ReactElement[];
+};
+
+const config = ElementFactory.create({component: "tabs"});
+
+export const Tabs = config.factory<MakeProps, TabsProps>(({props, children}) => (
+    <div {...props}>
         <ul>
-            {React.Children.map(props.children, (child: React.ReactElement) => {
-                if (child.type === TabsElement) {
+            {React.Children.map(children, (child: React.ReactElement) => {
+                if (child.type === Tab) {
                     return child;
                 }
 
-                return <TabsElement>{child}</TabsElement>;
+                return <Tab>{child}</Tab>;
             })}
         </ul>
     </div>
-);
-
-Tabs.displayName = "Tabs";
+));

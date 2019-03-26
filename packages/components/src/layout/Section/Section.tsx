@@ -1,9 +1,9 @@
 import React from "react";
-import {Helpers} from "../../helpers";
-import {SectionOptions, SectionProps} from "./props";
+import {XProps} from "../../interfaces";
+import {MakeProps} from "../../type";
+import {ElementFactory} from "../../utils";
 
-export const Section: React.FunctionComponent<SectionProps> = (props) => {
-    return <section className={Helpers.calcClasses(props, SectionOptions)}>{props.children}</section>;
-};
-
-Section.displayName = "Section";
+const config = ElementFactory.create({component: "section"});
+export const Section = config.factory<MakeProps, XProps<"section">>(({props, children}) => {
+    return <section {...props}>{children}</section>;
+});

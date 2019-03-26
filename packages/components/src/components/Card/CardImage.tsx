@@ -1,11 +1,13 @@
 import * as React from "react";
+import {MakeProps} from "../../type";
+import {ElementFactory} from "../../utils";
 
-export interface ICardImageProps {
+export interface ICardImage {
     children: React.ReactElement;
 }
 
-export const CardImage: React.FC<ICardImageProps> = (props) => (
-    <div className={"card-image"}>{props.children}</div>
-);
+const config = ElementFactory.create({component: "card-image"});
 
-CardImage.displayName = "CardImage";
+export const CardImage = config.factory<MakeProps, ICardImage>(({props, children}) => (
+    <div {...props}>{children}</div>
+));

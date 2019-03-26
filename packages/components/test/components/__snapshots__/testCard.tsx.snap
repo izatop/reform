@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card 1`] = `
+<div
+  className="card"
+>
+  <header
+    className="card-header"
+  >
+    <p
+      className="card-header-title"
+    >
+      Title
+    </p>
+    <a
+      aria-label="more options"
+      className="card-header-icon"
+    >
+      <span
+        className="icon"
+      >
+        <i
+          className="fas fa-home"
+        />
+      </span>
+    </a>
+  </header>
+  <div
+    className="card-image"
+  >
+    <figure
+      className="image is-1by1"
+    >
+      <img
+        src="/path/to/image"
+      />
+    </figure>
+  </div>
+  <div
+    className="card-content"
+  >
+    Content
+  </div>
+  <footer
+    className="card-footer"
+  >
+    <p
+      className="card-footer-item"
+    >
+      <span>
+        Item 1
+      </span>
+    </p>
+    <p
+      className="card-footer-item"
+    >
+      <span>
+        Item 2
+      </span>
+    </p>
+    <p
+      className="card-footer-item"
+    >
+      <a>
+        Item 3
+      </a>
+    </p>
+  </footer>
+</div>
+`;

@@ -7,7 +7,7 @@ import {MenuNode} from "./Store/MenuNode";
  * @param node
  * @constructor
  */
-export const MenuChild: React.FunctionComponent<{ node: MenuNode }> = ({node}) => {
+export const MenuChild: React.FC<{ node: MenuNode }> = ({node}) => {
     const classes = [];
     const [active, setActive] = React.useState(node.isActive());
     const handleClick = React.useCallback(() => node.enter(), [node]);
@@ -33,5 +33,3 @@ export const MenuChild: React.FunctionComponent<{ node: MenuNode }> = ({node}) =
 
     return <a {...add} className={classes.join(" ")}>{node.node}</a>;
 };
-
-MenuChild.displayName = "MenuChild";

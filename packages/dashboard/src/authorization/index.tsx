@@ -5,11 +5,12 @@ import {
     CardContent,
     CardFooter,
     CardHeader,
+    CardHeaderIcon,
+    CardHeaderTitle,
     Color,
     Column,
     Columns,
     Container,
-    Icon,
     Section,
 } from "@reform/components";
 import * as React from "react";
@@ -20,19 +21,19 @@ export default class Authorization extends React.Component {
         return (
             <Section>
                 <Container>
-                    <Columns breakpoint={Breakpoint.Mobile} centered>
-                        <Column className={"is-half"}>
+                    <Columns is-breakpoint={Breakpoint.Mobile} is-centered>
+                        <Column is-narrow>
                             <Card>
                                 <CardHeader>
-                                    <span>Sign In</span>
-                                    <span><Icon name={"sign-in-alt"}/></span>
+                                    <CardHeaderTitle>Sign In</CardHeaderTitle>
+                                    <CardHeaderIcon icon={"sign-in-alt"}/>
                                 </CardHeader>
                                 <CardContent>
                                     <p>To enter dashboard click this button -></p>
                                 </CardContent>
                                 <CardFooter>
-                                    <p><Button onClick={this.enter} color={Color.Primary}
-                                               fullwidth>Enter</Button></p>
+                                    <Button onClick={this.enter} color={Color.Primary}
+                                            is-fullwidth>Enter</Button>
                                 </CardFooter>
                             </Card>
                         </Column>

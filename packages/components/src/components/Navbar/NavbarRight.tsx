@@ -1,11 +1,16 @@
 import * as React from "react";
-import {Helpers} from "../../helpers";
-import {NavbarRightOptions, NavbarRightProps, NavbarWithChild} from "./props";
+import {ReactElement} from "react";
+import {MakeProps} from "../../type";
+import {ElementFactory} from "../../utils";
+import {NavbarWithChild} from "./props";
 
-export const NavbarRight: React.FunctionComponent<NavbarRightProps> = (props) => (
-    <div className={Helpers.calcClasses(props, NavbarRightOptions)}>
-        {NavbarWithChild(props.children)}
+export interface INavbarRightProps {
+    children: ReactElement[] | ReactElement;
+}
+
+const config = ElementFactory.create({component: "navbar-end"});
+export const NavbarRight = config.factory<MakeProps, INavbarRightProps>(({props, children}) => (
+    <div {...props}>
+        {NavbarWithChild(children)}
     </div>
-);
-
-NavbarRight.displayName = "NavbarRight";
+));
