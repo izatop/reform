@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/izatop/reform/compare/@reform/dashboard@0.1.2...@reform/dashboard@0.2.0) (2019-03-26)
+
+
+### Features
+
+* improve type system for components ([a6363d6](https://github.com/izatop/reform/commit/a6363d6))
+
+
+
+
+
 ## [0.1.2](https://github.com/izatop/reform/compare/@reform/dashboard@0.1.1...@reform/dashboard@0.1.2) (2019-03-18)
 
 **Note:** Version bump only for package @reform/dashboard
