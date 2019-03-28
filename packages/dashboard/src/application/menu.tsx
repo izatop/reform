@@ -19,6 +19,7 @@ export const menu = new MenuStore(
                             new MenuNode(<Link to={"/forms/controlled"}>Controlled</Link>),
                         ],
                     }),
+                    new MenuNode(<Link to={"/tables/"}>Tables</Link>),
                     new MenuNode(<Link to={"/elements/"}>Elements</Link>, {
                         children: [
                             new MenuNode(<Link to={"/elements/#box"}>Box</Link>),

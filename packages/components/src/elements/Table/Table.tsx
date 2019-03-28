@@ -2,7 +2,14 @@ import * as React from "react";
 import {XProps} from "../../interfaces";
 import {MakeProps} from "../../type";
 import {ElementFactory} from "../../utils";
-import {ITable} from "./props";
+
+export interface ITable {
+    "is-fullwidth"?: boolean;
+    "is-bordered"?: boolean;
+    "is-striped"?: boolean;
+    "is-narrow"?: boolean;
+    "is-hoverable"?: boolean;
+}
 
 const config = ElementFactory.create({component: "table"});
 

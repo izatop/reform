@@ -10,7 +10,7 @@ export class Button extends Receiver<{}> {
         loading: false,
     };
 
-    protected type = "button";
+    protected type: any = "button";
 
     protected get color(): Color | undefined {
         return undefined;

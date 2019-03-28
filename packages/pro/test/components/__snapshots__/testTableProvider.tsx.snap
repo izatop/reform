@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TableFactory 1`] = `
+<table
+  className="table"
+>
+  <thead>
+    <tr
+      className=""
+    >
+      <th
+        className="has-text-right"
+      />
+      <th
+        className=""
+      />
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      className=""
+    >
+      <td
+        className="has-text-right"
+      >
+        76
+      </td>
+      <td
+        className=""
+      >
+        <span>
+          Hello, 
+          Text 1
+           (
+          1
+          )
+        </span>
+      </td>
+    </tr>
+    <tr
+      className="is-selected"
+    >
+      <td
+        className="has-text-right"
+      >
+        98
+      </td>
+      <td
+        className=""
+      >
+        <span>
+          Hello, 
+          Text 2
+           (
+          2
+          )
+        </span>
+      </td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr
+      className=""
+    >
+      <td
+        className="has-text-right"
+      />
+      <td
+        className=""
+      >
+        total
+      </td>
+    </tr>
+  </tfoot>
+</table>
+`;

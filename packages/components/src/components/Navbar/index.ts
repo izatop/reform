@@ -2,6 +2,7 @@ export * from "./Navbar";
 export * from "./NavbarBurger";
 export * from "./NavbarDropdown";
 export * from "./NavbarDropdownDivider";
+export * from "./NavbarElement";
 export * from "./NavbarLeft";
 export * from "./NavbarLink";
 export * from "./NavbarLogo";

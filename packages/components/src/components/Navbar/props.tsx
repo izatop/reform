@@ -14,7 +14,6 @@ const mergeClassName = (...classNames: string[]) => {
 
 export const NavbarWithChild = (children: ReactElement | {} | ReactNode): ReactNode => {
     return Children.map(children, (child) => {
-
         if (isValidElement<any>(child)) {
             return cloneElement<any>(
                 child,
@@ -25,6 +24,6 @@ export const NavbarWithChild = (children: ReactElement | {} | ReactNode): ReactN
             );
         }
 
-        return createElement("span", {className: "navbar-item"}, child);
+        return createElement("div", {className: "navbar-item"}, child);
     });
 };

@@ -2,7 +2,8 @@ import * as React from "react";
 import {ReactElement} from "react";
 import {XProps} from "../../interfaces";
 import {MakeProps} from "../../type";
-import {ClassNameResolver, ElementFactory} from "../../utils";
+import {ElementFactory} from "../../utils";
+import {NavbarElement} from "./NavbarElement";
 import {NavbarWithChild} from "./props";
 
 export interface INavbarDropdown {
@@ -58,13 +59,8 @@ export const NavbarDropdown = config.factory<MakeProps<INavbarDropdown>, NavbarD
             );
         }
 
-        p.className = React.useMemo(() => ClassNameResolver.resolveClassName(
-            {...p, "is-active": active, "has-dropdown": true},
-            config.config,
-        ), [active]);
-
         return (
-            <div {...p}>
+            <NavbarElement is-active={active} has-dropdown={true} {...p}>
                 {React.cloneElement(
                     button,
                     {...buttonProps, className: `${buttonProps.className || ""} navbar-link`},
@@ -73,7 +69,7 @@ export const NavbarDropdown = config.factory<MakeProps<INavbarDropdown>, NavbarD
                 <div className="navbar-dropdown">
                     {NavbarWithChild(elements)}
                 </div>
-            </div>
+            </NavbarElement>
         );
     },
 );

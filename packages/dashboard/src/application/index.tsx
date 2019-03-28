@@ -23,7 +23,7 @@ import {SessionContext} from "../store/context";
 import {IAuthorized, SessionState, SessionType} from "../store/SessionState";
 import {ComponentsUtil} from "../vendor/ComponentsUtil";
 import {menu} from "./menu";
-import {ComponentsRoute, ElementsRoute, FormsControlledRoute, FormsRoute} from "./routes";
+import {ComponentsRoute, ElementsRoute, FormsControlledRoute, FormsRoute, TablesRoute} from "./routes";
 
 interface IState {
     active: boolean;
@@ -83,6 +83,7 @@ export default class Application extends React.Component<{}, IState> {
                                 <ElementsRoute path={"/elements"}/>
                                 <ComponentsRoute path={"/components"}/>
                                 <FormsControlledRoute path={"/forms/controlled"}/>
+                                <TablesRoute path={"/tables"}/>
                             </Router>
                         </Column>
                     </Columns>

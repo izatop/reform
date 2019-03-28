@@ -1,12 +1,23 @@
 import * as React from "react";
-import {TableRowProps} from "./props";
+import {XProps} from "../../interfaces";
+import {MakeProps} from "../../type";
+import {ElementFactory} from "../../utils";
 import {TableRowContext} from "./TableRowContext";
 
-export const TableRow: React.FunctionComponent<TableRowProps> = (props) => {
-    if (props.cells) {
-        const values = props.cells;
+export interface ITableRow {
+    "is-selected"?: boolean;
+}
+
+export type TableRowProps = XProps<"tr"> & {cells?: React.ReactNode[]};
+
+const config = ElementFactory.create({displayName: "TableRow"});
+
+export const TableRow = config.factory<MakeProps<ITableRow>, TableRowProps>(({props, children}) => {
+    const {cells, ...p} = props;
+    if (cells) {
+        const values: React.ReactNode[] = cells;
         return (
-            <tr>
+            <tr {...p}>
                 <TableRowContext.Consumer>
                     {(Cell) => values.map((value, i) => <Cell key={i}>{value}</Cell>)}
                 </TableRowContext.Consumer>
@@ -15,10 +26,8 @@ export const TableRow: React.FunctionComponent<TableRowProps> = (props) => {
     }
 
     return (
-        <tr>
-            {props.children}
+        <tr {...p}>
+            {children}
         </tr>
     );
-};
-
-TableRow.displayName = "TableRow";
+});

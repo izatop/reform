@@ -1,8 +1,10 @@
 import * as React from "react";
-import {TableCellFactory} from "./props";
+import {XProps} from "../../interfaces";
+import {MakeProps} from "../../type";
+import {ElementFactory} from "../../utils";
 
-export const TableCell: TableCellFactory = (props) => (
-    <td>{props.children}</td>
-);
+const config = ElementFactory.create({displayName: "TableCell"});
 
-TableCell.displayName = "TableCell";
+export const TableCell = config.factory<MakeProps, XProps<"td">>(({props, children}) => (
+    <td {...props}>{children}</td>
+));

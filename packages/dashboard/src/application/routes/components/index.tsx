@@ -27,7 +27,8 @@ import {
     Pagination,
     PaginationNext,
     PaginationPager,
-    PaginationPrevious, Tab,
+    PaginationPrevious,
+    Tab,
     Tabs,
     Title,
     Title1,
@@ -45,7 +46,7 @@ export default createRouteComponent(() => {
             <Title1>Components</Title1>
 
             <Content>
-                <Title anchor={"breadcrumbs"}>Breadcrumbs</Title>
+                <Title id={"breadcrumbs"}>Breadcrumbs</Title>
                 See the example
             </Content>
 
@@ -59,15 +60,15 @@ export default createRouteComponent(() => {
             <hr/>
 
             <Content>
-                <Title anchor={"card"}>Card</Title>
+                <Title id={"card"}>Card</Title>
                 <p>Card example</p>
             </Content>
 
             <Card>
                 <CardImage>
-                    <Figure icon-ratio={ImageRatio.R3by1}
-                            title={"Image example"}
-                            src={Placeholder.getFigurePlaceholder(720, 240)}/>
+                    <Figure is-d={ImageRatio.R3by1}>
+                        <img title={"Image example"} src={Placeholder.getFigurePlaceholder(720, 240)}/>
+                    </Figure>
                 </CardImage>
                 <CardHeader>
                     <CardHeaderTitle>Card Title</CardHeaderTitle>
@@ -86,7 +87,7 @@ export default createRouteComponent(() => {
             <hr/>
 
             <Content>
-                <Title anchor={"dropdown"}>Dropdown</Title>
+                <Title id={"dropdown"}>Dropdown</Title>
 
                 <p>Dropdown examples</p>
             </Content>
@@ -133,7 +134,7 @@ export default createRouteComponent(() => {
             <hr/>
 
             <Content>
-                <Title anchor={"menu"}>Menu</Title>
+                <Title id={"menu"}>Menu</Title>
 
                 <p>You can look at Menu component on the left sidebar.</p>
             </Content>
@@ -141,7 +142,7 @@ export default createRouteComponent(() => {
             <hr/>
 
             <Content>
-                <Title anchor={"message"}>Message</Title>
+                <Title id={"message"}>Message</Title>
                 <p>Example of Message component</p>
 
                 <Message>
@@ -153,7 +154,7 @@ export default createRouteComponent(() => {
             <hr/>
 
             <Content>
-                <Title anchor={"modal"}>Modal</Title>
+                <Title id={"modal"}>Modal</Title>
                 <p>Example of a simple modal dialog</p>
                 <p>
                     <Button is-fullwidth
@@ -170,7 +171,7 @@ export default createRouteComponent(() => {
             <hr/>
 
             <Content>
-                <Title anchor={"navbar"}>Navbar</Title>
+                <Title id={"navbar"}>Navbar</Title>
 
                 <p>You can look at Navbar component on the top sidebar.</p>
             </Content>
@@ -178,7 +179,7 @@ export default createRouteComponent(() => {
             <hr/>
 
             <Content>
-                <Title anchor={"pagination"}>Pagination</Title>
+                <Title id={"pagination"}>Pagination</Title>
                 <p>Example of Pagination component</p>
             </Content>
 
@@ -193,7 +194,7 @@ export default createRouteComponent(() => {
             <hr/>
 
             <Content>
-                <Title anchor={"panel"}>Panel</Title>
+                <Title id={"panel"}>Panel</Title>
 
                 <p>Do you want this one? Enjoy!</p>
             </Content>
@@ -201,7 +202,7 @@ export default createRouteComponent(() => {
             <hr/>
 
             <Content>
-                <Title anchor={"tabs"}>Tabs</Title>
+                <Title id={"tabs"}>Tabs</Title>
                 <p>Example of Tabs component</p>
             </Content>
 

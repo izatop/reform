@@ -1,6 +1,7 @@
 {
     "roots": [
-        "<rootDir>/packages/components/test"
+        "<rootDir>/packages/components/test",
+        "<rootDir>/packages/pro/test"
     ],
     "snapshotSerializers": [
         "jest-serializer-path"

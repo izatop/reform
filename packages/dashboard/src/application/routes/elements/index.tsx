@@ -39,7 +39,7 @@ export default createRouteComponent(() => {
             <Title1>Elements</Title1>
 
             <Content>
-                <Title anchor={"box"}>Box</Title>
+                <Title id={"box"}>Box</Title>
 
                 <p>Box component example</p>
 
@@ -55,7 +55,7 @@ export default createRouteComponent(() => {
             <hr/>
 
             <Content>
-                <Title anchor={"button"}>Button</Title>
+                <Title id={"button"}>Button</Title>
 
                 <p>Button component example</p>
                 <Buttons>
@@ -69,7 +69,7 @@ export default createRouteComponent(() => {
             <hr/>
 
             <Content>
-                <Title anchor={"content"}>Content</Title>
+                <Title id={"content"}>Content</Title>
 
                 <p>See official documentation at the Bulma website.</p>
             </Content>
@@ -77,7 +77,7 @@ export default createRouteComponent(() => {
             <hr/>
 
             <Content>
-                <Title anchor={"delete"}>Delete</Title>
+                <Title id={"delete"}>Delete</Title>
 
                 <p>Delete component example</p>
                 <Delete is-size={"small"}/> <Delete/> <Delete is-size={Size.Large}/>
@@ -86,7 +86,7 @@ export default createRouteComponent(() => {
             <hr/>
 
             <Content>
-                <Title anchor={"icon"}>Icon</Title>
+                <Title id={"icon"}>Icon</Title>
 
                 <p>Icon component example</p>
 
@@ -99,7 +99,7 @@ export default createRouteComponent(() => {
             <hr/>
 
             <Content>
-                <Title anchor={"image"}>Image</Title>
+                <Title id={"image"}>Image</Title>
 
                 <p>Image component example</p>
             </Content>
@@ -111,7 +111,7 @@ export default createRouteComponent(() => {
             <hr/>
 
             <Content>
-                <Title anchor={"notification"}>Notification</Title>
+                <Title id={"notification"}>Notification</Title>
 
                 <p>Notification component example</p>
 
@@ -125,7 +125,7 @@ export default createRouteComponent(() => {
             <hr/>
 
             <Content>
-                <Title anchor={"progress"}>Progress Bar</Title>
+                <Title id={"progress"}>Progress Bar</Title>
 
                 <p>Progress component example</p>
 
@@ -137,7 +137,7 @@ export default createRouteComponent(() => {
             <hr/>
 
             <Content>
-                <Title anchor={"table"}>Table</Title>
+                <Title id={"table"}>Table</Title>
 
                 <p>Table component example</p>
 
@@ -150,7 +150,7 @@ export default createRouteComponent(() => {
             <hr/>
 
             <Content>
-                <Title anchor={"tag"}>Tag</Title>
+                <Title id={"tag"}>Tag</Title>
 
                 <p>Tag component example</p>
 
@@ -167,7 +167,7 @@ export default createRouteComponent(() => {
             <hr/>
 
             <Content>
-                <Title anchor={"title"}>Title</Title>
+                <Title id={"title"}>Title</Title>
 
                 <p>Title component example</p>
 
