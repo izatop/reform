@@ -67,7 +67,7 @@ export interface IComponentConfig {
     mutations: { [key: string]: string };
 }
 
-export interface InProps extends IProps {
+export interface IInProps extends IProps {
     children?: React.ReactNode;
 }
 

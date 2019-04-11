@@ -1,6 +1,6 @@
 import * as React from "react";
 import {ComponentDefaultResolvers} from "../options";
-import {DefaultProps, IComponentConfig, IComputed, InProps, MakeProps} from "../type";
+import {DefaultProps, IComponentConfig, IComputed, IInProps, MakeProps} from "../type";
 import {ClassNameResolver} from "./ClassNameResolver";
 import {PropertyResolver} from "./PropertyResolver";
 
@@ -33,7 +33,7 @@ export class ElementFactory {
         };
     }
 
-    public static getPropsOf<P extends InProps, O>(input: P, config: IComponentConfig): IComputed<P, O> {
+    public static getPropsOf<P extends IInProps, O>(input: P, config: IComponentConfig): IComputed<P, O> {
         const className = ClassNameResolver.resolveClassName(input, config);
         const {props, options, children} = PropertyResolver.resolve<P, O>(input, config.mutations);
 

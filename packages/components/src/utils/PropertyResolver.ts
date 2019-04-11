@@ -1,5 +1,5 @@
 import {Prefixes} from "../options";
-import {InProps, IProps} from "../type";
+import {IInProps, IProps} from "../type";
 
 interface IPropertyOption {
     type: string;
@@ -10,7 +10,7 @@ interface IPropertyOption {
 export class PropertyResolver {
     public static prefixes = Object.values(Prefixes);
 
-    public static resolve<P extends InProps, O>(input: P, mutations: { [key: string]: string } = {}) {
+    public static resolve<P extends IInProps, O>(input: P, mutations: { [key: string]: string } = {}) {
         const props: IProps = {};
         const options: IProps = {};
         const modifiers: IProps<IPropertyOption> = {};
