@@ -12,7 +12,7 @@
     "testRegex": "/test[^/]*\\.tsx?$",
     "testEnvironment": "node",
     "coveragePathIgnorePatterns": [
-        "/webpack-bundle/dist/",
+        "/dist/",
         "/node_modules/"
     ],
     "moduleFileExtensions": [

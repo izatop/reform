@@ -16,6 +16,20 @@ exports[`TableFactory 1`] = `
       />
     </tr>
   </thead>
+  <tfoot>
+    <tr
+      className=""
+    >
+      <th
+        className="has-text-right"
+      />
+      <th
+        className=""
+      >
+        total
+      </th>
+    </tr>
+  </tfoot>
   <tbody>
     <tr
       className=""
@@ -58,19 +72,5 @@ exports[`TableFactory 1`] = `
       </td>
     </tr>
   </tbody>
-  <tfoot>
-    <tr
-      className=""
-    >
-      <td
-        className="has-text-right"
-      />
-      <td
-        className=""
-      >
-        total
-      </td>
-    </tr>
-  </tfoot>
 </table>
 `;
