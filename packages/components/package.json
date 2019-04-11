@@ -19,7 +19,7 @@
     "scripts": {
         "clean": "yarn build:clean",
         "build:scss": "copy-and-watch \"src/**/*.scss\" \"sass\"",
-        "build:clean": "rimraf dist sass"
+        "build:clean": "rimraf dist sass tsconfig.tsbuildinfo"
     },
     "publishConfig": {
         "access": "public"

@@ -26,7 +26,7 @@
         "ci:build": "yarn clean && yarn build",
         "clean": "yarn build:clean",
         "build": "yarn build:clean && tsc",
-        "build:clean": "rimraf dist",
+        "build:clean": "rimraf dist tsconfig.tsbuildinfo",
         "build:watch": "yarn build --watch"
     },
     "dependencies": {
