@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.1](https://github.com/izatop/reform/compare/@reform/dashboard@0.3.0...@reform/dashboard@0.3.1) (2019-04-11)
+
+
+### Bug Fixes
+
+* update deps ([5b71541](https://github.com/izatop/reform/commit/5b71541))
+
+
+
+
+
 # [0.3.0](https://github.com/izatop/reform/compare/@reform/dashboard@0.2.1...@reform/dashboard@0.3.0) (2019-03-28)
 
 

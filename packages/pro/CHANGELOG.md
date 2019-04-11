@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.1](https://github.com/izatop/reform/compare/@reform/pro@0.2.0...@reform/pro@0.2.1) (2019-04-11)
+
+
+### Bug Fixes
+
+* broke form after submit ([8343843](https://github.com/izatop/reform/commit/8343843))
+* update deps ([5b71541](https://github.com/izatop/reform/commit/5b71541))
+
+
+
+
+
 # [0.2.0](https://github.com/izatop/reform/compare/@reform/pro@0.1.1...@reform/pro@0.2.0) (2019-03-28)
 
 

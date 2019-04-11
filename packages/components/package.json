@@ -1,6 +1,6 @@
 {
     "name": "@reform/components",
-    "version": "0.4.0",
+    "version": "0.4.1",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "repository": "https://github.com/izatop/reform",
@@ -28,7 +28,7 @@
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.8.1",
-        "@reform/api": "^0.6.0",
+        "@reform/api": "^0.6.1",
         "@types/react": "^16.8.13",
         "bulma": "^0.7.4",
         "react": "^16.8.6"

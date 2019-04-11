@@ -1,6 +1,6 @@
 {
     "name": "@reform/api-example",
-    "version": "0.6.0",
+    "version": "0.6.1",
     "author": {
         "name": "Artur Bier",
         "email": "izatop@gmail.com"
@@ -11,7 +11,7 @@
         "play": "webpack-dev-server --watch --open"
     },
     "dependencies": {
-        "@reform/api": "^0.6.0",
+        "@reform/api": "^0.6.1",
         "@types/html-webpack-plugin": "^3.2.0",
         "@types/prismjs": "^1.16.0",
         "@types/react": "^16.8.13",
