@@ -38,6 +38,7 @@ export class Input<P = {}> extends AbstractControl<string | number, P & IInput> 
         return {
             ...super.getControlProps(),
             type: this.type,
+            value: this.value,
             placeholder: this.props.placeholder,
             autoComplete: this.props.autoComplete || "off",
             disabled: this.props.disabled,

@@ -19,6 +19,7 @@ export class TextArea<P = {}> extends AbstractControl<string | number, P & IText
     protected getControlProps() {
         return {
             ...super.getControlProps(),
+            value: this.value,
             placeholder: this.props.placeholder,
             disabled: this.props.disabled,
             readOnly: this.props.readOnly,

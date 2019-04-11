@@ -52,14 +52,14 @@ export class Form<T extends IFormSource, P = {}> extends React.Component<IFormPr
         this.store.begin();
         if (this.props.onSubmit) {
             try {
-                await this.props.onSubmit(this.store.toObject(), this.store);
-                this.commit();
+                const submitStatus = await this.props.onSubmit(this.store.toObject(), this.store);
+                submitStatus
+                    ? this.commit()
+                    : this.unlock();
             } catch (error) {
                 // tslint:disable-next-line:no-console
                 console.error(error);
-                if (this.store) {
-                    this.store.unlock();
-                }
+                this.unlock();
             }
         } else {
             this.commit();
@@ -76,6 +76,13 @@ export class Form<T extends IFormSource, P = {}> extends React.Component<IFormPr
             this.store.commit();
         }
     }
+
+    protected unlock() {
+        if (this.store) {
+            this.store.unlock();
+        }
+    }
+
 
     protected reset() {
         if (this.store) {

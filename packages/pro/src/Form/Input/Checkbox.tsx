@@ -6,6 +6,8 @@ export interface ICheckbox {
     style?: React.CSSProperties;
     className?: string;
     children?: string;
+    disabled?: boolean;
+    readOnly?: boolean;
 }
 
 export abstract class Checkbox<P = {}> extends AbstractControl<boolean, P & ICheckbox> {
@@ -20,6 +22,15 @@ export abstract class Checkbox<P = {}> extends AbstractControl<boolean, P & IChe
                 {this.props.children}
             </CheckboxComponent>
         );
+    }
+
+    protected getControlProps() {
+        return {
+            ...super.getControlProps(),
+            checked: this.value,
+            disabled: this.props.disabled,
+            readOnly: this.props.readOnly,
+        };
     }
 
     private onChange = (e: React.ChangeEvent<HTMLInputElement>) => {

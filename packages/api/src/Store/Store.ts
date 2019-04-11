@@ -80,6 +80,7 @@ export class Store<T extends IFormSource = IFormSource,
         this.source = this.toObject();
         this.flags.version++;
         this.compute();
+        this.unlock();
     }
 
     public reset() {

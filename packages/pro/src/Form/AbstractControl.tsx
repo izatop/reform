@@ -28,7 +28,6 @@ export abstract class AbstractControl<T, P = {}> extends Component<T, P & IAbstr
             "className": this.props.className,
             "style": this.props.style,
             "name": this.props.name,
-            "value": this.value,
         };
     }
 }
