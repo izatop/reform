@@ -1,9 +1,12 @@
 {
     "name": "@reform/components",
-    "version": "0.4.1",
+    "version": "0.4.2",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
-    "files": ["dist", "sass"],
+    "files": [
+        "dist",
+        "sass"
+    ],
     "repository": "https://github.com/izatop/reform",
     "description": "Pure React UI components based on Bulma css framework",
     "keywords": [
