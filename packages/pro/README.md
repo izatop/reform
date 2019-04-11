@@ -1,6 +1,6 @@
 # @reform/pro
 
-Extended forms for `@reform/components` based on `@reform/api`
+Extended components for `@reform/components` based on `@reform/api`
 
 ## Getting Started
 

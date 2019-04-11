@@ -4,7 +4,8 @@
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "repository": "https://github.com/izatop/reform",
-    "description": "Extended forms for @reform/components",
+    "description": "Extended components for @reform/components",
+    "files": ["dist"],
     "keywords": [
         "forms",
         "react",
