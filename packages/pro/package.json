@@ -1,6 +1,6 @@
 {
     "name": "@reform/pro",
-    "version": "0.1.1",
+    "version": "0.2.0",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "repository": "https://github.com/izatop/reform",
@@ -28,8 +28,8 @@
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.8.1",
-        "@reform/api": "^0.5.1",
-        "@reform/components": "^0.3.1",
+        "@reform/api": "^0.6.0",
+        "@reform/components": "^0.4.0",
         "@types/react": "^16.8.10",
         "react": "^16.8.6"
     },

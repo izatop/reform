@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/izatop/reform/compare/@reform/api@0.5.1...@reform/api@0.6.0) (2019-03-28)
+
+
+### Features
+
+* add TableFactory component to @reform/pro ([4b1c495](https://github.com/izatop/reform/commit/4b1c495))
+
+
+
+
+
 ## [0.5.1](https://github.com/izatop/reform/compare/@reform/api@0.5.0...@reform/api@0.5.1) (2019-03-26)
 
 
