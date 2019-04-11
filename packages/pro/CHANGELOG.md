@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.3](https://github.com/izatop/reform/compare/@reform/pro@0.2.2...@reform/pro@0.2.3) (2019-04-11)
+
+
+### Bug Fixes
+
+* update build scripts ([5f29d98](https://github.com/izatop/reform/commit/5f29d98))
+* update snapshot ([be80743](https://github.com/izatop/reform/commit/be80743))
+
+
+
+
+
 ## [0.2.2](https://github.com/izatop/reform/compare/@reform/pro@0.2.1...@reform/pro@0.2.2) (2019-04-11)
 
 
