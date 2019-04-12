@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.4](https://github.com/izatop/reform/compare/@reform/dashboard@0.3.3...@reform/dashboard@0.3.4) (2019-04-12)
+
+
+### Bug Fixes
+
+* Store.toObject() ([7b942ea](https://github.com/izatop/reform/commit/7b942ea))
+
+
+
+
+
 ## [0.3.3](https://github.com/izatop/reform/compare/@reform/dashboard@0.3.2...@reform/dashboard@0.3.3) (2019-04-11)
 
 **Note:** Version bump only for package @reform/dashboard

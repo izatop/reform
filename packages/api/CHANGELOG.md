@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.3](https://github.com/izatop/reform/compare/@reform/api@0.6.2...@reform/api@0.6.3) (2019-04-12)
+
+
+### Bug Fixes
+
+* Store.toObject() ([7b942ea](https://github.com/izatop/reform/commit/7b942ea))
+
+
+
+
+
 ## [0.6.2](https://github.com/izatop/reform/compare/@reform/api@0.6.1...@reform/api@0.6.2) (2019-04-11)
 
 
