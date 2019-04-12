@@ -3,6 +3,8 @@ import {Button, Buttons, Control, Field, Help, Icon, Label} from "@reform/compon
 import {
     Checkbox,
     Email,
+    FilesUpload,
+    FileUpload,
     Input,
     MultipleSelect,
     NonIdealState,
@@ -85,6 +87,20 @@ export const FormExample: React.FC<IFormExample> = (props) => (
                 <Label>Long text</Label>
                 <Control>
                     <TextArea name={"text"} placeholder={"Enter text..."}/>
+                </Control>
+            </Field>
+
+            <Field>
+                <Label>File upload</Label>
+                <Control>
+                    <FileUpload name={"file"} placeholder={"Select file"}/>
+                </Control>
+            </Field>
+
+            <Field>
+                <Label>Multiple files upload</Label>
+                <Control>
+                    <FilesUpload fullwidth boxed color={"primary"} name={"file"} placeholder={"Select multiple file"}/>
                 </Control>
             </Field>
 

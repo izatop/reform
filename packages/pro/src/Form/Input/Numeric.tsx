@@ -9,8 +9,8 @@ export interface INumberInput {
 export class Numeric<P = {}> extends Input<P & INumberInput> {
     protected type: string = "number";
 
-    protected get initialValue() {
-        return undefined as any;
+    protected get initialValue(): any {
+        return undefined;
     }
 
     public parse(value?: string) {
