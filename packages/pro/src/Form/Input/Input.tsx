@@ -8,10 +8,11 @@ export interface IInput {
     readOnly?: boolean;
     disabled?: boolean;
     placeholder?: string;
+    type?: string;
 }
 
 export class Input<P = {}> extends AbstractControl<string | number, P & IInput> {
-    protected type: string = "input";
+    protected type = this.props.type || "input";
 
     protected get initialValue() {
         return "";
