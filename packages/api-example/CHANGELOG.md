@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.2](https://github.com/izatop/reform/compare/@reform/api-example@0.6.1...@reform/api-example@0.6.2) (2019-04-11)
+
+**Note:** Version bump only for package @reform/api-example
+
+
+
+
+
 ## [0.6.1](https://github.com/izatop/reform/compare/@reform/api-example@0.6.0...@reform/api-example@0.6.1) (2019-04-11)
 
 
