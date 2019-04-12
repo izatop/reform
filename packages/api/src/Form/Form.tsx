@@ -83,7 +83,6 @@ export class Form<T extends IFormSource, P = {}> extends React.Component<IFormPr
         }
     }
 
-
     protected reset() {
         if (this.store) {
             this.store.reset();
