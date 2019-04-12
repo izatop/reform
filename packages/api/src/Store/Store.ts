@@ -99,36 +99,40 @@ export class Store<T extends IFormSource = IFormSource,
     public toObject<R extends T = T>(): R {
         const out: {[k: string]: any} = {};
         for (const [ns, child] of this.children.entries()) {
-            const [key] = ns.includes(".") ? ns.split(".") : [ns];
-            out[key] = child.value;
+            const {key, source} = this.getPointer(ns, out);
+            source[key] = child.value;
         }
 
         return out as R;
     }
 
-    public getDirtyObject<R extends T = T>(): R {
-        const out: {[k: string]: any} = {};
+    public getSource<R extends T = T>(changes = true): R {
+        const out = JSON.parse(JSON.stringify(this.source));
+        if (!changes) {
+            return out;
+        }
+
         for (const [ns, child] of this.children.entries()) {
-            const {key, source} = this.getPointer(ns);
+            const {key, source} = this.getPointer(ns, out);
             source[key] = child.value;
         }
 
-        return this.source as R;
+        return out as R;
     }
 
-    public getPointer(key: string) {
+    public getPointer(key: string, pointer: object = this.source) {
         if (key.includes(".")) {
-            return this.getNested(key);
+            return this.getNested(key, pointer);
         }
 
-        return {source: this.source, key};
+        return {source: pointer, key};
     }
 
-    public getNested<V>(ns: string): { key: string, source: IFormSource } {
+    public getNested<V>(ns: string, pointer: object = this.source): { key: string, source: IFormSource } {
         const keys: string[] = ns.split(".");
         const key = keys.pop()!;
 
-        let source: any = this.source;
+        let source: any = pointer;
         for (const prop of keys) {
             if (typeof source[prop] === "undefined") {
                 source[prop] = {};
