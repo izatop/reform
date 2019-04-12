@@ -9,10 +9,16 @@ export interface INumberInput {
 export class Numeric<P = {}> extends Input<P & INumberInput> {
     protected type: string = "number";
 
+    protected get initialValue() {
+        return undefined as any;
+    }
+
     public parse(value?: string) {
         if (typeof value === "string" && value.length > 0) {
             return Number(value);
         }
+
+        return undefined;
     }
 
     public serialize(value?: number) {
