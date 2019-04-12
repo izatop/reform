@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.6](https://github.com/izatop/reform/compare/@reform/pro@0.2.5...@reform/pro@0.2.6) (2019-04-12)
+
+
+### Bug Fixes
+
+* input type=number fix ([ba889a2](https://github.com/izatop/reform/commit/ba889a2))
+
+
+
+
+
 ## [0.2.5](https://github.com/izatop/reform/compare/@reform/pro@0.2.4...@reform/pro@0.2.5) (2019-04-12)
 
 
