@@ -23,7 +23,7 @@
         "test:watch": "jest --passWithNoTests --config jest.json --watch",
         "test:snapshot": "jest --passWithNoTests --config jest.json --updateSnapshot",
         "api-example:play": "lerna run play --scope=@reform/api-example",
-        "dashboard:play": "lerna ci:buil && lerna run play --scope=@reform/dashboard",
+        "dashboard:play": "lerna ci:build && lerna run play --scope=@reform/dashboard",
         "bootstrap": "lerna bootstrap && lerna link"
     },
     "devDependencies": {

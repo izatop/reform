@@ -92,10 +92,24 @@ export class Store<T extends IFormSource = IFormSource,
         return ++this.flags.version;
     }
 
-    public toObject<R extends T = T>(): R {
-        for (const [ns, child] of this.children.entries()) {
-            const {source, key} = this.getPointer(ns);
+    public toJSON() {
+        return this.toObject();
+    }
 
+    public toObject<R extends T = T>(): R {
+        const out: {[k: string]: any} = {};
+        for (const [ns, child] of this.children.entries()) {
+            const [key] = ns.includes(".") ? ns.split(".") : [ns];
+            out[key] = child.value;
+        }
+
+        return out as R;
+    }
+
+    public getDirtyObject<R extends T = T>(): R {
+        const out: {[k: string]: any} = {};
+        for (const [ns, child] of this.children.entries()) {
+            const {key, source} = this.getPointer(ns);
             source[key] = child.value;
         }
 

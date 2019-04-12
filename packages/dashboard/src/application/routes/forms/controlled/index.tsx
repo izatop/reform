@@ -13,6 +13,7 @@ export default createRouteComponent(class extends React.Component {
         address: [
             {city: "City", address: "My Address", house: 12},
         ],
+        dirty: "alien",
     };
 
     public render() {
