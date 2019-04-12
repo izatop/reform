@@ -10,6 +10,7 @@ export interface IFileUpload {
     boxed?: boolean;
     fullwidth?: boolean;
     size?: SizeType;
+    accept?: string;
 }
 
 export class FileUpload<P = {}> extends AbstractControl<File, P & IFileUpload> {
@@ -30,6 +31,7 @@ export class FileUpload<P = {}> extends AbstractControl<File, P & IFileUpload> {
                                     is-boxed={this.props.boxed}
                                     disabled={this.props.disabled}
                                     readOnly={this.props.readOnly}
+                                    accept={this.props.accept}
                                     files={files}>
             {this.props.placeholder}
         </FileUploadComponent>;

@@ -25,6 +25,7 @@ export class FilesUpload<P = {}> extends AbstractControl<FileList, P & IFileUplo
                                     is-boxed={this.props.boxed}
                                     disabled={this.props.disabled}
                                     readOnly={this.props.readOnly}
+                                    accept={this.props.accept}
                                     files={files}>
             {this.props.placeholder}
         </FileUploadComponent>;
