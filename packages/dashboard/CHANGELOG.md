@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/izatop/reform/compare/@reform/dashboard@0.3.6...@reform/dashboard@0.4.0) (2019-04-12)
+
+
+### Features
+
+* add FileUpload and FilesUpload to pro ([113dfb2](https://github.com/izatop/reform/commit/113dfb2))
+
+
+
+
+
 ## [0.3.6](https://github.com/izatop/reform/compare/@reform/dashboard@0.3.5...@reform/dashboard@0.3.6) (2019-04-12)
 
 **Note:** Version bump only for package @reform/dashboard
