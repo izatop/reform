@@ -9221,14 +9221,14 @@ webidl-conversions@^4.0.2:
   resolved "https://registry.yarnpkg.com/webidl-conversions/-/webidl-conversions-4.0.2.tgz#a855980b1f0b6b359ba1d5d9fb39ae941faa63ad"
   integrity sha512-YQ+BmxuTgd6UXZW3+ICGfyqRyHXVlD5GtQr5+qjiNW7bF0cqrzX500HVXPBOvgXb5YnzDd+h0zqyv61KUD7+Sg==
 
-webpack-bundle@^0.9.12:
-  version "0.9.12"
-  resolved "https://registry.yarnpkg.com/webpack-bundle/-/webpack-bundle-0.9.12.tgz#7e54fc1cf5d577a5568a7e09688552b32ccd9848"
-  integrity sha512-TvLh4mWYWLurHTrWoyrv+TdVvz8Sfp/vpzEARbuGwGASJa3gTdKPi9qSrZJelJTTEgoawiWFkJXNFGAacmBCwg==
+webpack-bundle@^0.9.13:
+  version "0.9.13"
+  resolved "https://registry.yarnpkg.com/webpack-bundle/-/webpack-bundle-0.9.13.tgz#47f465988b16588fe3d96f2a4b0d449851eaa1a8"
+  integrity sha512-0l64rtSRVOuhYoVzOOTP+JlYx9KkZYtm7jfc7ZJqlU/Umd8mTHK/5DEMNOJPm8D0WVbgdHrFE+xeVzk+0vDzAA==
   dependencies:
     "@types/webpack" "^4.4.27"
     "@types/webpack-dev-server" "^3.1.5"
-    webpack "^4.29.0"
+    webpack "^4.30.0"
     webpack-dev-server "^3.3.1"
 
 webpack-cli@^3.3.0:
@@ -9309,36 +9309,6 @@ webpack-sources@^1.1.0, webpack-sources@^1.3.0:
   dependencies:
     source-list-map "^2.0.0"
     source-map "~0.6.1"
-
-webpack@^4.29.0:
-  version "4.29.6"
-  resolved "https://registry.yarnpkg.com/webpack/-/webpack-4.29.6.tgz#66bf0ec8beee4d469f8b598d3988ff9d8d90e955"
-  integrity sha512-MwBwpiE1BQpMDkbnUUaW6K8RFZjljJHArC6tWQJoFm0oQtfoSebtg4Y7/QHnJ/SddtjYLHaKGX64CFjG5rehJw==
-  dependencies:
-    "@webassemblyjs/ast" "1.8.5"
-    "@webassemblyjs/helper-module-context" "1.8.5"
-    "@webassemblyjs/wasm-edit" "1.8.5"
-    "@webassemblyjs/wasm-parser" "1.8.5"
-    acorn "^6.0.5"
-    acorn-dynamic-import "^4.0.0"
-    ajv "^6.1.0"
-    ajv-keywords "^3.1.0"
-    chrome-trace-event "^1.0.0"
-    enhanced-resolve "^4.1.0"
-    eslint-scope "^4.0.0"
-    json-parse-better-errors "^1.0.2"
-    loader-runner "^2.3.0"
-    loader-utils "^1.1.0"
-    memory-fs "~0.4.1"
-    micromatch "^3.1.8"
-    mkdirp "~0.5.0"
-    neo-async "^2.5.0"
-    node-libs-browser "^2.0.0"
-    schema-utils "^1.0.0"
-    tapable "^1.1.0"
-    terser-webpack-plugin "^1.1.0"
-    watchpack "^1.5.0"
-    webpack-sources "^1.3.0"
 
 webpack@^4.30.0:
   version "4.30.0"
