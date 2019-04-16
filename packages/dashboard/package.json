@@ -15,7 +15,7 @@
     },
     "devDependencies": {
         "@reform/webpack": "^0.2.2",
-        "webpack": "^4.29.6",
+        "webpack": "^4.30.0",
         "webpack-cli": "^3.3.0",
         "webpack-dev-server": "^3.3.1"
     },
