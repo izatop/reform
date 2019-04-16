@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.2](https://github.com/izatop/reform/compare/@reform/pro@0.3.1...@reform/pro@0.3.2) (2019-04-12)
+
+
+### Bug Fixes
+
+* accept prop for FileUpload ([52f2075](https://github.com/izatop/reform/commit/52f2075))
+
+
+
+
+
 ## [0.3.1](https://github.com/izatop/reform/compare/@reform/pro@0.3.0...@reform/pro@0.3.1) (2019-04-12)
 
 **Note:** Version bump only for package @reform/pro
