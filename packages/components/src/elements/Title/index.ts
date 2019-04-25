@@ -10,7 +10,7 @@ export interface ITitle {
     "is-size"?: TitleSize;
 }
 
-export type TitleProps = {children: React.ReactNode} & XProps<"h1">;
+export type TitleProps = { children: React.ReactNode } & XProps<"h1">;
 
 const createTitle = (name: string, size: TitleSize) => {
     const config = ElementFactory.create({component: name});

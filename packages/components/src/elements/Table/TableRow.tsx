@@ -8,7 +8,7 @@ export interface ITableRow {
     "is-selected"?: boolean;
 }
 
-export type TableRowProps = XProps<"tr"> & {cells?: React.ReactNode[]};
+export type TableRowProps = XProps<"tr"> & { cells?: React.ReactNode[] };
 
 const config = ElementFactory.create({displayName: "TableRow"});
 

@@ -4,6 +4,7 @@ import {AbstractControl} from "../AbstractControl";
 import {HTMLAutoCompleteType} from "../interface";
 
 export interface IInput {
+    autoFocus?: boolean;
     autoComplete?: HTMLAutoCompleteType;
     readOnly?: boolean;
     disabled?: boolean;
@@ -40,6 +41,7 @@ export class Input<P = {}> extends AbstractControl<string | number, P & IInput> 
             ...super.getControlProps(),
             type: this.type,
             value: this.value,
+            autoFocus: this.props.autoFocus,
             placeholder: this.props.placeholder,
             autoComplete: this.props.autoComplete || "off",
             disabled: this.props.disabled,
@@ -47,7 +49,7 @@ export class Input<P = {}> extends AbstractControl<string | number, P & IInput> 
         };
     }
 
-    private onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    protected onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         this.update(e.currentTarget.value);
     }
 }

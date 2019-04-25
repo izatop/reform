@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
-* { box-sizing: border-box; }
+* {
+    box-sizing: border-box;
+}
 
 html {
     -webkit-font-smoothing: antialiased;
@@ -181,9 +183,17 @@ button.is-locked {
     color: #fff;
 }
 
-form input.is-changed, form input.is-changed:focus {border: 1px solid green;}
-form input.is-not-valid, form input.is-not-valid:focus {border: 1px solid red;}
-form button.is-not-valid {color: red;}
+form input.is-changed, form input.is-changed:focus {
+    border: 1px solid green;
+}
+
+form input.is-not-valid, form input.is-not-valid:focus {
+    border: 1px solid red;
+}
+
+form button.is-not-valid {
+    color: red;
+}
 
 /* table */
 table {

@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export class Collapse extends React.Component<{state?: boolean}> {
+export class Collapse extends React.Component<{ state?: boolean }> {
     public state = {state: this.props.state};
 
     render() {

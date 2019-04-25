@@ -1,6 +1,7 @@
 import {Form, List, ListContext, Map, Store} from "@reform/api";
 import {Button, Buttons, Control, Field, Help, Icon, Label} from "@reform/components";
 import {
+    AutoComplete,
     Checkbox,
     Email,
     FilesUpload,
@@ -24,6 +25,17 @@ interface IFormExample {
 const ban = <Icon has-color={"danger"} icon={"ban"}/>;
 const user = <Icon has-color={"primary"} icon={"user"}/>;
 
+const planets = [
+    {value: "Mercury"},
+    {value: "Venera"},
+    {value: "Earth"},
+    {value: "Mars"},
+    {value: "Jupiter"},
+    {value: "Saturn"},
+    {value: "Uran"},
+    {value: "Neptun"},
+];
+
 export const FormExample: React.FC<IFormExample> = (props) => (
     <>
         <Form defaultSource={props.defaultSource}
@@ -32,8 +44,12 @@ export const FormExample: React.FC<IFormExample> = (props) => (
             <Field>
                 <Label>Login</Label>
                 <Control state={ban} type={user}>
-                    <Input placeholder={"name"} autoComplete={"name"} name={"name"}/>
+                    <Input autoFocus
+                           placeholder={"name"}
+                           autoComplete={"name"}
+                           name={"name"}/>
                 </Control>
+                <Help>AutoFocus enabled</Help>
             </Field>
 
             <Field>
@@ -42,6 +58,28 @@ export const FormExample: React.FC<IFormExample> = (props) => (
                     <Email placeholder={"Email"} name={"email"}/>
                 </Control>
                 <Help>Email input with default autoComplete=email</Help>
+            </Field>
+
+            <Field>
+                <Label>Planet</Label>
+                <Control>
+                    <AutoComplete dataSource={planets}
+                                  serialize={(value) => `label: ${value.value}`}
+                                  placeholder={"Type planet name"}
+                                  name={"planet"}/>
+                </Control>
+                <Help>AutoComplete control value/label pair</Help>
+            </Field>
+
+            <Field>
+                <Label>Planet</Label>
+                <Control>
+                    <AutoComplete dataSource={planets}
+                                  defaultValue={planets[2]}
+                                  placeholder={"Type planet name"}
+                                  name={"planet2"}/>
+                </Control>
+                <Help>AutoComplete with default value</Help>
             </Field>
 
             <Field>

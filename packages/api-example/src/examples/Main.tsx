@@ -1,7 +1,7 @@
 import * as React from "react";
 import {Tilda} from "../components/Tilda";
-import {UseArray} from "./UseArray/UseArray";
 import {SimpleForm} from "./SimpleForm/SimpleForm";
+import {UseArray} from "./UseArray/UseArray";
 import {WriteComponents} from "./WriteComponents/WriteComponents";
 
 export class Main extends React.Component {

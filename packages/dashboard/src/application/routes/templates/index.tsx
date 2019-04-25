@@ -1,5 +1,5 @@
-import {Content, Icon, Title} from "../../../../../components/dist";
 import * as React from "react";
+import {Content, Title} from "../../../../../components/dist";
 
 const TemplatePage: React.FC = (props) => (
     <Content>

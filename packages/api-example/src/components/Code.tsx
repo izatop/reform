@@ -1,6 +1,6 @@
+import * as React from "react";
 import "./Code/prism.js";
 import "./Code/style.css";
-import * as React from "react";
 import {Collapse} from "./Collapse";
 
 type Props = { name?: string, code: string, open?: boolean };

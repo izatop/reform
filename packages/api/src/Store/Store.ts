@@ -97,7 +97,7 @@ export class Store<T extends IFormSource = IFormSource,
     }
 
     public toObject<R extends T = T>(): R {
-        const out: {[k: string]: any} = {};
+        const out: { [k: string]: any } = {};
         for (const [ns, child] of this.children.entries()) {
             const {key, source} = this.getPointer(ns, out);
             source[key] = child.value;

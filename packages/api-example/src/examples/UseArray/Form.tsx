@@ -52,69 +52,69 @@ export default () => {
                 <List.IdealState>
                     <h4>List Ideal State</h4>
                     <table>
-                    <thead>
-                    <tr>
-                        <th style={{width: "50%"}}>Name</th>
-                        <th>Price</th>
-                        <th>Quantity</th>
-                        <th>Total</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <Map.Context>
-                        {(store, helper) => (
-                            <tr>
-                                <td><Placeholder name={"name"}/></td>
-                                <td>
-                                    <Placeholder name={"price"} render={(value) => (
-                                        value > 0 ? <span>{value}&nbsp;USD</span> : "Free!"
-                                    )}/>
-                                </td>
-                                <td>
-                                    <Has name={"freeze"}>
-                                        <Then>Only one</Then>
-                                        <Not><NumberInput max={10}
-                                                          min={1}
-                                                          style={{width: "60px"}}
-                                                          name={"quantity"}
-                                                          required/></Not>
-                                    </Has>
-                                    {store.exists("freeze")
-                                        ? "Only one"
-                                        : <NumberInput max={10}
-                                                       min={1}
-                                                       style={{width: "60px"}}
-                                                       name={"quantity"}
-                                                       required/>
-                                    }
-                                </td>
-                                <td>
-                                    <Placeholder name={"price"} render={(value, s) => (
-                                        s.resolve("quantity") > 0 && value > 0
-                                            ? <span>{value * s.resolve("quantity")}&nbsp;USD</span>
-                                            : "-"
-                                    )}/>
-                                </td>
-                                <td>
-                                    <button type={"button"} onClick={helper.delete}>-</button>
-                                </td>
-                            </tr>
-                        )}
-                    </Map.Context>
-                    </tbody>
-                    <tfoot>
-                    <tr>
-                        <td colSpan={2}>Size</td>
-                        <td colSpan={3} style={{textAlign: "right"}}><Size/></td>
-                    </tr>
-                    </tfoot>
-                </table>
+                        <thead>
+                        <tr>
+                            <th style={{width: "50%"}}>Name</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <Map.Context>
+                            {(store, helper) => (
+                                <tr>
+                                    <td><Placeholder name={"name"}/></td>
+                                    <td>
+                                        <Placeholder name={"price"} render={(value) => (
+                                            value > 0 ? <span>{value}&nbsp;USD</span> : "Free!"
+                                        )}/>
+                                    </td>
+                                    <td>
+                                        <Has name={"freeze"}>
+                                            <Then>Only one</Then>
+                                            <Not><NumberInput max={10}
+                                                              min={1}
+                                                              style={{width: "60px"}}
+                                                              name={"quantity"}
+                                                              required/></Not>
+                                        </Has>
+                                        {store.exists("freeze")
+                                            ? "Only one"
+                                            : <NumberInput max={10}
+                                                           min={1}
+                                                           style={{width: "60px"}}
+                                                           name={"quantity"}
+                                                           required/>
+                                        }
+                                    </td>
+                                    <td>
+                                        <Placeholder name={"price"} render={(value, s) => (
+                                            s.resolve("quantity") > 0 && value > 0
+                                                ? <span>{value * s.resolve("quantity")}&nbsp;USD</span>
+                                                : "-"
+                                        )}/>
+                                    </td>
+                                    <td>
+                                        <button type={"button"} onClick={helper.delete}>-</button>
+                                    </td>
+                                </tr>
+                            )}
+                        </Map.Context>
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <td colSpan={2}>Size</td>
+                            <td colSpan={3} style={{textAlign: "right"}}><Size/></td>
+                        </tr>
+                        </tfoot>
+                    </table>
                 </List.IdealState>
                 <List.Context>
                     {(iterator) => !iterator.some((item) => item.id === 100)
                         ? <>
                             <p>You have a gift! <button type={"button"}
-                                    onClick={() => iterator.persist(gift)}>Add a gift
+                                                        onClick={() => iterator.persist(gift)}>Add a gift
                             </button>
                             </p>
                         </>

@@ -12,6 +12,7 @@ export interface IDropdownOptions {
 }
 
 export interface IDropdown {
+    active?: boolean;
     defaultActive?: boolean;
     mouseLeaveTimeout?: number;
     button: string | ReactElement;
@@ -56,11 +57,14 @@ const renderButton = (button: React.ReactNode, active?: boolean) => {
 const config = ElementFactory.create({component: "dropdown"});
 
 export const Dropdown = config.factory<MakeProps<IDropdownOptions>, DropdownProps>(({props, children, options}) => {
-    const {defaultActive, mouseLeaveTimeout, button, ...p} = props;
-    const [active, setActive] = React.useState(defaultActive || false);
-    const trigger: any = {};
+    const {active: controlledActive, defaultActive, mouseLeaveTimeout, button, ...p} = props;
+    const [autoActive, setActive] = React.useState(defaultActive || false);
 
-    if (!options["is-hoverable"]) {
+    const trigger: any = {};
+    const controlled = typeof controlledActive === "boolean";
+    const active = controlled ? controlledActive : autoActive;
+
+    if (!controlled && !options["is-hoverable"]) {
         let timer: any;
 
         trigger.onClick = React.useCallback(
@@ -93,7 +97,7 @@ export const Dropdown = config.factory<MakeProps<IDropdownOptions>, DropdownProp
     p.className = React.useMemo(() => ClassNameResolver.resolveClassName(
         {...options, "is-active": active},
         config.config,
-    ), [active]);
+    ), [active, controlled]);
 
     return (
         <div {...p}>

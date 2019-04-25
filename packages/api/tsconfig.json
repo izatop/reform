@@ -6,7 +6,10 @@
         "outDir": "dist",
         "skipLibCheck": true,
         "composite": true,
-        "lib": ["dom", "dom.iterable"]
+        "lib": [
+            "dom",
+            "dom.iterable"
+        ]
     },
     "include": [
         "src"

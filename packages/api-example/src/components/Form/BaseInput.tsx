@@ -11,6 +11,8 @@ export interface IBaseProps {
 }
 
 export abstract class BaseInput<P = {}> extends Component<string | number, P & IBaseProps> {
+    protected abstract type: string;
+
     public get defaultValue() {
         return "";
     }
@@ -26,8 +28,6 @@ export abstract class BaseInput<P = {}> extends Component<string | number, P & I
 
         return "";
     }
-
-    protected abstract type: string;
 
     public render() {
         return <input {...this.getDefaultInputProps()}/>;

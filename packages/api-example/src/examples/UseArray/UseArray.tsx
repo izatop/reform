@@ -9,7 +9,7 @@ export const UseArray: React.StatelessComponent<{ title: string }> = (props) => 
         <p>Simple form with <Tilda>TextInput</Tilda> and <Tilda>NumberInput</Tilda> with <Tilda>defaultValue</Tilda>.
         </p>
 
-        <Form />
+        <Form/>
 
         <Code code={require("./Form.tsx?code")}/>
     </>

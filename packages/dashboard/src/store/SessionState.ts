@@ -47,7 +47,7 @@ export class SessionStore<T extends IStatus = IStatus> {
         this.setState(SessionStatus.None, {});
     }
 
-    public setState(status: SessionStatus, state: {token?: string, user?: string}) {
+    public setState(status: SessionStatus, state: { token?: string, user?: string }) {
         this.state = Object.freeze({...this.state, status, ...state}) as IStatus;
         if (this.state.status === SessionStatus.None) {
             Reflect.deleteProperty(this.state, "user");

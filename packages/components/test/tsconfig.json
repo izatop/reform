@@ -3,5 +3,7 @@
     "compilerOptions": {
         "jsx": "react"
     },
-    "include": ["."]
+    "include": [
+        "."
+    ]
 }
