@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/izatop/reform/compare/@reform/pro@0.3.3...@reform/pro@0.4.0) (2019-04-25)
+
+
+### Features
+
+* cleanup and pro AutoComplete component ([25d127a](https://github.com/izatop/reform/commit/25d127a))
+
+
+
+
+
 ## [0.3.3](https://github.com/izatop/reform/compare/@reform/pro@0.3.2...@reform/pro@0.3.3) (2019-04-16)
 
 **Note:** Version bump only for package @reform/pro
