@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.5](https://github.com/izatop/reform/compare/@reform/pro@0.4.4...@reform/pro@0.4.5) (2019-04-25)
+
+
+### Bug Fixes
+
+* code style ([14fd873](https://github.com/izatop/reform/commit/14fd873))
+
+
+
+
+
 ## [0.4.4](https://github.com/izatop/reform/compare/@reform/pro@0.4.3...@reform/pro@0.4.4) (2019-04-25)
 
 
