@@ -27,12 +27,12 @@ export const Pagination = config.factory<MakeProps<IPaginationOptions>, Paginati
         const set = React.useCallback(
             async (value: number) => {
                 let valid = true;
+                const newState = state.setPage(value);
                 if (onPageSelect) {
-                    valid = await onPageSelect(value);
+                    valid = await onPageSelect(newState.page);
                 }
 
                 if (valid) {
-                    const newState = state.setPage(value);
                     setState(newState);
                     if (onPageChange) {
                         onPageChange(newState.page);
