@@ -18,12 +18,14 @@ export const Pagination = config.factory<MakeProps<IPaginationOptions>, Paginati
     ({props, children}) => {
         const {onPageChange, onPageSelect, ...p} = props;
         const deps = getPaginationDependencies(p as PaginationVariants);
-        const defaultState = React.useMemo(
-            () => createPaginationState(p as PaginationVariants),
-            deps,
-        );
-
+        const defaultState = React.useMemo(() => createPaginationState(p as PaginationVariants), deps);
         const [state, setState] = React.useState(defaultState);
+        React.useLayoutEffect(() => {
+            requestAnimationFrame(() => {
+                setState(defaultState);
+            });
+        }, deps);
+
         const set = React.useCallback(
             async (value: number) => {
                 let valid = true;

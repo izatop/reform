@@ -58,7 +58,7 @@ export interface IPaginationPagerProps {
 export const getPaginationDependencies = (props: PaginationVariants) => {
     if (props.type === "page") {
         const {page, count} = props;
-        return [page, count];
+        return [count, page];
     }
 
     if (props.type === "limit") {

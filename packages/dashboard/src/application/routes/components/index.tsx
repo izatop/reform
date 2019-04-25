@@ -40,6 +40,7 @@ import {Placeholder} from "../../../vendor/Placeholder";
 
 export default createRouteComponent(() => {
     const [active, setActive] = React.useState(false);
+    const [page, setPage] = React.useState([1, 10]);
 
     return (
         <>
@@ -185,7 +186,12 @@ export default createRouteComponent(() => {
 
             <Pagination is-centered
                         type={"page"}
-                        count={10}>
+                        page={page[0]}
+                        count={page[1]}
+                        onPageSelect={({page: p}) => {
+                            setPage([p, Math.round(10 + (Math.random() * 90))]);
+                            return true;
+                        }}>
                 <PaginationPrevious>Previous</PaginationPrevious>
                 <PaginationNext>Next</PaginationNext>
                 <PaginationPager useful pages={4}/>
