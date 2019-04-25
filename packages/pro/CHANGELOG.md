@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.7](https://github.com/izatop/reform/compare/@reform/pro@0.4.6...@reform/pro@0.4.7) (2019-04-25)
+
+
+### Bug Fixes
+
+* AutoComplete fix ([d816f2f](https://github.com/izatop/reform/commit/d816f2f))
+
+
+
+
+
 ## [0.4.6](https://github.com/izatop/reform/compare/@reform/pro@0.4.5...@reform/pro@0.4.6) (2019-04-25)
 
 
