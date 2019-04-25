@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.6](https://github.com/izatop/reform/compare/@reform/pro@0.4.5...@reform/pro@0.4.6) (2019-04-25)
+
+
+### Bug Fixes
+
+* last try >_< ([9bc16d2](https://github.com/izatop/reform/commit/9bc16d2))
+
+
+
+
+
 ## [0.4.5](https://github.com/izatop/reform/compare/@reform/pro@0.4.4...@reform/pro@0.4.5) (2019-04-25)
 
 
