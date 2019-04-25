@@ -1,3 +1,5 @@
+import {IPaginationLimitState, IPaginationPageState} from "./props";
+
 interface IRange {
     page: number | string;
 }
@@ -14,9 +16,23 @@ export abstract class PaginationState {
         return this.page === 1;
     }
 
-    public abstract get next(): number;
+    public abstract get state(): IPaginationLimitState | IPaginationPageState;
 
-    public abstract get previous(): number;
+    public get previous(): number {
+        if (this.isFirst) {
+            return 0;
+        }
+
+        return this.page - 1;
+    }
+
+    public get next(): number {
+        if (this.isLast) {
+            return this.pages;
+        }
+
+        return this.page + 1;
+    }
 
     public abstract get page(): number;
 
@@ -25,7 +41,7 @@ export abstract class PaginationState {
     public getRange(pages: number, useful?: boolean) {
         let edge = Math.floor(pages / 2);
         let start = 1;
-        let end = pages;
+        let end = pages > this.pages ? this.pages : pages;
 
         if (pages < this.pages) {
             start = this.page - edge;

@@ -194,6 +194,21 @@ export default createRouteComponent(() => {
             <hr/>
 
             <Content>
+                <p>Example of Pagination component with offset/limit pattern</p>
+            </Content>
+
+            <Pagination is-centered
+                        type={"limit"}
+                        limit={10}
+                        count={155}>
+                <PaginationPrevious>Previous</PaginationPrevious>
+                <PaginationNext>Next</PaginationNext>
+                <PaginationPager useful pages={4}/>
+            </Pagination>
+
+            <hr/>
+
+            <Content>
                 <Title id={"panel"}>Panel</Title>
 
                 <p>Do you want this one? Enjoy!</p>

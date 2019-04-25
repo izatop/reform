@@ -20,9 +20,6 @@ export interface IPaginationOptions {
 
 export interface IPaginationProps {
     navigation?: boolean;
-    label?: (page: number) => string;
-    onPageSelect?: (page: number) => Promise<boolean> | boolean;
-    onPageChange?: (page: number) => void;
 }
 
 export interface IPaginationPageState {
@@ -36,12 +33,18 @@ export interface IPaginationLimitState {
     count: number;
 }
 
-export interface IPaginationPageProps extends IPaginationPageState, IPaginationProps {
+export interface IPaginationPageProps extends IPaginationPageState,
+    IPaginationProps {
     type: "page";
+    onPageSelect?: (state: Readonly<Required<IPaginationPageState>>) => Promise<boolean> | boolean;
+    onPageChange?: (state: Readonly<Required<IPaginationPageState>>) => void;
 }
 
-export interface IPaginationLimitProps extends IPaginationLimitState, IPaginationProps {
+export interface IPaginationLimitProps extends IPaginationLimitState,
+    IPaginationProps {
     type: "limit";
+    onPageSelect?: (state: Readonly<Required<IPaginationLimitState>>) => Promise<boolean> | boolean;
+    onPageChange?: (state: Readonly<Required<IPaginationLimitState>>) => void;
 }
 
 export type PaginationVariants = IPaginationPageProps | IPaginationLimitProps;

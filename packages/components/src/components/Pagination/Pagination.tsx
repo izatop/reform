@@ -29,13 +29,13 @@ export const Pagination = config.factory<MakeProps<IPaginationOptions>, Paginati
                 let valid = true;
                 const newState = state.setPage(value);
                 if (onPageSelect) {
-                    valid = await onPageSelect(newState.page);
+                    valid = await onPageSelect(newState.state as any);
                 }
 
                 if (valid) {
                     setState(newState);
                     if (onPageChange) {
-                        onPageChange(newState.page);
+                        onPageChange(newState.state as any);
                     }
                 }
             },
