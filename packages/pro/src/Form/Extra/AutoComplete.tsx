@@ -88,6 +88,14 @@ export class AutoComplete<TValue = IAutoCompleteValue> extends Receiver<IAutoCom
         if (value && this.isDefaultType(value)) {
             return this.props.serialize ? this.props.serialize(value) : `${value.label || value.value}`;
         }
+
+        if (value && this.isUserType(value)) {
+            if (!this.props.serialize) {
+                throw new Error(`AutoComplete should have a prop serialize`);
+            }
+
+            return this.props.serialize(value);
+        }
     }
 
     private updateSuggestion = async () => {
