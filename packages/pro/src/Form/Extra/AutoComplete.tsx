@@ -11,7 +11,7 @@ export interface IAutoCompleteProps<TValue> {
     name: string;
     placeholder?: string;
     defaultValue?: TValue;
-    dataSource: {(search: string): Promise<TValue[]>} | TValue[];
+    dataSource: ((search: string) => Promise<TValue[]>) | TValue[];
     serialize?: (value: TValue) => string;
 }
 
