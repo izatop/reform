@@ -93,11 +93,11 @@ export class AutoComplete<TValue = IAutoCompleteValue> extends Receiver<IAutoCom
     private updateSuggestion = async () => {
         const {value} = this.state;
         if (!value) {
-            return this.setState({values: []});
+            return this.setState({active: false, values: []});
         }
 
         if (typeof this.props.dataSource === "function") {
-            return this.setState({values: await this.props.dataSource(value)});
+            return this.setState({active: true, values: await this.props.dataSource(value)});
         }
 
         const search = value.toLowerCase();
