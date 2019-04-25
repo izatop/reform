@@ -101,7 +101,7 @@ export class AutoComplete<TValue = IAutoCompleteValue> extends Receiver<IAutoCom
     private updateSuggestion = async () => {
         const {value} = this.state;
         if (!value) {
-            return this.setState({active: false, values: []});
+            return this.link.update(undefined);
         }
 
         if (typeof this.props.dataSource === "function") {
