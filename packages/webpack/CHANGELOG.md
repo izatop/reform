@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/izatop/reform/compare/@reform/webpack@0.2.3...@reform/webpack@0.3.0) (2019-04-25)
+
+
+### Features
+
+* cleanup and pro AutoComplete component ([25d127a](https://github.com/izatop/reform/commit/25d127a))
+
+
+
+
+
 ## [0.2.3](https://github.com/izatop/reform/compare/@reform/webpack@0.2.2...@reform/webpack@0.2.3) (2019-04-16)
 
 
