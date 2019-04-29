@@ -16,7 +16,7 @@
         "@types/prismjs": "^1.16.0",
         "@types/react": "^16.8.14",
         "@types/react-dom": "^16.8.4",
-        "@types/webpack": "^4.4.27",
+        "@types/webpack": "^4.4.29",
         "@types/webpack-dev-server": "^3.1.5",
         "html-webpack-plugin": "^3.2.0",
         "normalize.css": "^8.0.1",
@@ -31,7 +31,7 @@
         "css-loader": "^2.1.1",
         "raw-loader": "^2.0.0",
         "style-loader": "^0.23.1",
-        "ts-loader": "^5.4.3"
+        "ts-loader": "^5.4.4"
     },
     "license": "MIT"
 }
