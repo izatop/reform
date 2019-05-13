@@ -11,7 +11,7 @@
     "dependencies": {
         "@types/html-webpack-plugin": "^3.2.0",
         "@types/mini-css-extract-plugin": "^0.2.0",
-        "@types/webpack": "^4.4.29",
+        "@types/webpack": "^4.4.31",
         "@types/webpack-dev-server": "^3.1.5",
         "css-loader": "^2.1.1",
         "file-loader": "^3.0.1",
@@ -20,10 +20,10 @@
         "mini-css-extract-plugin": "^0.6.0",
         "node-sass": "^4.12.0",
         "sass-loader": "^7.1.0",
-        "ts-loader": "^5.4.4",
+        "ts-loader": "^6.0.0",
         "url-loader": "^1.1.2",
-        "webpack": "^4.30.0",
-        "webpack-bundle": "^0.9.15"
+        "webpack": "^4.31.0",
+        "webpack-bundle": "^0.9.16"
     },
     "license": "MIT"
 }

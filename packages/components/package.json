@@ -31,9 +31,9 @@
         "copy-and-watch": "^0.1.2"
     },
     "dependencies": {
-        "@fortawesome/fontawesome-free": "^5.8.1",
+        "@fortawesome/fontawesome-free": "^5.8.2",
         "@reform/api": "^0.7.3",
-        "@types/react": "^16.8.14",
+        "@types/react": "^16.8.17",
         "bulma": "^0.7.4",
         "react": "^16.8.6"
     },
