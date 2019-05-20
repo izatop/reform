@@ -39,8 +39,8 @@ script:
 after_script:
   - greenkeeper-lockfile-upload
 
-#after_success:
-#  - yarn ci:coveralls
+after_success:
+  - yarn ci:coveralls
 
 branches:
   only:

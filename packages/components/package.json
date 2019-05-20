@@ -34,7 +34,7 @@
         "@fortawesome/fontawesome-free": "^5.8.2",
         "@reform/api": "^0.7.4",
         "@types/react": "^16.8.17",
-        "bulma": "^0.7.4",
+        "bulma": "^0.7.5",
         "react": "^16.8.6"
     },
     "license": "MIT"

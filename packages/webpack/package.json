@@ -20,10 +20,10 @@
         "mini-css-extract-plugin": "^0.6.0",
         "node-sass": "^4.12.0",
         "sass-loader": "^7.1.0",
-        "ts-loader": "^6.0.0",
+        "ts-loader": "^6.0.1",
         "url-loader": "^1.1.2",
-        "webpack": "^4.31.0",
-        "webpack-bundle": "^0.9.16"
+        "webpack": "^4.32.0",
+        "webpack-bundle": "^0.9.17"
     },
     "license": "MIT"
 }

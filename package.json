@@ -27,21 +27,19 @@
         "bootstrap": "lerna bootstrap && lerna link"
     },
     "devDependencies": {
-        "@types/jest": "^24.0.12",
+        "@types/jest": "^24.0.13",
+        "@types/react-test-renderer": "^16.8.1",
         "coveralls": "^3.0.3",
-        "husky": "^2.2.0",
+        "husky": "^2.3.0",
         "jest": "^24.8.0",
         "jest-serializer-path": "^0.1.15",
-        "lerna": "^3.13.4",
+        "lerna": "^3.14.1",
         "react-test-renderer": "^16.8.6",
         "rimraf": "^2.6.3",
         "ts-jest": "^24.0.2",
-        "ts-node": "8.0.2",
+        "ts-node": "8.1.0",
         "tslint": "^5.16.0",
         "typescript": "^3.4.5"
     },
-    "license": "MIT",
-    "dependencies": {
-        "@types/react-test-renderer": "^16.8.1"
-    }
+    "license": "MIT"
 }
