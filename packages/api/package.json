@@ -1,6 +1,6 @@
 {
     "name": "@reform/api",
-    "version": "0.7.5",
+    "version": "0.7.6",
     "repository": "https://github.com/izatop/reform",
     "description": "Pure React Forms API based on new Context API",
     "keywords": [
