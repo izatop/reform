@@ -1,6 +1,6 @@
 {
     "name": "@reform/dashboard",
-    "version": "0.5.11",
+    "version": "0.5.12",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "author": {
@@ -14,7 +14,7 @@
         "dev:build": "webpack-cli"
     },
     "devDependencies": {
-        "@reform/webpack": "^0.3.6",
+        "@reform/webpack": "^0.3.7",
         "webpack": "^4.32.2",
         "webpack-cli": "^3.3.2",
         "webpack-dev-server": "^3.4.1"
