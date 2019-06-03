@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.9](https://github.com/izatop/reform/compare/@reform/components@0.5.8...@reform/components@0.5.9) (2019-06-03)
+
+
+### Bug Fixes
+
+* update scss for Bulma release ([da1f176](https://github.com/izatop/reform/commit/da1f176))
+
+
+
+
+
 ## [0.5.8](https://github.com/izatop/reform/compare/@reform/components@0.5.7...@reform/components@0.5.8) (2019-06-03)
 
 
