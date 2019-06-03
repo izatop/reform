@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.13](https://github.com/izatop/reform/compare/@reform/dashboard@0.5.12...@reform/dashboard@0.5.13) (2019-06-03)
+
+
+### Bug Fixes
+
+* update deps ([5a07a83](https://github.com/izatop/reform/commit/5a07a83))
+
+
+
+
+
 ## [0.5.12](https://github.com/izatop/reform/compare/@reform/dashboard@0.5.11...@reform/dashboard@0.5.12) (2019-05-28)
 
 **Note:** Version bump only for package @reform/dashboard
