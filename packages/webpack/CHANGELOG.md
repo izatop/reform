@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.10](https://github.com/izatop/reform/compare/@reform/webpack@0.3.9...@reform/webpack@0.3.10) (2019-06-05)
+
+
+### Bug Fixes
+
+* update deps ([6d06b08](https://github.com/izatop/reform/commit/6d06b08))
+
+
+
+
+
 ## [0.3.9](https://github.com/izatop/reform/compare/@reform/webpack@0.3.8...@reform/webpack@0.3.9) (2019-06-03)
 
 **Note:** Version bump only for package @reform/webpack
