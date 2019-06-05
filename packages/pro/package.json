@@ -30,7 +30,7 @@
         "copy-and-watch": "^0.1.2"
     },
     "dependencies": {
-        "@fortawesome/fontawesome-free": "^5.8.2",
+        "@fortawesome/fontawesome-free": "^5.9.0",
         "@reform/api": "^0.7.8",
         "@reform/components": "^0.5.9",
         "@types/react": "^16.8.19",
