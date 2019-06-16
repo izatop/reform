@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.17](https://github.com/izatop/reform/compare/@reform/pro@0.4.16...@reform/pro@0.4.17) (2019-06-16)
+
+
+### Bug Fixes
+
+* use internal Omit type ([bd4702f](https://github.com/izatop/reform/commit/bd4702f))
+
+
+
+
+
 ## [0.4.16](https://github.com/izatop/reform/compare/@reform/pro@0.4.15...@reform/pro@0.4.16) (2019-06-16)
 
 **Note:** Version bump only for package @reform/pro
