@@ -1,4 +1,3 @@
-import {Omit} from "@sirian/ts-extra-types";
 import * as React from "react";
 import {ITableSource} from "./props";
 import {ITableStoreProperty} from "./TableStore";
