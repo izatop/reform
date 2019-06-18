@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.18](https://github.com/izatop/reform/compare/@reform/pro@0.4.17...@reform/pro@0.4.18) (2019-06-18)
+
+
+### Bug Fixes
+
+* add disabled prop to Select ([8fc6fa1](https://github.com/izatop/reform/commit/8fc6fa1))
+
+
+
+
+
 ## [0.4.17](https://github.com/izatop/reform/compare/@reform/pro@0.4.16...@reform/pro@0.4.17) (2019-06-16)
 
 

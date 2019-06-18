@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.13](https://github.com/izatop/reform/compare/@reform/api-example@0.7.12...@reform/api-example@0.7.13) (2019-06-18)
+
+
+### Bug Fixes
+
+* add disabled prop to Select ([8fc6fa1](https://github.com/izatop/reform/commit/8fc6fa1))
+
+
+
+
+
 ## [0.7.12](https://github.com/izatop/reform/compare/@reform/api-example@0.7.11...@reform/api-example@0.7.12) (2019-06-16)
 
 **Note:** Version bump only for package @reform/api-example

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.14](https://github.com/izatop/reform/compare/@reform/webpack@0.3.13...@reform/webpack@0.3.14) (2019-06-18)
+
+
+### Bug Fixes
+
+* add disabled prop to Select ([8fc6fa1](https://github.com/izatop/reform/commit/8fc6fa1))
+
+
+
+
+
 ## [0.3.13](https://github.com/izatop/reform/compare/@reform/webpack@0.3.12...@reform/webpack@0.3.13) (2019-06-16)
 
 **Note:** Version bump only for package @reform/webpack
