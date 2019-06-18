@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.19](https://github.com/izatop/reform/compare/@reform/pro@0.4.18...@reform/pro@0.4.19) (2019-06-18)
+
+
+### Bug Fixes
+
+* import ([ec373fd](https://github.com/izatop/reform/commit/ec373fd))
+
+
+
+
+
 ## [0.4.18](https://github.com/izatop/reform/compare/@reform/pro@0.4.17...@reform/pro@0.4.18) (2019-06-18)
 
 
