@@ -4,6 +4,7 @@ import {AbstractControl} from "../AbstractControl";
 
 export interface ISelect {
     options: SelectOptionType[];
+    disabled?: boolean;
 }
 
 export class Select<P = {}> extends AbstractControl<string | number, P & ISelect> {
@@ -25,6 +26,7 @@ export class Select<P = {}> extends AbstractControl<string | number, P & ISelect
         return (
             <SelectComponent {...this.getControlProps()}
                              onChange={this.onChange}
+                             disabled={this.props.disabled}
                              options={this.props.options}/>
         );
     }
