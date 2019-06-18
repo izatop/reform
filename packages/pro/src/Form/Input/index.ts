@@ -5,4 +5,5 @@ export * from "./FilesUpload";
 export * from "./Numeric";
 export * from "./Input";
 export * from "./Password";
+export * from "./Hidden";
 export * from "./Phone";
