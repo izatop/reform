@@ -7,7 +7,7 @@ export interface IElementContainer {
     children: (element: Element) => React.ReactNode;
 }
 
-export class ElementContainer extends React.PureComponent<IElementContainer> {
+export class ValueContainer extends React.PureComponent<IElementContainer> {
     public render() {
         return (
             <StoreContext.Consumer>
