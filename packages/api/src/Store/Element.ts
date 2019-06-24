@@ -2,42 +2,84 @@ import {IMountOptions, Store, StoreListener} from "./Store";
 
 export type ElementListener<T, V> = <E extends Element<T, V>>(e: E) => void;
 
-export class Element<T = any, V = T[keyof T]> {
-    public value?: V;
+export interface IElementState<V> {
+    value: V | undefined;
+    valid: boolean;
+    changed: boolean;
+    version: number;
+    required: boolean;
+    deferredUpdate: (state: Partial<IElementState<V>>) => IElementState<V>;
+}
 
+export class Element<T = any, V = T[keyof T]> {
     public initial?: V;
 
-    public valid = true;
-
-    public changed = false;
-
-    public version = 0;
+    protected state: IElementState<V>;
 
     protected listeners: Array<ElementListener<T, V>> = [];
 
     constructor(protected context: Store<T>, value: V, protected options: IMountOptions) {
-        this.value = value;
         this.initial = value;
+        this.state = {
+            deferredUpdate: this.deferredUpdate,
+            valid: true,
+            changed: false,
+            required: options.required || false,
+            version: 0,
+            value,
+        };
 
         if (typeof value === "undefined") {
-            this.value = typeof options.defaultValue === "undefined"
-                ? this.options.initialValue
-                : this.options.defaultValue;
+            this.state.value = typeof options.defaultValue === "undefined"
+                ? options.initialValue
+                : options.defaultValue;
 
-            this.initial = this.options.initialValue;
+            this.initial = options.initialValue;
         }
 
-        this.valid = this.options.validate(this.value);
-        this.changed = !this.options.compare(this.initial, this.value);
+        this.initialize();
     }
 
-    public get state() {
-        return {
-            valid: this.valid,
-            value: this.value,
-            changed: this.changed,
-            version: this.version,
-        };
+    public get changed() {
+        return this.state.changed;
+    }
+
+    public get valid() {
+        return this.state.valid;
+    }
+
+    public get required() {
+        return this.state.required;
+    }
+
+    public get value() {
+        return this.state.value;
+    }
+
+    public getState() {
+        return this.state;
+    }
+
+    public setState(nextState: Partial<IElementState<V>>, updateVersion = false) {
+        for (const [key, value] of Object.entries(nextState)) {
+            if (Reflect.get(this.state, key) !== value) {
+                this.state = {...this.state, ...nextState};
+                if (updateVersion) {
+                    this.state = {...this.state, version: this.state.version++};
+                }
+            }
+        }
+
+        return this.state;
+    }
+
+    public validate() {
+        this.setState({
+            valid: this.options.validate(this.value, this.required),
+            changed: !this.options.compare(this.initial, this.value),
+        });
+
+        return this.state;
     }
 
     public update(value: V | undefined) {
@@ -45,10 +87,13 @@ export class Element<T = any, V = T[keyof T]> {
             return this.state;
         }
 
-        this.value = value;
-        this.version++;
-        this.compute();
+        this.setState({
+            ...this.state,
+            value,
+            version: this.state.version + 1,
+        });
 
+        this.compute();
         return this.state;
     }
 
@@ -58,7 +103,11 @@ export class Element<T = any, V = T[keyof T]> {
         }
 
         this.initial = this.value;
-        this.version++;
+        this.setState({
+            ...this.state,
+            version: this.state.version + 1,
+        });
+
         this.compute();
     }
 
@@ -67,8 +116,12 @@ export class Element<T = any, V = T[keyof T]> {
             return;
         }
 
-        this.value = this.initial;
-        this.version++;
+        this.setState({
+            ...this.state,
+            value: this.initial,
+            version: this.state.version + 1,
+        });
+
         this.compute();
     }
 
@@ -85,14 +138,23 @@ export class Element<T = any, V = T[keyof T]> {
     }
 
     public destroy() {
-        this.listeners.splice(0, this.listeners.length);
+        this.listeners.length = 0;
+
         delete this.context;
-        delete this.value;
+        delete this.state.value;
+    }
+
+    protected deferredUpdate = (nextState: Partial<IElementState<V>>) => {
+        this.setState(nextState, true);
+        return this.validate();
+    }
+
+    protected initialize() {
+        this.validate();
     }
 
     protected compute() {
-        this.valid = this.options.validate(this.value);
-        this.changed = !this.options.compare(this.initial, this.value);
+        this.validate();
         this.fire();
     }
 }

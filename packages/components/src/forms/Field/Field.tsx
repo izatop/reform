@@ -7,8 +7,10 @@ export interface IField {
     "has-addons"?: boolean | "centered" | "right";
 }
 
+export type ElementOrExp = React.ReactElement | false;
+
 export type FieldProps = XProps<"div"> & {
-    children: React.ReactElement | [React.ReactElement, ...React.ReactElement[]];
+    children: ElementOrExp | [ElementOrExp, ...ElementOrExp[]];
 };
 
 const config = ElementFactory.create({

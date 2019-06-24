@@ -19,8 +19,8 @@ export class Input<P = {}> extends AbstractControl<string | number, P & IInput> 
         return "";
     }
 
-    public validate(value: string | number): boolean {
-        if (!this.props.required) {
+    public validate(value: string | number, required: boolean): boolean {
+        if (!required) {
             return true;
         }
 

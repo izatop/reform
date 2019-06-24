@@ -1,5 +1,5 @@
 import * as React from "react";
-import {FormContext} from "../Context";
+import {StoreContext} from "../Context";
 import {FormOnChange, IFormProps} from "../interfaces";
 import {IFormSource, Store} from "../Store";
 
@@ -40,9 +40,9 @@ export class Form<T extends IFormSource, P = {}> extends React.Component<IFormPr
                   className={this.props.className}
                   onSubmit={this.onSubmit}
                   onReset={this.onReset}>
-                <FormContext.Provider value={this.store}>
+                <StoreContext.Provider value={this.store}>
                     {this.props.children}
-                </FormContext.Provider>
+                </StoreContext.Provider>
             </form>
         );
     }

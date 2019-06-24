@@ -1,10 +1,10 @@
 import * as React from "react";
 import {Receiver} from "../Context";
 import {IComponentProps, IComponentState} from "../interfaces";
-import {Element} from "../Store";
+import {Element, IElementState} from "../Store";
 
-export abstract class Component<T = any, P = {}> extends Receiver<P & IComponentProps, IComponentState<T>> {
-    public state: IComponentState<T>;
+export abstract class Component<T = any, P = {}> extends Receiver<P & IComponentProps, IElementState<T>> {
+    public state: IElementState<T>;
 
     protected link!: Element;
 
@@ -29,8 +29,20 @@ export abstract class Component<T = any, P = {}> extends Receiver<P & IComponent
         return this.state.changed;
     }
 
+    protected get defaultValue(): T | undefined {
+        return this.props.defaultValue;
+    }
+
     protected get initialValue(): T | undefined {
-        return;
+        return undefined;
+    }
+
+    public static getDerivedStateFromProps(nextProps: IComponentProps, prevState: IElementState<any>) {
+        if (nextProps.required !== prevState.required) {
+            return prevState.deferredUpdate({required: !!nextProps.required});
+        }
+
+        return null;
     }
 
     /**
@@ -59,9 +71,10 @@ export abstract class Component<T = any, P = {}> extends Receiver<P & IComponent
      * Validate value.
      *
      * @param value
+     * @param required
      */
-    public validate(value?: T): boolean {
-        return !(this.props.required && (typeof value === "undefined" || !value));
+    public validate(value?: T, required?: boolean): boolean {
+        return !required || (typeof value !== "undefined" && !!value);
     }
 
     /**
@@ -77,13 +90,21 @@ export abstract class Component<T = any, P = {}> extends Receiver<P & IComponent
     }
 
     public shouldComponentUpdate(nextProps: Readonly<P & IComponentProps>, nextState: Readonly<IComponentState<T>>, nextContext: any): boolean {
-        return nextState.version > this.state.version;
+        return nextState.version > this.state.version
+            || this.props.required !== nextProps.required;
     }
 
     public componentDidMount() {
         super.componentDidMount();
-        this.link.listen((store) => {
-            this.setState(store.state);
+        const onUpdateValue = typeof this.props.onUpdateValue === "function"
+            ? this.props.onUpdateValue!
+            : () => void 0;
+
+        this.link.listen((link) => {
+            const nextState = link.getState();
+            if (nextState.version > this.state.version) {
+                this.setState(nextState, () => onUpdateValue(this.state));
+            }
         });
     }
 
@@ -96,18 +117,18 @@ export abstract class Component<T = any, P = {}> extends Receiver<P & IComponent
         this.link = this.context.mount(
             this.props.name,
             {
+                required: this.props.required,
                 initialValue: this.initialValue,
-                defaultValue: this.props.defaultValue,
-                validate: (value) => this.validate(value),
+                defaultValue: this.defaultValue,
+                validate: (value, required: boolean) => this.validate(value, required),
                 compare: (v1, v2) => this.compare(v1, v2),
             },
         );
 
-        return this.link.state;
+        return this.link.getState();
     }
 
     protected update(rawValue: any) {
-        const value = this.parse(rawValue);
-        this.setState(this.link.update(value));
+        this.setState(this.link.update(this.parse(rawValue)));
     }
 }

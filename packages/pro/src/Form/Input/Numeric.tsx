@@ -25,8 +25,8 @@ export class Numeric<P = {}> extends Input<P & INumberInput> {
         return value ? value.toString() : "";
     }
 
-    public validate(value: number) {
-        if (!super.validate(value)) {
+    public validate(value: number, required: boolean) {
+        if (!super.validate(value, required)) {
             return false;
         }
 

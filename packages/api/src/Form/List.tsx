@@ -3,7 +3,7 @@ import {IterableContext, Receiver} from "../Context";
 import {ElementIterable} from "../Store";
 import {IdealState} from "./List/IdealState";
 import {NonIdealState} from "./List/NonIdealState";
-import {ListContext} from "./ListContext";
+import {ListContainer} from "./ListContainer";
 
 export interface IListProps {
     name: string;
@@ -13,7 +13,7 @@ export interface IListProps {
 export type ListContextType = (data: ElementIterable) => React.ReactNode;
 
 export class List extends Receiver<IListProps> {
-    public static Context = ListContext;
+    public static Context = ListContainer;
 
     public static IdealState = IdealState;
 

@@ -33,7 +33,7 @@
         "@fortawesome/fontawesome-free": "^5.9.0",
         "@reform/api": "^0.7.11",
         "@reform/components": "^0.5.12",
-        "@types/react": "^16.8.20",
+        "@types/react": "^16.8.22",
         "react": "^16.8.6"
     },
     "license": "MIT"

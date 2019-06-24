@@ -1,4 +1,4 @@
-import {Form, List, ListContext, Map, Store} from "@reform/api";
+import {Form, List, ListContainer, Map, Store} from "@reform/api";
 import {Button, Buttons, Control, Field, Help, Icon, Label} from "@reform/components";
 import {
     AutoComplete,
@@ -36,8 +36,10 @@ const planets = [
     {value: "Neptun"},
 ];
 
-export const FormExample: React.FC<IFormExample> = (props) => (
-    <>
+export const FormExample: React.FC<IFormExample> = (props) => {
+    const [hobbyRequired, setHobbyRequired] = React.useState(true);
+
+    return (<>
         <Form defaultSource={props.defaultSource}
               onMount={props.onChange}
               onChange={props.onChange}>
@@ -100,24 +102,33 @@ export const FormExample: React.FC<IFormExample> = (props) => (
             <Field>
                 <Label>Hobby</Label>
                 <Control>
-                    <Input name={"me.hobby"} placeholder={"Enter your hobby"} required/>
+                    <Input name={"me.hobby"}
+                           placeholder={"Enter your hobby"}
+                           required={hobbyRequired}/>
                 </Control>
-                <Help is-color={"danger"}>Required field hobby</Help>
+                {hobbyRequired && <Help is-color={"danger"}>Required field hobby</Help>}
             </Field>
 
             <Field>
                 <Control>
-                    <Checkbox name={"checkbox"}>Checkbox</Checkbox>
+                    <Checkbox defaultValue={hobbyRequired}
+                              onUpdateValue={({value}) => setHobbyRequired(value)}
+                              name={"checkbox"}>Hobby required</Checkbox>
                 </Control>
             </Field>
 
             <Label>Select</Label>
             <Field is-grouped>
                 <Control>
-                    <MultipleSelect name={"multiple"} size={3} options={[1, 2, 5]}/>
+                    <MultipleSelect name={"multiple"} size={3} options={["foo", "bar", "baz"]}/>
                 </Control>
                 <Control>
-                    <Select name={"select"} options={[1, 2, 3]}/>
+                    <Select name={"select.required"} required options={["A", "B", "C", "D"]}/>
+                </Control>
+                <Control>
+                    <Select name={"select.blank"}
+                            emptiness
+                            options={[{label: "Blank Label", value: "blank-value"}]}/>
                 </Control>
             </Field>
 
@@ -171,13 +182,13 @@ export const FormExample: React.FC<IFormExample> = (props) => (
                         </Field>
                     )}
                 </Map.Context>
-                <ListContext>
+                <ListContainer>
                     {(store) => (
                         <Buttons is-align={"right"}>
                             <Button onClick={() => store.add({})}>Add</Button>
                         </Buttons>
                     )}
-                </ListContext>
+                </ListContainer>
             </List>
 
             <Buttons is-align={"right"}>
@@ -185,5 +196,5 @@ export const FormExample: React.FC<IFormExample> = (props) => (
                 <Submit>Submit</Submit>
             </Buttons>
         </Form>
-    </>
-);
+    </>);
+};

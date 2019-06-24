@@ -14,7 +14,8 @@ export type SelectStateType = SelectState | "hovered" | "focused" | "loading";
 
 export type SelectOptionType = string
     | number
-    | { key?: string | number, value: string | number, label: string | number };
+    | undefined
+    | { key?: string | number, value?: string | number, label: string | number };
 
 const mapOptionToSelect = (value: SelectOptionType, key?: number | string) => {
     if (typeof value === "object") {
@@ -35,6 +36,7 @@ export interface ISelect {
 
 export type SelectProps = XProps<"select"> & {
     options: SelectOptionType[];
+    emptiness?: string | boolean;
 };
 
 const config = ElementFactory.create({
@@ -42,12 +44,24 @@ const config = ElementFactory.create({
     mutations: {multiple: "is-multiple"},
 });
 
-export const Select = config.factory<MakeProps<ISelect>, SelectProps>(({props, ...s}) => {
-    const {className, options, ...p} = props;
+const getOptions = (options: SelectOptionType[], emptiness?: string | boolean) => {
+    if (!!emptiness) {
+        return [
+            typeof emptiness === "string" ? {label: emptiness} : undefined,
+            ...options,
+        ];
+    }
+
+    return options;
+};
+
+export const Select = config.factory<MakeProps<ISelect>, SelectProps>(({props}) => {
+    const {className, options, emptiness, ...p} = props;
+    const optimizedOptions = React.useMemo(() => getOptions(options, emptiness), [options, emptiness]);
     return (
         <div className={className}>
             <select {...p}>
-                {options.map(mapOptionToSelect)}
+                {optimizedOptions.map(mapOptionToSelect)}
             </select>
         </div>
     );

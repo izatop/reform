@@ -13,17 +13,25 @@ export interface IIterableContainer<T> {
 let ELEMENT_ID = 0;
 
 export class ElementIterable<T = any> extends Element<T, any[]> {
-    public version = 0;
-
-    protected children: Array<IIterableContainer<T>> = [];
+    protected children!: Array<IIterableContainer<T>>;
 
     constructor(store: Store<T>, iterable: any[], options: IMountOptions) {
         super(store, iterable, options);
         for (const source of this.value || []) {
             this.children.push(this.factory(source));
         }
+    }
 
-        this.compute();
+    public validate() {
+        this.state = {
+            ...this.state,
+            valid: this.children.every((container) => container.valid),
+            changed: this.children.some((container) => (
+                container.added || !container.store.ready || container.changed
+            )),
+        };
+
+        return this.state;
     }
 
     public count() {
@@ -31,7 +39,7 @@ export class ElementIterable<T = any> extends Element<T, any[]> {
     }
 
     public commit() {
-        if (!this.changed) {
+        if (!this.state.changed) {
             return;
         }
 
@@ -43,14 +51,15 @@ export class ElementIterable<T = any> extends Element<T, any[]> {
 
         this.children = this.children.filter(({store}) => store.ready);
         this.children.forEach(({store}) => store.commit());
-        this.version++;
+        this.state.version++;
+
         this.compute();
 
         this.initial = this.value;
     }
 
     public reset() {
-        if (!this.changed) {
+        if (!this.state.changed) {
             return;
         }
 
@@ -132,16 +141,18 @@ export class ElementIterable<T = any> extends Element<T, any[]> {
         super.destroy();
     }
 
-    protected compute() {
-        this.valid = this.children.every((container) => container.valid);
-        this.changed = this.children.some((container) => (
-            container.added || !container.store.ready || container.changed
-        ));
+    protected initialize() {
+        this.children = [];
+        this.validate();
+    }
 
-        this.value = this.children
+    protected compute() {
+        this.state.version++;
+        this.state.value = this.children
             .filter(({store}) => store.ready)
             .map(({store}) => store.toObject());
 
+        this.validate();
         this.fire();
     }
 

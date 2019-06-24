@@ -1,10 +1,10 @@
 import * as React from "react";
 import {Store} from "../Store";
 import {debounce} from "../utils";
-import {FormContext} from "./Contexts";
+import {StoreContext} from "./Contexts";
 
 export abstract class Receiver<P = {}, S = any> extends React.Component<P, S> {
-    public static contextType = FormContext;
+    public static contextType = StoreContext;
 
     public context!: Store;
 

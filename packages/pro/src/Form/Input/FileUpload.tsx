@@ -14,8 +14,8 @@ export interface IFileUpload {
 }
 
 export class FileUpload<P = {}> extends AbstractControl<File, P & IFileUpload> {
-    public validate(value: File): boolean {
-        if (!this.props.required) {
+    public validate(value: File, required: boolean): boolean {
+        if (!required) {
             return true;
         }
 

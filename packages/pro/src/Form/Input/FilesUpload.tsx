@@ -4,8 +4,8 @@ import {AbstractControl} from "../AbstractControl";
 import {IFileUpload} from "./FileUpload";
 
 export class FilesUpload<P = {}> extends AbstractControl<FileList, P & IFileUpload> {
-    public validate(value: FileList): boolean {
-        if (!this.props.required) {
+    public validate(value: FileList, required: boolean): boolean {
+        if (!required) {
             return true;
         }
 

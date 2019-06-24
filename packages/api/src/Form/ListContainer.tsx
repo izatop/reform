@@ -1,12 +1,12 @@
 import * as React from "react";
 import {IterableContext} from "../Context";
-import {ElementIterable} from "../Store/ElementIterable";
+import {ElementIterable} from "../Store";
 
-export interface IListContextProps {
+export interface IListContainerProps {
     children: (iterator: ElementIterable) => React.ReactNode;
 }
 
-export class ListContext extends React.PureComponent<IListContextProps> {
+export class ListContainer extends React.PureComponent<IListContainerProps> {
     public render() {
         return (
             <IterableContext.Consumer>

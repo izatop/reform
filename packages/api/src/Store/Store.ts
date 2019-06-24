@@ -12,9 +12,10 @@ export interface IFormSource {
 export interface IMountOptions<T extends IFormSource = IFormSource, K extends KeyOf<T> = KeyOf<T>> {
     valid?: boolean;
     changed?: boolean;
+    required?: boolean;
     defaultValue?: T[K];
     initialValue?: T[K];
-    validate: (value: T[K]) => boolean;
+    validate: (value: T[K], required: boolean) => boolean;
     compare: (value: T[K], compare: T[K]) => boolean;
 }
 
@@ -65,6 +66,7 @@ export class Store<T extends IFormSource = IFormSource,
 
     public unlock() {
         this.flags.ready = true;
+        this.compute();
     }
 
     public begin() {
@@ -79,7 +81,6 @@ export class Store<T extends IFormSource = IFormSource,
         this.children.forEach((child) => child.commit());
         this.source = this.toObject();
         this.flags.version++;
-        this.compute();
         this.unlock();
     }
 
@@ -87,7 +88,6 @@ export class Store<T extends IFormSource = IFormSource,
         this.lock();
         this.children.forEach((child) => child.reset());
         this.unlock();
-        this.compute();
 
         return ++this.flags.version;
     }
@@ -208,6 +208,14 @@ export class Store<T extends IFormSource = IFormSource,
 
     public has(key: K) {
         return this.children.has(key);
+    }
+
+    public get(key: K) {
+        return this.children.get(key);
+    }
+
+    public ensure(key: K) {
+        return this.get(key)!;
     }
 
     public listen(listener: StoreListener) {
