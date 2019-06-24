@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/izatop/reform/compare/@reform/webpack@0.3.14...@reform/webpack@0.4.0) (2019-06-24)
+
+
+### Features
+
+* update api and pro components ([5e09d7e](https://github.com/izatop/reform/commit/5e09d7e))
+
+
+
+
+
 ## [0.3.14](https://github.com/izatop/reform/compare/@reform/webpack@0.3.13...@reform/webpack@0.3.14) (2019-06-18)
 
 
