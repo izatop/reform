@@ -1,12 +1,17 @@
 import * as React from "react";
-import {Receiver, TestContext} from "../../Context";
+import {Receiver} from "../../Context";
 
-export class HasValue extends Receiver<{ name: string }> {
+export interface IHasValue {
+    name: string;
+    validator?: (value: any) => boolean;
+}
+
+export class HasValue extends Receiver<IHasValue> {
+    public static defaultProps = {
+        validator: (value: any) => value !== "undefined",
+    };
+
     public render() {
-        const {Provider} = TestContext;
-        const hasValue = this.context.resolve(name) === "undefined";
-        return (
-            <Provider value={hasValue}>{this.props.children}</Provider>
-        );
+        return this.props.validator!(this.context.resolve(name)) ? this.props.children : null;
     }
 }

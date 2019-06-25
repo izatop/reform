@@ -123,7 +123,8 @@ export const FormExample: React.FC<IFormExample> = (props) => {
                     <MultipleSelect name={"multiple"} size={3} options={["foo", "bar", "baz"]}/>
                 </Control>
                 <Control>
-                    <Select name={"select.required"} required options={["A", "B", "C", "D"]}/>
+                    <Select name={"select.required"} defaultValue={"B"} required
+                            options={["A", {label: "b", value: "B"}, "C", "D"]}/>
                 </Control>
                 <Control>
                     <Select name={"select.blank"}
