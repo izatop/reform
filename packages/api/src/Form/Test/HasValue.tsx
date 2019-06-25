@@ -8,7 +8,7 @@ export interface IHasValue {
 
 export class HasValue extends Receiver<IHasValue> {
     public static defaultProps = {
-        validator: (value: any) => value !== "undefined",
+        validator: (value: any) => typeof value !== "undefined",
     };
 
     public render() {
