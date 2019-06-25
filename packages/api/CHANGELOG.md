@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.4](https://github.com/izatop/reform/compare/@reform/api@0.8.3...@reform/api@0.8.4) (2019-06-25)
+
+
+### Bug Fixes
+
+* bug in default validator ([5f9c229](https://github.com/izatop/reform/commit/5f9c229))
+
+
+
+
+
 ## [0.8.3](https://github.com/izatop/reform/compare/@reform/api@0.8.2...@reform/api@0.8.3) (2019-06-25)
 
 

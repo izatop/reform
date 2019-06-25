@@ -1,6 +1,6 @@
 {
     "name": "@reform/dashboard",
-    "version": "0.6.3",
+    "version": "0.6.4",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "author": {
@@ -21,9 +21,9 @@
     },
     "dependencies": {
         "@reach/router": "^1.2.1",
-        "@reform/api": "^0.8.3",
-        "@reform/components": "^0.6.3",
-        "@reform/pro": "^0.5.3",
+        "@reform/api": "^0.8.4",
+        "@reform/components": "^0.6.4",
+        "@reform/pro": "^0.5.4",
         "@types/reach__router": "^1.2.4",
         "@types/react": "^16.8.22",
         "@types/react-dom": "^16.8.4",
