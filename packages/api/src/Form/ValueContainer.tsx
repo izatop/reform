@@ -1,21 +1,22 @@
 import * as React from "react";
-import {StoreContext} from "../Context";
-import {Element} from "../Store";
+import {Receiver} from "../Context";
 
-export interface IElementContainer {
+export interface IElementContainer<T = any> {
     name: string;
-    children: (element: Element) => React.ReactNode;
+    children: (value: T | undefined) => React.ReactNode;
 }
 
-export class ValueContainer extends React.PureComponent<IElementContainer> {
+export class ValueContainer<T = any> extends Receiver<IElementContainer<T>> {
+    public state: { value?: T } = {};
+
     public render() {
-        return (
-            <StoreContext.Consumer>
-                {(store) => store.has(this.props.name)
-                    ? this.props.children(store.ensure(this.props.name))
-                    : null
-                }
-            </StoreContext.Consumer>
-        );
+        return this.props.children(this.state.value);
+    }
+
+    protected disposable = () => {
+        if (this.context.has(this.props.name)) {
+            const {value} = this.context.ensure(this.props.name);
+            this.setState({value});
+        }
     }
 }
