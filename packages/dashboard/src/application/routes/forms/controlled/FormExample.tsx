@@ -129,7 +129,7 @@ export const FormExample: React.FC<IFormExample> = (props) => {
                 <Control>
                     <Select name={"select.blank"}
                             emptiness
-                            options={[{label: "Blank Label", value: "blank-value"}]}/>
+                            options={[{label: "Blank Label", value: "blank"}, "Top", "Parent"]}/>
                 </Control>
             </Field>
 

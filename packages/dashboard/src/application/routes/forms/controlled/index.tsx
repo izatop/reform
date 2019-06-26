@@ -14,6 +14,9 @@ export default createRouteComponent(class extends React.Component {
             {city: "City", address: "My Address", house: 12},
         ],
         dirty: "alien",
+        select: {
+            blank: "blank",
+        },
     };
 
     public render() {
