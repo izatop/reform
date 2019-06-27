@@ -6,6 +6,7 @@ export interface ITextArea {
     readOnly?: boolean;
     disabled?: boolean;
     placeholder?: string;
+    rows?: number;
 }
 
 export class TextArea<P = {}> extends AbstractControl<string | number, P & ITextArea> {
@@ -23,6 +24,7 @@ export class TextArea<P = {}> extends AbstractControl<string | number, P & IText
             placeholder: this.props.placeholder,
             disabled: this.props.disabled,
             readOnly: this.props.readOnly,
+            rows: this.props.rows,
         };
     }
 

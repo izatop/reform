@@ -22,6 +22,6 @@ export abstract class IterableReceiver<P = {}, S = any> extends React.Component<
     protected disposable = () => this.onStoreUpdate();
 
     protected onStoreUpdate() {
-        return;
+        this.forceUpdate();
     }
 }

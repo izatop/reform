@@ -40,7 +40,7 @@ export class List<P = {}> extends Receiver<P & IListProps> {
 
     public render() {
         return (
-            <IterableContext.Provider key={this.context.version} value={this.iterator}>
+            <IterableContext.Provider value={this.iterator}>
                 {this.props.children}
             </IterableContext.Provider>
         );
