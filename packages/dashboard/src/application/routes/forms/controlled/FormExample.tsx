@@ -1,4 +1,4 @@
-import {Form, List, ListContainer, Map, Store} from "@reform/api";
+import {Form, List, ListContainer, Map, MapAction, Size, SizeTest, Store} from "@reform/api";
 import {Button, Buttons, Control, Field, Help, Icon, Label} from "@reform/components";
 import {
     AutoComplete,
@@ -155,34 +155,36 @@ export const FormExample: React.FC<IFormExample> = (props) => {
             </Field>
 
             <Label>Address</Label>
-            <List name={"address"}>
-                <List.NonIdealState>
+            <List name={"extra.address"}>
+                <SizeTest test={(size) => !size}>
                     <NonIdealState icon={"ban"} title={"Empty"}>No data available</NonIdealState>
-                </List.NonIdealState>
-                <List.IdealState>
-                    <p>You can add or remove items from this list.</p>
-                </List.IdealState>
+                </SizeTest>
+                <SizeTest test={(size) => size > 0}>
+                    <p>You can add or remove items from this list with <Size/> length.</p>
+                </SizeTest>
 
-                <Map.Context>
-                    {(store, h) => (
-                        <Field is-grouped>
-                            <Control is-expanded>
-                                <Input required name={"city"}/>
-                            </Control>
-                            <Control>
-                                <Input required name={"address"}/>
-                            </Control>
-                            <Control is-expanded>
-                                <Input required name={"house"}/>
-                            </Control>
-                            <Control is-expanded>
-                                <Button onClick={h.delete}>
-                                    <Icon icon={"trash-alt"}/>
-                                </Button>
-                            </Control>
-                        </Field>
-                    )}
-                </Map.Context>
+                <Map>
+                    <Field is-grouped>
+                        <Control is-expanded>
+                            <Input required name={"city"}/>
+                        </Control>
+                        <Control>
+                            <Input required name={"address"}/>
+                        </Control>
+                        <Control is-expanded>
+                            <Input required name={"house"}/>
+                        </Control>
+                        <Control is-expanded>
+                            <MapAction>
+                                {(store, h) => (
+                                    <Button onClick={h.delete}>
+                                        <Icon icon={"trash-alt"}/>
+                                    </Button>
+                                )}
+                            </MapAction>
+                        </Control>
+                    </Field>
+                </Map>
                 <ListContainer>
                     {(store) => (
                         <Buttons is-align={"right"}>

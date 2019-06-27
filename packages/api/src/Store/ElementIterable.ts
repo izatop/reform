@@ -17,9 +17,6 @@ export class ElementIterable<T = any> extends Element<T, any[]> {
 
     constructor(store: Store<T>, iterable: any[], options: IMountOptions) {
         super(store, iterable, options);
-        for (const source of this.value || []) {
-            this.children.push(this.factory(source));
-        }
     }
 
     public validate() {
@@ -143,6 +140,10 @@ export class ElementIterable<T = any> extends Element<T, any[]> {
 
     protected initialize() {
         this.children = [];
+        for (const source of this.value || []) {
+            this.children.push(this.factory(source));
+        }
+
         this.validate();
     }
 

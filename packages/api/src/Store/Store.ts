@@ -99,7 +99,7 @@ export class Store<T extends IFormSource = IFormSource,
     public toObject<R extends T = T>(): R {
         const out: { [k: string]: any } = {};
         for (const [ns, child] of this.children.entries()) {
-            const {key, source} = this.getPointer(ns, out);
+            const {key, source} = this.getPointer(ns as string, out);
             source[key] = child.value;
         }
 
@@ -113,7 +113,7 @@ export class Store<T extends IFormSource = IFormSource,
         }
 
         for (const [ns, child] of this.children.entries()) {
-            const {key, source} = this.getPointer(ns, out);
+            const {key, source} = this.getPointer(ns as string, out);
             source[key] = child.value;
         }
 
@@ -145,7 +145,7 @@ export class Store<T extends IFormSource = IFormSource,
     }
 
     public resolve(ns: K | string, defaultValue?: T[K] | any) {
-        const {source, key} = this.getPointer(ns);
+        const {source, key} = this.getPointer(ns as string);
 
         if (typeof source[key] === "undefined") {
             return defaultValue;
@@ -158,7 +158,7 @@ export class Store<T extends IFormSource = IFormSource,
         if (!this.children.has(key)) {
             const element = new ElementIterable<T>(
                 this,
-                this.resolve(key, []),
+                this.resolve(key),
                 options,
             );
 

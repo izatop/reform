@@ -10,9 +10,11 @@ export default createRouteComponent(class extends React.Component {
     private defaultSource = {
         name: "Name",
         age: 32,
-        address: [
-            {city: "City", address: "My Address", house: 12},
-        ],
+        extra: {
+            address: [
+                {city: "City", address: "My Address", house: 12},
+            ],
+        },
         dirty: "alien",
         select: {
             blank: "blank",

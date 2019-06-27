@@ -1,30 +1,16 @@
 import * as React from "react";
-import {StoreContext, IterableContext} from "../../Context";
-import {ListContextType} from "../List";
-import {MapContext} from "./MapContext";
+import {IterableReceiver, StoreContext} from "../../Context";
 
 export interface IMapProps {
     children: React.ReactNode;
 }
 
-export class Map<P = {}> extends React.Component<IMapProps & P> {
-    public static Context = MapContext;
-
+export class Map<P = {}> extends IterableReceiver<P & IMapProps> {
     public render() {
-        return (
-            <IterableContext.Consumer>
-                {this.iterate}
-            </IterableContext.Consumer>
-        );
+        return this.context.map((store, id) => (
+            <StoreContext.Provider key={id} value={store}>
+                {this.props.children}
+            </StoreContext.Provider>
+        ));
     }
-
-    private iterate: ListContextType = (iterator) => (
-        iterator.map(
-            (store, id) => (
-                <StoreContext.Provider key={id} value={store}>
-                    {this.props.children}
-                </StoreContext.Provider>
-            ),
-        )
-    )
 }

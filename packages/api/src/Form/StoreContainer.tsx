@@ -3,7 +3,7 @@ import {StoreContext} from "../Context";
 import {Store} from "../Store";
 
 export interface IStoreContext {
-    children: (store: Store) => React.ReactNode;
+    children: (store: Store<any>) => React.ReactNode;
 }
 
 export class StoreContainer extends React.PureComponent<IStoreContext> {

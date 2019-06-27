@@ -1,24 +1,16 @@
 import * as React from "react";
-import {IterableContext, Receiver} from "../Context";
-import {ElementIterable} from "../Store";
-import {IdealState} from "./List/IdealState";
-import {NonIdealState} from "./List/NonIdealState";
-import {ListContainer} from "./ListContainer";
+import {IterableContext, Receiver} from "../../Context";
+import {ElementIterable} from "../../Store";
 
 export interface IListProps {
     name: string;
+    required?: boolean;
     defaultValue?: any[];
 }
 
 export type ListContextType = (data: ElementIterable) => React.ReactNode;
 
-export class List extends Receiver<IListProps> {
-    public static Context = ListContainer;
-
-    public static IdealState = IdealState;
-
-    public static NonIdealState = NonIdealState;
-
+export class List<P = {}> extends Receiver<P & IListProps> {
     protected iterator!: ElementIterable;
 
     constructor(props: any, context: any) {
@@ -28,9 +20,13 @@ export class List extends Receiver<IListProps> {
             this.props.name,
             {
                 initialValue: [],
+                required: this.props.required,
                 defaultValue: this.props.defaultValue,
-                validate: (value: any[]) => Array.isArray(value),
-                compare: (v1, v2) => v1 === v2,
+                validate: (value: any[], required?: boolean) => {
+                    return Array.isArray(value)
+                        && (!required || value.length > 0);
+                },
+                compare: (initial, value) => initial === value,
             },
         );
     }
@@ -44,7 +40,7 @@ export class List extends Receiver<IListProps> {
 
     public render() {
         return (
-            <IterableContext.Provider value={this.iterator}>
+            <IterableContext.Provider key={this.context.version} value={this.iterator}>
                 {this.props.children}
             </IterableContext.Provider>
         );

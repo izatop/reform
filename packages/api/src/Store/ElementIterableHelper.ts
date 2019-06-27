@@ -2,7 +2,7 @@ import {ElementIterable} from "./ElementIterable";
 import {Store} from "./Store";
 
 export class ElementIterableHelper {
-    constructor(protected iterator: ElementIterable, protected store: Store) {
+    constructor(protected iterator: ElementIterable, protected store: Store<any>) {
     }
 
     public delete = () => {
