@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/izatop/reform/compare/@reform/api@0.8.6...@reform/api@0.9.0) (2019-06-27)
+
+
+### Features
+
+* improvement for using an array in form ([b2c2fe5](https://github.com/izatop/reform/commit/b2c2fe5))
+
+
+
+
+
 ## [0.8.6](https://github.com/izatop/reform/compare/@reform/api@0.8.5...@reform/api@0.8.6) (2019-06-26)
 
 **Note:** Version bump only for package @reform/api
