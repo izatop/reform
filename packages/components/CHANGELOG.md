@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.11](https://github.com/izatop/reform/compare/@reform/components@0.6.10...@reform/components@0.6.11) (2019-07-11)
+
+**Note:** Version bump only for package @reform/components
+
+
+
+
+
 ## [0.6.10](https://github.com/izatop/reform/compare/@reform/components@0.6.9...@reform/components@0.6.10) (2019-07-08)
 
 
