@@ -27,6 +27,13 @@ export class MenuStore extends MenuTrigger<MenuStoreEvents> {
         }
     }
 
+    public leave() {
+        if (this.selected) {
+            this.selected.leave();
+            delete this.selected;
+        }
+    }
+
     public paths() {
         if (this.selected) {
             return this.selected.paths();
