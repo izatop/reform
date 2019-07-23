@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.12](https://github.com/izatop/reform/compare/@reform/api-example@0.8.11...@reform/api-example@0.8.12) (2019-07-23)
+
+
+### Bug Fixes
+
+* update deps and Menu component ([a6bfdad](https://github.com/izatop/reform/commit/a6bfdad))
+
+
+
+
+
 ## [0.8.11](https://github.com/izatop/reform/compare/@reform/api-example@0.8.10...@reform/api-example@0.8.11) (2019-07-11)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.12](https://github.com/izatop/reform/compare/@reform/pro@0.5.11...@reform/pro@0.5.12) (2019-07-23)
+
+
+### Bug Fixes
+
+* update deps and Menu component ([a6bfdad](https://github.com/izatop/reform/commit/a6bfdad))
+
+
+
+
+
 ## [0.5.11](https://github.com/izatop/reform/compare/@reform/pro@0.5.10...@reform/pro@0.5.11) (2019-07-11)
 
 **Note:** Version bump only for package @reform/pro
