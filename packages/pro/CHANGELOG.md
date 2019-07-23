@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.13](https://github.com/izatop/reform/compare/@reform/pro@0.5.12...@reform/pro@0.5.13) (2019-07-23)
+
+
+### Bug Fixes
+
+* typings and select component ([d0d5725](https://github.com/izatop/reform/commit/d0d5725))
+
+
+
+
+
 ## [0.5.12](https://github.com/izatop/reform/compare/@reform/pro@0.5.11...@reform/pro@0.5.12) (2019-07-23)
 
 
