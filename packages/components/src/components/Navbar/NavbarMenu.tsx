@@ -5,7 +5,7 @@ import {ClassNameResolver, ElementFactory} from "../../utils";
 import {NavbarContext} from "./props";
 
 export interface INavbarMenu {
-    children: ReactElement | [ReactElement, ReactElement];
+    children: ReactElement | [(ReactElement | boolean | null), (ReactElement | boolean | null)?];
 }
 
 const config = ElementFactory.create({component: "navbar-menu"});

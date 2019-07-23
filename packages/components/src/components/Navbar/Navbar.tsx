@@ -14,7 +14,7 @@ export interface INavbar {
 }
 
 export interface INavbarProps {
-    children: ReactElement | [ReactElement, ReactElement];
+    children: ReactElement | [(ReactElement | boolean | null), (ReactElement | boolean | null)?];
 }
 
 const config = ElementFactory.create({component: "navbar"});

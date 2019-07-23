@@ -1,5 +1,4 @@
 import * as React from "react";
-import {ReactElement} from "react";
 import {XProps} from "../../interfaces";
 import {MakeProps} from "../../type";
 import {ElementFactory} from "../../utils";
@@ -15,7 +14,7 @@ export type NavbarDropdownProps = XProps<"div"> & {
     defaultActive?: boolean;
     mouseLeaveTimeout?: number;
     button?: string;
-    children: [ReactElement, ...ReactElement[]];
+    children: [React.ReactElement, ...React.ReactNode[]];
 };
 
 const config = ElementFactory.create({
@@ -25,7 +24,7 @@ const config = ElementFactory.create({
 export const NavbarDropdown = config.factory<MakeProps<INavbarDropdown>, NavbarDropdownProps>(
     ({props, children, options}) => {
         const {defaultActive, mouseLeaveTimeout, ...p} = props;
-        const [button, ...elements] = React.Children.toArray<React.ReactElement>(children);
+        const [button, ...elements] = React.Children.toArray(children) as [React.ReactElement, ...React.ReactNode[]];
         const [active, setActive] = React.useState(defaultActive || false);
 
         const buttonProps = {...button.props};

@@ -7,6 +7,7 @@ export interface ISelect {
     disabled?: boolean;
     emptiness?: boolean | string;
     loading?: boolean;
+    fullwidth?: boolean;
 }
 
 export class Select<P = {}> extends AbstractControl<string | number, P & ISelect> {
@@ -59,6 +60,7 @@ export class Select<P = {}> extends AbstractControl<string | number, P & ISelect
                              value={this.value}
                              onChange={this.onChange}
                              is-loading={this.props.loading}
+                             is-fullwidth={this.props.fullwidth}
                              disabled={this.props.disabled}
                              options={this.options}/>
         );

@@ -3,9 +3,11 @@ import * as React from "react";
 import {AbstractControl} from "../AbstractControl";
 
 export interface IMultipleSelect {
-    loading?: boolean;
-    options: SelectOptionType[];
     size?: number;
+    loading?: boolean;
+    disabled?: boolean;
+    options: SelectOptionType[];
+    fullwidth?: boolean;
 }
 
 export abstract class MultipleSelect<P = {}> extends AbstractControl<Array<string | number>, P & IMultipleSelect> {
@@ -44,6 +46,8 @@ export abstract class MultipleSelect<P = {}> extends AbstractControl<Array<strin
                              value={this.value}
                              size={this.props.size}
                              is-loading={this.props.loading}
+                             is-fullwidth={this.props.fullwidth}
+                             disabled={this.props.disabled}
                              options={this.props.options}/>
         );
     }

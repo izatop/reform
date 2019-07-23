@@ -1,11 +1,11 @@
 import * as React from "react";
-import {ReactElement} from "react";
+import {ReactNode, ReactNodeArray} from "react";
 import {MakeProps} from "../../type";
 import {ElementFactory} from "../../utils";
 import {NavbarWithChild} from "./props";
 
 export interface INavbarRightProps {
-    children: ReactElement[] | ReactElement;
+    children: ReactNode | ReactNodeArray;
 }
 
 const config = ElementFactory.create({component: "navbar-end"});

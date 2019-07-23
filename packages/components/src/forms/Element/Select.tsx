@@ -32,6 +32,7 @@ export interface ISelect {
     "is-color"?: ColorType;
     "is-size"?: SizeType;
     "is-state"?: SelectStateType;
+    "is-fullwidth"?: boolean;
 }
 
 export type SelectProps = XProps<"select"> & {

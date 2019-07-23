@@ -58,6 +58,7 @@ export default class Application extends React.Component<{}, IState> {
                                         <span>5</span>
                                     </Button>
                                 </NavbarLink>
+                                {["Item 1", "Item 2", "Item 3"].map((o) => <a key={o}>{o}</a>)}
                                 <p>No new message</p>
                             </NavbarDropdown>
                             <NavbarTab is-active><Link to={"/"}>Dashboard</Link></NavbarTab>
