@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.13](https://github.com/izatop/reform/compare/@reform/api-example@0.8.12...@reform/api-example@0.8.13) (2019-07-29)
+
+
+### Bug Fixes
+
+* NumberInput improvements ([a4e23da](https://github.com/izatop/reform/commit/a4e23da))
+
+
+
+
+
 ## [0.8.12](https://github.com/izatop/reform/compare/@reform/api-example@0.8.11...@reform/api-example@0.8.12) (2019-07-23)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.6](https://github.com/izatop/reform/compare/@reform/webpack@0.5.5...@reform/webpack@0.5.6) (2019-07-29)
+
+
+### Bug Fixes
+
+* NumberInput improvements ([a4e23da](https://github.com/izatop/reform/commit/a4e23da))
+
+
+
+
+
 ## [0.5.5](https://github.com/izatop/reform/compare/@reform/webpack@0.5.4...@reform/webpack@0.5.5) (2019-07-23)
 
 
