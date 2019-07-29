@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.15](https://github.com/izatop/reform/compare/@reform/pro@0.5.14...@reform/pro@0.5.15) (2019-07-29)
+
+
+### Bug Fixes
+
+* NumberInput improvements ([2b873c0](https://github.com/izatop/reform/commit/2b873c0))
+
+
+
+
+
 ## [0.5.14](https://github.com/izatop/reform/compare/@reform/pro@0.5.13...@reform/pro@0.5.14) (2019-07-29)
 
 
