@@ -94,7 +94,7 @@ export const FormExample: React.FC<IFormExample> = (props) => {
             <Field>
                 <Label>Default Value</Label>
                 <Control>
-                    <Numeric defaultValue={123} name={"defaultValue"}/>
+                    <Numeric defaultValue={123} precision={2} name={"defaultValue"}/>
                 </Control>
                 <Help>A default value marks input as changed</Help>
             </Field>
