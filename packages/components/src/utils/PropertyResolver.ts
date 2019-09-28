@@ -8,7 +8,7 @@ interface IPropertyOption {
 }
 
 export class PropertyResolver {
-    public static prefixes = Object.values(Prefixes);
+    public static prefixes: string[] = Object.values(Prefixes);
 
     public static resolve<P extends IInProps, O>(input: P, mutations: { [key: string]: string } = {}) {
         const props: IProps = {};
@@ -27,7 +27,7 @@ export class PropertyResolver {
                 continue;
             }
 
-            const prefix = key.substr(0, key.indexOf("-"));
+            const prefix: string = key.substr(0, key.indexOf("-"));
             if (!this.prefixes.includes(prefix)) {
                 props[key] = value;
                 continue;

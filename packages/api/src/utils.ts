@@ -5,3 +5,7 @@ export const debounce = (fn: () => void, timeout = 10) => {
         debounceTimeout = window.setTimeout(fn, timeout);
     };
 };
+
+export const applyChildrenFunction = (fn: any, ...args: any[]) => {
+    return fn(...args);
+};

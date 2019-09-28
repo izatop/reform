@@ -15,6 +15,7 @@
         "strictPropertyInitialization": true,
         "strictFunctionTypes": true,
         "experimentalDecorators": true,
-        "skipLibCheck": true
+        "skipLibCheck": true,
+        "incremental": true
     }
 }

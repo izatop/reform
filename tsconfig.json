@@ -16,6 +16,7 @@
         "strictFunctionTypes": true,
         "experimentalDecorators": true,
         "skipLibCheck": true,
+        "incremental": true,
         "noEmit": true
     }
 }
