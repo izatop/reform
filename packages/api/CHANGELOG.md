@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.10](https://github.com/izatop/reform/compare/@reform/api@0.9.9...@reform/api@0.9.10) (2019-10-09)
+
+
+### Bug Fixes
+
+* update deps ([f7bcdd3](https://github.com/izatop/reform/commit/f7bcdd3))
+
+
+
+
+
 ## [0.9.9](https://github.com/izatop/reform/compare/@reform/api@0.9.8...@reform/api@0.9.9) (2019-09-28)
 
 
