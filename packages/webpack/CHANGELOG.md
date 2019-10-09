@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.12](https://github.com/izatop/reform/compare/@reform/webpack@0.5.11...@reform/webpack@0.5.12) (2019-10-09)
+
+
+### Bug Fixes
+
+* update  deps ([e81db24](https://github.com/izatop/reform/commit/e81db24))
+
+
+
+
+
 ## [0.5.11](https://github.com/izatop/reform/compare/@reform/webpack@0.5.10...@reform/webpack@0.5.11) (2019-10-09)
 
 
