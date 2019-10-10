@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.1](https://github.com/izatop/reform/compare/@reform/pro@0.6.0...@reform/pro@0.6.1) (2019-10-10)
+
+
+### Bug Fixes
+
+* update DatePicker ([1d2cbef](https://github.com/izatop/reform/commit/1d2cbef5d7362afb5899f1b4a583e493d8de87e4))
+
+
+
+
+
 # [0.6.0](https://github.com/izatop/reform/compare/@reform/pro@0.5.22...@reform/pro@0.6.0) (2019-10-10)
 
 
