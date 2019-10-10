@@ -12,7 +12,7 @@ export class DatePicker<P = {}> extends Input<P & IDatePicker, DatePickerValue> 
     protected type = "date";
 
     protected get initialValue(): any {
-        return "";
+        return undefined;
     }
 
     public parse(value?: string) {
@@ -20,7 +20,7 @@ export class DatePicker<P = {}> extends Input<P & IDatePicker, DatePickerValue> 
             return new Date(value + " 23:59:59.999");
         }
 
-        return "";
+        return undefined;
     }
 
     public serialize(value?: DatePickerValue) {
