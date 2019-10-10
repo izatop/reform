@@ -2,7 +2,7 @@ import {Form, List, ListContainer, Map, MapAction, Size, SizeTest, Store} from "
 import {Button, Buttons, Control, Field, Help, Icon, Label} from "@reform/components";
 import {
     AutoComplete,
-    Checkbox,
+    Checkbox, DatePicker,
     Email,
     FilesUpload,
     FileUpload,
@@ -95,6 +95,14 @@ export const FormExample: React.FC<IFormExample> = (props) => {
                 <Label>Default Value</Label>
                 <Control>
                     <Numeric defaultValue={123} precision={2} name={"defaultValue"}/>
+                </Control>
+                <Help>A default value marks input as changed</Help>
+            </Field>
+
+            <Field>
+                <Label>DatePicker (native HTML)</Label>
+                <Control>
+                    <DatePicker name={"date"}/>
                 </Control>
                 <Help>A default value marks input as changed</Help>
             </Field>

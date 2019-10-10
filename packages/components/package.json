@@ -37,5 +37,8 @@
         "bulma": "^0.7.5",
         "react": "^16.10.2"
     },
+    "peerDependencies": {
+        "react": ">= 16.6.0"
+    },
     "license": "MIT"
 }

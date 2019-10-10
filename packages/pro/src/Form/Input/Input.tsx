@@ -12,14 +12,14 @@ export interface IInput {
     type?: string;
 }
 
-export class Input<P = {}> extends AbstractControl<string | number, P & IInput> {
+export class Input<P = {}, D = string | number> extends AbstractControl<D, P & IInput> {
     protected type = this.props.type || "input";
 
-    protected get initialValue() {
+    protected get initialValue(): any {
         return "";
     }
 
-    public validate(value: string | number, required: boolean): boolean {
+    public validate(value: D, required: boolean): boolean {
         if (!required) {
             return true;
         }

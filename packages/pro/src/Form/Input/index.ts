@@ -1,4 +1,5 @@
 export * from "./Checkbox";
+export * from "./DatePicker";
 export * from "./Email";
 export * from "./FileUpload";
 export * from "./FilesUpload";
