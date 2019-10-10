@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/izatop/reform/compare/@reform/api-example@0.8.20...@reform/api-example@0.9.0) (2019-10-10)
+
+
+### Features
+
+* DatePicker (native HTML) ([b3f57fd](https://github.com/izatop/reform/commit/b3f57fdf71c98a6cff1a679492773dc35fa62bcd))
+
+
+
+
+
 ## [0.8.20](https://github.com/izatop/reform/compare/@reform/api-example@0.8.19...@reform/api-example@0.8.20) (2019-10-09)
 
 **Note:** Version bump only for package @reform/api-example

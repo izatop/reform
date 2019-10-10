@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/izatop/reform/compare/@reform/dashboard@0.7.16...@reform/dashboard@0.8.0) (2019-10-10)
+
+
+### Features
+
+* DatePicker (native HTML) ([b3f57fd](https://github.com/izatop/reform/commit/b3f57fdf71c98a6cff1a679492773dc35fa62bcd))
+
+
+
+
+
 ## [0.7.16](https://github.com/izatop/reform/compare/@reform/dashboard@0.7.15...@reform/dashboard@0.7.16) (2019-10-09)
 
 **Note:** Version bump only for package @reform/dashboard
