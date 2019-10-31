@@ -1,6 +1,6 @@
 {
     "name": "@reform/dashboard",
-    "version": "0.8.2",
+    "version": "0.8.3",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "author": {
@@ -14,16 +14,16 @@
         "dev:build": "webpack-cli"
     },
     "devDependencies": {
-        "@reform/webpack": "^0.6.1",
+        "@reform/webpack": "^0.6.2",
         "webpack": "^4.41.2",
         "webpack-cli": "^3.3.10",
         "webpack-dev-server": "^3.9.0"
     },
     "dependencies": {
         "@reach/router": "^1.2.1",
-        "@reform/api": "^0.9.13",
-        "@reform/components": "^0.7.1",
-        "@reform/pro": "^0.6.2",
+        "@reform/api": "^0.9.14",
+        "@reform/components": "^0.7.2",
+        "@reform/pro": "^0.6.3",
         "@types/reach__router": "^1.2.6",
         "@types/react": "^16.9.11",
         "@types/react-dom": "^16.9.3",
