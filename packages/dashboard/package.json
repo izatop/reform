@@ -16,7 +16,7 @@
     "devDependencies": {
         "@reform/webpack": "^0.6.1",
         "webpack": "^4.41.2",
-        "webpack-cli": "^3.3.9",
+        "webpack-cli": "^3.3.10",
         "webpack-dev-server": "^3.9.0"
     },
     "dependencies": {
@@ -25,8 +25,8 @@
         "@reform/components": "^0.7.1",
         "@reform/pro": "^0.6.2",
         "@types/reach__router": "^1.2.6",
-        "@types/react": "^16.9.9",
-        "@types/react-dom": "^16.9.2",
+        "@types/react": "^16.9.11",
+        "@types/react-dom": "^16.9.3",
         "react": "^16.11.0",
         "react-dom": "^16.11.0"
     },
