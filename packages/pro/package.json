@@ -34,7 +34,7 @@
         "@reform/api": "^0.9.14",
         "@reform/components": "^0.7.2",
         "@types/react": "^16.9.11",
-        "react": "^16.11.0"
+        "react": "^16.12.0"
     },
     "peerDependencies": {
         "react": ">= 16.6.0"
