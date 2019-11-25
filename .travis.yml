@@ -19,7 +19,8 @@ before_install:
   - yarn global add lerna
 
 install:
-  - yarn run bootstrap
+  - yarn install --pure-lockfile
+  - lerna link
 
 before_script:
   - greenkeeper-lockfile-update
