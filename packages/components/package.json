@@ -33,7 +33,7 @@
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.11.2",
         "@reform/api": "^0.9.16",
-        "@types/react": "^16.9.13",
+        "@types/react": "^16.9.16",
         "bulma": "^0.8.0",
         "react": "^16.12.0"
     },
