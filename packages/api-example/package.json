@@ -14,7 +14,7 @@
         "@reform/api": "^0.9.17",
         "@types/html-webpack-plugin": "^3.2.1",
         "@types/prismjs": "^1.16.0",
-        "@types/react": "^16.9.16",
+        "@types/react": "^16.9.17",
         "@types/react-dom": "^16.9.4",
         "@types/webpack": "^4.41.0",
         "@types/webpack-dev-server": "^3.9.0",
@@ -23,14 +23,14 @@
         "prismjs": "^1.17.1",
         "react": "^16.12.0",
         "react-dom": "^16.12.0",
-        "webpack": "^4.41.2",
+        "webpack": "^4.41.4",
         "webpack-cli": "^3.3.10",
-        "webpack-dev-server": "^3.9.0"
+        "webpack-dev-server": "^3.10.1"
     },
     "devDependencies": {
-        "css-loader": "^3.3.0",
+        "css-loader": "^3.4.0",
         "raw-loader": "^4.0.0",
-        "style-loader": "^1.0.1",
+        "style-loader": "^1.1.1",
         "ts-loader": "^6.2.1"
     },
     "license": "MIT"

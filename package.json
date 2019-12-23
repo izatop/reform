@@ -27,7 +27,7 @@
         "bootstrap": "lerna bootstrap && lerna link"
     },
     "devDependencies": {
-        "@types/jest": "^24.0.23",
+        "@types/jest": "^24.0.24",
         "@types/react-test-renderer": "^16.9.1",
         "coveralls": "^3.0.9",
         "husky": "^3.1.0",
@@ -39,7 +39,7 @@
         "ts-jest": "^24.2.0",
         "ts-node": "8.5.4",
         "tslint": "^5.20.1",
-        "typescript": "^3.7.3"
+        "typescript": "^3.7.4"
     },
     "license": "MIT"
 }
