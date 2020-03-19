@@ -13,7 +13,7 @@ export interface IIterableContainer<T> {
 let ELEMENT_ID = 0;
 
 export class ElementIterable<T = any> extends Element<T, any[]> {
-    protected children!: Array<IIterableContainer<T>>;
+    protected children!: IIterableContainer<T>[];
 
     constructor(store: Store<T>, iterable: any[], options: IMountOptions) {
         super(store, iterable, options);

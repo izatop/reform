@@ -57,18 +57,4 @@ export class PropertyResolver {
             value,
         };
     }
-
-    public static getDependenciesOf(props: IProps, deps: string[] = []) {
-        const {options} = this.resolve(props);
-        const dependencies = [];
-        for (const key of Object.keys(options)) {
-            dependencies.push(props[key]);
-        }
-
-        for (const key of deps) {
-            dependencies.push(props[key]);
-        }
-
-        return dependencies;
-    }
 }

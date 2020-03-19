@@ -2,7 +2,7 @@ export type MenuEvents = "add" | "destroy" | "enter" | "leave" | "child:enter" |
 export type MenuListener<T> = (...args: any[]) => void;
 
 export class MenuTrigger<T = MenuEvents> {
-    private readonly listeners = new Map<T, Array<MenuListener<T>>>();
+    private readonly listeners = new Map<T, MenuListener<T>[]>();
 
     public off(event: T | T[], listener?: MenuListener<T>): void {
         if (Array.isArray(event)) {

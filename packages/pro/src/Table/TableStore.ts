@@ -23,7 +23,7 @@ export interface ITableStoreRender<T extends ITableSource> {
 }
 
 export class TableStore<T extends ITableSource> {
-    public properties: Array<ITableStoreProperty<T>> = [];
+    public properties: ITableStoreProperty<T>[] = [];
 
     public primary: string = "id";
 

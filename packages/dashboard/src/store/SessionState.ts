@@ -27,7 +27,7 @@ export type IStatus = INone | ISigned | IAuthorized;
 export class SessionStore<T extends IStatus = IStatus> {
     private state: IStatus = SessionStore.getInitialState();
 
-    private listeners: Array<(state: Readonly<IStatus>) => void> = [];
+    private listeners: ((state: Readonly<IStatus>) => void)[] = [];
 
     private static getInitialState(): INone | ISigned {
         const status = SessionStatus.None;

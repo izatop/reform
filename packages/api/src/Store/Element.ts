@@ -16,7 +16,7 @@ export class Element<T = any, V = T[keyof T]> {
 
     protected state: IElementState<V>;
 
-    protected listeners: Array<ElementListener<T, V>> = [];
+    protected listeners: ElementListener<T, V>[] = [];
 
     constructor(protected context: Store<T>, value: V, protected options: IMountOptions) {
         this.initial = value;
