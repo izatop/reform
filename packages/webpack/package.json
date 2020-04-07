@@ -23,7 +23,7 @@
         "ts-loader": "^6.2.2",
         "url-loader": "^4.0.0",
         "webpack": "^4.42.1",
-        "webpack-bundle": "^0.9.41"
+        "webpack-bundle": "^0.9.42"
     },
     "license": "MIT"
 }
