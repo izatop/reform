@@ -31,7 +31,7 @@
     },
     "dependencies": {
         "@sirian/ts-extra-types": "^3.56.0",
-        "@types/react": "^16.9.32",
+        "@types/react": "^16.9.34",
         "react": "^16.13.1"
     },
     "peerDependencies": {
