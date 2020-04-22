@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.11](https://github.com/izatop/reform/compare/@reform/webpack@0.6.10...@reform/webpack@0.6.11) (2020-04-22)
+
+
+### Bug Fixes
+
+* update deps ([8430940](https://github.com/izatop/reform/commit/8430940732c42bdb9e0cab4641454c7673829da9))
+* update deps ([e41e2b6](https://github.com/izatop/reform/commit/e41e2b6abb635b50d04a42b57e76ed78570b15ce))
+
+
+
+
+
 ## [0.6.10](https://github.com/izatop/reform/compare/@reform/webpack@0.6.9...@reform/webpack@0.6.10) (2020-04-07)
 
 

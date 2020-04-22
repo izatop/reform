@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.9](https://github.com/izatop/reform/compare/@reform/components@0.7.8...@reform/components@0.7.9) (2020-04-22)
+
+
+### Bug Fixes
+
+* update deps ([e41e2b6](https://github.com/izatop/reform/commit/e41e2b6abb635b50d04a42b57e76ed78570b15ce))
+
+
+
+
+
 ## [0.7.8](https://github.com/izatop/reform/compare/@reform/components@0.7.7...@reform/components@0.7.8) (2020-04-07)
 
 
