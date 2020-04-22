@@ -104,8 +104,7 @@ export class WebpackBundle extends Bundle {
             contentBase: path.join(dirname(context.filename), "dist"),
             historyApiFallback: true,
             compress: true,
-            port: 9000,
-            hot: true,
+            port: 9100,
         }));
 
         this.set(new Options.Plugins(plugins));
