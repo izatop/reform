@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.13](https://github.com/izatop/reform/compare/@reform/dashboard@0.8.12...@reform/dashboard@0.8.13) (2020-04-30)
+
+
+### Bug Fixes
+
+* update deps ([55582fd](https://github.com/izatop/reform/commit/55582fd1148cab6f8dd592196d0594332b9b256f))
+
+
+
+
+
 ## [0.8.12](https://github.com/izatop/reform/compare/@reform/dashboard@0.8.11...@reform/dashboard@0.8.12) (2020-04-22)
 
 
