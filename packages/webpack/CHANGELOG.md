@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.13](https://github.com/izatop/reform/compare/@reform/webpack@0.6.12...@reform/webpack@0.6.13) (2020-04-30)
+
+**Note:** Version bump only for package @reform/webpack
+
+
+
+
+
 ## [0.6.12](https://github.com/izatop/reform/compare/@reform/webpack@0.6.11...@reform/webpack@0.6.12) (2020-04-30)
 
 
