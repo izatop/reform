@@ -6,7 +6,7 @@
         "lib": ["esnext", "dom", "dom.iterable"],
         "declaration": true,
         "esModuleInterop": true,
-        "sourceMap": true,
+        "inlineSourceMap": true,
         "strict": true,
         "strictNullChecks": true,
         "forceConsistentCasingInFileNames": true,
