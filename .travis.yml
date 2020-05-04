@@ -18,9 +18,7 @@ before_install:
   - yarn global add greenkeeper-lockfile@2
   - yarn global add lerna
 
-install:
-  - yarn install --pure-lockfile
-  - lerna link
+install: yarn install --pure-lockfile
 
 before_script:
   - greenkeeper-lockfile-update
@@ -30,18 +28,13 @@ before_script:
   - git remote set-url origin https://${GH_TOKEN}@github.com/izatop/reform.git
   - git checkout master
 
-script:
-  - yarn lint
-  - yarn ci:build
-  - yarn test
-  - git status
-  - lerna publish --conventional-commits --yes
+script: yarn lint && yarn ci:build && yarn test
 
 after_script:
   - greenkeeper-lockfile-upload
 
 after_success:
-  - yarn ci:coveralls
+  - lerna publish --conventional-commits --yes && yarn ci:coveralls
 
 branches:
   only:

@@ -1,0 +1,25 @@
+{
+    "extends": "../../tsconfig.base.json",
+    "compilerOptions": {
+        "jsx": "react",
+        "target": "esnext",
+        "module": "commonjs",
+        "esModuleInterop": true,
+        "lib": [
+            "esnext",
+            "dom",
+            "dom.iterable"
+        ],
+        "rootDir": "src",
+        "outDir": "dist",
+        "composite": true
+    },
+    "references": [
+        {
+            "path": "../bulma"
+        }
+    ],
+    "include": [
+        "src"
+    ]
+}

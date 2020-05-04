@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Breadcrumbs 1`] = `
+<nav
+  aria-label="breadcrumbs"
+  className="breadcrumb has-dot-separator"
+>
+  <ul>
+    <li
+      className=""
+    >
+      <a
+        href="/"
+      >
+        <span
+          className="icon is-small"
+        >
+          <i
+            className="fas fa-home"
+          />
+        </span>
+        <span>
+          Home
+        </span>
+      </a>
+    </li>
+    <li
+      className="is-active"
+    >
+      <a
+        href="/path"
+      >
+        <span>
+          Path
+        </span>
+      </a>
+    </li>
+  </ul>
+</nav>
+`;
+
+exports[`Breadcrumbs 2`] = `
+<nav
+  aria-label="breadcrumbs"
+  className="breadcrumb is-centered"
+>
+  <ul>
+    <li
+      className=""
+    >
+      <span
+        className="icon"
+      >
+        <i
+          className="fas fa-home"
+        />
+      </span>
+      <span>
+        <a
+          href="/"
+        >
+          Home
+        </a>
+      </span>
+    </li>
+    <li
+      className="is-active"
+    >
+      <a
+        href="/path"
+      >
+        Path
+      </a>
+    </li>
+  </ul>
+</nav>
+`;

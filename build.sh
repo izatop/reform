@@ -3,5 +3,5 @@
 yarn run clean
 
 echo "start building..."
-lerna run build:scss --scope=@reform/components
+lerna run build:scss --scope=@reform/bulma
 tsc -b ./packages

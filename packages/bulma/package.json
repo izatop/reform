@@ -1,0 +1,44 @@
+{
+    "name": "@reform/bulma",
+    "version": "0.0.1",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "files": [
+        "dist",
+        "sass"
+    ],
+    "repository": "https://github.com/izatop/reform",
+    "description": "Pure React UI components based on Bulma css framework",
+    "keywords": [
+        "pure",
+        "react",
+        "bulma",
+        "typescript"
+    ],
+    "author": {
+        "name": "Artur Bier",
+        "email": "izatop@gmail.com"
+    },
+    "scripts": {
+        "clean": "yarn build:clean",
+        "build:scss": "copy-and-watch \"src/**/*.scss\" \"sass\"",
+        "build:clean": "rimraf dist sass tsconfig.tsbuildinfo"
+    },
+    "publishConfig": {
+        "access": "public"
+    },
+    "devDependencies": {
+        "copy-and-watch": "^0.1.4",
+        "jest": "^25.5.4",
+        "ts-node": "8.10.1"
+    },
+    "dependencies": {
+        "@fortawesome/fontawesome-free": "^5.13.0",
+        "@types/react": "^16.9.34",
+        "@types/react-dom": "^16.9.7",
+        "bulma": "^0.8.2",
+        "react": "^16.13.1",
+        "react-dom": "^16.13.1"
+    },
+    "license": "MIT"
+}

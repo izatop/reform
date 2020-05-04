@@ -1,0 +1,38 @@
+{
+    "name": "@reform/ui",
+    "version": "0.0.1",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "repository": "https://github.com/izatop/reform",
+    "description": "Extended components for @reform/bulma",
+    "files": [
+        "dist"
+    ],
+    "keywords": [
+        "forms",
+        "react",
+        "bulma",
+        "typescript"
+    ],
+    "author": {
+        "name": "Artur Bier",
+        "email": "izatop@gmail.com"
+    },
+    "scripts": {
+        "clean": "yarn build:clean",
+        "build:scss": "copy-and-watch \"src/**/*.scss\" \"sass\"",
+        "build:clean": "rimraf dist tsconfig.tsbuildinfo"
+    },
+    "publishConfig": {
+        "access": "public"
+    },
+    "devDependencies": {
+        "copy-and-watch": "^0.1.4"
+    },
+    "dependencies": {
+        "@reform/bulma": "^0.0.1",
+        "@types/react": "^16.9.34",
+        "react": "^16.13.1"
+    },
+    "license": "MIT"
+}

@@ -3,16 +3,10 @@
     "include": [],
     "references": [
         {
-            "path": "api"
+            "path": "bulma"
         },
         {
-            "path": "components"
-        },
-        {
-            "path": "pro"
-        },
-        {
-            "path": "webpack"
+            "path": "ui"
         }
     ]
 }
