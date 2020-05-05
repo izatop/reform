@@ -5,17 +5,17 @@ import {ConfigFactory} from "../utils";
 export type Gap = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
 
 export interface IColumns {
-    gap?: false | Gap;
+    gap?: false | Gap | number;
     centered?: boolean;
     vCentered?: boolean;
 }
 
-export type ColumnsProps = MakeBreakpoint<IColumns> & MakeResponsive<"gap">;
+export type ColumnsProps = MakeBreakpoint<IColumns> & MakeResponsive<IColumns, "gap">;
 export type ColumnsType = React.FC<XProps<"div"> & ColumnsProps>;
 
 const config = ConfigFactory.create({
     component: "columns",
-    resolvers: {gap: (v: boolean | Gap) => v === false || v === 0 ? "is-gapless" : `is-gap-${v}`},
+    resolvers: {gap: (v: boolean | Gap) => v === false ? "is-gapless" : `is-${v}`},
     mutations: {gap: "is-variable"},
 });
 
