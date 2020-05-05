@@ -1,7 +1,6 @@
 import * as React from "react";
-import {XProps} from "../../interfaces";
+import {MakeProps, XProps} from "../../interfaces";
 import {AreSizes} from "../../props";
-import {MakeProps} from "../../interfaces";
 import {ConfigFactory} from "../../utils";
 
 interface IButtons extends AreSizes {

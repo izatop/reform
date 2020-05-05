@@ -1,13 +1,13 @@
 {
     "compilerOptions": {
-        "module": "commonjs",
-        "target": "es2017",
         "jsx": "react",
-        "lib": ["esnext", "dom", "dom.iterable"],
+        "module": "commonjs",
+        "target": "ES2019",
+        "lib": ["ES2020", "dom", "dom.iterable"],
+        "strict": true,
         "declaration": true,
         "esModuleInterop": true,
         "inlineSourceMap": true,
-        "strict": true,
         "strictNullChecks": true,
         "forceConsistentCasingInFileNames": true,
         "noImplicitThis": true,

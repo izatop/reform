@@ -1,9 +1,9 @@
 {
     "compilerOptions": {
-        "module": "commonjs",
-        "target": "ES2019",
         "jsx": "react",
-        "lib": ["esnext", "dom", "dom.iterable"],
+        "module": "commonjs",
+        "target": "ES2020",
+        "lib": ["ES2019", "dom", "dom.iterable"],
         "types": ["jest"],
         "esModuleInterop": true,
         "sourceMap": true,

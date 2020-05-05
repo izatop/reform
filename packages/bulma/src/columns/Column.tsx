@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import {MakeProps, MakeResponsive, XProps} from "../interfaces";
 import {ConfigFactory} from "../utils";
 
