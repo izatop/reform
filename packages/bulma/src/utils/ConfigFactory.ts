@@ -131,17 +131,19 @@ export class ConfigFactory {
         }
 
         for (const [key, value] of inputProps.entries()) {
-            if (resolvers.has(key) && typeof value !== "undefined") {
-                inputProps.delete(key);
-                const resolve = resolvers.get(key)!;
-                if (typeof resolve === "function") {
-                    const res = resolve(value);
-                    classes.push(...(Array.isArray(res) ? res : [res]).filter<string>((v): v is string => !!v));
-                    continue;
-                }
-
-                classes.push(resolve);
+            if (resolvers.has(key)) {
                 options[key] = value;
+                inputProps.delete(key);
+                if (typeof value !== "undefined") {
+                    const resolve = resolvers.get(key)!;
+                    if (typeof resolve === "function") {
+                        const res = resolve(value);
+                        classes.push(...(Array.isArray(res) ? res : [res]).filter<string>((v): v is string => !!v));
+                        continue;
+                    }
+
+                    classes.push(resolve);
+                }
             }
         }
 
