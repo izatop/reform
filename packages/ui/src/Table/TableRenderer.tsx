@@ -29,7 +29,7 @@ export const TableRenderer: React.FC<ITableRenderer<any>> = (props) => {
                         <TableHead>
                             <TableRow>
                                 {store.header((key, title, {align}) => (
-                                    <TableHeadCell has-text-align={align} key={key}>{title}</TableHeadCell>
+                                    <TableHeadCell textAlign={align} key={key}>{title}</TableHeadCell>
                                 ))}
                             </TableRow>
                         </TableHead>
@@ -38,7 +38,7 @@ export const TableRenderer: React.FC<ITableRenderer<any>> = (props) => {
                         <TableFoot>
                             <TableRow>
                                 {store.footer((key, value, {align}) => (
-                                    <TableHeadCell has-text-align={align} key={key}>{value}</TableHeadCell>
+                                    <TableHeadCell textAlign={align} key={key}>{value}</TableHeadCell>
                                 ))}
                             </TableRow>
                         </TableFoot>
@@ -47,7 +47,7 @@ export const TableRenderer: React.FC<ITableRenderer<any>> = (props) => {
                         {store.map((key, data) => (
                             <TableRow key={key} {...(store.rowProps ? store.rowProps(data) : {})}>
                                 {store.fetchRow(data).map(({key: k, property, value}) => (
-                                    <TableCell has-text-align={property.align} key={k}>{value}</TableCell>
+                                    <TableCell textAlign={property.align} key={k}>{value}</TableCell>
                                 ))}
                             </TableRow>
                         ))}

@@ -11,13 +11,10 @@ exports[`Dropdown 1`] = `
       aria-controls="dropdown-menu"
       aria-haspopup="true"
       className="button"
-      type="button"
     >
-      <span>
-        Button
-      </span>
+      <span />
       <span
-        className="icon"
+        className="icon is-small"
       >
         <i
           aria-hidden="true"

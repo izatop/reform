@@ -9,7 +9,6 @@ export interface ICardFooter extends XProps<"footer"> {
 }
 
 const config = ElementFactory.create({component: "card-footer"});
-
 export const CardFooter = config.factory<MakeProps, ICardFooter>(({props, children}) => (
     <footer {...props}>
         {React.Children.toArray(children).map((child, key) => (

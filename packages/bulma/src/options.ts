@@ -1,5 +1,3 @@
-import {IPropertyResolvers} from "./type";
-
 export enum Breakpoint {
     Mobile = "mobile",
     Tablet = "tablet",
@@ -9,7 +7,7 @@ export enum Breakpoint {
     Fullhd = "fullhd",
 }
 
-export type BreakpointType = Breakpoint | "mobile" | "tablet" | "touch" | "desktop" | "widescreen" | "fullhd";
+export type BreakpointType = "mobile" | "tablet" | "touch" | "desktop" | "widescreen" | "fullhd";
 
 export enum TextTransform {
     Capitalize = "capitalized",
@@ -60,40 +58,17 @@ export enum Size {
 
 export type SizeType = Size | "small" | "medium" | "large" | "normal";
 
-export enum Helper {
-    Clearfix = "clearfix",
-    PullLeft = "pulled-left",
-    PullRight = "pulled-right",
-    Marginless = "marginless",
-    Paddingless = "paddingless",
-    Overlay = "overlay",
-    Clipped = "clipped",
-    Radiusless = "radiusless",
-    Shadowless = "shadowless",
-    Unselectable = "unselectable",
-    Invisible = "invisible",
-    SROnly = "sr-only",
-}
-
-export enum Display {
-    Block = "block",
-    Flex = "flex",
-    Inline = "inline",
-    InlineBlock = "inline-block",
-    InlineFlex = "inline-flex",
-}
-
 export enum Color {
-    White = "white",
-    Black = "black",
-    Light = "light",
-    Dark = "dark",
     Primary = "primary",
     Info = "info",
-    Link = "link",
     Success = "success",
     Warning = "warning",
     Danger = "danger",
+    Light = "light",
+    Dark = "dark",
+    White = "white",
+    Black = "black",
+    Link = "link",
     BlackBis = "black-bis",
     BlackTer = "black-ter",
     GreyDarker = "grey-darker",
@@ -107,8 +82,8 @@ export enum Color {
 
 export type ColorType = Color | "white" | "black" | "light" | "dark" | "primary" | "info"
     | "link" | "success" | "warning" | "danger" | "black-bis" | "black-ter"
-    | "grey-darker" | "grey-darker" | "grey-dark" | "grey" | "grey-light"
-    | "grey-lighter" | "white-ter" | "white-bis";
+    | "grey-darker" | "grey-dark" | "grey" | "grey-light" | "grey-lighter"
+    | "white-ter" | "white-bis" | "text" | "text-strong" | string;
 
 export enum TextAlign {
     Center = "centered",
@@ -118,22 +93,3 @@ export enum TextAlign {
 }
 
 export type TextAlignType = TextAlign | "centered" | "justified" | "left" | "right";
-
-export type Align = "centered" | "right";
-
-export enum Prefixes {
-    IS = "is",
-    HAS = "has",
-    ARE = "are",
-    X = "x",
-}
-
-export const ComponentDefaultResolvers: IPropertyResolvers = {
-    "breakpoint": (value) => value,
-    "text-color": (value) => `text-${value}`,
-    "text-align": (value) => `text-${value}`,
-    "text-size": (value) => `size-${value}`,
-    "text-weight": (value) => `text-weight-${value}`,
-    "text-transform": (value) => value,
-    "font-family": (value) => `family-${value}`,
-};

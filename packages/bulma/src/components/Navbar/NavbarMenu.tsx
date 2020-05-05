@@ -10,7 +10,7 @@ export interface INavbarMenu {
 
 const config = ElementFactory.create({component: "navbar-menu"});
 const getClassName = (options: any, isActive?: boolean) => {
-    return ClassNameResolver.resolveClassName({...options, "is-active": isActive}, config.config);
+    return ClassNameResolver.resolveClassName({...options, active: isActive}, config.config);
 };
 
 export const NavbarMenu = config.factory<MakeProps, INavbarMenu>(({props, options, children}) => (

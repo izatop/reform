@@ -1,15 +1,13 @@
 import * as React from "react";
-import {SizeType} from "../../options";
+import {AreSizes} from "../../props";
 import {MakeProps} from "../../type";
 import {ElementFactory} from "../../utils";
 
-export interface ITags {
-    "has-addons"?: boolean;
-    "are-size"?: SizeType;
+export interface ITags extends AreSizes {
+    addons?: boolean;
 }
 
 const config = ElementFactory.create({component: "tags"});
-
 export const Tags = config.factory<MakeProps<ITags>>(({props, children}) => (
     <span {...props}>{children}</span>
 ));

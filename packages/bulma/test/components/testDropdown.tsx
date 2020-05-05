@@ -4,8 +4,8 @@ import {Button, Dropdown, DropdownDivider, DropdownElement} from "../../src";
 
 test("Dropdown", () => {
     const element1 = renderer.create((
-        <Dropdown is-hoverable is-up button={<Button>Button</Button>}>
-            <DropdownElement is-active>
+        <Dropdown hoverable up button={<Button>Button</Button>}>
+            <DropdownElement active>
                 <a href={"#"}>Element 1</a>
             </DropdownElement>
             <DropdownDivider/>

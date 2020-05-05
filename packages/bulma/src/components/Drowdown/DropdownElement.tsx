@@ -4,7 +4,7 @@ import {MakeProps} from "../../type";
 import {ElementFactory} from "../../utils";
 
 export interface IDropdownElement {
-    "is-active"?: boolean;
+    active?: boolean;
 }
 
 export interface IDropdownElementProps {
@@ -12,7 +12,6 @@ export interface IDropdownElementProps {
 }
 
 const config = ElementFactory.create({component: "dropdown-item"});
-
 export const DropdownElement = config.factory<MakeProps<IDropdownElement>, IDropdownElementProps>(
     ({props, children}) => (
         React.useMemo(() => (

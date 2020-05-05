@@ -9,7 +9,6 @@ export interface ICardProps extends XProps<"div"> {
 }
 
 const config = ElementFactory.create({component: "card"});
-
 export const Card = config.factory<MakeProps, ICardProps>(({props, children}) => (
     <div {...props}>{children}</div>
 ));

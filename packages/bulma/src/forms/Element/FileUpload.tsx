@@ -1,17 +1,14 @@
 import * as React from "react";
 import {XProps} from "../../interfaces";
-import {Align, ColorType, SizeType} from "../../options";
+import {IsColor, IsSize} from "../../props";
 import {MakeProps} from "../../type";
 import {ElementFactory} from "../../utils";
 
-interface IFileUpload {
-    "is-align"?: Align;
-    "is-color"?: ColorType;
-    "is-size"?: SizeType;
-    "is-centered"?: boolean;
-    "is-right"?: boolean;
-    "is-fullwidth"?: boolean;
-    "is-boxed"?: boolean;
+interface IFileUpload extends IsColor, IsSize {
+    centered?: boolean;
+    right?: boolean;
+    fullwidth?: boolean;
+    boxed?: boolean;
 }
 
 export type FileUploadProps = XProps<"input"> & {

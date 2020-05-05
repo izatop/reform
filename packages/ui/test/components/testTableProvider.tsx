@@ -12,7 +12,7 @@ test("TableFactory", () => {
 
     const element = (
         <Table.Factory data={data}>
-            <Table.Config primary={"id"} rowProps={({id}) => (id === 2 ? {"is-selected": true} : {})}>
+            <Table.Config primary={"id"} rowProps={({id}) => (id === 2 ? {selected: true} : {})}>
                 <Table.Property name={"f1"} align={"right"}/>
                 <Table.Property name={"f2"} total={() => "total"}>
                     {({id, f2}) => (<span>Hello, {f2} ({id})</span>)}

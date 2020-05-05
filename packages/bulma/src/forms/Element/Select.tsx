@@ -1,16 +1,8 @@
 import * as React from "react";
 import {XProps} from "../../interfaces";
-import {ColorType, SizeType} from "../../options";
+import {IsColor, IsSize} from "../../props";
 import {MakeProps} from "../../type";
 import {ElementFactory} from "../../utils";
-
-export enum SelectState {
-    Hover = "hovered",
-    Focus = "focused",
-    Load = "loading",
-}
-
-export type SelectStateType = SelectState | "hovered" | "focused" | "loading";
 
 export type SelectOptionType = string
     | number
@@ -25,14 +17,13 @@ const mapOptionToSelect = (value: SelectOptionType, key?: number | string) => {
     return <option key={`${key}-${value}`}>{value}</option>;
 };
 
-export interface ISelect {
-    "is-rounded"?: boolean;
-    "is-static"?: boolean;
-    "is-loading"?: boolean;
-    "is-color"?: ColorType;
-    "is-size"?: SizeType;
-    "is-state"?: SelectStateType;
-    "is-fullwidth"?: boolean;
+export interface ISelect extends IsSize, IsColor {
+    loading?: boolean;
+    hovered?: boolean;
+    focused?: boolean;
+    rounded?: boolean;
+    static?: boolean;
+    fullwidth?: boolean;
 }
 
 export type SelectProps = XProps<"select"> & {

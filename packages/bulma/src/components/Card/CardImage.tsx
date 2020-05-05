@@ -8,7 +8,6 @@ export interface ICardImage extends XProps<"div"> {
 }
 
 const config = ElementFactory.create({component: "card-image"});
-
 export const CardImage = config.factory<MakeProps, ICardImage>(({props, children}) => (
     <div {...props}>{children}</div>
 ));

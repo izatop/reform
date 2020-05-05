@@ -37,17 +37,16 @@ export type ImageRatioType = ImageRatio | "square" | "1by1" | "5by4" | "4by3" | 
     | "5by3" | "16by9" | "2by1" | "3by1" | "4by5" | "3by4" | "2by3" | "3by5" | "9by16"
     | "1by2" | "1by3";
 
-export type ImageProps = MakeProps<{
-    dimension?: ImageDimension;
-    ratio?: ImageRatio;
-    rounded?: boolean;
-}>;
-
 interface IFigure {
-    "is-d": ImageRatioType | ImageDimensionType;
+    dimension: ImageRatioType | ImageDimensionType;
 }
 
-const config = ElementFactory.create({component: "image"});
+const config = ElementFactory.create({
+    component: "image",
+    resolvers: {
+        dimension: (v) => `is-d-${v}`,
+    },
+});
 
 export const Figure = config.factory<IFigure, XProps<"figure">>(({props, children}) => (
     <figure {...props}>

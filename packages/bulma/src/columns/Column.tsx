@@ -19,13 +19,19 @@ export enum ColumnName {
 export type ColumnSize = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
 
 export interface IColumn {
-    "is-offset"?: ColumnSize | ColumnName | string;
-    "is-size"?: ColumnSize | ColumnName | string;
-    "is-narrow"?: true;
+    offset?: ColumnSize | ColumnName | string;
+    size?: ColumnSize | ColumnName | string;
+    narrow?: boolean;
 }
 
-const config = ElementFactory.create({component: "column"});
+const config = ElementFactory.create({
+    component: "column",
+    resolvers: {
+        size: (v) => `is-${v}`,
+        offset: (v) => `is-offset-${v}`,
+    },
+});
 
-export const Column = config.factory<MakeProps<IColumn, "is-size">, XProps<"div">>(({props, children}) => (
+export const Column = config.factory<MakeProps<IColumn, "size" | "narrow">, XProps<"div">>(({props, children}) => (
     <div {...props}>{children}</div>
 ));

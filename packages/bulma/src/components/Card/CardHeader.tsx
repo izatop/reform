@@ -3,15 +3,12 @@ import {XProps} from "../../interfaces";
 import {MakeProps} from "../../type";
 import {ElementFactory} from "../../utils";
 
-export interface ICardHeader {
+export interface ICardHeader extends XProps<"header"> {
     children?: React.ReactElement | [React.ReactElement, React.ReactElement];
 }
 
-export type CardHeaderProps = XProps<"header"> & ICardHeader;
-
 const config = ElementFactory.create({component: "card-header"});
-
-export const CardHeader = config.factory<MakeProps, CardHeaderProps>(({props, children}) => {
+export const CardHeader = config.factory<MakeProps, XProps<"header"> & ICardHeader>(({props, children}) => {
     return (
         <header {...props}>
             {children}

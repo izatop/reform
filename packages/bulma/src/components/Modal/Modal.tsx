@@ -11,7 +11,7 @@ interface IModalState {
 }
 
 export interface IModal {
-    "is-clipped"?: boolean;
+    clipped?: boolean;
     onClose?: () => void;
     active: boolean;
     detach?: boolean;
@@ -60,7 +60,7 @@ export class Modal extends React.Component<MakeProps<IModal>, IModalState> {
         const className = ClassNameResolver.resolveClassName(
             {
                 ...this.props,
-                "is-active": this.state.state,
+                active: this.state.state,
             },
             config,
         );
@@ -91,5 +91,5 @@ export class Modal extends React.Component<MakeProps<IModal>, IModalState> {
         if (this.props.onClose) {
             this.props.onClose();
         }
-    }
+    };
 }

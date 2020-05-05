@@ -1,15 +1,10 @@
 import * as React from "react";
 import {XProps} from "../../interfaces";
+import {IsActive} from "../../props";
 import {MakeProps} from "../../type";
 import {ElementFactory} from "../../utils";
 
-export interface IBreadcrumb {
-    "is-active"?: boolean;
-}
-
-export type BreadcrumbProps = MakeProps<IBreadcrumb>;
-
-const config = ElementFactory.create({});
-export const Breadcrumb = config.factory<BreadcrumbProps, XProps<"li">>(({props, children}) => (
+const config = ElementFactory.create({displayName: "breadcrumb"});
+export const Breadcrumb = config.factory<MakeProps<IsActive>, XProps<"li">>(({props, children}) => (
     <li {...props}>{children}</li>
 ));

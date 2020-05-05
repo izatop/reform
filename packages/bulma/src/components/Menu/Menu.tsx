@@ -14,7 +14,8 @@ const config = ElementFactory.create({
     dependencies: ["store"],
 });
 
-export const Menu = config.factory<MakeProps, IMenu & XProps<"aside">>(({props}) => {
+export const Menu = config.factory<MakeProps, IMenu & XProps<"aside">>(({props, options}) => {
+    console.log(props, options);
     const {store, ...p} = props;
     return (
         <aside {...p}>

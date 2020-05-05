@@ -4,9 +4,7 @@ import {MakeProps} from "../../type";
 import {ElementFactory} from "../../utils";
 
 export interface IControl {
-    "has-icons-left"?: boolean;
-    "has-icons-right"?: boolean;
-    "is-expanded"?: boolean;
+    expanded?: boolean;
 }
 
 export interface IControlProps {

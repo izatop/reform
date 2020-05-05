@@ -1,17 +1,18 @@
 import * as React from "react";
-import {ColorType, SizeType} from "../../options";
+import {IsColor, IsSize} from "../../props";
 import {MakeProps} from "../../type";
 import {ElementFactory} from "../../utils";
 
-export interface ITag {
-    "is-color"?: ColorType;
-    "is-size"?: SizeType;
-    "is-rounded"?: boolean;
-    "is-delete"?: boolean;
+export type TabSize = "normal" | "medium" | "large";
+export type TagColors = "black" | "dark" | "light" | "white" | "primary" | "link" | "info" | "success" | "warning"
+    | "danger";
+
+export interface ITag extends IsColor<TagColors>, IsSize<TabSize> {
+    rounded?: boolean;
+    delete?: boolean;
 }
 
 const config = ElementFactory.create({component: "tag"});
-
 export const Tag = config.factory<MakeProps<ITag>>(({props, children, options}) => (
-    options["is-delete"] ? <a {...props}/> : <span {...props}>{children}</span>
+    options.delete ? <a {...props}/> : <span {...props}>{children}</span>
 ));

@@ -5,13 +5,12 @@ import {ElementFactory} from "../../utils";
 import {TableRowContext} from "./TableRowContext";
 
 export interface ITableRow {
-    "is-selected"?: boolean;
+    selected?: boolean;
 }
 
 export type TableRowProps = XProps<"tr"> & { cells?: React.ReactNode[] };
 
 const config = ElementFactory.create({displayName: "TableRow"});
-
 export const TableRow = config.factory<MakeProps<ITableRow>, TableRowProps>(({props, children}) => {
     const {cells, ...p} = props;
     if (cells) {

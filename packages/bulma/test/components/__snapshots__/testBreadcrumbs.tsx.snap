@@ -5,37 +5,7 @@ exports[`Breadcrumbs 1`] = `
   aria-label="breadcrumbs"
   className="breadcrumb has-dot-separator"
 >
-  <ul>
-    <li
-      className=""
-    >
-      <a
-        href="/"
-      >
-        <span
-          className="icon is-small"
-        >
-          <i
-            className="fas fa-home"
-          />
-        </span>
-        <span>
-          Home
-        </span>
-      </a>
-    </li>
-    <li
-      className="is-active"
-    >
-      <a
-        href="/path"
-      >
-        <span>
-          Path
-        </span>
-      </a>
-    </li>
-  </ul>
+  <ul />
 </nav>
 `;
 
@@ -52,7 +22,7 @@ exports[`Breadcrumbs 2`] = `
         className="icon"
       >
         <i
-          className="fas fa-home"
+          className="fas"
         />
       </span>
       <span>
@@ -64,7 +34,7 @@ exports[`Breadcrumbs 2`] = `
       </span>
     </li>
     <li
-      className="is-active"
+      className=""
     >
       <a
         href="/path"

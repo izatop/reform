@@ -1,16 +1,16 @@
 import * as React from "react";
 import {XProps} from "../../interfaces";
+import {AreSizes} from "../../props";
 import {MakeProps} from "../../type";
 import {ElementFactory} from "../../utils";
 
-interface IButtons {
-    "has-addons"?: boolean;
-    "is-centered"?: boolean;
-    "is-right"?: boolean;
+interface IButtons extends AreSizes {
+    addons?: boolean;
+    centered?: boolean;
+    right?: boolean;
 }
 
 const config = ElementFactory.create({component: "buttons"});
-
 export const Buttons = config.factory<MakeProps<IButtons>, XProps<"div">>(({props, children}) => (
     <div {...props}>{children}</div>
 ));

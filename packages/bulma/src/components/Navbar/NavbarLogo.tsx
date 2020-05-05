@@ -6,14 +6,13 @@ import {NavbarBurger} from "./NavbarBurger";
 import {NavbarContext, NavbarWithChild} from "./props";
 
 const config = ElementFactory.create({component: "navbar-brand"});
-
 export const NavbarLogo = config.factory<MakeProps, { children: ReactNode }>(({props, children}) => (
     <div {...props}>
         {NavbarWithChild(children)}
 
         <NavbarContext.Consumer>
             {({state, toggle}) => (
-                <NavbarBurger onClick={toggle} is-active={state}/>
+                <NavbarBurger onClick={toggle} active={state}/>
             )}
         </NavbarContext.Consumer>
     </div>

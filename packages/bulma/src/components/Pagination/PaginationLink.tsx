@@ -2,7 +2,7 @@ import * as React from "react";
 import {ElementFactory} from "../../utils";
 
 interface IPaginationLink {
-    "is-current"?: boolean;
+    current?: boolean;
 }
 
 interface IPaginationLinkProps {
@@ -10,7 +10,13 @@ interface IPaginationLinkProps {
     set: (page: number) => void;
 }
 
-const config = ElementFactory.create({component: "pagination-link"});
+const config = ElementFactory.create({
+    component: "pagination-link",
+    resolvers: {
+        current: (v) => v && "is-current",
+    },
+});
+
 export const PaginationLink = config.factory <IPaginationLink, IPaginationLinkProps>(({props}) => {
     const {page, set, ...p} = props;
     if (typeof page === "number") {

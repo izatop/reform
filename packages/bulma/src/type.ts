@@ -2,7 +2,6 @@ import * as React from "react";
 import {
     Breakpoint,
     BreakpointType,
-    Color,
     ColorType,
     FontFamily,
     FontFamilyType,
@@ -16,49 +15,55 @@ import {
     TextWeightType,
 } from "./options";
 
-export type DefaultProps = React.ClassAttributes<any>
-    & React.HTMLAttributes<any>
-    & { children?: React.ReactNode };
+export type DefaultProps = { children?: React.ReactNode };
 
 export interface IBaseProps {
-    "is-text-size"?: TextSize | TextSizeType;
-    "has-text-color"?: Color | ColorType;
-    "has-text-align"?: TextAlign | TextAlignType;
-    "has-text-weight"?: TextWeight | TextWeightType;
-    "is-text-transform"?: TextTransform | TextTransformType;
-    "is-font-family"?: FontFamily | FontFamilyType;
+    textSize?: TextSize | TextSizeType;
+    textColor?: ColorType;
+    textAlign?: TextAlign | TextAlignType;
+    textWeight?: TextWeight | TextWeightType;
+    textTransform?: TextTransform | TextTransformType;
+    fontFamily?: FontFamily | FontFamilyType;
+    bg?: ColorType;
+    hidden?: boolean;
+    display?: "block" | "flex" | "inline" | "inline-block" | "inline-flex";
+    clearfix?: boolean;
+    pull?: "left" | "right";
+    marginless?: boolean;
+    paddingless?: boolean;
+    overlay?: boolean;
+    clipped?: boolean;
+    radiusless?: boolean;
+    shadowless?: boolean;
+    isUnselectable?: boolean;
+    invisible?: boolean;
+    srOnly?: boolean;
+    relative?: boolean;
 }
 
 export interface IBreakpoint {
-    "is-breakpoint"?: Breakpoint | BreakpointType;
+    breakpoint?: BreakpointType | Breakpoint;
 }
 
 export type MakeProps<P = {}, K extends keyof P = never> = IBaseProps & P & MakeResponsive<P, K>;
-
 export type MakeBreakpoint<P = {}, K extends keyof P = never> = MakeProps<P, K> & IBreakpoint;
 
-export type PickComponentProps<P = {}, K extends keyof P = never> = Pick<P & IBaseProps,
-    K extends string ? K & keyof IBaseProps : keyof IBaseProps>;
+export type PickComponentProps<P = {}, K extends keyof P = never> = K extends never
+    ? Pick<P & IBaseProps, keyof IBaseProps>
+    : Pick<P & IBaseProps, keyof IBaseProps & K>;
 
-export type MakeResponsive<P = {}, K extends keyof P = never> = {} & {
-    "x-mobile"?: PickComponentProps<P, K>;
-    "x-tablet"?: PickComponentProps<P, K>;
-    "x-tablet-touch"?: PickComponentProps<P, K>;
-    "x-desktop"?: PickComponentProps<P, K>;
-    "x-widescreen"?: PickComponentProps<P, K>;
-    "x-fullhd"?: PickComponentProps<P, K>;
+export type MakeResponsive<P = {}, K extends keyof P = never> = {
+    [S in BreakpointType]?: PickComponentProps<P, K>;
 };
 
-/**
- * @private
- */
 export interface IPropertyResolvers {
-    [key: string]: (value: any) => string | string[] | number | number[] | undefined;
+    [key: string]: string | ((value: any) => string | string[] | undefined | false);
 }
 
-/**
- * @private
- */
+export type MakePropertyResolver<T, K extends keyof T = keyof T> = IPropertyResolvers & {
+    [P in keyof T]: string | ((value: any) => string | string[] | undefined | false);
+}
+
 export interface IComponentConfig {
     component?: string;
     displayName?: string;

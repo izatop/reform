@@ -8,7 +8,6 @@ export interface ICardContent extends XProps<"div"> {
 }
 
 const config = ElementFactory.create({component: "card-content"});
-
 export const CardContent = config.factory<MakeProps, ICardContent>(({props, children}) => (
     <div {...props}>{children}</div>
 ));

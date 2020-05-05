@@ -2,6 +2,7 @@ import * as React from "react";
 import {Icon} from "../../elements/Icon";
 import {XProps} from "../../interfaces";
 import {Size} from "../../options";
+import {IsSize} from "../../props";
 import {MakeProps} from "../../type";
 import {ElementFactory} from "../../utils";
 import {Breadcrumb} from "./Breadcrumb";
@@ -11,11 +12,9 @@ export type BreadcrumbNode = React.ReactChild | {} | string;
 export type BreadcrumbPath = [string, BreadcrumbNode, string?] | BreadcrumbNode;
 
 export type BreadcrumbsProps = MakeProps<{
-    "is-right"?: boolean;
-    "is-centered"?: boolean;
-    "has-style"?: BreadcrumbsStyleType;
-    "has-separator"?: BreadcrumbsStyleType;
-}>;
+    separator?: BreadcrumbsStyleType;
+    centered?: boolean;
+} & IsSize<"small" | "medium" | "large">>;
 
 export interface IBreadcrumbs extends XProps<"nav"> {
     paths?: BreadcrumbPath[];
@@ -24,8 +23,7 @@ export interface IBreadcrumbs extends XProps<"nav"> {
 const config = ElementFactory.create({
     component: "breadcrumb",
     resolvers: {
-        style: (v) => `${v}-separator`,
-        separator: (v) => `${v}-separator`,
+        separator: (v) => `has-${v}-separator`,
     },
 });
 
@@ -78,8 +76,7 @@ export const Breadcrumbs = config.factory<BreadcrumbsProps, IBreadcrumbs>(({prop
         <nav aria-label={"breadcrumbs"} {...p}>
             <ul>
                 {breadcrumbs.map((child, key) => (
-                    <Breadcrumb is-active={key === lastChild}
-                                key={key}>{child}</Breadcrumb>
+                    <Breadcrumb is-active={key === lastChild} key={key}>{child}</Breadcrumb>
                 ))}
             </ul>
         </nav>

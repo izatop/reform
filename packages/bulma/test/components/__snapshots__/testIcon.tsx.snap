@@ -5,8 +5,7 @@ exports[`Icon 1`] = `
   className="icon is-medium"
 >
   <i
-    className="fas fa-home fa-lg"
-    data-fa-transform="flip-v"
+    className="fas"
   />
 </span>
 `;

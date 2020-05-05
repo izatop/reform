@@ -1,15 +1,11 @@
 import * as React from "react";
 import {XProps} from "../../interfaces";
+import {IsActive} from "../../props";
 import {MakeProps} from "../../type";
 import {ElementFactory} from "../../utils";
 
-interface INavbarBurger {
-    "is-active"?: boolean;
-}
-
 const config = ElementFactory.create({component: "navbar-burger burger"});
-
-export const NavbarBurger = config.factory<MakeProps<INavbarBurger>, XProps<"a">>(({props}) => (
+export const NavbarBurger = config.factory<MakeProps<IsActive>, XProps<"a">>(({props}) => (
     <a role="button"
        {...props}
        aria-label="menu"

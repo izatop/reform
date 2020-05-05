@@ -13,7 +13,7 @@ test("Message", () => {
     expect(element1.toJSON()).toMatchSnapshot();
 
     const element2 = renderer.create((
-        <Message is-size={"small"} is-color={"primary"}>
+        <Message size={"small"} color={"primary"}>
             <MessageHeader>Header</MessageHeader>
             <MessageContent>Content</MessageContent>
         </Message>

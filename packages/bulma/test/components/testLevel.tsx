@@ -6,7 +6,7 @@ test("Level", () => {
     const element1 = renderer.create((
         <Level>
             <LevelLeft>
-                <LevelElement has-text-centered>Foo</LevelElement>
+                <LevelElement hasTextCentered>Foo</LevelElement>
             </LevelLeft>
             <LevelRight>
                 <LevelElement>Bar</LevelElement>

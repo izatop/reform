@@ -6,8 +6,8 @@ import {NavbarElement} from "./NavbarElement";
 import {NavbarWithChild} from "./props";
 
 export interface INavbarDropdown {
-    "is-hoverable"?: boolean;
-    "is-right"?: boolean;
+    hoverable?: boolean;
+    right?: boolean;
 }
 
 export type NavbarDropdownProps = XProps<"div"> & {
@@ -17,10 +17,7 @@ export type NavbarDropdownProps = XProps<"div"> & {
     children: [React.ReactElement, ...React.ReactNode[]];
 };
 
-const config = ElementFactory.create({
-    displayName: "NavbarDropdown",
-});
-
+const config = ElementFactory.create({displayName: "NavbarDropdown"});
 export const NavbarDropdown = config.factory<MakeProps<INavbarDropdown>, NavbarDropdownProps>(
     ({props, children, options}) => {
         const {defaultActive, mouseLeaveTimeout, ...p} = props;
@@ -28,7 +25,7 @@ export const NavbarDropdown = config.factory<MakeProps<INavbarDropdown>, NavbarD
         const [active, setActive] = React.useState(defaultActive || false);
 
         const buttonProps = {...button.props};
-        if (!options["is-hoverable"]) {
+        if (!options.hoverable) {
             let timer: any;
 
             buttonProps.onClick = React.useCallback(
@@ -59,7 +56,7 @@ export const NavbarDropdown = config.factory<MakeProps<INavbarDropdown>, NavbarD
         }
 
         return (
-            <NavbarElement is-active={active} has-dropdown={true} {...p}>
+            <NavbarElement active={active} dropdown={true} {...p}>
                 {React.cloneElement(
                     button,
                     {...buttonProps, className: `${buttonProps.className || ""} navbar-link`},

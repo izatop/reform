@@ -9,7 +9,7 @@ test("Card", () => {
                 <CardHeaderTitle>Title</CardHeaderTitle>
                 <CardHeaderIcon icon={"home"}/>
             </CardHeader>
-            <CardImage><Figure is-d={"1by1"}><img src={"/path/to/image"}/></Figure></CardImage>
+            <CardImage><Figure dimension={"1by1"}><img src={"/path/to/image"}/></Figure></CardImage>
             <CardContent>Content</CardContent>
             <CardFooter>
                 <span>Item 1</span>

@@ -1,4 +1,4 @@
-import {Prefixes} from "../options";
+import {Breakpoint} from "../options";
 import {IComponentConfig, IProps} from "../type";
 import {PropertyResolver} from "./PropertyResolver";
 
@@ -20,21 +20,22 @@ export class ClassNameResolver {
             classes.push(component);
         }
 
-        for (const {value, property, type} of Object.values(modifiers)) {
-            if (type === Prefixes.X) {
+        const responsive = new Set(Object.keys(Breakpoint));
+        for (const {value, property} of Object.values(modifiers)) {
+            if (responsive.has(property)) {
                 classes.push(...ClassNameResolver.resolve(value, {resolvers, mutations}, property));
                 continue;
             }
 
             if (property in resolvers) {
-                const result = resolvers[property](value);
-                const each = Array.isArray(result) ? result : [result];
-
-                classes.push(...each.map((v) => this.getClassOf(type, property, v)));
-                continue;
+                const resolver = resolvers[property];
+                if (typeof resolver === "function") {
+                    const result = resolver(value);
+                    classes.push(...(Array.isArray(result) ? result : [result]));
+                } else {
+                    classes.push(resolver);
+                }
             }
-
-            classes.push(this.getClassOf(type, property, value));
         }
 
         if (suffix) {
@@ -43,13 +44,5 @@ export class ClassNameResolver {
         }
 
         return classes.filter((name) => !!name);
-    }
-
-    protected static getClassOf(type: string, property: string, value: any) {
-        if (typeof value === "boolean") {
-            return value ? `${type}-${property}` : undefined;
-        }
-
-        return `${type}-${value}`;
     }
 }

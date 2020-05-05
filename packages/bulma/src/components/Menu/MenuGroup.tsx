@@ -17,7 +17,6 @@ interface IMenuGroup {
 }
 
 const config = ElementFactory.create({component: "menu-label"});
-
 export const MenuGroup = config.factory<MakeProps, IMenuGroup>(({props}) => {
     const {node, ...p} = props;
     return (

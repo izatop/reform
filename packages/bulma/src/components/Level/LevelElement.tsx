@@ -1,13 +1,17 @@
 import React from "react";
+import {XProps} from "../../interfaces";
 import {MakeProps} from "../../type";
 import {ElementFactory} from "../../utils";
 
-const config = ElementFactory.create({component: "level-item"});
-
 export interface ILevelElement {
-    "has-text-centered"?: boolean;
+    hasTextCentered?: boolean;
 }
 
-export const LevelElement = config.factory<MakeProps<ILevelElement>>(({props, children}) => (
+const config = ElementFactory.create({
+    component: "level-item",
+    resolvers: {hasTextCentered: (v) => v && "has-text-centered"},
+});
+
+export const LevelElement = config.factory<MakeProps<ILevelElement>, XProps<"div">>(({props, children}) => (
     <div {...props}>{children}</div>
 ));

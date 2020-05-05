@@ -13,7 +13,6 @@ import {
 const {Provider} = PaginationContext;
 
 const config = ElementFactory.create({component: "pagination"});
-
 export const Pagination = config.factory<MakeProps<IPaginationOptions>, PaginationProps>(
     ({props, children}) => {
         const {onPageChange, onPageSelect, ...p} = props;

@@ -2,12 +2,18 @@
 
 exports[`Columns 1`] = `
 <div
-  className="columns is-8 is-1-mobile"
+  className="columns is-gapless is-variable is-fullhd"
 />
 `;
 
 exports[`Columns 2`] = `
 <div
-  className="columns is-gapless is-fullhd"
+  className="columns is-8 is-variable"
+/>
+`;
+
+exports[`Columns 3`] = `
+<div
+  className="columns is-0 is-variable"
 />
 `;

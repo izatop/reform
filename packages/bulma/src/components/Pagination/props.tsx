@@ -1,6 +1,7 @@
 import {createContext} from "react";
 import {XProps} from "../../interfaces";
 import {Size} from "../../options";
+import {IsSize} from "../../props";
 import {PaginationState} from "./PaginationState";
 import {PaginationStateLimit} from "./PaginationState/PaginationStateLimit";
 import {PaginationStatePage} from "./PaginationState/PaginationStatePage";
@@ -12,10 +13,9 @@ interface IPagination {
 
 export const PaginationContext = createContext({} as IPagination);
 
-export interface IPaginationOptions {
-    "is-size"?: Size;
-    "is-rounded"?: boolean;
-    "is-centered"?: boolean;
+export interface IPaginationOptions extends IsSize {
+    rounded?: boolean;
+    centered?: boolean;
 }
 
 export interface IPaginationProps {

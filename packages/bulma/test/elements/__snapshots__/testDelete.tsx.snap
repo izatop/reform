@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Delete 1`] = `
+<a
+  className="delete is-small"
+/>
+`;

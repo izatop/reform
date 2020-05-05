@@ -6,19 +6,18 @@ import {ElementFactory} from "../utils";
 export type Gap = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
 
 export interface IColumns {
-    "is-gap"?: false | Gap;
-    "is-multiline"?: boolean;
-    "is-centered"?: boolean;
-    "is-vcentered"?: boolean;
+    gap?: false | Gap;
+    centered?: boolean;
+    vCentered?: boolean;
 }
 
 const config = ElementFactory.create({
     component: "columns",
     resolvers: {
-        gap: (v: boolean | Gap) => v === false ? "gapless" : v.toString(),
+        gap: (v: boolean | Gap) => v === false ? "is-gapless is-variable" : `is-${v} is-variable`,
     },
 });
 
-export const Columns = config.factory<MakeBreakpoint<IColumns, "is-gap">, XProps<"div">>(({props, children}) => (
+export const Columns = config.factory<MakeBreakpoint<IColumns, "gap">, XProps<"div">>(({props, children}) => (
     <div {...props}>{children}</div>
 ));

@@ -44,7 +44,7 @@ export class TableFactory<T extends ITableSource = {}> extends React.Component<I
             if (isValidElement(child, TableConfig)) {
                 state.store.primary = child.props.primary;
                 state.store.rowProps = child.props.rowProps;
-                const properties: Array<ITableStoreProperty<any>> = [];
+                const properties: ITableStoreProperty<any>[] = [];
                 for (const property of React.Children.toArray(child.props.children)) {
                     if (isValidElement(property, TableProperty)) {
                         const {props: p} = property;

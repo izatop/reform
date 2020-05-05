@@ -6,17 +6,22 @@ import {ElementFactory} from "../../utils";
 export type TitleSize = 1 | 2 | 3 | 4 | 5 | 6;
 
 export interface ITitle {
-    "is-spaced"?: boolean;
-    "is-size"?: TitleSize;
+    spaced?: boolean;
+    size?: TitleSize;
 }
 
 export type TitleProps = { children: React.ReactNode } & XProps<"h1">;
 
-const createTitle = (name: string, size: TitleSize) => {
-    const config = ElementFactory.create({component: name});
+const resolvers = {
+    spaced: (v: boolean) => v && "is-spaced",
+    size: (v: TitleSize) => v && "is-${v}",
+};
+
+const createTitle = (component: string, size: TitleSize) => {
+    const config = ElementFactory.create({component, resolvers});
     return config.factory<MakeProps<ITitle>, TitleProps>(({props, children}) => (
         React.createElement(`h${size}`, props, children)
-    ), {"is-size": size});
+    ), {size});
 };
 
 export const Title = createTitle("title", 3);

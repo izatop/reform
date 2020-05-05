@@ -5,10 +5,10 @@ import {MakeProps} from "../../type";
 import {ClassNameResolver, ElementFactory} from "../../utils";
 
 export interface IDropdownOptions {
-    "is-arrowless"?: boolean;
-    "is-hoverable"?: boolean;
-    "is-right"?: boolean;
-    "is-up"?: boolean;
+    arrowless?: boolean;
+    hoverable?: boolean;
+    right?: boolean;
+    up?: boolean;
 }
 
 export interface IDropdown {
@@ -64,7 +64,7 @@ export const Dropdown = config.factory<MakeProps<IDropdownOptions>, DropdownProp
     const controlled = typeof controlledActive === "boolean";
     const active = controlled ? controlledActive : autoActive;
 
-    if (!controlled && !options["is-hoverable"]) {
+    if (!controlled && !options.hoverable) {
         let timer: any;
 
         trigger.onClick = React.useCallback(
@@ -95,7 +95,7 @@ export const Dropdown = config.factory<MakeProps<IDropdownOptions>, DropdownProp
     }
 
     p.className = React.useMemo(() => ClassNameResolver.resolveClassName(
-        {...options, "is-active": active},
+        {...options, active},
         config.config,
     ), [active, controlled]);
 

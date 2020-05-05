@@ -3,8 +3,8 @@ import {XProps} from "../../interfaces";
 import {ElementFactory} from "../../utils";
 
 export interface IField {
-    "is-grouped"?: boolean | "centered" | "right" | "multiline";
-    "has-addons"?: boolean | "centered" | "right";
+    grouped?: boolean | "centered" | "right" | "multiline";
+    addons?: boolean | "centered" | "right";
 }
 
 export type ElementOrExp = React.ReactElement | false;
@@ -16,8 +16,8 @@ export type FieldProps = XProps<"div"> & {
 const config = ElementFactory.create({
     component: "field",
     resolvers: {
-        addons: (v) => typeof v === "string" ? ["addons", `addons-${v}`] : v,
-        grouped: (v) => typeof v === "string" ? ["grouped", `grouped-${v}`] : v,
+        addons: (v) => typeof v === "string" ? ["has-addons", `has-addons-${v}`] : "has-addons",
+        grouped: (v) => typeof v === "string" ? ["is-grouped", `is-grouped-${v}`] : "is-grouped",
     },
 });
 

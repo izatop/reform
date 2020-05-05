@@ -10,7 +10,6 @@ export type TabsProps = XProps<"div"> & {
 };
 
 const config = ElementFactory.create({component: "tabs"});
-
 export const Tabs = config.factory<MakeProps, TabsProps>(({props, children}) => (
     <div {...props}>
         <ul>
