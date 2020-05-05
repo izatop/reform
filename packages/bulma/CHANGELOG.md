@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.5](https://github.com/izatop/reform/compare/@reform/bulma@0.1.4...@reform/bulma@0.1.5) (2020-05-05)
+
+
+### Bug Fixes
+
+* add miltiline attribute ([176b451](https://github.com/izatop/reform/commit/176b45115ee57babb4979c480a25c8c97cf2db9b))
+
+
+
+
+
 ## [0.1.4](https://github.com/izatop/reform/compare/@reform/bulma@0.1.3...@reform/bulma@0.1.4) (2020-05-05)
 
 
