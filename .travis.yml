@@ -21,6 +21,7 @@ before_install:
 install: yarn install --pure-lockfile
 
 before_script:
+  - export TZ=Europe/Moscow
   - greenkeeper-lockfile-update
   - git config --global push.default simple
   - git config --global user.email "travis@travis-ci.org"

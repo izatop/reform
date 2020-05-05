@@ -35,7 +35,7 @@ export interface IBaseProps {
     clipped?: boolean;
     radiusless?: boolean;
     shadowless?: boolean;
-    isUnselectable?: boolean;
+    selectable?: boolean;
     invisible?: boolean;
     srOnly?: boolean;
     relative?: boolean;
