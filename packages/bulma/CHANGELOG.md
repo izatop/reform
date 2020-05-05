@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.9](https://github.com/izatop/reform/compare/@reform/bulma@0.1.8...@reform/bulma@0.1.9) (2020-05-05)
+
+
+### Bug Fixes
+
+* forwarding refs for form controls ([a638f56](https://github.com/izatop/reform/commit/a638f56cb149d332e883b22129f16dfe6410934d))
+
+
+
+
+
 ## [0.1.8](https://github.com/izatop/reform/compare/@reform/bulma@0.1.7...@reform/bulma@0.1.8) (2020-05-05)
 
 
