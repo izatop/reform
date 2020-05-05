@@ -1,6 +1,7 @@
 import React, {ReactElement} from "react";
 import {MakeProps, XProps} from "../../interfaces";
 import {ColorType} from "../../options";
+import {IsColor, IsSize} from "../../props";
 import {ConfigFactory} from "../../utils";
 
 export enum HeroSize {
@@ -11,11 +12,10 @@ export enum HeroSize {
 
 export type HeroSizeType = HeroSize | "medium" | "large" | "fullheight";
 
-export interface IHero {
-    "is-size"?: HeroSizeType;
-    "is-color"?: ColorType;
-    "is-bold"?: boolean;
-    "is-navbar"?: boolean;
+export interface IHero extends IsColor {
+    size?: HeroSizeType;
+    bold?: boolean;
+    navbar?: boolean;
 }
 
 export type HeroProps = XProps<"section"> & {
@@ -25,7 +25,9 @@ export type HeroProps = XProps<"section"> & {
 const config = ConfigFactory.create({
     component: "hero",
     resolvers: {
-        navbar: () => "fullheight-with-navbar",
+        navbar: "is-fullheight-with-navbar",
+        bold: "is-bold",
+        size: (v) => `is-${v}`,
     },
 });
 
