@@ -1,6 +1,5 @@
 import React from "react";
-import {XProps, XPropsKeys} from "../interfaces";
-import {MakeProps} from "../type";
+import {MakeProps, XProps, XPropsKeys} from "../interfaces";
 import {ConfigFactory} from "../utils";
 
 const config = ConfigFactory.create({displayName: "div"});

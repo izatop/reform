@@ -1,8 +1,6 @@
 import React from "react";
-import {XProps} from "../../interfaces";
-import {ColorType, SizeType} from "../../options";
+import {BaseProps, MakeProps, XProps} from "../../interfaces";
 import {IsColor, IsSize} from "../../props";
-import {MakeProps} from "../../type";
 import {ConfigFactory} from "../../utils";
 
 export enum ButtonState {
@@ -19,17 +17,22 @@ export interface IButton extends IsColor, IsSize {
     loading?: boolean;
     outlined?: boolean;
     inverted?: boolean;
+    hovered?: boolean;
+    focused?: boolean;
     rounded?: boolean;
     static?: boolean;
     fullwidth?: boolean;
     selected?: boolean;
 }
 
+export type ButtonProps = MakeProps<IButton & BaseProps>;
+export type ButtonType = React.FC<ButtonProps & XProps<"button">>;
+
 const config = ConfigFactory.create({
     component: "button",
-    resolvers: {isState: (v) => `is-${v}`},
+    resolvers: {state: (v) => `is-${v}`},
 });
 
-export const Button = config.factory<MakeProps<IButton>, XProps<"button">>(({props, children}) => (
+export const Button: ButtonType = config.factory<ButtonProps, XProps<"button">>(({props, children}) => (
     <button {...props}>{children}</button>
 ), {type: "button"});

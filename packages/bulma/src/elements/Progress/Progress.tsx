@@ -1,8 +1,6 @@
 import * as React from "react";
-import {XProps} from "../../interfaces";
-import {ColorType, SizeType} from "../../options";
+import {MakeProps, XProps} from "../../interfaces";
 import {IsColor, IsSize} from "../../props";
-import {MakeProps} from "../../type";
 import {ConfigFactory} from "../../utils";
 
 export interface IProgress extends IsColor, IsSize {}

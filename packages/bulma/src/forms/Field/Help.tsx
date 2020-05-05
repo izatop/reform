@@ -1,6 +1,6 @@
 import * as React from "react";
+import {MakeProps} from "../../interfaces";
 import {IsColor} from "../../props";
-import {MakeProps} from "../../type";
 import {ConfigFactory} from "../../utils";
 
 const config = ConfigFactory.create({component: "help"});

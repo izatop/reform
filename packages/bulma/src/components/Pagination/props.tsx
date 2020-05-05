@@ -1,6 +1,5 @@
 import {createContext} from "react";
 import {XProps} from "../../interfaces";
-import {Size} from "../../options";
 import {IsSize} from "../../props";
 import {PaginationState} from "./PaginationState";
 import {PaginationStateLimit} from "./PaginationState/PaginationStateLimit";

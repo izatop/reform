@@ -1,6 +1,5 @@
 import React from "react";
-import {XProps} from "../interfaces";
-import {MakeProps} from "../type";
+import {MakeProps, MakeResponsive, XProps} from "../interfaces";
 import {ConfigFactory} from "../utils";
 
 export enum ColumnName {
@@ -24,7 +23,8 @@ export interface IColumn {
     narrow?: boolean;
 }
 
-export interface IColumnProps extends XProps<"div"> {}
+export type ColumnProps = MakeProps<IColumn> & MakeResponsive<IColumn, "size" | "narrow">;
+export type ColumnType = React.FC<XProps<"div"> & ColumnProps>;
 
 const config = ConfigFactory.create({
     component: "column",
@@ -34,6 +34,6 @@ const config = ConfigFactory.create({
     },
 });
 
-export const Column = config.factory<MakeProps<IColumn, "size" | "narrow">, IColumnProps>(({props, children}) => (
+export const Column: ColumnType = config.factory<ColumnProps, XProps<"div">>(({props, children}) => (
     <div {...props}>{children}</div>
 ));

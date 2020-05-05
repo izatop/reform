@@ -1,5 +1,5 @@
 import * as React from "react";
-import {MakeProps} from "../../type";
+import {MakeProps} from "../../interfaces";
 import {TableCell} from "./TableCell";
 import {TableRow} from "./TableRow";
 import {TableRowContext} from "./TableRowContext";

@@ -1,7 +1,7 @@
 import * as React from "react";
 import {ReactElement} from "react";
 import * as ReactDOM from "react-dom";
-import {MakeProps} from "../../type";
+import {MakeProps} from "../../interfaces";
 import {ConfigFactory} from "../../utils";
 
 const MODAL_PORTAL_ID = "reform-portal-id";

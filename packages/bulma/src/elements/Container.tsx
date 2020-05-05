@@ -1,6 +1,5 @@
 import React from "react";
-import {XProps} from "../interfaces";
-import {MakeBreakpoint} from "../type";
+import {MakeBreakpoint, XProps} from "../interfaces";
 import {ConfigFactory} from "../utils";
 
 interface IContainer {

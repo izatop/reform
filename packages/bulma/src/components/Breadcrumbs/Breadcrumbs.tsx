@@ -1,9 +1,8 @@
 import * as React from "react";
 import {Icon} from "../../elements/Icon";
-import {XProps} from "../../interfaces";
+import {MakeProps, XProps} from "../../interfaces";
 import {Size} from "../../options";
 import {IsSize} from "../../props";
-import {MakeProps} from "../../type";
 import {ConfigFactory} from "../../utils";
 import {Breadcrumb} from "./Breadcrumb";
 
@@ -16,7 +15,7 @@ export type BreadcrumbsProps = MakeProps<{
     centered?: boolean;
 } & IsSize<"small" | "medium" | "large">>;
 
-export interface IBreadcrumbs extends XProps<"nav"> {
+export interface IBreadcrumbsAttr extends XProps<"nav"> {
     paths?: BreadcrumbPath[];
 }
 
@@ -57,13 +56,7 @@ const renderNode = (path: BreadcrumbPath) => {
     return <a>{path}</a>;
 };
 
-/**
- * Two ways to use: as the "paths" prop or direct as children.
- *
- * @param props
- * @constructor
- */
-export const Breadcrumbs = config.factory<BreadcrumbsProps, IBreadcrumbs>(({props, children}) => {
+export const Breadcrumbs = config.factory<BreadcrumbsProps, IBreadcrumbsAttr>(({props, children}) => {
     const {paths, ...p} = props;
     const breadcrumbs = React.useMemo(() => (paths
             ? paths.map(renderNode)

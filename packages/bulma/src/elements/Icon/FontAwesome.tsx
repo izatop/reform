@@ -1,12 +1,11 @@
 import * as React from "react";
-import {IProps} from "../../type";
 import {IIcon} from "./Icon";
 
 const is = (expr: any, fn: () => any) => !!expr && fn();
 
 export const FontAwesome: React.FC<IIcon> = (props) => {
     const classes = ["fas"];
-    const options: IProps = {};
+    const options: object = {};
 
     if (typeof props.icon === "string") {
         classes.push(`fa-${props.icon}`);

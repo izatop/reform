@@ -1,6 +1,6 @@
 import * as React from "react";
+import {DefaultProps, IComponentConfig, IComputed, IInProps} from "../interfaces";
 import {defaultResolvers} from "../props";
-import {DefaultProps, IComponentConfig, IComputed, IInProps, MakeProps} from "../type";
 
 export type CT<T> = React.ComponentType<T>;
 const responsive = ["mobile", "tablet", "touch", "desktop", "widescreen", "fullhd"];
@@ -170,14 +170,13 @@ export class ConfigFactory {
         return;
     }
 
-    public factory<EP = MakeProps, P = DefaultProps>(FN: CT<IComputed<P, EP>>, defaultProps: Partial<P & EP> = {})
-        : React.FC<P & EP> {
+    public factory<OPT = {}, P = DefaultProps>(FN: CT<IComputed<P, OPT>>,
+                                               defaultProps: Partial<P & OPT> = {}): React.FC<P & OPT> {
         FN.displayName = this.config.displayName;
-
-        const container: React.ComponentType<P & EP> = (props) => (
+        const container: React.FC<P & OPT> = (props) => (
             React.createElement(
                 FN,
-                ConfigFactory.getPropsOf<P, EP>(props, this.config),
+                ConfigFactory.getPropsOf<P, OPT>(props, this.config),
                 props.children,
             )
         );

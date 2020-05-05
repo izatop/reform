@@ -1,7 +1,6 @@
 import * as React from "react";
 import {Icon} from "../../elements/Icon";
-import {XProps} from "../../interfaces";
-import {MakeProps} from "../../type";
+import {MakeProps, XProps} from "../../interfaces";
 import {ConfigFactory} from "../../utils";
 
 export interface ICardHeaderIcon {

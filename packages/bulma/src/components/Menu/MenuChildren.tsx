@@ -1,5 +1,5 @@
 import * as React from "react";
-import {MakeProps} from "../../type";
+import {MakeProps} from "../../interfaces";
 import {ConfigFactory} from "../../utils";
 import {MenuChild} from "./MenuChild";
 import {MenuNode} from "./Store/MenuNode";

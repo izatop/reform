@@ -1,6 +1,6 @@
 import * as React from "react";
+import {MakeProps} from "../../interfaces";
 import {AreSizes} from "../../props";
-import {MakeProps} from "../../type";
 import {ConfigFactory} from "../../utils";
 
 export interface ITags extends AreSizes {

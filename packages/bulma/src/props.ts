@@ -1,5 +1,5 @@
+import {BaseProps, IBreakpoint, MakePropertyResolver} from "./interfaces";
 import {ColorType, SizeType} from "./options";
-import {IBaseProps, IBreakpoint, MakePropertyResolver} from "./type";
 
 const make = (name: string) => (v: boolean) => v && name;
 
@@ -48,7 +48,7 @@ export interface KnownProps {
     focused?: boolean;
 }
 
-export type ResolverProps = IBaseProps & IsActive & IsColor & IsSize & AreSizes & KnownProps
+export type ResolverProps = BaseProps & IsActive & IsColor & IsSize & AreSizes & KnownProps
     & IBreakpoint;
 
 export const defaultResolvers: MakePropertyResolver<ResolverProps> = {

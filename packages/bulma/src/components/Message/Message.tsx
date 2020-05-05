@@ -1,8 +1,7 @@
 import * as React from "react";
 import {ReactElement} from "react";
-import {XProps} from "../../interfaces";
+import {MakeProps, XProps} from "../../interfaces";
 import {IsColor, IsSize} from "../../props";
-import {MakeProps} from "../../type";
 import {ConfigFactory} from "../../utils";
 
 export interface IMessage extends IsColor, IsSize {}

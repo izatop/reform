@@ -1,7 +1,7 @@
 import * as React from "react";
 import {ReactElement} from "react";
+import {MakeProps} from "../../interfaces";
 import {IsActive} from "../../props";
-import {MakeProps} from "../../type";
 import {ConfigFactory} from "../../utils";
 
 export interface INavbarTab extends IsActive {

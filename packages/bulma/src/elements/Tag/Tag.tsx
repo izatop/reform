@@ -1,6 +1,6 @@
 import * as React from "react";
+import {MakeProps} from "../../interfaces";
 import {IsColor, IsSize} from "../../props";
-import {MakeProps} from "../../type";
 import {ConfigFactory} from "../../utils";
 
 export type TabSize = "normal" | "medium" | "large";

@@ -1,7 +1,6 @@
 import * as React from "react";
-import {XProps} from "../../interfaces";
+import {MakeProps, XProps} from "../../interfaces";
 import {IsColor, IsSize} from "../../props";
-import {MakeProps} from "../../type";
 import {ConfigFactory} from "../../utils";
 
 interface IFileUpload extends IsColor, IsSize {

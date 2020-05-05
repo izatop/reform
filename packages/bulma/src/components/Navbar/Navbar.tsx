@@ -1,8 +1,7 @@
 import * as React from "react";
 import {ReactElement} from "react";
-import {XProps} from "../../interfaces";
+import {MakeBreakpoint, XProps} from "../../interfaces";
 import {IsColor} from "../../props";
-import {MakeBreakpoint} from "../../type";
 import {ConfigFactory} from "../../utils";
 import {NavbarContext} from "./props";
 

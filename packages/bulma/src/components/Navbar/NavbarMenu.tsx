@@ -1,6 +1,6 @@
 import * as React from "react";
 import {ReactElement} from "react";
-import {MakeProps} from "../../type";
+import {MakeProps} from "../../interfaces";
 import {ConfigFactory} from "../../utils";
 import {NavbarContext} from "./props";
 

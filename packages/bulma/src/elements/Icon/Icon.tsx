@@ -1,6 +1,6 @@
 import * as React from "react";
+import {MakeProps} from "../../interfaces";
 import {IsColor, IsSize} from "../../props";
-import {MakeProps} from "../../type";
 import {ConfigFactory} from "../../utils";
 import {FontAwesome} from "./FontAwesome";
 
@@ -27,7 +27,7 @@ const config = ConfigFactory.create({
     resolvers: {color: (v) => `has-text-${v}`},
 });
 
-declare const foo: MakeProps<IIconInput>
+declare const foo: MakeProps<IIconInput>;
 
 export const Icon = config.factory<MakeProps<IIconInput>, IIcon>(({props: {className, ...props}, children}) => (
     <>

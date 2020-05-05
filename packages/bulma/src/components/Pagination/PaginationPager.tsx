@@ -23,5 +23,5 @@ export const PaginationPager = config.factory<{}, IPaginationPagerProps>(({props
                 }}
             </Consumer>
         </ul>
-    )
+    );
 });
