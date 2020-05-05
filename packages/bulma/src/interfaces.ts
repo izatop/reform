@@ -196,6 +196,9 @@ export interface IHTMLElementRegistry {
 export type XPropsKeys = keyof IHTMLElementRegistry;
 export type XProps<K extends XPropsKeys> = IHTMLElementRegistry[K];
 export type DefaultProps = { children?: React.ReactNode };
+export type XElement<K extends XPropsKeys> = IHTMLElementRegistry[K] extends React.DetailedHTMLProps<any, infer H>
+    ? H
+    : IHTMLElementRegistry[K] extends React.SVGProps<infer S> ? S : never;
 
 export interface IBreakpoint {
     breakpoint?: BreakpointType | Breakpoint;

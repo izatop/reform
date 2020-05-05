@@ -24,7 +24,7 @@ const config = ConfigFactory.create({
     },
 });
 
-export const FileUpload = config.factory<MakeProps<IFileUpload>, FileUploadProps>(({props, children}) => {
+export const FileUpload = config.factoryRef<"input", MakeProps<IFileUpload>, FileUploadProps>(({props, children}) => {
     const {files, label, ...p} = props;
     return (
         <div className={p.className}>

@@ -1,5 +1,5 @@
 import * as React from "react";
-import {MakeProps, XProps} from "../../interfaces";
+import {MakeProps} from "../../interfaces";
 import {IsColor, IsSize} from "../../props";
 import {ConfigFactory} from "../../utils";
 
@@ -18,6 +18,6 @@ const config = ConfigFactory.create({
     resolvers: {fixed: (v) => v && "is-fixed-size"},
 });
 
-export const TextArea = config.factory<MakeProps<ITextArea>, XProps<"textarea">>(({props, children}) => (
+export const TextArea = config.factoryRef<"textarea", MakeProps<ITextArea>>(({props, children}) => (
     <textarea {...props}>{children}</textarea>
 ));

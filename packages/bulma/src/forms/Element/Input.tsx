@@ -12,6 +12,6 @@ interface IInput extends IsSize, IsColor {
 }
 
 const config = ConfigFactory.create({component: "input"});
-export const Input = config.factory<MakeProps<IInput>, XProps<"input">>(({props}) => (
+export const Input = config.factoryRef<"input", MakeProps<IInput>>(({props}) => (
     <input {...props}/>
 ));

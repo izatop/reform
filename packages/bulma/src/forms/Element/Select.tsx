@@ -46,7 +46,7 @@ const getOptions = (options: SelectOptionType[], emptiness?: string | boolean) =
     return options;
 };
 
-export const Select = config.factory<MakeProps<ISelect>, SelectProps>(({props}) => {
+export const Select = config.factoryRef<"select", MakeProps<ISelect>, SelectProps>(({props}) => {
     const {className, options, emptiness, ...p} = props;
     const optimizedOptions = React.useMemo(() => getOptions(options, emptiness), [options, emptiness]);
     return (

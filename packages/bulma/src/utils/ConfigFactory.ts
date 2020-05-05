@@ -1,5 +1,6 @@
 import * as React from "react";
-import {DefaultProps, IComponentConfig, IComputed, IInProps} from "../interfaces";
+import {PropsWithoutRef} from "react";
+import {DefaultProps, IComponentConfig, IComputed, IInProps, XElement, XProps, XPropsKeys} from "../interfaces";
 import {defaultResolvers} from "../props";
 
 export type CT<T> = React.ComponentType<T>;
@@ -176,10 +177,29 @@ export class ConfigFactory {
         const container: React.FC<P & OPT> = (props) => (
             React.createElement(
                 FN,
-                ConfigFactory.getPropsOf<P, OPT>(props, this.config),
+                ConfigFactory.getPropsOf<P, OPT>(props as P & OPT, this.config),
                 props.children,
             )
         );
+
+        container.displayName = `@${this.config.displayName}`;
+        container.defaultProps = defaultProps;
+        return container;
+    }
+
+    public factoryRef<K extends XPropsKeys,
+        OPT = {},
+        P = XProps<K>>(FN: CT<IComputed<P, OPT>>,
+                       defaultProps: Partial<PropsWithoutRef<P & OPT>> = {}) {
+
+        FN.displayName = this.config.displayName;
+        const container = React.forwardRef<XElement<K>, P & OPT>((props, ref) => (
+            React.createElement(
+                FN,
+                ConfigFactory.getPropsOf<P, OPT>({...props, ref} as P & OPT, this.config),
+                props.children,
+            )
+        ));
 
         container.displayName = `@${this.config.displayName}`;
         container.defaultProps = defaultProps;
