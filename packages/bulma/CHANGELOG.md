@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.4](https://github.com/izatop/reform/compare/@reform/bulma@0.1.3...@reform/bulma@0.1.4) (2020-05-05)
+
+
+### Bug Fixes
+
+* react imports ([b0ed192](https://github.com/izatop/reform/commit/b0ed192edc1aed2383826c54c3f45346593549df))
+
+
+
+
+
 ## [0.1.3](https://github.com/izatop/reform/compare/@reform/bulma@0.1.2...@reform/bulma@0.1.3) (2020-05-05)
 
 
