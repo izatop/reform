@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.6](https://github.com/izatop/reform/compare/@reform/ui@0.1.5...@reform/ui@0.1.6) (2020-05-05)
+
+
+### Bug Fixes
+
+* add breadcrumbs ([976dcd8](https://github.com/izatop/reform/commit/976dcd898166d4d0b54e7c82288f323f6ad3d364))
+
+
+
+
+
 ## [0.1.5](https://github.com/izatop/reform/compare/@reform/ui@0.1.4...@reform/ui@0.1.5) (2020-05-05)
 
 **Note:** Version bump only for package @reform/ui
