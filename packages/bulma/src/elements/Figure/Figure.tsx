@@ -1,7 +1,7 @@
 import * as React from "react";
 import {XProps} from "../../interfaces";
 import {MakeProps} from "../../type";
-import {ElementFactory} from "../../utils";
+import {ConfigFactory} from "../../utils";
 
 export enum ImageDimension {
     D16x16 = "16x16",
@@ -41,7 +41,7 @@ interface IFigure {
     dimension: ImageRatioType | ImageDimensionType;
 }
 
-const config = ElementFactory.create({
+const config = ConfigFactory.create({
     component: "image",
     resolvers: {
         dimension: (v) => `is-d-${v}`,

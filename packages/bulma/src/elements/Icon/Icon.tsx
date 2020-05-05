@@ -1,7 +1,7 @@
 import * as React from "react";
 import {IsColor, IsSize} from "../../props";
 import {MakeProps} from "../../type";
-import {ElementFactory} from "../../utils";
+import {ConfigFactory} from "../../utils";
 import {FontAwesome} from "./FontAwesome";
 
 export type IconWeight = "lg" | "2x" | "3x";
@@ -22,7 +22,7 @@ export interface IIconInput extends IsSize, IsColor {
     left?: true;
 }
 
-const config = ElementFactory.create({
+const config = ConfigFactory.create({
     component: "icon",
     resolvers: {color: (v) => `has-text-${v}`},
 });

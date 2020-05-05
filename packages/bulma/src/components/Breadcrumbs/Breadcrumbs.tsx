@@ -4,7 +4,7 @@ import {XProps} from "../../interfaces";
 import {Size} from "../../options";
 import {IsSize} from "../../props";
 import {MakeProps} from "../../type";
-import {ElementFactory} from "../../utils";
+import {ConfigFactory} from "../../utils";
 import {Breadcrumb} from "./Breadcrumb";
 
 export type BreadcrumbsStyleType = "arrow" | "bullet" | "dot" | "succeeds";
@@ -20,7 +20,7 @@ export interface IBreadcrumbs extends XProps<"nav"> {
     paths?: BreadcrumbPath[];
 }
 
-const config = ElementFactory.create({
+const config = ConfigFactory.create({
     component: "breadcrumb",
     resolvers: {
         separator: (v) => `has-${v}-separator`,
@@ -76,7 +76,7 @@ export const Breadcrumbs = config.factory<BreadcrumbsProps, IBreadcrumbs>(({prop
         <nav aria-label={"breadcrumbs"} {...p}>
             <ul>
                 {breadcrumbs.map((child, key) => (
-                    <Breadcrumb is-active={key === lastChild} key={key}>{child}</Breadcrumb>
+                    <Breadcrumb active={key === lastChild} key={key}>{child}</Breadcrumb>
                 ))}
             </ul>
         </nav>

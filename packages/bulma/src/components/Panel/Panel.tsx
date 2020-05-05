@@ -1,7 +1,7 @@
 import * as React from "react";
-import {ElementFactory} from "../../utils";
+import {ConfigFactory} from "../../utils";
 
-const config = ElementFactory.create({component: "panel"});
+const config = ConfigFactory.create({component: "panel"});
 export const Panel = config.factory(({props, children}) => (
     <div {...props}>
         {children}

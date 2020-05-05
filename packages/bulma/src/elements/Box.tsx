@@ -1,9 +1,9 @@
 import React from "react";
 import {XProps} from "../interfaces";
 import {MakeProps} from "../type";
-import {ElementFactory} from "../utils";
+import {ConfigFactory} from "../utils";
 
-const config = ElementFactory.create({component: "box"});
+const config = ConfigFactory.create({component: "box"});
 export const Box = config.factory<MakeProps, XProps<"div">>(({props, children}) => {
     return <div {...props}>{children}</div>;
 });

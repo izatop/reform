@@ -1,7 +1,7 @@
 import * as React from "react";
 import {XProps} from "../../interfaces";
 import {MakeProps} from "../../type";
-import {ElementFactory} from "../../utils";
+import {ConfigFactory} from "../../utils";
 
 export type TitleSize = 1 | 2 | 3 | 4 | 5 | 6;
 
@@ -14,11 +14,11 @@ export type TitleProps = { children: React.ReactNode } & XProps<"h1">;
 
 const resolvers = {
     spaced: (v: boolean) => v && "is-spaced",
-    size: (v: TitleSize) => v && "is-${v}",
+    size: (v: TitleSize) => v && `is-${v}`,
 };
 
 const createTitle = (component: string, size: TitleSize) => {
-    const config = ElementFactory.create({component, resolvers});
+    const config = ConfigFactory.create({component, resolvers});
     return config.factory<MakeProps<ITitle>, TitleProps>(({props, children}) => (
         React.createElement(`h${size}`, props, children)
     ), {size});

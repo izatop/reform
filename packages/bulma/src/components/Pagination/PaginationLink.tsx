@@ -1,5 +1,5 @@
 import * as React from "react";
-import {ElementFactory} from "../../utils";
+import {ConfigFactory} from "../../utils";
 
 interface IPaginationLink {
     current?: boolean;
@@ -10,7 +10,7 @@ interface IPaginationLinkProps {
     set: (page: number) => void;
 }
 
-const config = ElementFactory.create({
+const config = ConfigFactory.create({
     component: "pagination-link",
     resolvers: {
         current: (v) => v && "is-current",

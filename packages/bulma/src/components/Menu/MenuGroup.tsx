@@ -1,6 +1,6 @@
 import * as React from "react";
 import {MakeProps} from "../../type";
-import {ElementFactory} from "../../utils";
+import {ConfigFactory} from "../../utils";
 import {MenuChildren} from "./MenuChildren";
 import {MenuNode} from "./Store/MenuNode";
 
@@ -16,7 +16,7 @@ interface IMenuGroup {
     node: MenuNode;
 }
 
-const config = ElementFactory.create({component: "menu-label"});
+const config = ConfigFactory.create({component: "menu-label"});
 export const MenuGroup = config.factory<MakeProps, IMenuGroup>(({props}) => {
     const {node, ...p} = props;
     return (

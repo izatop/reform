@@ -2,7 +2,7 @@ import * as React from "react";
 import {XProps} from "../../interfaces";
 import {IsColor, IsSize} from "../../props";
 import {MakeProps} from "../../type";
-import {ElementFactory} from "../../utils";
+import {ConfigFactory} from "../../utils";
 
 export type SelectOptionType = string
     | number
@@ -31,7 +31,7 @@ export type SelectProps = XProps<"select"> & {
     emptiness?: string | boolean;
 };
 
-const config = ElementFactory.create({
+const config = ConfigFactory.create({
     component: "select",
     mutations: {multiple: "is-multiple"},
 });

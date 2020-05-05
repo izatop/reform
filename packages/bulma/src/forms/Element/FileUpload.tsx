@@ -2,7 +2,7 @@ import * as React from "react";
 import {XProps} from "../../interfaces";
 import {IsColor, IsSize} from "../../props";
 import {MakeProps} from "../../type";
-import {ElementFactory} from "../../utils";
+import {ConfigFactory} from "../../utils";
 
 interface IFileUpload extends IsColor, IsSize {
     centered?: boolean;
@@ -17,7 +17,7 @@ export type FileUploadProps = XProps<"input"> & {
     label?: string;
 };
 
-const config = ElementFactory.create({
+const config = ConfigFactory.create({
     component: "file",
     displayName: "FileUpload",
     mutations: {

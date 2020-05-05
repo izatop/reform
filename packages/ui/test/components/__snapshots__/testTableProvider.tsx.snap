@@ -9,7 +9,7 @@ exports[`TableFactory 1`] = `
       className=""
     >
       <th
-        className=""
+        className="has-text-right"
       />
       <th
         className=""
@@ -21,7 +21,7 @@ exports[`TableFactory 1`] = `
       className=""
     >
       <th
-        className=""
+        className="has-text-right"
       />
       <th
         className=""
@@ -35,7 +35,7 @@ exports[`TableFactory 1`] = `
       className=""
     >
       <td
-        className=""
+        className="has-text-right"
       >
         76
       </td>
@@ -52,10 +52,10 @@ exports[`TableFactory 1`] = `
       </td>
     </tr>
     <tr
-      className=""
+      className="is-selected"
     >
       <td
-        className=""
+        className="has-text-right"
       >
         98
       </td>

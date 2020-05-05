@@ -2,7 +2,7 @@ import React, {ReactElement} from "react";
 import {XProps} from "../../interfaces";
 import {ColorType} from "../../options";
 import {MakeProps} from "../../type";
-import {ElementFactory} from "../../utils";
+import {ConfigFactory} from "../../utils";
 
 export enum HeroSize {
     Medium = "medium",
@@ -23,7 +23,7 @@ export type HeroProps = XProps<"section"> & {
     children: ReactElement | [ReactElement, ReactElement?, ReactElement?];
 };
 
-const config = ElementFactory.create({
+const config = ConfigFactory.create({
     component: "hero",
     resolvers: {
         navbar: () => "fullheight-with-navbar",

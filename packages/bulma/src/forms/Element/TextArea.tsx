@@ -2,7 +2,7 @@ import * as React from "react";
 import {XProps} from "../../interfaces";
 import {IsColor, IsSize} from "../../props";
 import {MakeProps} from "../../type";
-import {ElementFactory} from "../../utils";
+import {ConfigFactory} from "../../utils";
 
 export interface ITextArea extends IsSize, IsColor {
     fixed?: boolean;
@@ -14,7 +14,7 @@ export interface ITextArea extends IsSize, IsColor {
     fullwidth?: boolean;
 }
 
-const config = ElementFactory.create({
+const config = ConfigFactory.create({
     component: "textarea",
     resolvers: {fixed: (v) => v && "is-fixed-size"},
 });

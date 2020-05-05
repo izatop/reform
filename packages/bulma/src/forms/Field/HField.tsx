@@ -1,7 +1,7 @@
 import * as React from "react";
 import {XProps} from "../../interfaces";
 import {MakeProps} from "../../type";
-import {ElementFactory} from "../../utils";
+import {ConfigFactory} from "../../utils";
 import {Field} from "./Field";
 import {HLabel} from "./HLabel";
 
@@ -10,7 +10,7 @@ export type HFieldProps = XProps<"div"> & {
     children: React.ReactElement[] | React.ReactElement;
 };
 
-const config = ElementFactory.create({component: "is-horizontal", displayName: "HField"});
+const config = ConfigFactory.create({component: "is-horizontal", displayName: "HField"});
 
 export const HField = config.factory<MakeProps, HFieldProps>(({props, children}) => {
     const {label, ...p} = props;

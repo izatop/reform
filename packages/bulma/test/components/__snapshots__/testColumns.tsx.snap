@@ -2,18 +2,18 @@
 
 exports[`Columns 1`] = `
 <div
-  className="columns is-gapless is-variable is-fullhd"
+  className="is-variable columns is-gapless is-fullhd"
 />
 `;
 
 exports[`Columns 2`] = `
 <div
-  className="columns is-8 is-variable"
+  className="is-variable columns is-gap-1-mobile is-gap-8"
 />
 `;
 
 exports[`Columns 3`] = `
 <div
-  className="columns is-0 is-variable"
+  className="is-variable columns is-gapless"
 />
 `;

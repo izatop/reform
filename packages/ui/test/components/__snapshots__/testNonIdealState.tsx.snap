@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Non ideal state 1`] = `
+<div
+  className="is-variable columns is-centered is-gapless"
+>
+  <div
+    className="column is-narrow"
+  >
+    <div
+      className="content has-text-centered"
+    >
+      <h1
+        className="title is-1"
+      >
+        <span
+          className="icon is-large"
+        >
+          <i
+            className="fas fa-home fa-lg"
+          />
+        </span>
+      </h1>
+      <h3
+        className="subtitle is-3"
+      >
+        Ooops...
+      </h3>
+    </div>
+  </div>
+</div>
+`;

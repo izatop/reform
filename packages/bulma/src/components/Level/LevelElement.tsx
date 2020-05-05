@@ -1,13 +1,13 @@
 import React from "react";
 import {XProps} from "../../interfaces";
 import {MakeProps} from "../../type";
-import {ElementFactory} from "../../utils";
+import {ConfigFactory} from "../../utils";
 
 export interface ILevelElement {
     hasTextCentered?: boolean;
 }
 
-const config = ElementFactory.create({
+const config = ConfigFactory.create({
     component: "level-item",
     resolvers: {hasTextCentered: (v) => v && "has-text-centered"},
 });

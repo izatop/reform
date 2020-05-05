@@ -2,7 +2,7 @@ import * as React from "react";
 import {XProps} from "../../interfaces";
 import {AreSizes} from "../../props";
 import {MakeProps} from "../../type";
-import {ElementFactory} from "../../utils";
+import {ConfigFactory} from "../../utils";
 
 interface IButtons extends AreSizes {
     addons?: boolean;
@@ -10,7 +10,7 @@ interface IButtons extends AreSizes {
     right?: boolean;
 }
 
-const config = ElementFactory.create({component: "buttons"});
+const config = ConfigFactory.create({component: "buttons"});
 export const Buttons = config.factory<MakeProps<IButtons>, XProps<"div">>(({props, children}) => (
     <div {...props}>{children}</div>
 ));

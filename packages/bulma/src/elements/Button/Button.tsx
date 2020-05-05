@@ -3,7 +3,7 @@ import {XProps} from "../../interfaces";
 import {ColorType, SizeType} from "../../options";
 import {IsColor, IsSize} from "../../props";
 import {MakeProps} from "../../type";
-import {ElementFactory} from "../../utils";
+import {ConfigFactory} from "../../utils";
 
 export enum ButtonState {
     Hover = "hovered",
@@ -25,7 +25,7 @@ export interface IButton extends IsColor, IsSize {
     selected?: boolean;
 }
 
-const config = ElementFactory.create({
+const config = ConfigFactory.create({
     component: "button",
     resolvers: {isState: (v) => `is-${v}`},
 });

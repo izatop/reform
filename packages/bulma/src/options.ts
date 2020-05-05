@@ -1,13 +1,12 @@
 export enum Breakpoint {
     Mobile = "mobile",
     Tablet = "tablet",
-    Touch = "touch",
     Desktop = "desktop",
     Widescreen = "widescreen",
     Fullhd = "fullhd",
 }
 
-export type BreakpointType = "mobile" | "tablet" | "touch" | "desktop" | "widescreen" | "fullhd";
+export type BreakpointType = "mobile" | "tablet" | "desktop" | "widescreen" | "fullhd";
 
 export enum TextTransform {
     Capitalize = "capitalized",

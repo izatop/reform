@@ -2,7 +2,7 @@ import * as React from "react";
 import {ReactElement} from "react";
 import * as ReactDOM from "react-dom";
 import {MakeProps} from "../../type";
-import {ClassNameResolver, ElementFactory} from "../../utils";
+import {ConfigFactory} from "../../utils";
 
 const MODAL_PORTAL_ID = "reform-portal-id";
 
@@ -18,7 +18,7 @@ export interface IModal {
     children: ReactElement;
 }
 
-const config = ElementFactory.createConfig({component: "modal"});
+const config = ConfigFactory.createConfig({component: "modal"});
 
 export class Modal extends React.Component<MakeProps<IModal>, IModalState> {
     public state = this.resolveState(this.props.active || false);
@@ -57,7 +57,7 @@ export class Modal extends React.Component<MakeProps<IModal>, IModalState> {
             return null;
         }
 
-        const className = ClassNameResolver.resolveClassName(
+        const className = ConfigFactory.resolveClassName(
             {
                 ...this.props,
                 active: this.state.state,

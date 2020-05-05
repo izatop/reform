@@ -1,7 +1,7 @@
 import * as React from "react";
-import {ElementFactory} from "../../utils";
+import {ConfigFactory} from "../../utils";
 
-const config = ElementFactory.create({component: "hero-body"});
+const config = ConfigFactory.create({component: "hero-body"});
 
 export const HeroContent = config.factory(({props, children}) => (
     <div {...props}>{children}</div>

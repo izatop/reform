@@ -1,7 +1,7 @@
 import * as React from "react";
 import {XProps} from "../../interfaces";
 import {MakeProps} from "../../type";
-import {ElementFactory} from "../../utils";
+import {ConfigFactory} from "../../utils";
 import {TableRowContext} from "./TableRowContext";
 
 export interface ITableRow {
@@ -10,7 +10,7 @@ export interface ITableRow {
 
 export type TableRowProps = XProps<"tr"> & { cells?: React.ReactNode[] };
 
-const config = ElementFactory.create({displayName: "TableRow"});
+const config = ConfigFactory.create({displayName: "TableRow"});
 export const TableRow = config.factory<MakeProps<ITableRow>, TableRowProps>(({props, children}) => {
     const {cells, ...p} = props;
     if (cells) {

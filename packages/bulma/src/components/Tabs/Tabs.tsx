@@ -2,14 +2,14 @@ import * as React from "react";
 import {ReactElement} from "react";
 import {XProps} from "../../interfaces";
 import {MakeProps} from "../../type";
-import {ElementFactory} from "../../utils";
+import {ConfigFactory} from "../../utils";
 import {Tab} from "./Tab";
 
 export type TabsProps = XProps<"div"> & {
     children: ReactElement | ReactElement[];
 };
 
-const config = ElementFactory.create({component: "tabs"});
+const config = ConfigFactory.create({component: "tabs"});
 export const Tabs = config.factory<MakeProps, TabsProps>(({props, children}) => (
     <div {...props}>
         <ul>

@@ -1,7 +1,7 @@
 import React from "react";
 import {XProps} from "../interfaces";
 import {MakeProps} from "../type";
-import {ElementFactory} from "../utils";
+import {ConfigFactory} from "../utils";
 
 export enum ColumnName {
     ThreeQuarters = "three-quarters",
@@ -24,7 +24,7 @@ export interface IColumn {
     narrow?: boolean;
 }
 
-const config = ElementFactory.create({
+const config = ConfigFactory.create({
     component: "column",
     resolvers: {
         size: (v) => `is-${v}`,

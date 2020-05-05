@@ -1,7 +1,7 @@
 import * as React from "react";
 import {XProps} from "../../interfaces";
 import {MakeProps} from "../../type";
-import {ElementFactory} from "../../utils";
+import {ConfigFactory} from "../../utils";
 import {MenuGroup} from "./MenuGroup";
 import {MenuStore} from "./Store/MenuStore";
 
@@ -9,13 +9,12 @@ export interface IMenu {
     store: MenuStore;
 }
 
-const config = ElementFactory.create({
+const config = ConfigFactory.create({
     component: "menu",
     dependencies: ["store"],
 });
 
-export const Menu = config.factory<MakeProps, IMenu & XProps<"aside">>(({props, options}) => {
-    console.log(props, options);
+export const Menu = config.factory<MakeProps, IMenu & XProps<"aside">>(({props}) => {
     const {store, ...p} = props;
     return (
         <aside {...p}>

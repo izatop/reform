@@ -1,10 +1,10 @@
 import * as React from "react";
 import {MakeProps} from "../../type";
-import {ElementFactory} from "../../utils";
+import {ConfigFactory} from "../../utils";
 import {MenuChild} from "./MenuChild";
 import {MenuNode} from "./Store/MenuNode";
 
-const config = ElementFactory.create({component: "menu-list"});
+const config = ConfigFactory.create({component: "menu-list"});
 export const MenuChildren = config.factory<MakeProps, { children: MenuNode[] }>(({props, children}) => (
     <ul {...props}>
         {children.map((node) => (

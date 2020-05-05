@@ -17,10 +17,7 @@ export interface ITableStoreRow<T extends ITableSource> {
     key: string | number;
 }
 
-/* tslint:disable:callable-types */
-export interface ITableStoreRender<T extends ITableSource> {
-    (key: string, data: T): React.ReactNode;
-}
+export type ITableStoreRender<T extends ITableSource> = (key: string, data: T) => React.ReactNode;
 
 export class TableStore<T extends ITableSource> {
     public properties: ITableStoreProperty<T>[] = [];

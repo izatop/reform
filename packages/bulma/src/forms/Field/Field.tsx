@@ -1,6 +1,6 @@
 import * as React from "react";
 import {XProps} from "../../interfaces";
-import {ElementFactory} from "../../utils";
+import {ConfigFactory} from "../../utils";
 
 export interface IField {
     grouped?: boolean | "centered" | "right" | "multiline";
@@ -13,7 +13,7 @@ export type FieldProps = XProps<"div"> & {
     children: ElementOrExp | [ElementOrExp, ...ElementOrExp[]];
 };
 
-const config = ElementFactory.create({
+const config = ConfigFactory.create({
     component: "field",
     resolvers: {
         addons: (v) => typeof v === "string" ? ["has-addons", `has-addons-${v}`] : "has-addons",

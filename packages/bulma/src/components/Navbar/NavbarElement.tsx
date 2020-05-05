@@ -2,14 +2,14 @@ import * as React from "react";
 import {XProps} from "../../interfaces";
 import {IsActive} from "../../props";
 import {MakeProps} from "../../type";
-import {ElementFactory} from "../../utils";
+import {ConfigFactory} from "../../utils";
 
 interface INavbarElement extends IsActive {
     dropdown?: boolean;
     tab?: boolean;
 }
 
-const config = ElementFactory.create({
+const config = ConfigFactory.create({
     component: "navbar-item",
     resolvers: {
         dropdown: (v) => v && "has-dropdown",

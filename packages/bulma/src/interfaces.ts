@@ -176,4 +176,5 @@ export interface IHTMLElementRegistry {
     view: React.SVGProps<SVGViewElement>;
 }
 
-export type XProps<K extends keyof IHTMLElementRegistry> = IHTMLElementRegistry[K];
+export type XPropsKeys = keyof IHTMLElementRegistry;
+export type XProps<K extends XPropsKeys> = IHTMLElementRegistry[K];

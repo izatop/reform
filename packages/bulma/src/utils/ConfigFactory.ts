@@ -3,9 +3,13 @@ import {defaultResolvers} from "../props";
 import {DefaultProps, IComponentConfig, IComputed, IInProps, MakeProps} from "../type";
 
 export type CT<T> = React.ComponentType<T>;
+const responsive = ["mobile", "tablet", "touch", "desktop", "widescreen", "fullhd"];
 
-export class ElementFactory {
-    constructor(public config: IComponentConfig) {
+export class ConfigFactory {
+    public readonly config: IComponentConfig;
+
+    constructor(config: IComponentConfig) {
+        this.config = config;
     }
 
     public static getDefaultResolvers() {
@@ -13,8 +17,61 @@ export class ElementFactory {
     }
 
     public static create(options: Partial<IComponentConfig>) {
-        const config = this.createConfig(options);
-        return new ElementFactory(config);
+        return new ConfigFactory(this.createConfig(options));
+    }
+
+    public static resolveClassName(input: any, config: IComponentConfig) {
+        const classes: string[] = [];
+        const {mutations, component} = config;
+        const inputProps = new Map<string, any>(Object.entries(input));
+        const resolvers = new Map(Object.entries(config.resolvers));
+
+        if (inputProps.has("className")) {
+            classes.push(inputProps.get("className")!);
+        }
+
+        if (component) {
+            classes.push(component);
+        }
+
+        for (const [from, to] of Object.entries(mutations)) {
+            if (inputProps.has(from) && !inputProps.has(to) && typeof inputProps.get(from) !== "undefined") {
+                classes.push(to);
+            }
+        }
+
+        for (const type of responsive) {
+            if (inputProps.has(type)) {
+                const adds = [];
+                for (const [key, value] of Object.entries(inputProps.get(type))) {
+                    const resolve = resolvers.get(key)!;
+                    if (typeof resolve === "function") {
+                        const res = resolve(value);
+                        adds.push(...(Array.isArray(res) ? res : [res]).filter<string>((v): v is string => !!v));
+                        continue;
+                    }
+
+                    adds.push(resolve);
+                }
+
+                classes.push(...adds.map((cs) => `${cs}-${type}`));
+            }
+        }
+
+        for (const [key, value] of inputProps.entries()) {
+            if (resolvers.has(key) && typeof value !== "undefined") {
+                const resolve = resolvers.get(key)!;
+                if (typeof resolve === "function") {
+                    const res = resolve(value);
+                    classes.push(...(Array.isArray(res) ? res : [res]).filter<string>((v): v is string => !!v));
+                    continue;
+                }
+
+                classes.push(resolve);
+            }
+        }
+
+        return classes.join(" ");
     }
 
     public static createConfig(options: Partial<IComponentConfig>): IComponentConfig {
@@ -39,8 +96,6 @@ export class ElementFactory {
         const {mutations, component} = config;
         const inputProps = new Map<string, any>(Object.entries(rawProps));
         const resolvers = new Map(Object.entries(config.resolvers));
-        // const className = ClassNameResolver.resolveClassName(input, config);
-        // const {props, options, children} = PropertyResolver.resolve<P, O>(input, config.mutations);
         for (const [from, to] of Object.entries(mutations)) {
             if (inputProps.has(from) && !inputProps.has(to) && typeof inputProps.get(from) !== "undefined") {
                 classes.push(to);
@@ -55,6 +110,25 @@ export class ElementFactory {
             classes.push(component);
         }
 
+        for (const type of responsive) {
+            if (inputProps.has(type)) {
+                const adds = [];
+                for (const [key, value] of Object.entries(inputProps.get(type))) {
+                    const resolve = resolvers.get(key)!;
+                    if (typeof resolve === "function") {
+                        const res = resolve(value);
+                        adds.push(...(Array.isArray(res) ? res : [res]).filter<string>((v): v is string => !!v));
+                        continue;
+                    }
+
+                    adds.push(resolve);
+                }
+
+                classes.push(...adds.map((cs) => `${cs}-${type}`));
+                inputProps.delete(type);
+            }
+        }
+
         for (const [key, value] of inputProps.entries()) {
             if (resolvers.has(key) && typeof value !== "undefined") {
                 inputProps.delete(key);
@@ -66,7 +140,7 @@ export class ElementFactory {
                 }
 
                 classes.push(resolve);
-                inputProps.delete(key);
+                options[key] = value;
             }
         }
 
@@ -103,7 +177,7 @@ export class ElementFactory {
         const container: React.ComponentType<P & EP> = (props) => (
             React.createElement(
                 FN,
-                ElementFactory.getPropsOf<P, EP>(props, this.config),
+                ConfigFactory.getPropsOf<P, EP>(props, this.config),
                 props.children,
             )
         );

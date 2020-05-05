@@ -1,7 +1,7 @@
 import * as React from "react";
 import {XProps} from "../../interfaces";
 import {MakeProps} from "../../type";
-import {ElementFactory} from "../../utils";
+import {ConfigFactory} from "../../utils";
 import {NavbarElement} from "./NavbarElement";
 import {NavbarWithChild} from "./props";
 
@@ -17,7 +17,7 @@ export type NavbarDropdownProps = XProps<"div"> & {
     children: [React.ReactElement, ...React.ReactNode[]];
 };
 
-const config = ElementFactory.create({displayName: "NavbarDropdown"});
+const config = ConfigFactory.create({displayName: "NavbarDropdown"});
 export const NavbarDropdown = config.factory<MakeProps<INavbarDropdown>, NavbarDropdownProps>(
     ({props, children, options}) => {
         const {defaultActive, mouseLeaveTimeout, ...p} = props;
@@ -26,7 +26,7 @@ export const NavbarDropdown = config.factory<MakeProps<INavbarDropdown>, NavbarD
 
         const buttonProps = {...button.props};
         if (!options.hoverable) {
-            let timer: any;
+            let timer: number;
 
             buttonProps.onClick = React.useCallback(
                 () => {

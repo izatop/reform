@@ -1,7 +1,7 @@
 import * as React from "react";
 import {Icon} from "../../elements/Icon";
 import {MakeProps} from "../../type";
-import {ElementFactory} from "../../utils";
+import {ConfigFactory} from "../../utils";
 
 export interface IControl {
     expanded?: boolean;
@@ -12,7 +12,7 @@ export interface IControlProps {
     type?: string | React.ReactElement;
 }
 
-const config = ElementFactory.create({
+const config = ConfigFactory.create({
     component: "control",
     mutations: {
         state: "has-icons-right",

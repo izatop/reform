@@ -8,16 +8,15 @@ interface INonIdealState {
 }
 
 export const NonIdealState: React.FC<INonIdealState> = (props) => (
-    <Columns is-centered is-gap={false}>
-        <Column is-narrow>
-            <Content has-text-align={TextAlign.Center}>
+    <Columns centered gap={false}>
+        <Column narrow>
+            <Content textAlign={TextAlign.Center}>
                 {props.icon && (
                     <Title1>
                         {
                             typeof props.icon === "string"
-                                ? <Icon is-size={"large"}
-                                        icon-weight={"lg"}
-                                        icon={props.icon}/>
+                                ? <Icon size={"large"}
+                                        icon={{name: props.icon, weight: "lg"}}/>
                                 : props.icon
                         }
                     </Title1>

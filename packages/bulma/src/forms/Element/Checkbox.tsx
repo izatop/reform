@@ -1,9 +1,9 @@
 import * as React from "react";
 import {XProps} from "../../interfaces";
 import {MakeProps} from "../../type";
-import {ElementFactory} from "../../utils";
+import {ConfigFactory} from "../../utils";
 
-const config = ElementFactory.create({component: "checkbox"});
+const config = ConfigFactory.create({component: "checkbox"});
 export const Checkbox = config.factory<MakeProps, XProps<"input">>(({props, children}) => (
     <label className={"checkbox"}>
         <input type={"checkbox"}

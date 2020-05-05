@@ -1,6 +1,6 @@
 import * as React from "react";
 import {MakeProps} from "../../type";
-import {ElementFactory} from "../../utils";
+import {ConfigFactory} from "../../utils";
 import {
     createPaginationState,
     getPaginationDependencies,
@@ -12,7 +12,7 @@ import {
 
 const {Provider} = PaginationContext;
 
-const config = ElementFactory.create({component: "pagination"});
+const config = ConfigFactory.create({component: "pagination"});
 export const Pagination = config.factory<MakeProps<IPaginationOptions>, PaginationProps>(
     ({props, children}) => {
         const {onPageChange, onPageSelect, ...p} = props;

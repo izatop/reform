@@ -1,10 +1,10 @@
 import * as React from "react";
-import {ElementFactory} from "../../utils";
+import {ConfigFactory} from "../../utils";
 import {PaginationLink} from "./PaginationLink";
 import {IPaginationPagerProps, PaginationContext} from "./props";
 
 const {Consumer} = PaginationContext;
-const config = ElementFactory.create({component: "pagination-list"});
+const config = ConfigFactory.create({component: "pagination-list"});
 
 export const PaginationPager = config.factory<{}, IPaginationPagerProps>(({props}) => {
     const {pages, useful, ...p} = props;

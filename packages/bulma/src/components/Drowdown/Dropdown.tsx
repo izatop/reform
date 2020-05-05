@@ -2,7 +2,7 @@ import * as React from "react";
 import {ReactElement} from "react";
 import {XProps} from "../../interfaces";
 import {MakeProps} from "../../type";
-import {ClassNameResolver, ElementFactory} from "../../utils";
+import {ConfigFactory} from "../../utils";
 
 export interface IDropdownOptions {
     arrowless?: boolean;
@@ -54,7 +54,7 @@ const renderButton = (button: React.ReactNode, active?: boolean) => {
     );
 };
 
-const config = ElementFactory.create({component: "dropdown"});
+const config = ConfigFactory.create({component: "dropdown"});
 
 export const Dropdown = config.factory<MakeProps<IDropdownOptions>, DropdownProps>(({props, children, options}) => {
     const {active: controlledActive, defaultActive, mouseLeaveTimeout, button, ...p} = props;
@@ -65,7 +65,7 @@ export const Dropdown = config.factory<MakeProps<IDropdownOptions>, DropdownProp
     const active = controlled ? controlledActive : autoActive;
 
     if (!controlled && !options.hoverable) {
-        let timer: any;
+        let timer: number;
 
         trigger.onClick = React.useCallback(
             () => {
@@ -94,7 +94,7 @@ export const Dropdown = config.factory<MakeProps<IDropdownOptions>, DropdownProp
         );
     }
 
-    p.className = React.useMemo(() => ClassNameResolver.resolveClassName(
+    p.className = React.useMemo(() => ConfigFactory.resolveClassName(
         {...options, active},
         config.config,
     ), [active, controlled]);

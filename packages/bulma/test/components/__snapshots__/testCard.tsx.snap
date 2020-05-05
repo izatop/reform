@@ -20,7 +20,7 @@ exports[`Card 1`] = `
         className="icon"
       >
         <i
-          className="fas"
+          className="fas fa-home"
         />
       </span>
     </a>

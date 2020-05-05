@@ -3,7 +3,7 @@ import {ReactElement} from "react";
 import {XProps} from "../../interfaces";
 import {IsColor} from "../../props";
 import {MakeBreakpoint} from "../../type";
-import {ElementFactory} from "../../utils";
+import {ConfigFactory} from "../../utils";
 import {NavbarContext} from "./props";
 
 const {Provider} = NavbarContext;
@@ -17,7 +17,7 @@ export interface INavbarProps extends XProps<"nav"> {
     children: ReactElement | [(ReactElement | boolean | null), (ReactElement | boolean | null)?];
 }
 
-const config = ElementFactory.create({component: "navbar"});
+const config = ConfigFactory.create({component: "navbar"});
 
 export const Navbar = config.factory<MakeBreakpoint<INavbar>, INavbarProps>(({props, children}) => {
     const [state, setState] = React.useState(false);

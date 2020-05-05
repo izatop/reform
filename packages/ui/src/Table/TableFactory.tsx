@@ -10,7 +10,7 @@ export interface ITableProvider<T extends ITableSource> {
     children: [
         React.ReactElement<ITableConfig<T>>,
         React.ReactElement<ITableRenderer<T>>?
-        ];
+    ];
 }
 
 export interface ITableState<T extends ITableSource = {}> {

@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Node 1`] = `
+<div
+  className="foo has-text-centered is-size-6"
+>
+  Text
+</div>
+`;
+
+exports[`Node 2`] = `
+<span
+  className="foo has-text-centered is-size-6"
+>
+  Text
+</span>
+`;
