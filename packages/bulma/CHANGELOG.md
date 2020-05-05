@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.8](https://github.com/izatop/reform/compare/@reform/bulma@0.1.7...@reform/bulma@0.1.8) (2020-05-05)
+
+
+### Bug Fixes
+
+* navbar ([0565ae0](https://github.com/izatop/reform/commit/0565ae0c52a0120ec6f191d7655f2bf01d4a7f0f))
+
+
+
+
+
 ## [0.1.7](https://github.com/izatop/reform/compare/@reform/bulma@0.1.6...@reform/bulma@0.1.7) (2020-05-05)
 
 
