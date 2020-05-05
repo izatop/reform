@@ -11,12 +11,14 @@ export interface IColumns {
     vCentered?: boolean;
 }
 
+export interface IColumnsProps extends XProps<"div"> {}
+
 const config = ConfigFactory.create({
     component: "columns",
     resolvers: {gap: (v: boolean | Gap) => v === false || v === 0 ? "is-gapless" : `is-gap-${v}`},
     mutations: {gap: "is-variable"},
 });
 
-export const Columns = config.factory<MakeBreakpoint<IColumns, "gap">, XProps<"div">>(({props, children}) => (
+export const Columns = config.factory<MakeBreakpoint<IColumns, "gap">, IColumnsProps>(({props, children}) => (
     <div {...props}>{children}</div>
 ));

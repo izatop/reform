@@ -24,6 +24,8 @@ export interface IColumn {
     narrow?: boolean;
 }
 
+export interface IColumnProps extends XProps<"div"> {}
+
 const config = ConfigFactory.create({
     component: "column",
     resolvers: {
@@ -32,6 +34,6 @@ const config = ConfigFactory.create({
     },
 });
 
-export const Column = config.factory<MakeProps<IColumn, "size" | "narrow">, XProps<"div">>(({props, children}) => (
+export const Column = config.factory<MakeProps<IColumn, "size" | "narrow">, IColumnProps>(({props, children}) => (
     <div {...props}>{children}</div>
 ));
