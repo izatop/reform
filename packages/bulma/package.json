@@ -10,7 +10,9 @@
     "repository": "https://github.com/izatop/reform",
     "description": "Pure React UI components based on Bulma css framework",
     "keywords": [
+        "ui",
         "pure",
+        "components",
         "react",
         "bulma",
         "typescript"
