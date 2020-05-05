@@ -8,6 +8,7 @@ export interface IColumns {
     gap?: false | Gap | number;
     centered?: boolean;
     vCentered?: boolean;
+    multiline?: boolean;
 }
 
 export type ColumnsProps = MakeBreakpoint<IColumns> & MakeResponsive<IColumns, "gap">;
@@ -15,7 +16,10 @@ export type ColumnsType = React.FC<XProps<"div"> & ColumnsProps>;
 
 const config = ConfigFactory.create({
     component: "columns",
-    resolvers: {gap: (v: boolean | Gap) => v === false ? "is-gapless" : `is-${v}`},
+    resolvers: {
+        gap: (v: boolean | Gap) => v === false ? "is-gapless" : `is-${v}`,
+        multiline: "is-multiline",
+    },
     mutations: {gap: "is-variable"},
 });
 
