@@ -2,14 +2,12 @@
 
 [![Build Status](https://travis-ci.org/izatop/reform.svg?branch=master)](https://travis-ci.org/izatop/reform)
 
-
-Reform is a React components library with ZERO dependencies and typings. 
+Reform is a clean UI components based on Bulma CSS framework. 
 
 ## Features
 
- * [Forms API](./packages/api)
- * [Components](./packages/components)
- * [Pro Components](./packages/pro)
+ * [Components](./packages/bulma)
+ * [Extended](./packages/ui)
 
 ## License
 MIT
