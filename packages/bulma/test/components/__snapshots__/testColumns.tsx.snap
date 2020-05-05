@@ -8,12 +8,12 @@ exports[`Columns 1`] = `
 
 exports[`Columns 2`] = `
 <div
-  className="is-variable columns is-gap-1-mobile is-gap-8"
+  className="is-variable columns is-1-mobile is-8"
 />
 `;
 
 exports[`Columns 3`] = `
 <div
-  className="is-variable columns is-gapless"
+  className="is-variable columns is-0"
 />
 `;
