@@ -14,16 +14,12 @@ export interface IDropdownElementProps {
 const config = ConfigFactory.create({component: "dropdown-item"});
 export const DropdownElement = config.factory<MakeProps<IDropdownElement>, IDropdownElementProps>(
     ({props, children}) => (
-        React.useMemo(() => (
-                React.cloneElement(
-                    children,
-                    {
-                        ...children.props,
-                        ...props,
-                    },
-                )
-            ),
-            [props.className],
+        React.cloneElement(
+            children,
+            {
+                ...children.props,
+                ...props,
+            },
         )
     ),
 );
