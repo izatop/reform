@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.12](https://github.com/izatop/reform/compare/@reform/bulma@0.1.11...@reform/bulma@0.1.12) (2020-05-09)
+
+
+### Bug Fixes
+
+* dropdown element ([b6ec876](https://github.com/izatop/reform/commit/b6ec87645598677c2a5f907d7c77611abc252ed5))
+
+
+
+
+
 ## [0.1.11](https://github.com/izatop/reform/compare/@reform/bulma@0.1.10...@reform/bulma@0.1.11) (2020-05-05)
 
 
