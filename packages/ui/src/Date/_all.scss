@@ -1,0 +1,42 @@
+.date-picker {
+    .column {
+        padding-bottom: 0.1rem;
+
+        .month {
+            text-transform: capitalize;
+            font-size: $size-medium
+        }
+    ;
+    }
+}
+
+table.calendar {
+    > tbody > tr > td {
+        min-width: 39px;
+        min-height: 39px;
+        cursor: pointer;
+        text-align: center;
+
+        &.has-selection {
+            background: $pre-background;
+        }
+
+        &.is-checked {
+            background: $primary;
+            color: $primary-invert;
+        }
+
+        &.is-hover {
+            background: $info;
+            color: $info-invert;
+        }
+
+        &.is-out-of-range:not(.is-checked):not(.is-hover) {
+            color: $grey-light;
+        }
+
+        &:hover:not(.is-checked):not(.is-hover) {
+            background: $pre-background;
+        }
+    }
+}

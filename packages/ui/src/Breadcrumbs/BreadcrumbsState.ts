@@ -4,8 +4,8 @@ export type BreadcrumbPath = [string, string, (string | ReactElement)?];
 export type BreadcrumbsListener = (paths: BreadcrumbPath[]) => any;
 
 export class BreadcrumbsState {
-    #store: BreadcrumbPath[] = [];
     public readonly base: BreadcrumbPath[];
+    #store: BreadcrumbPath[] = [];
     readonly #listeners: BreadcrumbsListener[] = [];
 
     constructor(base: BreadcrumbPath[]) {

@@ -32,7 +32,7 @@ export const Navbar = config.factory<MakeProps<INavbar>, INavbarProps>(({props, 
     if (fixed) {
         const bodyClass = fixed === true || fixed === "top" ? "has-navbar-fixed-top" : "has-navbar-fixed-bottom";
         if (!document.body.classList.contains(bodyClass)) {
-            document.body.classList.add(bodyClass)
+            document.body.classList.add(bodyClass);
         }
     }
 

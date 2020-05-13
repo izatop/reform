@@ -1,5 +1,5 @@
 import * as React from "react";
-import {MakeProps, XProps} from "../../interfaces";
+import {MakeProps} from "../../interfaces";
 import {ConfigFactory} from "../../utils";
 
 const config = ConfigFactory.create({component: "checkbox"});

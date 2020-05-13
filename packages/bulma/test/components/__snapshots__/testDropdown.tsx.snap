@@ -3,9 +3,11 @@
 exports[`Dropdown 1`] = `
 <div
   className="dropdown is-hoverable is-up"
+  onClick={[Function]}
 >
   <div
     className="dropdown-trigger"
+    onClick={[Function]}
   >
     <button
       aria-controls="dropdown-menu"

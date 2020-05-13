@@ -19,6 +19,9 @@ export const DropdownElement = config.factory<MakeProps<IDropdownElement>, IDrop
             {
                 ...children.props,
                 ...props,
+                className: [children.props.className, props.className]
+                    .filter((item) => !!item)
+                    .join(" "),
             },
         )
     ),

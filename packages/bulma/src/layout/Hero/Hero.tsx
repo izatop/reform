@@ -1,7 +1,6 @@
 import React, {ReactElement} from "react";
 import {MakeProps, XProps} from "../../interfaces";
-import {ColorType} from "../../options";
-import {IsColor, IsSize} from "../../props";
+import {IsColor} from "../../props";
 import {ConfigFactory} from "../../utils";
 
 export enum HeroSize {
