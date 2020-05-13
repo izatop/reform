@@ -1,7 +1,7 @@
 import {Breadcrumbs as BC} from "@reform/bulma";
 import * as React from "react";
 import {useContext} from "react";
-import {BreadcrumbIcon} from "./BreadcrumbIcon";
+import {BreadcrumbLink} from "./BreadcrumbLink";
 import {BreadcrumbsContext} from "./BreadcrumbsProvider";
 
 export type Breadcrumb = (path: string, children: React.ReactElement) => React.ReactElement;
@@ -10,9 +10,9 @@ export interface BreadcrumbsProps {
     children?: Breadcrumb;
 }
 
-const render: Breadcrumb = (path, children) => (<a href={path}>{children}</a>);
+const defaultChildRender: Breadcrumb = (path, children) => (<a href={path}>{children}</a>);
 
-export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({children = render}) => {
+export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({children = defaultChildRender}) => {
     const breadcrumbs = useContext(BreadcrumbsContext);
     const paths = breadcrumbs.usePaths();
 
@@ -20,7 +20,7 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({children = render}) => 
         <BC>
             {paths.map(([path, title, icon], i) => (
                 <React.Fragment key={i}>
-                    {children(path, <><BreadcrumbIcon icon={icon}/> {title}</>)}
+                    {children(path, <BreadcrumbLink icon={icon} title={title}/>)}
                 </React.Fragment>
             ))}
         </BC>
