@@ -6,7 +6,8 @@
     "repository": "https://github.com/izatop/reform",
     "description": "Extended components for @reform/bulma",
     "files": [
-        "dist"
+        "dist",
+        "sass"
     ],
     "keywords": [
         "ui",
