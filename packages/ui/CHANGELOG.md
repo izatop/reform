@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.2](https://github.com/izatop/reform/compare/@reform/ui@0.2.1...@reform/ui@0.2.2) (2020-05-13)
+
+
+### Bug Fixes
+
+* scss ([a5bce61](https://github.com/izatop/reform/commit/a5bce617294b58b79d0c49fc02dff6392eda0fca))
+
+
+
+
+
 ## [0.2.1](https://github.com/izatop/reform/compare/@reform/ui@0.2.0...@reform/ui@0.2.1) (2020-05-13)
 
 
