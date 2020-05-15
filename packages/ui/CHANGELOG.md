@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.4](https://github.com/izatop/reform/compare/@reform/ui@0.2.3...@reform/ui@0.2.4) (2020-05-15)
+
+
+### Bug Fixes
+
+* locales ([b6b21a2](https://github.com/izatop/reform/commit/b6b21a2ce338d1cbd324f27ac514550be6d0b550))
+* number format ([0cc4da7](https://github.com/izatop/reform/commit/0cc4da7f5863526e69b40f434451c46c2a13fd2c))
+
+
+
+
+
 ## [0.2.3](https://github.com/izatop/reform/compare/@reform/ui@0.2.2...@reform/ui@0.2.3) (2020-05-13)
 
 
