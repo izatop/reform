@@ -5,7 +5,7 @@ import {Calendar} from "./Calendar";
 import {useDateFormat, useLocale} from "./functions";
 import {DatePickerValue} from "./interfaces";
 
-export interface IDateRangePickerProps {
+export interface IDatePickerProps {
     defaultValue?: DatePickerValue;
     onChange?: (value?: number) => any;
     locales?: string | string[];
@@ -15,7 +15,7 @@ function getMonth(date: Date, value: number) {
     return new Date(date.getFullYear(), date.getMonth() + value, 1);
 }
 
-export const DatePicker: React.FC<IDateRangePickerProps> = (props) => {
+export const DatePicker: React.FC<IDatePickerProps> = (props) => {
     const listener = useListener<boolean>();
     const [date, setDate] = useState<Date | undefined>(
         props.defaultValue
