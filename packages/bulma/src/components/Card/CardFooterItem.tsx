@@ -8,5 +8,5 @@ export interface ICardFooterItem extends XProps<"p"> {
 
 const config = ConfigFactory.create({component: "card-footer-item"});
 export const CardFooterItem = config.factory<MakeProps, ICardFooterItem>(({props, children}) => (
-    <p {...props}>{children}</p>
+    <div {...props}>{children}</div>
 ));
