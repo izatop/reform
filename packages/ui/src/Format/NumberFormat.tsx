@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import * as React from "react";
 import {NumberFormatContext} from "./NumberFormatContext";
 
 interface INumberFormatProps {
@@ -6,6 +6,6 @@ interface INumberFormatProps {
 }
 
 export const NumberFormat: React.FC<INumberFormatProps> = (props) => {
-    const format = useContext(NumberFormatContext);
+    const format = React.useContext(NumberFormatContext);
     return <>{format.format(+props.value)}</>;
 }

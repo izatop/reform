@@ -3,11 +3,11 @@ import * as React from "react";
 import {useCallback, useMemo, useState} from "react";
 import {Calendar} from "./Calendar";
 import {useDateFormat, useLocale} from "./functions";
-import {DateRange, DateRangeInput} from "./interfaces";
+import {DatePickerValue} from "./interfaces";
 
 export interface IDateRangePickerProps {
-    defaultValue?: DateRangeInput;
-    onChange?: (value?: [number, number]) => any;
+    defaultValue?: DatePickerValue;
+    onChange?: (value?: number) => any;
     locales?: string | string[];
 }
 
@@ -15,30 +15,30 @@ function getMonth(date: Date, value: number) {
     return new Date(date.getFullYear(), date.getMonth() + value, 1);
 }
 
-export const DateRangePicker: React.FC<IDateRangePickerProps> = (props) => {
+export const DatePicker: React.FC<IDateRangePickerProps> = (props) => {
     const listener = useListener<boolean>();
-    const [range, setRange] = useState<DateRange | undefined>(
+    const [date, setDate] = useState<Date | undefined>(
         props.defaultValue
-            ? [new Date(props.defaultValue[0]), new Date(props.defaultValue[1])]
+            ? new Date(props.defaultValue)
             : undefined,
     );
 
     const {onChange = () => void 0} = props;
-    const handleChange = useCallback((value?: DateRange) => {
+    const handleChange = useCallback((value?: Date) => {
         if (value) {
-            setRange(value);
+            setDate(value);
             listener.fire(false);
-            return onChange(value.map((d) => d.getTime()) as [number, number]);
+            return onChange(value ? value.getTime() : undefined);
         }
 
         onChange();
     }, [props.onChange]);
 
-    const [month, setMonth] = useState<Date>(range ? new Date(range[1]) : new Date());
+    const [month, setMonth] = useState<Date>(date ?? new Date());
 
     const df = useDateFormat(useLocale(props.locales));
     const mf = useDateFormat(useLocale(props.locales), {month: "long"});
-    const input = useMemo(() => range ? `${df.format(range[0])} - ${df.format(range[1])}` : "-", [range]);
+    const input = useMemo(() => date ? df.format(date) : "", [date]);
     const prevMonth = useCallback(() => setMonth(getMonth(month, -1)), [month]);
     const nextMonth = useCallback(() => setMonth(getMonth(month, +1)), [month]);
 
@@ -66,10 +66,10 @@ export const DateRangePicker: React.FC<IDateRangePickerProps> = (props) => {
                             </Button>
                         </Column>
                     </Columns>
-                    <Calendar mode={"range"}
+                    <Calendar mode={"date"}
                               date={month}
                               onChange={handleChange}
-                              defaultValue={range}/>
+                              defaultValue={date}/>
                 </div>
             </DropdownElement>
         </Dropdown>
