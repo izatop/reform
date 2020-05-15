@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.2](https://github.com/izatop/reform/compare/@reform/bulma@0.2.1...@reform/bulma@0.2.2) (2020-05-15)
+
+
+### Bug Fixes
+
+* add datepicker ([9cf355a](https://github.com/izatop/reform/commit/9cf355acff8faf28d213b04da163f83b014b99cc))
+* exports ([bdf9a99](https://github.com/izatop/reform/commit/bdf9a9974435303c448d1877c84389d1eb43f0f3))
+
+
+
+
+
 ## [0.2.1](https://github.com/izatop/reform/compare/@reform/bulma@0.2.0...@reform/bulma@0.2.1) (2020-05-15)
 
 

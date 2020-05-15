@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.5](https://github.com/izatop/reform/compare/@reform/ui@0.2.4...@reform/ui@0.2.5) (2020-05-15)
+
+
+### Bug Fixes
+
+* add datepicker ([9cf355a](https://github.com/izatop/reform/commit/9cf355acff8faf28d213b04da163f83b014b99cc))
+* wrong props types ([7a2dd82](https://github.com/izatop/reform/commit/7a2dd8234f9481c8265c31331d37c4714232bddb))
+
+
+
+
+
 ## [0.2.4](https://github.com/izatop/reform/compare/@reform/ui@0.2.3...@reform/ui@0.2.4) (2020-05-15)
 
 
