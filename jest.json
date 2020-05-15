@@ -10,7 +10,7 @@
         "^.+\\.tsx?$": "ts-jest"
     },
     "testRegex": "/test[^/]*\\.tsx?$",
-    "testEnvironment": "node",
+    "testEnvironment": "jsdom",
     "coveragePathIgnorePatterns": [
         "/dist/",
         "/node_modules/"
