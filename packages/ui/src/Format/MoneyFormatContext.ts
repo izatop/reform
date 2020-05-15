@@ -1,7 +1,7 @@
 import {createContext} from "react";
 
 const numberFormat = new Intl.NumberFormat(
-    "ru",
+    [...navigator.languages],
     {
         currency: "RUB",
         style: "currency",
