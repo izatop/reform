@@ -29,7 +29,7 @@ exports[`Card 1`] = `
     className="card-image"
   >
     <figure
-      className="image is-d-1by1"
+      className="image is-1by1"
     >
       <img
         src="/path/to/image"
