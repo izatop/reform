@@ -43,7 +43,7 @@ interface IFigure {
 const config = ConfigFactory.create({
     component: "image",
     resolvers: {
-        dimension: (v) => `is-d-${v}`,
+        dimension: (v) => `is-${v}`,
     },
 });
 
