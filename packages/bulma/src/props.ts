@@ -93,7 +93,7 @@ export const defaultResolvers: MakePropertyResolver<ResolverProps> = {
     clipped: make("is-clipped"),
     srOnly: make("is-sr-only"),
     relative: make("is-relative"),
-    loading: make("is-relative"),
+    loading: make("is-loading"),
     outlined: make("is-outlined"),
     inverted: make("is-inverted"),
     static: make("is-static"),

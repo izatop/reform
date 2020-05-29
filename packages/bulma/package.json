@@ -30,9 +30,7 @@
         "access": "public"
     },
     "devDependencies": {
-        "copy-and-watch": "^0.1.4",
-        "jest": "^26.0.0",
-        "ts-node": "8.10.1"
+        "copy-and-watch": "^0.1.4"
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.13.0",
