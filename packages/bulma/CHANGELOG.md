@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.5](https://github.com/izatop/reform/compare/@reform/bulma@0.2.4...@reform/bulma@0.2.5) (2020-05-29)
+
+
+### Bug Fixes
+
+* button.is-loading, clean deps ([f00c69c](https://github.com/izatop/reform/commit/f00c69c22325cc690b30df7a762be69fd914b497))
+
+
+
+
+
 ## [0.2.4](https://github.com/izatop/reform/compare/@reform/bulma@0.2.3...@reform/bulma@0.2.4) (2020-05-26)
 
 
