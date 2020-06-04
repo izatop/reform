@@ -30,9 +30,10 @@
         "jest": "^26.0.1",
         "jest-serializer-path": "^0.1.15",
         "lerna": "^3.22.0",
+        "react": "^16.13.1",
         "react-test-renderer": "^16.13.1",
         "rimraf": "^3.0.2",
-        "ts-jest": "^26.0.0",
+        "ts-jest": "^26.1.0",
         "tslint": "^6.1.2",
         "typescript": "^3.9.3"
     },
