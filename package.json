@@ -23,11 +23,11 @@
         "test:watch": "jest --config jest.json --watch"
     },
     "devDependencies": {
-        "@types/jest": "^26.0.0",
+        "@types/jest": "^26.0.3",
         "@types/react-test-renderer": "^16.9.2",
         "coveralls": "^3.1.0",
         "husky": "^4.2.5",
-        "jest": "^26.0.1",
+        "jest": "^26.1.0",
         "jest-serializer-path": "^0.1.15",
         "lerna": "^3.22.1",
         "react": "^16.13.1",
@@ -35,7 +35,7 @@
         "rimraf": "^3.0.2",
         "ts-jest": "^26.1.1",
         "tslint": "^6.1.2",
-        "typescript": "^3.9.5"
+        "typescript": "^3.9.6"
     },
     "license": "MIT"
 }
