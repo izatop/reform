@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.8](https://github.com/izatop/reform/compare/@reform/bulma@0.2.7...@reform/bulma@0.2.8) (2020-07-10)
+
+
+### Bug Fixes
+
+* attach scss helpers ([74ca3e6](https://github.com/izatop/reform/commit/74ca3e6b84b2c7fb0a74ebca07abb27d6c99b5e4))
+* pagination pager active page ([27fbd19](https://github.com/izatop/reform/commit/27fbd19a3633b597f1333cd4ff613f7e428bb9c5))
+
+
+
+
+
 ## [0.2.7](https://github.com/izatop/reform/compare/@reform/bulma@0.2.6...@reform/bulma@0.2.7) (2020-07-02)
 
 
