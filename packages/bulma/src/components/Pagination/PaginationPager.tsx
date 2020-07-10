@@ -17,7 +17,7 @@ export const PaginationPager = config.factory<{}, IPaginationPagerProps>(({props
                             <li key={page}>
                                 <PaginationLink page={page}
                                                 set={set}
-                                                is-current={page === state.page}/>
+                                                current={page === state.page}/>
                             </li>
                         ));
                 }}
