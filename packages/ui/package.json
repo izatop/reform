@@ -28,11 +28,11 @@
         "access": "public"
     },
     "devDependencies": {
-        "copy-and-watch": "^0.1.4"
+        "copy-and-watch": "^0.1.5"
     },
     "dependencies": {
         "@reform/bulma": "^0.2.9",
-        "@types/react": "^16.9.43",
+        "@types/react": "^16.9.44",
         "bulma": "^0.9.0",
         "react": "^16.13.1"
     },
