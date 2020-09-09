@@ -14,8 +14,11 @@ function index(target: CalendarCheck) {
 }
 
 export class CalendarCheck extends CalendarControllerAbstract<"check"> {
-    declare public readonly value: CalendarValue<"check">;
     declare protected current: CalendarValue<"check">;
+
+    public get value(): CalendarValue<"check"> {
+        return this.current;
+    }
 
     protected handleClick(link: CalendarLink) {
         link.toggleChecked();
