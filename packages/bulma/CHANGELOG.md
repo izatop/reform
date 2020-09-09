@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.11](https://github.com/izatop/reform/compare/@reform/bulma@0.2.10...@reform/bulma@0.2.11) (2020-09-09)
+
+
+### Bug Fixes
+
+* update deps ([0e22150](https://github.com/izatop/reform/commit/0e22150f9d44f1e9b1181a54ef146c2b84b868b1))
+
+
+
+
+
 ## [0.2.10](https://github.com/izatop/reform/compare/@reform/bulma@0.2.9...@reform/bulma@0.2.10) (2020-08-08)
 
 
