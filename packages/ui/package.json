@@ -32,9 +32,9 @@
     },
     "dependencies": {
         "@reform/bulma": "^0.2.12",
-        "@types/react": "^16.9.53",
+        "@types/react": "^16.9.56",
         "bulma": "^0.9.1",
-        "react": "^17.0.0"
+        "react": "^17.0.1"
     },
     "license": "MIT"
 }
