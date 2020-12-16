@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.18](https://github.com/izatop/reform/compare/@reform/ui@0.2.17...@reform/ui@0.2.18) (2020-12-16)
+
+
+### Bug Fixes
+
+* calendar picker click propagation ([aa58b89](https://github.com/izatop/reform/commit/aa58b893a215173e92b95574e654a4217749ad90))
+
+
+
+
+
 ## [0.2.17](https://github.com/izatop/reform/compare/@reform/ui@0.2.16...@reform/ui@0.2.17) (2020-12-11)
 
 
