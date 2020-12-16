@@ -48,7 +48,8 @@ export const DatePicker: React.FC<IDatePickerProps> = (props) => {
                   icon={{down: "calendar-alt"}}
                   button={<span className={"button"}>{input}</span>}>
             <DropdownElement>
-                <div className={"date-picker"}>
+                <div className={"date-picker"}
+                    onClick={e => e.stopPropagation()}>
                     <Columns breakpoint={"mobile"} gap={0}>
                         <Column>
                             <Button onClick={prevMonth} size={"small"}>
