@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/izatop/reform/compare/@reform/bulma@0.2.14...@reform/bulma@0.3.0) (2020-12-17)
+
+
+### Features
+
+* control loading prop ([be7f34b](https://github.com/izatop/reform/commit/be7f34b5e92729f01ce38fc3ccb24a931713fbb1))
+
+
+
+
+
 ## [0.2.14](https://github.com/izatop/reform/compare/@reform/bulma@0.2.13...@reform/bulma@0.2.14) (2020-12-11)
 
 
