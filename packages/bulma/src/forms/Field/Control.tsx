@@ -5,6 +5,7 @@ import {ConfigFactory} from "../../utils";
 
 export interface IControl {
     expanded?: boolean;
+    loading?: boolean;
 }
 
 export interface IControlProps {
@@ -14,7 +15,10 @@ export interface IControlProps {
 
 const config = ConfigFactory.create({
     component: "control",
-    resolvers: {expanded: "is-expanded"},
+    resolvers: {
+        expanded: "is-expanded",
+        loading: "is-loading",
+    },
     mutations: {
         state: "has-icons-right",
         type: "has-icons-left",
@@ -24,7 +28,7 @@ const config = ConfigFactory.create({
 const render = (icon?: string | React.ReactElement, align?: "left" | "right") => (
     icon && (
         typeof icon === "string"
-            ? <Icon icon={icon} is-align={align}/>
+            ? <Icon icon={icon} is-align={align} />
             : React.cloneElement(icon, {...icon.props, "is-align": align})
     )
 );
