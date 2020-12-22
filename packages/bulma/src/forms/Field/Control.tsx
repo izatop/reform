@@ -17,7 +17,6 @@ const config = ConfigFactory.create({
     component: "control",
     resolvers: {
         expanded: "is-expanded",
-        loading: "is-loading",
     },
     mutations: {
         state: "has-icons-right",
