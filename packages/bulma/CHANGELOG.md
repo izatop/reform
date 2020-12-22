@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.1](https://github.com/izatop/reform/compare/@reform/bulma@0.3.0...@reform/bulma@0.3.1) (2020-12-22)
+
+
+### Bug Fixes
+
+* remove loading from resolvers ([8637ee9](https://github.com/izatop/reform/commit/8637ee9b4a212f1dc481d8a3a6082f0331e9d511))
+
+
+
+
+
 # [0.3.0](https://github.com/izatop/reform/compare/@reform/bulma@0.2.14...@reform/bulma@0.3.0) (2020-12-17)
 
 

@@ -1,6 +1,6 @@
 {
     "name": "@reform/ui",
-    "version": "0.2.19",
+    "version": "0.2.20",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "repository": "https://github.com/izatop/reform",
@@ -31,7 +31,7 @@
         "copy-and-watch": "^0.1.5"
     },
     "dependencies": {
-        "@reform/bulma": "^0.3.0",
+        "@reform/bulma": "^0.3.1",
         "@types/react": "^17.0.0",
         "bulma": "^0.9.1",
         "react": "^17.0.1"
