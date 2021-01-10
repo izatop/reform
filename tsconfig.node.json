@@ -1,0 +1,12 @@
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+        "target": "ES2019",
+        "module": "CommonJS",
+        "moduleResolution": "Node",
+        "incremental": true,
+        "lib": [
+            "ES2020"
+        ]
+    }
+}

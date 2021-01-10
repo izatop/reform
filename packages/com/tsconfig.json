@@ -1,0 +1,19 @@
+{
+    "extends": "../../tsconfig.component.json",
+    "compilerOptions": {
+        "sourceMap": true
+    },
+    "references": [
+        {
+            "path": "../base"
+        }
+    ],
+    "include": [
+        ".pack.ts",
+        "*/.pack.ts",
+        "index.ts",
+        "button",
+        "footer",
+        "section"
+    ]
+}

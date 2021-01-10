@@ -1,0 +1,10 @@
+version: "3.8"
+services:
+  pg:
+    image: pierrezemb/gostatic
+    container_name: pg
+    ports:
+      - 8080:8043
+    volumes:
+      - ./dist:/app:ro
+    command: -enable-logging -path /app -fallback index.html

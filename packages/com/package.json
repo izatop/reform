@@ -1,0 +1,38 @@
+{
+    "name": "@reform/com",
+    "version": "0.1.0",
+    "main": "index.js",
+    "types": "index.d.ts",
+    "files": [
+        "button",
+        "footer",
+        "section",
+        "index.js",
+        "index.d.ts",
+        "index.scss"
+    ],
+    "component": true,
+    "repository": "https://github.com/izatop/reform",
+    "description": "Base components built on top of Bulma and TypeScript",
+    "keywords": [
+        "ui",
+        "bulma",
+        "react",
+        "components",
+        "typescript"
+    ],
+    "author": {
+        "name": "Artur Bier",
+        "email": "izatop@gmail.com"
+    },
+    "scripts": {
+    },
+    "publishConfig": {
+        "access": "public"
+    },
+    "dependencies": {
+        "@types/react": "^17.0.0",
+        "bulma": "^0.9.1"
+    },
+    "license": "MIT"
+}

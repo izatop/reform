@@ -1,0 +1,29 @@
+{
+    "name": "@reform/base",
+    "version": "0.1.0",
+    "main": "index.js",
+    "types": "index.d.ts",
+    "files": [
+        "footer",
+        "section"
+    ],
+    "repository": "https://github.com/izatop/reform",
+    "description": "Base library",
+    "keywords": [
+        "typescript"
+    ],
+    "author": {
+        "name": "Artur Bier",
+        "email": "izatop@gmail.com"
+    },
+    "scripts": {
+    },
+    "publishConfig": {
+        "access": "public"
+    },
+    "dependencies": {
+        "@types/react": "^17.0.0",
+        "bulma": "^0.9.1"
+    },
+    "license": "MIT"
+}

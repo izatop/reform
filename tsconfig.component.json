@@ -1,0 +1,11 @@
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+        "jsx": "react",
+        "module": "ES2020",
+        "composite": true,
+        "declaration": true,
+        "incremental": true,
+        "moduleResolution": "Node"
+    }
+}

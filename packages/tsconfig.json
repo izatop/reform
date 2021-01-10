@@ -7,6 +7,15 @@
         },
         {
             "path": "ui"
+        },
+        {
+            "path": "base"
+        },
+        {
+            "path": "com"
+        },
+        {
+            "path": "pack"
         }
     ]
 }

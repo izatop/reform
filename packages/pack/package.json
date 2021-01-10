@@ -1,0 +1,33 @@
+{
+    "name": "@reform/pack",
+    "version": "0.1.0",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "bin": {
+        "pack": "dist/bin/pack.js"
+    },
+    "files": [
+        "dist"
+    ],
+    "repository": "https://github.com/izatop/reform",
+    "keywords": [
+        "build",
+        "react",
+        "typescript"
+    ],
+    "author": {
+        "name": "Artur Bier",
+        "email": "izatop@gmail.com"
+    },
+    "scripts": {},
+    "publishConfig": {
+        "access": "public"
+    },
+    "dependencies": {
+        "@types/node": "^14.14.20",
+        "@types/sass": "^1.16.0",
+        "esbuild": "^0.8.31",
+        "sass": "^1.32.2"
+    },
+    "license": "MIT"
+}

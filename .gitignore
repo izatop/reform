@@ -8,3 +8,7 @@ lerna-*.log
 npm-*.log
 .DS_Store
 tsconfig.tsbuildinfo
+*.js
+*.js.map
+*.d.ts
+!.storybook/*

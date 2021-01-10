@@ -1,0 +1,23 @@
+{
+    "name": "pg",
+    "version": "0.1.0",
+    "repository": "https://github.com/izatop/reform",
+    "description": "Playground package",
+    "author": {
+        "name": "Artur Bier",
+        "email": "izatop@gmail.com"
+    },
+    "scripts": {
+        "build:dev": "rimraf dist && pack"
+    },
+    "private": true,
+    "license": "MIT",
+    "devDependencies": {
+        "@reform/base": "*",
+        "@types/react": "^17.0.0",
+        "@types/react-dom": "^17.0.0",
+        "react": "^17.0.1",
+        "react-dom": "^17.0.1",
+        "ts-node": "^9.1.1"
+    }
+}
