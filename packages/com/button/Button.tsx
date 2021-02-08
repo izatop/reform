@@ -1,9 +1,10 @@
+import {declare, PropertyPrefixList} from "@reform/base";
 import * as React from "react";
 
-export interface IButton {
-    primary?: boolean;
-}
+const component = "button";
+const prefixes: PropertyPrefixList = [
+    ["type", undefined],
+    ["size", undefined],
+];
 
-export const Button: React.FC<IButton> = (props) => (
-    <button className={`button ${props.primary ? "is-primary" : ""}`}>{props.children}</button>
-);
+export const Button = declare("button", {component, prefixes});

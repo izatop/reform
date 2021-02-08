@@ -1,1 +1,1 @@
-// empty component
+export * from "./theme";

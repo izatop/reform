@@ -1,5 +1,6 @@
 import {join} from "path";
 import {getPackageName} from "../internal";
+import {PackageResourceConfig} from "./PackageResourceConfig";
 
 const packages = new Map<string, Package>();
 
@@ -7,13 +8,23 @@ export class Package {
     public readonly name: string;
     public readonly path: string;
     public readonly config: Record<string, any>;
-    public readonly isComponentLibrary: boolean;
+    public readonly isComponentLibrary: boolean = false;
+    public readonly resourceListFilename: string = "resources.json";
 
     constructor(path: string, name: string) {
         this.name = name;
         this.path = path;
         this.config = require(join(path, "package.json"));
-        this.isComponentLibrary = this.config.component ?? false;
+
+        const {component} = this.config;
+
+        if (typeof component === "object" && component.resource) {
+            this.resourceListFilename = component.resource;
+        }
+
+        if (component) {
+            this.isComponentLibrary = true;
+        }
     }
 
     public static async resolve(location: string, resource: string) {
@@ -24,5 +35,9 @@ export class Package {
         }
 
         return pkg;
+    }
+
+    public getResourceConfig(path: string) {
+        return PackageResourceConfig.resolve(join(path, this.resourceListFilename));
     }
 }

@@ -1,8 +1,8 @@
 {
     "name": "@reform/base",
-    "version": "0.1.0",
-    "main": "index.js",
-    "types": "index.d.ts",
+    "version": "0.1.0-development",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
     "files": [
         "footer",
         "section"
@@ -16,14 +16,12 @@
         "name": "Artur Bier",
         "email": "izatop@gmail.com"
     },
-    "scripts": {
-    },
+    "scripts": {},
     "publishConfig": {
         "access": "public"
     },
     "dependencies": {
-        "@types/react": "^17.0.0",
-        "bulma": "^0.9.1"
+        "@types/react": "^17.0.1"
     },
     "license": "MIT"
 }

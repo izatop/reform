@@ -1,7 +1,7 @@
+import * as assert from "assert";
 import {promises} from "fs";
 import {join, sep} from "path";
 import {isFulfilled} from "./promise";
-import assert = require("assert");
 
 const {stat} = promises;
 const {paths} = module;

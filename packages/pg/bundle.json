@@ -1,0 +1,21 @@
+{
+    "bundle": [
+        {
+            "entry": "./src/index.html",
+            "build": {
+                "source": "./src",
+                "path": "./dist"
+            },
+            "environment": [
+                "NODE_ENV"
+            ],
+            "serve": {
+                "host": "pg.localhost",
+                "port": 8080
+            },
+            "loader": {
+                ".png": "file"
+            }
+        }
+    ]
+}

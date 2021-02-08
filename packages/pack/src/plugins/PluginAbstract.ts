@@ -1,13 +1,26 @@
 import {Plugin, PluginBuild} from "esbuild";
 
-export abstract class PluginAbstract implements Plugin {
-    public readonly name: string;
+export abstract class PluginAbstract<TConfig> {
+    protected readonly config: TConfig;
 
-    constructor(name: string) {
-        this.name = name;
+    public constructor(config: TConfig) {
+        this.config = config;
     }
 
-    public setup = (build: PluginBuild): void => this.connect(build);
+    public get name() {
+        return this.constructor.name;
+    }
+
+    public static getPluginName() {
+        return this.prototype.name;
+    }
+
+    public getPluginConfig(): Plugin {
+        return {
+            setup: (build: PluginBuild): void => this.connect(build),
+            name: this.name,
+        };
+    }
 
     protected abstract connect(build: PluginBuild): void;
 }

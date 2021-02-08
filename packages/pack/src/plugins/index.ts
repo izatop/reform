@@ -1,3 +1,4 @@
-export * from "./SassLoaderPlugin";
-export * from "./ComponentResolverPlugin";
-export {PluginAbstract} from "./PluginAbstract";
+export * from "./component/ResourceResolver";
+export * from "./styles/SassLoader";
+export * from "./PluginAbstract";
+export * from "./PluginRegistry";

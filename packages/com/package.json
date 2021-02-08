@@ -9,9 +9,11 @@
         "section",
         "index.js",
         "index.d.ts",
-        "index.scss"
+        "theme/index.scss"
     ],
-    "component": true,
+    "component": {
+        "resources": "resources.json"
+    },
     "repository": "https://github.com/izatop/reform",
     "description": "Base components built on top of Bulma and TypeScript",
     "keywords": [
@@ -25,14 +27,17 @@
         "name": "Artur Bier",
         "email": "izatop@gmail.com"
     },
-    "scripts": {
-    },
+    "scripts": {},
     "publishConfig": {
         "access": "public"
     },
+    "peerDependencies": {
+        "react": "^17.0.1"
+    },
     "dependencies": {
-        "@types/react": "^17.0.0",
-        "bulma": "^0.9.1"
+        "@reform/base": "0.1.0-development",
+        "@types/react": "^17.0.1",
+        "bulma": "^0.9.2"
     },
     "license": "MIT"
 }

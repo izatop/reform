@@ -9,11 +9,10 @@
         }
     ],
     "include": [
-        ".pack.ts",
-        "*/.pack.ts",
         "index.ts",
         "button",
         "footer",
-        "section"
+        "section",
+        "theme"
     ]
 }
