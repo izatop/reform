@@ -1,4 +1,4 @@
 import {declare} from "@reform/base";
 import * as React from "react";
 
-export const Footer = declare("footer", {component: "footer"});
+export const Container = declare("div", {component: "container"});

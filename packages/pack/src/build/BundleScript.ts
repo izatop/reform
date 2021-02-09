@@ -77,14 +77,14 @@ export class BundleScript {
             sourcemap: this.args.isDevelopment,
             minify: this.args.isProduction,
             resolveExtensions: [
-                ".component.tsx",
-                ".component.ts",
-                ".tsx",
-                ".ts",
                 ".component.jsx",
                 ".component.js",
                 ".jsx",
                 ".js",
+                ".component.tsx",
+                ".component.ts",
+                ".tsx",
+                ".ts",
             ],
             plugins: [
                 sassLoader.getPluginConfig(),

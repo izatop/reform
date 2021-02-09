@@ -13,3 +13,13 @@ export interface XButton {
     "is:inverted"?: boolean;
     "is:rounded"?: boolean;
 }
+
+export interface XSection {
+    "is:size"?: "large" | "medium";
+}
+
+export interface XFooter {}
+
+export interface XContainer {}
+
+export interface XTitle {}

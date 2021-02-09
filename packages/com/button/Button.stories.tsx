@@ -3,7 +3,7 @@ import {Story} from "@storybook/react";
 import * as React from "react";
 import "../theme/index.scss";
 import {Button} from "./Button";
-import "./Button.scss";
+import "./index.scss";
 
 export default {
     title: "Button",
@@ -61,7 +61,7 @@ export default {
 };
 
 const args = {children: "Click me"};
-const Template: Story<XProp<"button">> = (args) => <Button {...args}/>;
+const Template: Story<XProp<"button", "button">> = (args) => <Button {...args}/>;
 const Base = Template.bind({});
 const Primary = Template.bind({});
 const Large = Template.bind({});

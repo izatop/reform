@@ -1,13 +1,14 @@
 import * as React from "react";
 import {ElementKey, ElementList} from "../interfaces";
 import {Component} from "./Component";
-import {IDeclareConfig, XProp} from "./interfaces";
+import {IDeclareConfig, XElementKey, XProp} from "./interfaces";
 import {getClassNameFromList, hasNotPrefix} from "./prefix";
 
-export function declare<K extends ElementKey>(type: K, config: IDeclareConfig = {}): React.FC<XProp<K>> {
+export function declare<K extends ElementKey,
+    XK extends XElementKey>(type: K, config: IDeclareConfig<XK> = {}): React.FC<XProp<K, XK>> {
     const componentConfig = new Component(type, config);
 
-    const fc: React.FC<XProp<K>> = (props: XProp<K>): React.ReactElement => {
+    const fc: React.FC<XProp<K, XK>> = (props: XProp<K, XK>): React.ReactElement => {
         const next: ElementList[K] = {};
         const classNameList = componentConfig.createClassNameArray(props.className);
 

@@ -1,3 +1,3 @@
-import "./Button.scss";
+import "./index.scss";
 
 export * from "./Button";

@@ -1,12 +1,11 @@
 import {Button} from "@reform/com/button";
+import {Title} from "@reform/com/title";
 import * as React from "react";
 
 const Main: React.FC = () => (
     <>
-        <h1>Hello, world!</h1>
-        <section>
-            <Button>Click me</Button>
-        </section>
+        <Title>Hello, world!</Title>
+        <Button>Click me</Button>
     </>
 );
 

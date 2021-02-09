@@ -1,3 +1,3 @@
-import "./Footer.scss";
+import "./index.scss";
 
 export {Footer} from "./Footer";

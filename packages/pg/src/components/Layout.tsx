@@ -1,15 +1,22 @@
 import {Theme} from "@reform/com";
+import {Container} from "@reform/com/container";
 import {Footer} from "@reform/com/footer";
 import {Section} from "@reform/com/section";
 import * as React from "react";
 
 const Layout: React.FC = ({children}) => (
     <Theme>
-        <Section>{children}</Section>
+        <Section is:size={"large"}>
+            <Container>{children}</Container>
+        </Section>
 
-        <Footer>
-            This is the page footer
-        </Footer>
+        <Section>
+            <Container>
+                <Footer>
+                    This is the page footer
+                </Footer>
+            </Container>
+        </Section>
     </Theme>
 );
 

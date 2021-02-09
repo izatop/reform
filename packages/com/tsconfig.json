@@ -13,6 +13,11 @@
         "button",
         "footer",
         "section",
+        "container",
+        "title",
         "theme"
+    ],
+    "exclude": [
+        "**/*.stories.tsx"
     ]
 }

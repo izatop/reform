@@ -4,13 +4,13 @@ import {createComponentPrefixes, isOwnNamespace} from "./prefix";
 
 export class Component {
     public readonly type: string;
-    public readonly config: IDeclareConfig;
+    public readonly config: IDeclareConfig<any>;
 
     readonly #prefixes: PropertyPrefixMap;
 
     readonly #initialClassName: string[] = [];
 
-    constructor(type: string, config: IDeclareConfig) {
+    constructor(type: string, config: IDeclareConfig<any>) {
         this.type = type;
         this.config = config;
         this.#prefixes = createComponentPrefixes(this.config.prefixes);

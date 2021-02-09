@@ -1,3 +1,3 @@
-import "./Section.scss";
+import "./index.scss";
 
 export * from "./Section";
