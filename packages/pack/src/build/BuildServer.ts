@@ -48,8 +48,10 @@ export class BuildServer extends BuildAbstract {
 
     private createServerHandle(port: number): BuildServerHandle {
         const types = new Map([
-            [".js", "application/javascript"],
+            [".js", "text/javascript"],
+            [".css", "text/css"],
             [".html", "text/html"],
+            [".js.map", "application/json"],
         ]);
 
         const handles = new Map<string, (resource: string) => Promise<{ path: string }>>();

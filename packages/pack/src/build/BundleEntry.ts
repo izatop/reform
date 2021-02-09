@@ -19,14 +19,10 @@ export class BundleEntry {
         this.build = build;
         this.entry = entry;
         this.#entryPoints = this.resolveEntryPoints(this.entry);
+    }
 
-        if (this.args.watch) {
-            const watcher = watch(this.entry, () => {
-                this.#entryPoints = this.resolveEntryPoints(this.entry);
-            });
-
-            DisposerStatic.dispose(() => watcher.close());
-        }
+    public updateEntryPoints() {
+        this.#entryPoints = this.resolveEntryPoints(this.entry);
     }
 
     public getEntryPoints(): string[] {

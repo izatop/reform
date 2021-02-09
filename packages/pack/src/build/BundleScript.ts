@@ -1,9 +1,10 @@
 import * as crypto from "crypto";
-import {BuildOptions, Metadata} from "esbuild";
-import * as fs from "fs";
+import {BuildOptions} from "esbuild";
+import {watch} from "fs";
 import {IArgumentList, resolveAt} from "../internal";
 import {SassLoader} from "../plugins";
 import {BundleEntry} from "./BundleEntry";
+import {DisposerStatic} from "./DisposerStatic";
 import {IBuildPaths, IBundleScriptConfig} from "./interfaces";
 
 export class BundleScript {
@@ -27,6 +28,15 @@ export class BundleScript {
             .update(encoded)
             .digest()
             .toString("hex");
+
+        if (this.args.watch) {
+            const watcher = watch(this.entry.entry, async () => {
+                this.entry.updateEntryPoints();
+                await this.commit();
+            });
+
+            DisposerStatic.dispose(() => watcher.close());
+        }
     }
 
     public get metaFile() {
@@ -90,7 +100,6 @@ export class BundleScript {
     }
 
     public async commit(): Promise<void> {
-        const metadata: Metadata = JSON.parse(fs.readFileSync(this.metaFile, {encoding: "utf-8"}));
         for (const artifact of this.entry.getArtifacts()) {
             await artifact.commit(this);
         }

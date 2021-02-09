@@ -1,7 +1,9 @@
 import * as assert from "assert";
+import {Metadata} from "esbuild";
 import * as fs from "fs";
 import * as parse5 from "parse5";
-import {resolveAt} from "../internal";
+import * as path from "path";
+import {relativeTo, resolveAt} from "../internal";
 import {BundleArtifactAbstract} from "./BundleArtifactAbstract";
 import {BundleScript} from "./BundleScript";
 
@@ -22,10 +24,25 @@ export class HTMLDocumentEntry extends BundleArtifactAbstract {
     }
 
     public async commit(context: BundleScript): Promise<void> {
-        const {build} = context;
-        const savePath = resolveAt(build.path, this.path.replace(build.source, ""));
+        const {args, build, metaFile} = context;
+        const savePath = resolveAt(build.path, relativeTo(build.source, this.path));
+
+        const stylesheet: string[] = [];
+        const preload: string[] = [];
+        const preloadSet = new Set([".js", ".css"]);
+        const metadata: Metadata = JSON.parse(fs.readFileSync(metaFile, {encoding: "utf-8"}));
+        for (const [key] of Object.entries(metadata.outputs)) {
+            if (preloadSet.has(path.extname(key))) {
+                preload.push(relativeTo(build.path, resolveAt(args.path, key)));
+            }
+
+            if (key.endsWith(".css")) {
+                stylesheet.push(relativeTo(build.path, resolveAt(args.path, key)));
+            }
+        }
+
         for (const [file, resource] of this.#resources) {
-            const publicFile = file.replace(build.source, "").replace(/\.tsx?$/, ".js");
+            const publicFile = file.replace(/\.tsx?$/, ".js");
             switch (resource.tagName) {
                 case "link":
                     this.setAttribute(resource, "href", publicFile);
@@ -38,7 +55,62 @@ export class HTMLDocumentEntry extends BundleArtifactAbstract {
             }
         }
 
+        const head = this.getHeadElement();
+        assert(head, "The document node \"head\" not found");
+
+        for (const item of stylesheet) {
+            head.childNodes.push({
+                parentNode: head,
+                nodeName: "link",
+                tagName: "link",
+                namespaceURI: "",
+                childNodes: [],
+                attrs: [
+                    {name: "crossorigin", value: "anonymous"},
+                    {name: "rel", value: "stylesheet"},
+                    {name: "href", value: item},
+                ],
+            });
+        }
+
+        for (const item of preload) {
+            const as = item.endsWith(".css")
+                ? "style"
+                : (item.endsWith(".js")
+                        ? "script"
+                        : undefined
+                );
+
+            if (!as) {
+                continue;
+            }
+
+            head.childNodes.push({
+                parentNode: head,
+                nodeName: "link",
+                tagName: "link",
+                namespaceURI: "",
+                childNodes: [],
+                attrs: [
+                    {name: "crossorigin", value: "anonymous"},
+                    {name: "rel", value: "preload"},
+                    {name: "href", value: item},
+                    {name: "as", value: as},
+                ],
+            });
+        }
+
         fs.writeFileSync(savePath, parse5.serialize(this.#document), {encoding: "utf-8"});
+    }
+
+    private getHeadElement(): parse5.Element | undefined {
+        const findNode = (name: string, document?: parse5.ParentNode) => {
+            return document?.childNodes.find((node: parse5.ChildNode): node is parse5.Element => (
+                this.isElementNode(node) && node.tagName === name
+            ));
+        };
+
+        return findNode("head", findNode("html", this.#document));
     }
 
     private resolveEntryPoints(): HTMLResourceTuple[] {

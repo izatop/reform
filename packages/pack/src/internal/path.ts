@@ -10,14 +10,6 @@ export function resolveStrictAt(base: string, resource: unknown, message: string
     return resolveAt(base, resource);
 }
 
-export function relativeTo(file: string, directory: string): string {
-    const filePath = path.dirname(file);
-    return path.resolve(
-        filePath,
-        path.relative(
-            filePath,
-            directory,
-        ),
-        path.basename(file),
-    );
+export function relativeTo(from: string, to: string): string {
+    return path.relative(from, to);
 }
