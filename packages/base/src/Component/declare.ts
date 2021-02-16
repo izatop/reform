@@ -5,7 +5,7 @@ import {IDeclareConfig, XElementKey, XProp} from "./interfaces";
 import {getClassNameFromList, hasNotPrefix} from "./prefix";
 
 export function declare<K extends ElementKey,
-    XK extends XElementKey>(type: K, config: IDeclareConfig<XK> = {}): React.FC<XProp<K, XK>> {
+    XK extends XElementKey>(type: K, config: IDeclareConfig<XK>): React.FC<XProp<K, XK>> {
     const componentConfig = new Component(type, config);
 
     const fc: React.FC<XProp<K, XK>> = (props: XProp<K, XK>): React.ReactElement => {
@@ -26,7 +26,7 @@ export function declare<K extends ElementKey,
         return React.createElement(type, next);
     };
 
-    fc.displayName = type.charAt(0).toUpperCase() + type.substr(1).toLowerCase();
+    fc.displayName = componentConfig.displayName;
 
     return fc;
 }

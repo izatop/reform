@@ -1,4 +1,4 @@
-export type ScreenList = "mobile"
+export type Breakpoint = "mobile"
     | "touch"
     | "tablet"
     | "desktop"

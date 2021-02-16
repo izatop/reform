@@ -1,7 +1,7 @@
 import {declare, PropertyPrefixList} from "@reform/base";
 import * as React from "react";
 
-const component = "button";
+const component = "Button";
 const prefixes: PropertyPrefixList = [
     ["type", undefined],
     ["size", undefined],

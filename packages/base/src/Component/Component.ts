@@ -1,10 +1,12 @@
-import {isString, isUndefined} from "../internal";
+import {isNumber, isString, isUndefined} from "../internal";
 import {IDeclareConfig, PropertyPrefixMap} from "./interfaces";
 import {createComponentPrefixes, isOwnNamespace} from "./prefix";
 
 export class Component {
     public readonly type: string;
     public readonly config: IDeclareConfig<any>;
+
+    public readonly displayName: string;
 
     readonly #prefixes: PropertyPrefixMap;
 
@@ -16,12 +18,15 @@ export class Component {
         this.#prefixes = createComponentPrefixes(this.config.prefixes);
 
         if (typeof config.component === "string") {
-            this.#initialClassName.push(config.component);
+            const componentClassName = config.component.toLowerCase();
+            this.#initialClassName.push(componentClassName);
         }
 
         if (typeof config.component === "undefined") {
             this.#initialClassName.push(type);
         }
+
+        this.displayName = config.component;
     }
 
     public createClassNameArray(from?: string) {
@@ -56,8 +61,8 @@ export class Component {
     }
 
     public getModifier(prefix: string, value: unknown): string {
-        if (isString(value)) {
-            return prefix.concat("-", value);
+        if (isString(value) || isNumber(value)) {
+            return `${prefix}-${value}`;
         }
 
         return prefix;

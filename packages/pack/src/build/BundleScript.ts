@@ -61,6 +61,8 @@ export class BundleScript {
             }
         }
 
+        define["process.env.NODE_ENV"] = JSON.stringify(this.args.mode);
+
         return {
             define,
             format: "esm",

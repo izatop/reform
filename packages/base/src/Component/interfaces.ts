@@ -1,21 +1,24 @@
 import {ElementList} from "../interfaces";
-import {XButton, XContainer, XFooter, XSection, XTitle} from "./props";
+import {XButton, XColumn, XColumns, XContainer, XFooter, XSection, XSubtitle, XTitle} from "./props";
 
 export type PropertyPrefixList = [from: string, to: string | undefined][];
 export type PropertyPrefixMap = Map<string, string | undefined>;
 
 export interface XElementList {
-    button: XButton;
-    container: XContainer;
-    footer: XFooter;
-    section: XSection;
-    title: XTitle;
+    Button: XButton;
+    Container: XContainer;
+    Footer: XFooter;
+    Section: XSection;
+    Title: XTitle;
+    Subtitle: XSubtitle;
+    Column: XColumn;
+    Columns: XColumns;
 }
 
 export type XElementKey = keyof XElementList;
 
 export interface IDeclareConfig<XK extends keyof XElementList> {
-    component?: XK;
+    component: XK;
     prefixes?: PropertyPrefixList;
 }
 
