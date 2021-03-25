@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.22](https://github.com/izatop/reform/compare/@reform/ui@0.2.21...@reform/ui@0.2.22) (2021-03-25)
+
+
+### Bug Fixes
+
+* update deps ([72dc712](https://github.com/izatop/reform/commit/72dc71216d63f601428c3b4c96be406d2e678f5b))
+
+
+
+
+
 ## [0.2.21](https://github.com/izatop/reform/compare/@reform/ui@0.2.20...@reform/ui@0.2.21) (2021-03-18)
 
 
