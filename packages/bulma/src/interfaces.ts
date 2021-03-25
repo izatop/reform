@@ -15,8 +15,7 @@ import {
     TextWeightType,
 } from "./options";
 
-export interface IHTMLElementRegistry extends JSX.IntrinsicElements {
-}
+export type IHTMLElementRegistry = JSX.IntrinsicElements;
 
 export type XPropsKeys = keyof IHTMLElementRegistry;
 export type XProps<K extends XPropsKeys> = IHTMLElementRegistry[K];
