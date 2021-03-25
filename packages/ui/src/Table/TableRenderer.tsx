@@ -45,7 +45,7 @@ export const TableRenderer: React.FC<ITableRenderer<any>> = (props) => {
                     )}
                     <TableBody>
                         {store.map((key, data) => (
-                            <TableRow key={key} {...(store.rowProps ? store.rowProps(data) : {})}>
+                            <TableRow key={key} {...(store.rowProps?.(data) ?? {})}>
                                 {store.fetchRow(data).map(({key: k, property, value}) => (
                                     <TableCell textAlign={property.align} key={k}>{value}</TableCell>
                                 ))}
