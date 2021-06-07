@@ -9,3 +9,6 @@ npm-*.log
 .DS_Store
 tsconfig.tsbuildinfo
 .yarn
+
+/stories
+/.storybook
