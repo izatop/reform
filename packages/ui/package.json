@@ -32,7 +32,7 @@
     },
     "dependencies": {
         "@reform/bulma": "^0.3.8",
-        "@types/react": "^17.0.11",
+        "@types/react": "^17.0.13",
         "bulma": "^0.9.3",
         "react": "^17.0.2"
     },
