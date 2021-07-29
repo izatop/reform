@@ -15,6 +15,7 @@ export const PaginationContext = createContext({} as IPagination);
 export interface IPaginationOptions extends IsSize {
     rounded?: boolean;
     centered?: boolean;
+    right?: boolean;
 }
 
 export interface IPaginationProps {
