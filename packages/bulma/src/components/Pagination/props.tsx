@@ -47,7 +47,7 @@ export interface IPaginationLimitProps extends IPaginationLimitState,
 }
 
 export type PaginationVariants = IPaginationPageProps | IPaginationLimitProps;
-export type PaginationProps = XProps<"nav"> & PaginationVariants;
+export type PaginationProps = XProps<"nav">;
 
 export interface IPaginationPagerProps {
     pages?: number;

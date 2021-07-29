@@ -1,4 +1,5 @@
 export * from "./Pagination";
+export * from "./PaginationProvider";
 export * from "./PaginationNext";
 export * from "./PaginationPager";
 export * from "./PaginationPrevious";
