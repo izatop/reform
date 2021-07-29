@@ -1,3 +1,4 @@
+import {useMemo} from "react";
 import * as React from "react";
 import {config} from "../../forms";
 import {MakeProps} from "../../interfaces";
@@ -17,6 +18,7 @@ export const PaginationProvider = config.factory<MakeProps<IPaginationOptions>, 
         const deps = getPaginationDependencies(p as PaginationVariants);
         const defaultState = React.useMemo(() => createPaginationState(p as PaginationVariants), deps);
         const [state, setState] = React.useState(defaultState);
+
         React.useLayoutEffect(() => {
             requestAnimationFrame(() => {
                 setState(defaultState);
@@ -41,8 +43,10 @@ export const PaginationProvider = config.factory<MakeProps<IPaginationOptions>, 
             deps,
         );
 
+        const value = useMemo(() => ({state, set}), [state, set]);
+
         return (
-            <Provider value={{state, set}}>
+            <Provider value={value}>
                 {children}
             </Provider>
         );
