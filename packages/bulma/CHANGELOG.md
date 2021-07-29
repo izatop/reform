@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.11](https://github.com/izatop/reform/compare/@reform/bulma@0.3.10...@reform/bulma@0.3.11) (2021-07-29)
+
+
+### Bug Fixes
+
+* memoize state ([1950908](https://github.com/izatop/reform/commit/1950908d39caa5d11338c801a6fdf61dcf7a0ce4))
+* split pagination to provider and component ([708ec62](https://github.com/izatop/reform/commit/708ec6229fd0e886d9d325145a079158d068bd2b))
+
+
+
+
+
 ## [0.3.10](https://github.com/izatop/reform/compare/@reform/bulma@0.3.9...@reform/bulma@0.3.10) (2021-07-27)
 
 
