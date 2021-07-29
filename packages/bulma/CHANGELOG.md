@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.12](https://github.com/izatop/reform/compare/@reform/bulma@0.3.11...@reform/bulma@0.3.12) (2021-07-29)
+
+
+### Bug Fixes
+
+* pagination.is-right ([f0d2a38](https://github.com/izatop/reform/commit/f0d2a38c59e05341e63323bdc2f1a5eb4863375b))
+
+
+
+
+
 ## [0.3.11](https://github.com/izatop/reform/compare/@reform/bulma@0.3.10...@reform/bulma@0.3.11) (2021-07-29)
 
 
