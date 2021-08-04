@@ -1,0 +1,33 @@
+{
+    "name": "@reform/bundle-font",
+    "version": "0.1.0",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "files": [
+        "dist"
+    ],
+    "repository": "https://github.com/izatop/reform",
+    "keywords": [
+        "esbuild",
+        "bundle",
+        "font",
+        "react",
+        "typescript"
+    ],
+    "scripts": {
+        "clean": "rimraf dist tsconfig.tsbuildinfo",
+        "build": "tsc"
+    },
+    "dependencies": {
+        "@reform/bundle": "0.1.0",
+        "@types/node": "^16.4.7"
+    },
+    "publishConfig": {
+        "access": "public"
+    },
+    "author": {
+        "name": "Artur Bier",
+        "email": "izatop@gmail.com"
+    },
+    "license": "MIT"
+}

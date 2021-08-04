@@ -1,0 +1,36 @@
+{
+    "name": "@reform/bundle-sass",
+    "version": "0.1.0",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "files": [
+        "dist"
+    ],
+    "repository": "https://github.com/izatop/reform",
+    "keywords": [
+        "esbuild",
+        "bundle",
+        "graphql",
+        "react",
+        "typescript"
+    ],
+    "scripts": {
+        "clean": "rimraf dist tsconfig.tsbuildinfo",
+        "build": "tsc"
+    },
+    "dependencies": {
+        "@reform/bundle": "0.1.0",
+        "@types/node": "^16.4.7",
+        "@types/sass": "^1.16.1",
+        "graphql-tag": "^2.12.5",
+        "sass": "^1.37.5"
+    },
+    "publishConfig": {
+        "access": "public"
+    },
+    "author": {
+        "name": "Artur Bier",
+        "email": "izatop@gmail.com"
+    },
+    "license": "MIT"
+}

@@ -1,0 +1,44 @@
+{
+    "name": "@reform/bundle",
+    "version": "0.1.0",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "bin": {
+        "bundle": "dist/bin/bundle.js"
+    },
+    "files": [
+        "dist"
+    ],
+    "repository": "https://github.com/izatop/reform",
+    "keywords": [
+        "esbuild",
+        "bundle",
+        "react",
+        "typescript"
+    ],
+    "scripts": {
+        "clean": "rimraf dist tsconfig.tsbuildinfo",
+        "schema:update": "typescript-json-schema"
+    },
+    "dependencies": {
+        "@types/glob": "^7.1.4",
+        "@types/node": "^16.4.7",
+        "@types/node-sass": "^4.11.2",
+        "@types/parse5": "^6.0.1",
+        "dotenv": "^10.0.0",
+        "esbuild": "^0.12.17",
+        "glob": "^7.1.7",
+        "parse5": "^6.0.1"
+    },
+    "publishConfig": {
+        "access": "public"
+    },
+    "author": {
+        "name": "Artur Bier",
+        "email": "izatop@gmail.com"
+    },
+    "license": "MIT",
+    "devDependencies": {
+        "typescript-json-schema": "^0.50.1"
+    }
+}
