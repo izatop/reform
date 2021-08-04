@@ -27,8 +27,9 @@ export class ConfigFactory {
         const inputProps = new Map<string, any>(Object.entries(input));
         const resolvers = new Map(Object.entries(config.resolvers));
 
-        if (inputProps.has("className")) {
-            classes.push(inputProps.get("className")!);
+        const className = inputProps.get("className");
+        if (className) {
+            classes.push(className);
         }
 
         if (component) {
@@ -45,7 +46,7 @@ export class ConfigFactory {
             if (inputProps.has(type)) {
                 const adds = [];
                 for (const [key, value] of Object.entries(inputProps.get(type))) {
-                    const resolve = resolvers.get(key)!;
+                    const resolve = resolvers.get(key);
                     if (typeof resolve === "function") {
                         const res = resolve(value);
                         adds.push(...(Array.isArray(res) ? res : [res]).filter<string>((v): v is string => !!v));
@@ -61,14 +62,16 @@ export class ConfigFactory {
 
         for (const [key, value] of inputProps.entries()) {
             if (resolvers.has(key) && typeof value !== "undefined") {
-                const resolve = resolvers.get(key)!;
+                const resolve = resolvers.get(key);
                 if (typeof resolve === "function") {
                     const res = resolve(value);
                     classes.push(...(Array.isArray(res) ? res : [res]).filter<string>((v): v is string => !!v));
                     continue;
                 }
 
-                classes.push(resolve);
+                if (typeof resolve === "string") {
+                    classes.push(resolve);
+                }
             }
         }
 
@@ -103,8 +106,9 @@ export class ConfigFactory {
             }
         }
 
+        const className = inputProps.get("className");
         if (inputProps.has("className")) {
-            classes.push(inputProps.get("className")!);
+            classes.push(className);
         }
 
         if (component) {
@@ -115,7 +119,7 @@ export class ConfigFactory {
             if (inputProps.has(type)) {
                 const adds = [];
                 for (const [key, value] of Object.entries(inputProps.get(type))) {
-                    const resolve = resolvers.get(key)!;
+                    const resolve = resolvers.get(key);
                     if (typeof resolve === "function") {
                         const res = resolve(value);
                         adds.push(...(Array.isArray(res) ? res : [res]).filter<string>((v): v is string => !!v));
@@ -135,14 +139,16 @@ export class ConfigFactory {
                 options[key] = value;
                 inputProps.delete(key);
                 if (typeof value !== "undefined") {
-                    const resolve = resolvers.get(key)!;
+                    const resolve = resolvers.get(key);
                     if (typeof resolve === "function") {
                         const res = resolve(value);
                         classes.push(...(Array.isArray(res) ? res : [res]).filter<string>((v): v is string => !!v));
                         continue;
                     }
 
-                    classes.push(resolve);
+                    if (typeof resolve === "string") {
+                        classes.push(resolve);
+                    }
                 }
             }
         }
@@ -160,7 +166,7 @@ export class ConfigFactory {
         };
     }
 
-    private static getDisplayName(parameters: { displayName?: string, component?: string }) {
+    private static getDisplayName(parameters: { displayName?: string; component?: string }) {
         const {displayName, component} = parameters;
         if (displayName) {
             return displayName;
@@ -173,8 +179,9 @@ export class ConfigFactory {
         return;
     }
 
-    public factory<OPT = {}, P = DefaultProps>(FN: CT<IComputed<P, OPT>>,
-                                               defaultProps: Partial<P & OPT> = {}): React.FC<P & OPT> {
+    public factory<OPT = Record<any, any>
+        , P = DefaultProps>(FN: CT<IComputed<P, OPT>>,
+                            defaultProps: Partial<P & OPT> = {}): React.FC<P & OPT> {
         FN.displayName = this.config.displayName;
         const container: React.FC<P & OPT> = (props) => (
             React.createElement(
@@ -190,7 +197,7 @@ export class ConfigFactory {
     }
 
     public factoryRef<K extends XPropsKeys,
-        OPT = {},
+        OPT = Record<any, any>,
         P = XProps<K>>(FN: CT<IComputed<P, OPT>>,
                        defaultProps: Partial<PropsWithoutRef<P & OPT>> = {}) {
 

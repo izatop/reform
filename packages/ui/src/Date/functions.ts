@@ -75,7 +75,7 @@ export function useDateFormat(locales: string | string[], options?: DateTimeForm
     return useMemo(() => Intl.DateTimeFormat(locales, options), [locales, options]);
 }
 
-export function useCalendarController<M extends CalendarMode>(props: MakeCalendarProps<{}, M>,
+export function useCalendarController<M extends CalendarMode>(props: MakeCalendarProps<Record<any, any>, M>,
                                                               deps: any[] = []) {
     const controller = useMemo(() => createCalendarController<M>(props), deps);
     useEffect(() => () => controller.dispose(), deps);

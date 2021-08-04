@@ -11,6 +11,6 @@ export function isPlugin<A extends PluginAbstract<unknown>>(type: unknown): type
     return isObject(type) && type instanceof PluginAbstract;
 }
 
-export function isFunction(type: unknown): type is Function {
+export function isFunction(type: unknown): type is (...args: unknown[]) => unknown {
     return typeof type === "function";
 }

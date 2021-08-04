@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as renderer from "react-test-renderer";
-import {Node} from "../../../src/elements/Node";
+import {Node} from "../../../src";
 
 test("Node", () => {
     const div = renderer.create(<Node as={"div"} textAlign={"centered"} textSize={6} className={"foo"}>Text</Node>);

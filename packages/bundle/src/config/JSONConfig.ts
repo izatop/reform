@@ -58,6 +58,7 @@ export class JSONConfig {
 
     private load(id: string, options: unknown): Plugin {
         try {
+            // eslint-disable-next-line @typescript-eslint/no-var-requires
             const {default: plugin} = require(id);
             ok(isFunction(plugin), `Wrong exports from ${id}, function plugin(options) expected`);
 

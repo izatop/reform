@@ -21,7 +21,7 @@ export abstract class CalendarControllerAbstract<M extends CalendarMode> {
     // tslint:disable-next-line:member-ordering
     #listeners: CalendarUpdateListener<M>[];
 
-    constructor(props: MakeCalendarProps<{}, M>) {
+    constructor(props: MakeCalendarProps<Record<any, any>, M>) {
         this.mode = props.mode;
         this.#listeners = [];
         if ("defaultValue" in props && props.defaultValue) {
@@ -91,14 +91,17 @@ export abstract class CalendarControllerAbstract<M extends CalendarMode> {
         }
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     protected handleMouseEnter(link: CalendarLink) {
         // do nothing
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     protected handleMouseLeave(link: CalendarLink) {
         // do nothing
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     protected handleUpdate(value?: CalendarValue<M>) {
         // do nothing
     }

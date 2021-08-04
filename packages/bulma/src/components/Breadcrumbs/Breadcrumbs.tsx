@@ -1,5 +1,5 @@
 import * as React from "react";
-import {Icon} from "../../elements/Icon";
+import {Icon} from "../../elements";
 import {MakeProps, XProps} from "../../interfaces";
 import {Size} from "../../options";
 import {IsSize} from "../../props";
@@ -7,6 +7,8 @@ import {ConfigFactory} from "../../utils";
 import {Breadcrumb} from "./Breadcrumb";
 
 export type BreadcrumbsStyleType = "arrow" | "bullet" | "dot" | "succeeds";
+
+// eslint-disable-next-line @typescript-eslint/ban-types
 export type BreadcrumbNode = React.ReactChild | {} | string;
 export type BreadcrumbPath = [string, BreadcrumbNode, string?] | BreadcrumbNode;
 

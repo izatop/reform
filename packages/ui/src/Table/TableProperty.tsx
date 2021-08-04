@@ -6,4 +6,4 @@ export interface ITableProperty<T extends ITableSource> extends Omit<ITableStore
     children?: (row: T) => React.ReactNode;
 }
 
-export const TableProperty: React.FC<ITableProperty<any>> = (props) => null;
+export const TableProperty: React.FC<ITableProperty<any>> = () => null;

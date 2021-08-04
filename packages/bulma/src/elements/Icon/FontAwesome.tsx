@@ -5,7 +5,7 @@ const is = (expr: any, fn: () => any) => !!expr && fn();
 
 export const FontAwesome: React.FC<IIcon> = (props) => {
     const classes = ["fas"];
-    const options: object = {};
+    const options: Record<any, any> = {};
 
     if (typeof props.icon === "string") {
         classes.push(`fa-${props.icon}`);

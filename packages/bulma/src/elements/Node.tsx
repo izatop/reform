@@ -8,6 +8,7 @@ type NodeProp<K extends XPropsKeys> = { as: K };
 type NodeType<K extends XPropsKeys = XPropsKeys> = React.FC<MakeProps<NodeProp<K>> & NodeAttr<K>>;
 
 export const Node: NodeType = config.factory<MakeProps<NodeProp<any>>, XProps<any>>((input) => {
-    const {props: {as, ...props}, children} = input;
-    return React.createElement(as || "div", {children, ...props});
+    const {props: {as, ...props}} = input;
+    const {children} = {...input, ...props};
+    return React.createElement(as || "div", {...props}, children);
 });

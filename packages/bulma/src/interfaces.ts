@@ -52,14 +52,14 @@ export type BaseProps = {
     relative?: boolean;
 };
 
-export type MakeProps<P = {}> = BaseProps & P;
-export type MakeBreakpoint<P = {}> = MakeProps<P> & IBreakpoint;
+export type MakeProps<P = Record<any, any>> = BaseProps & P;
+export type MakeBreakpoint<P = Record<any, any>> = MakeProps<P> & IBreakpoint;
 
-export type PickProps<P = {}, K extends keyof P = never> = K extends never
+export type PickProps<P = Record<any, any>, K extends keyof P = never> = K extends never
     ? Pick<P & BaseProps, keyof BaseProps>
     : Pick<P & BaseProps, keyof BaseProps & K>;
 
-export type MakeResponsive<P = {}, K extends keyof P = never> = {
+export type MakeResponsive<P = Record<any, any>, K extends keyof P = never> = {
     [S in BreakpointType]?: PickProps<P, K>;
 };
 
@@ -67,9 +67,9 @@ export interface IPropertyResolvers {
     [key: string]: string | ((value: any) => string | string[] | undefined | false);
 }
 
-export type MakePropertyResolver<T, K extends keyof T = keyof T> = IPropertyResolvers & {
+export type MakePropertyResolver<T> = IPropertyResolvers & {
     [P in keyof T]: string | ((value: any) => string | string[] | undefined | false);
-}
+};
 
 export interface IComponentConfig {
     component?: string;
@@ -87,7 +87,7 @@ export interface IInProps extends IProps {
     children?: React.ReactNode;
 }
 
-export interface IComputed<P extends { children?: React.ReactNode }, O extends {}> {
+export interface IComputed<P extends { children?: React.ReactNode }, O extends Record<any, any>> {
     props: Pick<P, Exclude<keyof P, "children">> & { className?: string };
     children: P["children"];
     options: O;

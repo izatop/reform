@@ -8,4 +8,4 @@ interface INumberFormatProps {
 export const NumberFormat: React.FC<INumberFormatProps> = (props) => {
     const format = React.useContext(NumberFormatContext);
     return <>{format.format(+props.value)}</>;
-}
+};

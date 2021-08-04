@@ -31,7 +31,8 @@ export class Modal extends React.Component<MakeProps<IModal>, IModalState> {
 
     private static resolvePortal(): HTMLDivElement {
         const selector = `div#${MODAL_PORTAL_ID}`;
-        if (!document.querySelector(selector)) {
+        const element = document.querySelector<HTMLDivElement>(selector);
+        if (!element) {
             const root = document.createElement("div");
             root.setAttribute("id", MODAL_PORTAL_ID);
             document.body.appendChild(root);
@@ -39,7 +40,7 @@ export class Modal extends React.Component<MakeProps<IModal>, IModalState> {
             return root;
         }
 
-        return document.querySelector<HTMLDivElement>(selector)!;
+        return element;
     }
 
     public componentDidMount() {

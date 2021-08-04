@@ -14,7 +14,7 @@ export interface ICalendarProps {
 export function Calendar<M extends CalendarMode>(props: MakeCalendarProps<ICalendarProps, M>) {
     const {onMouseOver, onClick, onChange, locales, date, ...options} = props;
     const {week, dates} = useCalendarMonth({date, locales});
-    const controller = useCalendarController<M>(options as MakeCalendarProps<{}, M>, [dates]);
+    const controller = useCalendarController<M>(options as MakeCalendarProps<Record<any, any>, M>, [dates]);
     useEffect(() => controller.listen(onChange as any), [controller]);
 
     return (

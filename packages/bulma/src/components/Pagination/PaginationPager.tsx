@@ -6,7 +6,7 @@ import {IPaginationPagerProps, PaginationContext} from "./props";
 const {Consumer} = PaginationContext;
 const config = ConfigFactory.create({component: "pagination-list"});
 
-export const PaginationPager = config.factory<{}, IPaginationPagerProps>(({props}) => {
+export const PaginationPager = config.factory<Record<any, any>, IPaginationPagerProps>(({props}) => {
     const {pages, useful, ...p} = props;
     return (
         <ul {...p}>

@@ -7,7 +7,7 @@ export interface IJSONBundle extends IBundleConfig {
         splitting?: boolean;
         treeShaking?: true | TreeShaking;
         sourcemap?: SourceMapVariant;
-    }
+    };
 }
 
 export interface IJSONConfig {

@@ -17,7 +17,7 @@ export interface IBundleConfig {
     sourcemap?: SourceMapVariant;
     environment?: string[];
     variables?: Record<string, string | boolean | number>;
-    loader?: { [ext: string]: Loader; };
+    loader?: { [ext: string]: Loader };
     app?: IPWAApplicationConfig;
     serve?: {
         port: number;

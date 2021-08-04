@@ -8,7 +8,7 @@ export class MenuStore extends MenuTrigger<MenuStoreEvents> {
 
     private selected?: MenuNode;
 
-    constructor(children: MenuNode[] = [], options: { select?: { key: string, value: any } } = {}) {
+    constructor(children: MenuNode[] = [], options: { select?: { key: string; value: any } } = {}) {
         super();
 
         for (const child of children) {

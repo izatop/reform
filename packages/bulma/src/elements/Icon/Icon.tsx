@@ -27,8 +27,6 @@ const config = ConfigFactory.create({
     resolvers: {color: (v) => `has-text-${v}`},
 });
 
-declare const foo: MakeProps<IIconInput>;
-
 export const Icon = config.factory<MakeProps<IIconInput>, IIcon>(({props: {className, ...props}, children}) => (
     <>
         <span className={className}><FontAwesome {...props}/></span>

@@ -6,6 +6,7 @@ interface IRange {
 
 export abstract class PaginationState {
     protected constructor() {
+        // prevent new PaginationState
     }
 
     public get isLast() {

@@ -9,23 +9,24 @@ export interface ITableProvider<T extends ITableSource> {
     data: T[];
     children: [
         React.ReactElement<ITableConfig<T>>,
-        React.ReactElement<ITableRenderer<T>>?
+        React.ReactElement<ITableRenderer>?
     ];
 }
 
-export interface ITableState<T extends ITableSource = {}> {
+export interface ITableState<T extends ITableSource = ITableSource> {
     store: TableStore<T>;
-    renderer?: React.ReactElement<ITableRenderer<T>>;
+    renderer?: React.ReactElement<ITableRenderer>;
 }
 
-export interface IFactoryType<T extends ITableSource = {}> {
+export interface IFactoryType<T extends ITableSource = ITableSource> {
     Factory: React.ComponentClass<ITableProvider<T>, ITableState<T>>;
     Config: React.FC<ITableConfig<T>>;
     Property: React.FC<ITableProperty<T>>;
-    Renderer: React.FC<ITableRenderer<T>>;
+    Renderer: React.FC<ITableRenderer>;
 }
 
-export class TableFactory<T extends ITableSource = {}> extends React.Component<ITableProvider<T>, ITableState<T>> {
+export class TableFactory<T extends ITableSource = ITableSource>
+    extends React.Component<ITableProvider<T>, ITableState<T>> {
     public state: ITableState<T>;
 
     constructor(props: ITableProvider<T>) {
@@ -33,7 +34,7 @@ export class TableFactory<T extends ITableSource = {}> extends React.Component<I
         this.state = {store: new TableStore(props.data)};
     }
 
-    public static getDerivedStateFromProps(nextProps: ITableProvider<any>, prevState: ITableState<any>) {
+    public static getDerivedStateFromProps(nextProps: ITableProvider<any>) {
         const state: ITableState<any> = {store: new TableStore(nextProps.data)};
         for (const child of React.Children.toArray(nextProps.children)) {
             if (isValidElement(child, TableRenderer)) {
@@ -66,7 +67,7 @@ export class TableFactory<T extends ITableSource = {}> extends React.Component<I
         return state;
     }
 
-    public static create<T extends ITableSource>(of?: T[]): IFactoryType<T> {
+    public static create<T extends ITableSource>(): IFactoryType<T> {
         return {
             Factory: this,
             Config: TableConfig,

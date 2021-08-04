@@ -1,4 +1,13 @@
-import {Children, cloneElement, createContext, createElement, isValidElement, ReactElement, ReactNode} from "react";
+import {
+    Children,
+    cloneElement,
+    createContext,
+    createElement,
+    isValidElement,
+    ReactElement,
+    ReactFragment,
+    ReactNode,
+} from "react";
 
 export interface INavbarContext {
     state: boolean;
@@ -12,7 +21,7 @@ const mergeClassName = (...classNames: string[]) => {
         .join(" ");
 };
 
-export const NavbarWithChild = (children: ReactElement | {} | ReactNode): ReactNode => {
+export const NavbarWithChild = (children: ReactElement | ReactFragment | ReactNode): ReactNode => {
     return Children.map(children, (child) => {
         if (isValidElement<any>(child)) {
             return cloneElement<any>(

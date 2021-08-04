@@ -6,7 +6,7 @@ import {ConfigFactory} from "../../utils";
 export type SelectOptionType = string
     | number
     | undefined
-    | { key?: string | number, value?: string | number, label: string | number };
+    | { key?: string | number; value?: string | number; label: string | number };
 
 const mapOptionToSelect = (value: SelectOptionType, key?: number | string) => {
     if (typeof value === "object") {

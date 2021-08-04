@@ -1,4 +1,4 @@
-import {isValidElement, ReactChild} from "react";
+import {isValidElement, ReactChild, ReactFragment} from "react";
 import {MenuTrigger} from "./MenuTrigger";
 
 let increment = 0;
@@ -15,11 +15,11 @@ export class MenuNode extends MenuTrigger {
 
     public readonly parent?: MenuNode;
 
-    public readonly node: ReactChild | {};
+    public readonly node: ReactChild | ReactFragment;
 
     private selected = false;
 
-    constructor(node: ReactChild | {},
+    constructor(node: ReactChild | ReactFragment,
                 defaults: IMenuNodeDefaults = {}) {
         super();
 

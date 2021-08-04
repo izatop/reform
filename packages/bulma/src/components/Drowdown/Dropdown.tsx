@@ -2,8 +2,7 @@ import * as React from "react";
 import {ReactElement} from "react";
 import {useDropdownState} from "../../functions";
 import {MakeProps, XProps} from "../../interfaces";
-import {ConfigFactory} from "../../utils";
-import {Listener} from "../../utils/Listener";
+import {ConfigFactory, Listener} from "../../utils";
 import {DropdownButtonDecorator} from "./DropdownButtonDecorator";
 
 export interface IDropdownOptions {

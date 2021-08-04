@@ -10,16 +10,16 @@ import {
     XProps,
 } from "@reform/bulma";
 import * as React from "react";
-import {ITableSource, TableStoreContext} from "./props";
+import {TableStoreContext} from "./props";
 
 const {Consumer} = TableStoreContext;
 
-export interface ITableRenderer<T extends ITableSource> extends ITable, XProps<"table"> {
+export interface ITableRenderer extends ITable, XProps<"table"> {
     footer?: boolean;
     header?: boolean;
 }
 
-export const TableRenderer: React.FC<ITableRenderer<any>> = (props) => {
+export const TableRenderer: React.FC<ITableRenderer> = (props) => {
     const {footer, header, ...p} = props;
     return (
         <Consumer>

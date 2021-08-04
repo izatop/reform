@@ -22,7 +22,7 @@ export type ITableStoreRender<T extends ITableSource> = (key: string, data: T) =
 export class TableStore<T extends ITableSource> {
     public properties: ITableStoreProperty<T>[] = [];
 
-    public primary: string = "id";
+    public primary = "id";
 
     public rowProps?: (data: T) => ITableRow & XProps<"tr">;
 
