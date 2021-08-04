@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.1](https://github.com/izatop/reform/compare/v0.4.0...v0.4.1) (2021-08-04)
+
+
+### Bug Fixes
+
+* json schema, refactoring ([c8e754e](https://github.com/izatop/reform/commit/c8e754e233816e15f0b52dea93ad3d078550524c))
+
+
+
+
+
 # 0.4.0 (2021-08-04)
 
 
