@@ -1,6 +1,6 @@
 {
     "name": "@reform/bulma",
-    "version": "0.3.12",
+    "version": "0.4.0",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "files": [
