@@ -20,7 +20,7 @@
     },
     "dependencies": {
         "@reform/bundle": "0.1.0",
-        "@types/node": "^16.4.7",
+        "@types/node": "^16.4.11",
         "@types/sass": "^1.16.1",
         "graphql-tag": "^2.12.5",
         "sass": "^1.37.5"
