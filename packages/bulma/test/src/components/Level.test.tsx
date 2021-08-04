@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as renderer from "react-test-renderer";
-import {Level, LevelElement, LevelLeft, LevelRight} from "../../src";
+import {Level, LevelElement, LevelLeft, LevelRight} from "../../../src";
 
 test("Level", () => {
     const element1 = renderer.create((

@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as renderer from "react-test-renderer";
-import {Message, MessageContent, MessageHeader} from "../../src";
+import {Message, MessageContent, MessageHeader} from "../../../src";
 
 test("Message", () => {
     const element1 = renderer.create((

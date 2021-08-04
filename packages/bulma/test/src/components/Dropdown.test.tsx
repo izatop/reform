@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as renderer from "react-test-renderer";
-import {Button, Dropdown, DropdownDivider, DropdownElement} from "../../src";
+import {Button, Dropdown, DropdownDivider, DropdownElement} from "../../../src";
 
 test("Dropdown", () => {
     const element1 = renderer.create((

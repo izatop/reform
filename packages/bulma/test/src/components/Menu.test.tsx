@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as renderer from "react-test-renderer";
-import {Menu, MenuNode, MenuStore} from "../../src/components/Menu";
+import {Menu, MenuNode, MenuStore} from "../../../src/components/Menu";
 
 test("Menu", () => {
     const store = new MenuStore([

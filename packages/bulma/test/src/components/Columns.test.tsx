@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as renderer from "react-test-renderer";
-import {Columns} from "../../src";
+import {Columns} from "../../../src";
 
 test("Columns", () => {
     const columns1 = renderer.create((<Columns gap={false} breakpoint={"fullhd"}/>));

@@ -1,6 +1,15 @@
 import * as React from "react";
 import * as renderer from "react-test-renderer";
-import {Card, CardContent, CardFooter, CardHeader, CardHeaderIcon, CardHeaderTitle, CardImage, Figure} from "../../src";
+import {
+    Card,
+    CardContent,
+    CardFooter,
+    CardHeader,
+    CardHeaderIcon,
+    CardHeaderTitle,
+    CardImage,
+    Figure,
+} from "../../../src";
 
 test("Card", () => {
     const element1 = renderer.create((

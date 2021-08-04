@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as renderer from "react-test-renderer";
-import {Column} from "../../src/columns";
+import {Column} from "../../../src/columns";
 
 test("Column", () => {
     expect(renderer.create(<Column/>).toJSON()).toMatchSnapshot();

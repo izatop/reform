@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as renderer from "react-test-renderer";
-import {Breadcrumbs} from "../../src/components/Breadcrumbs";
-import {Icon} from "../../src/elements/Icon";
+import {Breadcrumbs} from "../../../src/components/Breadcrumbs";
+import {Icon} from "../../../src/elements/Icon";
 
 test("Breadcrumbs", () => {
     const paths = [["/", "Home", "home"], ["/path", "Path"]];

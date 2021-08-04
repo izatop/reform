@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as renderer from "react-test-renderer";
-import {TableFactory} from "../../src/Table";
+import {TableFactory} from "../../../src/Table";
 
 test("TableFactory", () => {
     const data = [

@@ -1,20 +1,10 @@
 {
+    "extends": "./tsconfig.json",
     "compilerOptions": {
         "jsx": "react",
         "module": "commonjs",
-        "target": "ES2019",
-        "lib": ["ES2020", "dom", "dom.iterable"],
-        "types": ["jest"],
-        "esModuleInterop": true,
-        "sourceMap": true,
-        "strict": true,
-        "strictNullChecks": true,
-        "forceConsistentCasingInFileNames": true,
-        "noImplicitThis": true,
-        "noImplicitAny": true,
-        "strictPropertyInitialization": true,
-        "strictFunctionTypes": true,
-        "experimentalDecorators": true,
-        "noEmit": true
+        "types": [
+            "jest"
+        ]
     }
 }

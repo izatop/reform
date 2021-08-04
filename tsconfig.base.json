@@ -1,23 +1,7 @@
 {
+    "extends": "./tsconfig.json",
     "compilerOptions": {
         "jsx": "react",
-        "module": "commonjs",
-        "target": "ES2019",
-        "lib": ["ES2020", "dom", "dom.iterable"],
-        "types": [],
-        "strict": true,
-        "declaration": true,
-        "esModuleInterop": true,
-        "inlineSourceMap": true,
-        "strictNullChecks": true,
-        "forceConsistentCasingInFileNames": true,
-        "noImplicitThis": true,
-        "noImplicitAny": true,
-        "strictPropertyInitialization": true,
-        "strictFunctionTypes": true,
-        "experimentalDecorators": true,
-        "skipLibCheck": true,
-        "incremental": true,
         "composite": true
     }
 }

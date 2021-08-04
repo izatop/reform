@@ -1,4 +1,4 @@
-import {Plugin, PluginConfig, DefaultConfig} from "./Plugin";
+import {DefaultConfig, Plugin, PluginConfig} from "./Plugin";
 
 function plugin(config: PluginConfig = DefaultConfig): Plugin {
     return new Plugin(config);

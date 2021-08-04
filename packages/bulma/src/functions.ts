@@ -1,5 +1,5 @@
 import {useCallback, useEffect, useMemo, useState} from "react";
-import {Listener} from "./utils/Listener";
+import {Listener} from "./utils";
 
 export function useTimeout(timeout = 1000) {
     const [id, set] = useState<number>();

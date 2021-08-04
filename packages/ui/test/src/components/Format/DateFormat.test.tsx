@@ -1,6 +1,6 @@
 import * as React from "react";
 import renderer from "react-test-renderer";
-import {DateFormat, DateTimeFormat, TimeFormat} from "../../../src/Format";
+import {DateFormat, DateTimeFormat, TimeFormat} from "../../../../src/Format";
 
 const date = "2020-01-01T21:00:00.000Z";
 
