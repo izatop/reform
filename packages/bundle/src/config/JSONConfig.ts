@@ -1,9 +1,5 @@
-import {ok} from "assert";
-import {Plugin} from "esbuild";
 import {BundleScript} from "../build";
-import {IArgumentList, resolveAt, resolveStrictAt} from "../internal";
-import logger from "../internal/logger";
-import {isFunction, isPlugin} from "../plugins";
+import {IArgumentList, load, resolveAt, resolveStrictAt} from "../internal";
 import {IJSONConfig} from "./interfaces";
 
 export class JSONConfig {
@@ -39,7 +35,7 @@ export class JSONConfig {
                     sourcemap,
                     splitting,
                     treeShaking,
-                    plugins: Object.entries(plugins).map(([id, options]) => this.load(id, options)),
+                    plugins: Object.entries(plugins).map(([id, options]) => load(id, options)),
                     entry: bundle.entry.map((entry) => resolveAt(base, entry)),
                     files: bundle.files,
                     variables: bundle.variables,
@@ -54,22 +50,5 @@ export class JSONConfig {
         }
 
         return bundleScriptList;
-    }
-
-    private load(id: string, options: unknown): Plugin {
-        try {
-            // eslint-disable-next-line @typescript-eslint/no-var-requires
-            const {default: plugin} = require(id);
-            ok(isFunction(plugin), `Wrong exports from ${id}, function plugin(options) expected`);
-
-            const instance = plugin(options);
-            ok(isPlugin(instance), `Unexpected return type from plugin(options) at ${id}`);
-
-            return instance.getPluginConfig();
-        } catch (error) {
-            logger.error(error);
-
-            throw error;
-        }
     }
 }

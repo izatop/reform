@@ -1,5 +1,6 @@
+import {config, DotenvParseOutput} from "dotenv";
 import {BuildOptions, BuildResult} from "esbuild";
-import {copyFileSync, mkdirSync, watch} from "fs";
+import {copyFileSync, existsSync, mkdirSync, watch} from "fs";
 import glob from "glob";
 import {dirname, join} from "path";
 import {IArgumentList, relativeTo, resolveAt} from "../internal";
@@ -60,9 +61,15 @@ export class BundleScript {
     public getBuildConfig(): BuildOptions {
         const define: Record<string, any> = {};
 
+        const dotEnvVariables: DotenvParseOutput = {};
+        const dotEnvFile = resolveAt(this.args.path, this.config.envFile ?? ".env");
+        if (existsSync(dotEnvFile)) {
+            const {parsed} = config({path: dotEnvFile});
+            Object.assign(dotEnvVariables, parsed);
+        }
 
         const {variables = {}, environment = [], loader = {}, plugins} = this.config;
-        const variableStore = {...variables, ...process.env};
+        const variableStore = {...variables, ...dotEnvVariables, ...process.env};
         const keys = new Set([...environment, ...Object.keys(variables)]);
 
         for (const variable of keys.values()) {

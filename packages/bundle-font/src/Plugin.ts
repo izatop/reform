@@ -1,15 +1,12 @@
-import {PluginAbstract} from "@reform/bundle";
-import {getResourcePath} from "@reform/bundle/dist/internal";
+import {assign, getResourcePath, PluginAbstract} from "@reform/bundle";
 import {PluginBuild} from "esbuild";
 import {promises as fs} from "fs";
 
-export type PluginConfig = { filter: RegExp };
+export type Config = { filter: RegExp };
 
-export const DefaultConfig: PluginConfig = {filter: /\.(eot|ttf|woff|woff2?|svg)([?|#].+)?$/};
-
-export class Plugin extends PluginAbstract<PluginConfig> {
-    constructor(config = DefaultConfig) {
-        super(config);
+export class Plugin extends PluginAbstract<Config> {
+    constructor(config?: Config) {
+        super(assign({filter: /\.(eot|ttf|woff|woff2?|svg)([?|#].+)?$/}, config));
     }
 
     protected connect(build: PluginBuild): void {
@@ -20,7 +17,7 @@ export class Plugin extends PluginAbstract<PluginConfig> {
             namespace: "font",
         }));
 
-        build.onLoad({namespace: "font", filter: /.+/}, async (args) => ({
+        build.onLoad({namespace: "font", filter: /^./}, async (args) => ({
             loader: "file",
             contents: await fs.readFile(args.path),
         }));

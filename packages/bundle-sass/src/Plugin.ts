@@ -1,15 +1,13 @@
-import {PluginAbstract} from "@reform/bundle";
+import {assign, PluginAbstract} from "@reform/bundle";
 import {PluginBuild} from "esbuild";
 import * as sass from "sass";
 import importer from "./importer";
 
-export type PluginConfig = { filter: RegExp; compress?: boolean };
+export type Config = { filter: RegExp; compress?: boolean };
 
-export const DefaultConfig: PluginConfig = {filter: /\.(scss|sass)$/};
-
-export class Plugin extends PluginAbstract<PluginConfig> {
-    constructor(config = DefaultConfig) {
-        super(config);
+export class Plugin extends PluginAbstract<Config> {
+    constructor(config?: Config) {
+        super(assign({filter: /\.(scss|sass)$/}, config));
     }
 
     protected connect(build: PluginBuild): void {

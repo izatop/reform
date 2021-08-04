@@ -1,16 +1,17 @@
 import {PluginAbstract} from "@reform/bundle";
 import {PluginBuild} from "esbuild";
 import {promises as fs} from "fs";
+import {assign} from "@reform/bundle";
 
-export type PluginConfig = { filter: RegExp };
+export type Config = { filter: RegExp };
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const loader = require("graphql-tag/loader");
-export const DefaultConfig: PluginConfig = {filter: /\.(graphql|gql)$/};
+export const DefaultConfig: Config = {filter: /\.(graphql|gql)$/};
 
-export class Plugin extends PluginAbstract<PluginConfig> {
-    constructor(config = DefaultConfig) {
-        super(config);
+export class Plugin extends PluginAbstract<Config> {
+    constructor(config?: Config) {
+        super(assign({filter: /\.(graphql|gql)$/}, config));
     }
 
     protected connect(build: PluginBuild): void {

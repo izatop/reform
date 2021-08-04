@@ -1,9 +1,9 @@
 import {Plugin, PluginBuild} from "esbuild";
 
-export abstract class PluginAbstract<TConfig> {
+export abstract class PluginAbstract<TConfig extends (Record<any, any> | undefined) = undefined> {
     protected readonly config: TConfig;
 
-    public constructor(config: TConfig) {
+    constructor(config: TConfig) {
         this.config = config;
     }
 

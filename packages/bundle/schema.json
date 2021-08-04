@@ -1,0 +1,133 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "definitions": {
+        "IPWAApplicationConfig": {
+            "properties": {
+                "bundle": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "manifest": {
+                    "$ref": "#/definitions/PWAManifest"
+                },
+                "source": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "PWAManifest": {
+            "type": "object"
+        },
+        "Record<string,string|number|boolean>": {
+            "type": "object"
+        },
+        "Record<string,unknown>": {
+            "type": "object"
+        }
+    },
+    "properties": {
+        "app": {
+            "$ref": "#/definitions/IPWAApplicationConfig"
+        },
+        "base": {
+            "type": "string"
+        },
+        "build": {
+            "type": "string"
+        },
+        "bundle": {
+            "properties": {
+                "sourcemap": {
+                    "enum": [
+                        "both",
+                        "external",
+                        false,
+                        "inline",
+                        true
+                    ]
+                },
+                "splitting": {
+                    "type": "boolean"
+                },
+                "treeShaking": {
+                    "enum": [
+                        "ignore-annotations",
+                        true
+                    ]
+                }
+            },
+            "type": "object"
+        },
+        "entry": {
+            "items": {
+                "type": "string"
+            },
+            "type": "array"
+        },
+        "envFile": {
+            "type": "string"
+        },
+        "environment": {
+            "items": {
+                "type": "string"
+            },
+            "type": "array"
+        },
+        "files": {
+            "items": {
+                "type": "string"
+            },
+            "type": "array"
+        },
+        "loader": {
+            "additionalProperties": {
+                "enum": [
+                    "base64",
+                    "binary",
+                    "css",
+                    "dataurl",
+                    "default",
+                    "file",
+                    "js",
+                    "json",
+                    "jsx",
+                    "text",
+                    "ts",
+                    "tsx"
+                ],
+                "type": "string"
+            },
+            "type": "object"
+        },
+        "plugins": {
+            "$ref": "#/definitions/Record<string,unknown>"
+        },
+        "serve": {
+            "properties": {
+                "host": {
+                    "type": "string"
+                },
+                "port": {
+                    "type": "number"
+                }
+            },
+            "type": "object"
+        },
+        "sourcemap": {
+            "enum": [
+                "both",
+                "external",
+                false,
+                "inline",
+                true
+            ]
+        },
+        "variables": {
+            "$ref": "#/definitions/Record<string,string|number|boolean>"
+        }
+    },
+    "type": "object"
+}

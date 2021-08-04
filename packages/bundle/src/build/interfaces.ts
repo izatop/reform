@@ -23,6 +23,8 @@ export interface IBundleConfig {
         port: number;
         host?: string;
     };
+
+    envFile?: string;
 }
 
 export interface IBundleScriptConfig extends IBundleConfig {
