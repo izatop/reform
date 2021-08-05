@@ -16,7 +16,7 @@ export class Plugin extends PluginAbstract<Config> {
         }));
 
         build.onLoad({namespace: "font", filter: /^./}, async (args) => ({
-            contents: await this.store(args.path, () => readFile(args.path, {encoding: "binary"})),
+            contents: await this.store(args.path, () => readFile(args.path)),
             loader: "file",
         }));
     }

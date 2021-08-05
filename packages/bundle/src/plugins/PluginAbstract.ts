@@ -1,9 +1,9 @@
 import {Plugin, PluginBuild} from "esbuild";
-import {FSWatcher, unwatchFile, watch} from "fs";
+import {FSWatcher, watch} from "fs";
 
 export abstract class PluginAbstract<TConfig extends (Record<any, any> | undefined) = undefined> {
     protected readonly config: TConfig;
-    readonly #cache = new Map<string, string>();
+    readonly #cache = new Map<string, string | Buffer>();
     readonly #watch = new Map<string, FSWatcher>();
 
     constructor(config: TConfig) {
@@ -23,7 +23,7 @@ export abstract class PluginAbstract<TConfig extends (Record<any, any> | undefin
 
     protected abstract connect(build: PluginBuild): void;
 
-    protected async store(file: string, fn: () => Promise<string>) {
+    protected async store(file: string, fn: () => Promise<string | Buffer>) {
         const cache = this.#cache.get(file) ?? await fn();
 
         if (!this.#cache.has(file)) {
