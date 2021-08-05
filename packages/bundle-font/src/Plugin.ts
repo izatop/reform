@@ -1,6 +1,6 @@
 import {assignWithFilter, getResourcePath, PluginAbstract} from "@reform/bundle";
 import {PluginBuild} from "esbuild";
-import {promises as fs} from "fs";
+import {readFile} from "fs/promises";
 
 export type Config = { filter: RegExp };
 
@@ -18,8 +18,8 @@ export class Plugin extends PluginAbstract<Config> {
         }));
 
         build.onLoad({namespace: "font", filter: /^./}, async (args) => ({
+            contents: await this.store(args.path, () => readFile(args.path, {encoding: "binary"})),
             loader: "file",
-            contents: await fs.readFile(args.path),
         }));
     }
 }
