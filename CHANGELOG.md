@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.3](https://github.com/izatop/reform/compare/v0.4.2...v0.4.3) (2021-08-05)
+
+
+### Bug Fixes
+
+* isPluginCtor ([2d5f12a](https://github.com/izatop/reform/commit/2d5f12adcbc3affaa68ee6581db8f40193757b7a))
+
+
+
+
+
 ## [0.4.2](https://github.com/izatop/reform/compare/v0.4.1...v0.4.2) (2021-08-05)
 
 
