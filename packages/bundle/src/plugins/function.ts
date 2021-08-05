@@ -5,7 +5,7 @@ import logger from "../internal/logger";
 import {PluginAbstract} from "./PluginAbstract";
 
 export function isPluginCtor<C>(type: unknown): type is { new(config: C): PluginAbstract<C> } {
-    return typeof type === "function" && type.isPrototypeOf(PluginAbstract);
+    return typeof type === "function" && PluginAbstract.isPrototypeOf(type);
 }
 
 export function load(id: string, config: unknown): Plugin {
