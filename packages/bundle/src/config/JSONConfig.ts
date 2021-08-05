@@ -1,11 +1,11 @@
 import {BundleScript} from "../build";
 import {IArgumentList, resolveAt, resolveStrictAt} from "../internal";
 import {load} from "../plugins";
-import {IJSONConfig} from "./interfaces";
+import {IJSONSchema} from "./interfaces";
 
 export class JSONConfig {
     public readonly configPath: string;
-    public readonly config: IJSONConfig;
+    public readonly config: IJSONSchema;
     public readonly args: IArgumentList;
 
     constructor(args: IArgumentList, configPath: string) {
@@ -27,7 +27,7 @@ export class JSONConfig {
                 "Missing field: bundle[].build",
             );
 
-            const {bundle: {splitting, treeShaking, sourcemap} = {}, plugins = {}} = bundle;
+            const {splitting, treeShaking, sourcemap, plugins = {}} = bundle;
             const bundleScript = new BundleScript(
                 this.args,
                 {

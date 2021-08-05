@@ -1,5 +1,4 @@
-import {TreeShaking} from "esbuild";
-import {IBundleConfig, SourceMapVariant} from "../build";
+import {IBundleConfig} from "../build";
 
 export interface IPluginList {
     "@reform/bundle-font": {
@@ -16,13 +15,8 @@ export interface IPluginList {
 
 export interface IJSONBundle extends IBundleConfig {
     plugins?: Partial<IPluginList>;
-    bundle?: {
-        splitting?: boolean;
-        treeShaking?: true | TreeShaking;
-        sourcemap?: SourceMapVariant;
-    };
 }
 
-export interface IJSONConfig {
+export interface IJSONSchema {
     bundle: IJSONBundle[];
 }

@@ -14,7 +14,6 @@ export interface IBundleConfig {
     build: string;
     entry: string[];
     files?: string[];
-    sourcemap?: SourceMapVariant;
     environment?: string[];
     variables?: Record<string, string | boolean | number>;
     loader?: { [ext: string]: Loader };
@@ -25,6 +24,10 @@ export interface IBundleConfig {
     };
 
     envFile?: string;
+
+    splitting?: boolean;
+    treeShaking?: true | TreeShaking;
+    sourcemap?: SourceMapVariant;
 }
 
 export interface IBundleScriptConfig extends IBundleConfig {
