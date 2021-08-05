@@ -1,6 +1,6 @@
 import {assignWithFilter, PluginAbstract} from "@reform/bundle";
 import {PluginBuild} from "esbuild";
-import * as sass from "sass";
+import * as sass from "node-sass";
 import importer from "./importer";
 
 export type Config = { filter: RegExp; compress?: boolean };
