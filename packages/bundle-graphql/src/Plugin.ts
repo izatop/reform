@@ -1,7 +1,6 @@
-import {PluginAbstract} from "@reform/bundle";
+import {assignWithFilter, PluginAbstract} from "@reform/bundle";
 import {PluginBuild} from "esbuild";
 import {promises as fs} from "fs";
-import {assign} from "@reform/bundle";
 
 export type Config = { filter: RegExp };
 
@@ -11,7 +10,7 @@ export const DefaultConfig: Config = {filter: /\.(graphql|gql)$/};
 
 export class Plugin extends PluginAbstract<Config> {
     constructor(config?: Config) {
-        super(assign({filter: /\.(graphql|gql)$/}, config));
+        super(assignWithFilter({filter: /\.(graphql|gql)$/}, config));
     }
 
     protected connect(build: PluginBuild): void {

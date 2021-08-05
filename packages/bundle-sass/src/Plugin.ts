@@ -1,4 +1,4 @@
-import {assign, PluginAbstract} from "@reform/bundle";
+import {assignWithFilter, PluginAbstract} from "@reform/bundle";
 import {PluginBuild} from "esbuild";
 import * as sass from "sass";
 import importer from "./importer";
@@ -7,7 +7,7 @@ export type Config = { filter: RegExp; compress?: boolean };
 
 export class Plugin extends PluginAbstract<Config> {
     constructor(config?: Config) {
-        super(assign({filter: /\.(scss|sass)$/}, config));
+        super(assignWithFilter({filter: /\.(scss|sass)$/}, config));
     }
 
     protected connect(build: PluginBuild): void {

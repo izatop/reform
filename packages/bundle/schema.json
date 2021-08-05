@@ -21,10 +21,71 @@
         "PWAManifest": {
             "type": "object"
         },
+        "Partial<IPluginList>": {
+            "properties": {
+                "@reform/bundle-font": {
+                    "properties": {
+                        "filter": {
+                            "$ref": "#/definitions/RegExp"
+                        }
+                    },
+                    "type": "object"
+                },
+                "@reform/bundle-graphql": {
+                    "properties": {
+                        "filter": {
+                            "$ref": "#/definitions/RegExp"
+                        }
+                    },
+                    "type": "object"
+                },
+                "@reform/bundle-sass": {
+                    "properties": {
+                        "compress": {
+                            "$ref": "#/definitions/RegExp"
+                        },
+                        "filter": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "Record<string,string|number|boolean>": {
             "type": "object"
         },
-        "Record<string,unknown>": {
+        "RegExp": {
+            "properties": {
+                "dotAll": {
+                    "type": "boolean"
+                },
+                "flags": {
+                    "type": "string"
+                },
+                "global": {
+                    "type": "boolean"
+                },
+                "ignoreCase": {
+                    "type": "boolean"
+                },
+                "lastIndex": {
+                    "type": "number"
+                },
+                "multiline": {
+                    "type": "boolean"
+                },
+                "source": {
+                    "type": "string"
+                },
+                "sticky": {
+                    "type": "boolean"
+                },
+                "unicode": {
+                    "type": "boolean"
+                }
+            },
             "type": "object"
         }
     },
@@ -103,7 +164,7 @@
             "type": "object"
         },
         "plugins": {
-            "$ref": "#/definitions/Record<string,unknown>"
+            "$ref": "#/definitions/Partial<IPluginList>"
         },
         "serve": {
             "properties": {
@@ -131,3 +192,4 @@
     },
     "type": "object"
 }
+

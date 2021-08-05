@@ -1,9 +1,6 @@
 import {ok} from "assert";
-import {Plugin} from "esbuild";
 import * as fs from "fs";
 import {join, sep} from "path";
-import {PluginAbstract} from "../plugins";
-import logger from "./logger";
 
 const {paths} = module;
 const modulePaths = new Map<string, string>();
@@ -61,24 +58,6 @@ export function getResourcePath(resource: string) {
     return join(modulePath, resource);
 }
 
-export function isPluginCtor<C>(type: unknown): type is { new(config: C): PluginAbstract<C> } {
-    return typeof type === "function" && type.isPrototypeOf(PluginAbstract);
-}
-
 export function assign<C extends Record<any, any>>(conf: C, ...configs: (Partial<C> | undefined)[]): C {
     return Object.assign({}, conf, ...configs);
-}
-
-export function load(id: string, config: unknown): Plugin {
-    try {
-        // eslint-disable-next-line @typescript-eslint/no-var-requires
-        const {default: plugin} = require(id);
-        ok(isPluginCtor(plugin), `Wrong default export at ${id}`);
-
-        return new plugin(config).getPluginConfig();
-    } catch (error) {
-        logger.error("[ %s ]", id, error);
-
-        throw error;
-    }
 }

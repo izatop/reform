@@ -1,4 +1,4 @@
-import {assign, getResourcePath, PluginAbstract} from "@reform/bundle";
+import {assignWithFilter, getResourcePath, PluginAbstract} from "@reform/bundle";
 import {PluginBuild} from "esbuild";
 import {promises as fs} from "fs";
 
@@ -6,7 +6,7 @@ export type Config = { filter: RegExp };
 
 export class Plugin extends PluginAbstract<Config> {
     constructor(config?: Config) {
-        super(assign({filter: /\.(eot|ttf|woff|woff2?|svg)([?|#].+)?$/}, config));
+        super(assignWithFilter({filter: /\.(eot|ttf|woff|woff2?|svg)([?|#].+)?$/}, config));
     }
 
     protected connect(build: PluginBuild): void {

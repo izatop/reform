@@ -18,7 +18,7 @@
     ],
     "scripts": {
         "clean": "rimraf dist tsconfig.tsbuildinfo",
-        "schema:update": "typescript-json-schema"
+        "schema:update": "typescript-json-schema tsconfig.json IJSONBundle -o schema.json"
     },
     "dependencies": {
         "@types/glob": "^7.1.4",
@@ -30,6 +30,9 @@
         "glob": "^7.1.7",
         "parse5": "^6.0.1"
     },
+    "devDependencies": {
+        "typescript-json-schema": "^0.50.1"
+    },
     "publishConfig": {
         "access": "public"
     },
@@ -37,9 +40,5 @@
         "name": "Artur Bier",
         "email": "izatop@gmail.com"
     },
-    "license": "MIT",
-    "devDependencies": {
-        "ts-json-schema-generator": "^0.95.0",
-        "typescript-json-schema": "^0.50.1"
-    }
+    "license": "MIT"
 }

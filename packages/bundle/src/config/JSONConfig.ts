@@ -1,5 +1,6 @@
 import {BundleScript} from "../build";
-import {IArgumentList, load, resolveAt, resolveStrictAt} from "../internal";
+import {IArgumentList, resolveAt, resolveStrictAt} from "../internal";
+import {load} from "../plugins";
 import {IJSONConfig} from "./interfaces";
 
 export class JSONConfig {
