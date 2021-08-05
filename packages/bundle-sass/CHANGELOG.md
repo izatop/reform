@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.4](https://github.com/izatop/reform/compare/v0.4.3...v0.4.4) (2021-08-05)
+
+
+### Bug Fixes
+
+* update deps, sass -> node-sass ([9e49ffc](https://github.com/izatop/reform/commit/9e49ffcbb407055eb8d47ad9b7a2b22fa2f85b94))
+
+
+
+
+
 ## [0.4.3](https://github.com/izatop/reform/compare/v0.4.2...v0.4.3) (2021-08-05)
 
 **Note:** Version bump only for package @reform/bundle-sass
