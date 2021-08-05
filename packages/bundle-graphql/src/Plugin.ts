@@ -16,8 +16,8 @@ export class Plugin extends PluginAbstract<Config> {
         const {filter} = this.config;
 
         build.onLoad({filter}, async (args) => {
-            const contents = await this.store(args.path, () => {
-                const content = readFile(args.path, {encoding: "utf-8"});
+            const contents = await this.store(args.path, async () => {
+                const content = await readFile(args.path, {encoding: "utf-8"});
                 return loader.call({cacheable: () => void 0}, content);
             });
 
