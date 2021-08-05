@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.7](https://github.com/izatop/reform/compare/v0.4.6...v0.4.7) (2021-08-05)
+
+
+### Bug Fixes
+
+* bundle-graphql ([4d2a8ce](https://github.com/izatop/reform/commit/4d2a8ce1102b44e200b9fd97e2f2a7444d89d285))
+* config ([904cdf3](https://github.com/izatop/reform/commit/904cdf32847512260864550a90195ec88e6dd50c))
+
+
+
+
+
 ## [0.4.6](https://github.com/izatop/reform/compare/v0.4.5...v0.4.6) (2021-08-05)
 
 
