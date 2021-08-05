@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.8](https://github.com/izatop/reform/compare/v0.4.7...v0.4.8) (2021-08-05)
+
+
+### Bug Fixes
+
+* cache ([dcba334](https://github.com/izatop/reform/commit/dcba3346e5e80f3649f2876323faf099e3d470be))
+
+
+
+
+
 ## [0.4.6](https://github.com/izatop/reform/compare/v0.4.5...v0.4.6) (2021-08-05)
 
 
