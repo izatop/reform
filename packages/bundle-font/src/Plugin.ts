@@ -10,9 +10,7 @@ export class Plugin extends PluginAbstract<Config> {
     }
 
     protected connect(build: PluginBuild): void {
-        const {filter} = this.config;
-
-        build.onResolve({filter}, (args) => ({
+        build.onResolve(this.config, (args) => ({
             path: getResourcePath(args.path),
             namespace: "font",
         }));
