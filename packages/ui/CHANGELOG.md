@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.9](https://github.com/izatop/reform/compare/v0.4.8...v0.4.9) (2021-08-12)
+
+
+### Bug Fixes
+
+* bundle update ([e04aa40](https://github.com/izatop/reform/commit/e04aa4092a592c1debd5bed32c3bca340d6a821b))
+* lint ([d7c5a78](https://github.com/izatop/reform/commit/d7c5a78343edc8a4f8416caecb23af1569c32a87))
+* update locale ([0250b31](https://github.com/izatop/reform/commit/0250b31cc6b914ee4141cfb5918bcd55f21bcb45))
+
+
+
+
+
 # 0.4.0 (2021-08-04)
 
 

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.9](https://github.com/izatop/reform/compare/v0.4.8...v0.4.9) (2021-08-12)
+
+
+### Bug Fixes
+
+* bundle update ([e04aa40](https://github.com/izatop/reform/commit/e04aa4092a592c1debd5bed32c3bca340d6a821b))
+* merge ([725f863](https://github.com/izatop/reform/commit/725f863c71a2778a0ef1811a37f1c076e156b2b9))
+
+
+
+
+
 ## [0.4.8](https://github.com/izatop/reform/compare/v0.4.7...v0.4.8) (2021-08-05)
 
 **Note:** Version bump only for package @reform/bundle-sass
