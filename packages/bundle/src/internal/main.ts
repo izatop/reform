@@ -10,12 +10,18 @@ export function factory(args: IArgumentList, bundleConfigList: BundleScript[]): 
     return new BuildScript(args, bundleConfigList);
 }
 
-export async function main(root?: string) {
-    let code = 0;
+export function exit(code: number) {
+    DisposerStatic.dispose();
+    logger.info("main", "exit(%d)", code);
+    if (process.env.NODE_ENV !== "test") {
+        setImmediate(() => process.exit(code));
+    }
+}
 
+export async function main(root?: string) {
     try {
         const args = getArgumentList(root);
-        
+
         logger.info("main", "args: %o", process.argv.slice(2));
         const bundleScriptList: BundleScript[] = [];
         const jsonConfig = new JSONConfig(args);
@@ -26,12 +32,9 @@ export async function main(root?: string) {
 
         const service = factory(args, bundleScriptList);
         await service.start();
+        exit(0);
     } catch (error) {
         logger.error("main", error);
-        code = 1;
+        exit(1);
     }
-
-    DisposerStatic.dispose();
-    logger.info("main", "exit(%d)", code);
-    setImmediate(() => process.exit(code));
 }
