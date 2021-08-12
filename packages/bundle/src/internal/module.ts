@@ -59,20 +59,6 @@ export function getResourcePath(resource: string) {
     return join(modulePath, resource);
 }
 
-export function assign<C extends Record<any, any>>(conf: C, ...configs: (Partial<C> | undefined)[]): C {
-    return Object.assign({}, conf, ...configs);
-}
-
-export function defer<T>(fn: (resolve: (value: T) => unknown) => unknown) {
-    return new Promise<T>(async (resolve, reject) => {
-        try {
-            await fn(resolve);
-        } catch (error) {
-            reject(error);
-        }
-    });
-}
-
 export function trySafe(label: LogTarget, fn: () => unknown) {
     try {
         fn();
@@ -80,8 +66,6 @@ export function trySafe(label: LogTarget, fn: () => unknown) {
         logger.error(label, error);
     }
 }
-
-export type Parallel<T extends unknown[]> = Promise<T>[];
 
 const closeListeners: Array<() => void> = [];
 export function onClose(fn: () => void) {

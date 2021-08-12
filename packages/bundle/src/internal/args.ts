@@ -1,6 +1,7 @@
 import logger from "./logger";
 
 export interface IArgumentList {
+    print?: true;
     path: string;
     watch: boolean;
     serve?: boolean;
@@ -35,6 +36,11 @@ export function getArgumentList(root?: string): IArgumentList {
     while (args.length > 0) {
         const arg = args.shift();
         switch (arg) {
+            case "-p":
+            case "--print":
+                argumentList.print = true;
+                break;
+
             case "-v":
             case "--verbose":
                 argumentList.verbose = true;

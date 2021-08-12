@@ -1,8 +1,21 @@
 {
-    "bundle": [
-        {
+    "preset": {
+        "default": {
             "base": "src",
             "build": "dist",
+            "plugins": {
+                "@reform/bundle-font": {}
+            },
+            "serve": {
+                "port": 8000
+            }
+        }
+    },
+    "bundle": [
+        {
+            "id": "test",
+            "base": "src",
+            "preset": "default",
             "entry": [
                 "index.ts"
             ],
@@ -14,7 +27,6 @@
                 "hello.txt"
             ],
             "serve": {
-                "port": 8000,
                 "host": "bundle.localhost"
             }
         }

@@ -7,10 +7,12 @@ export class BuildContext {
     public readonly args: IArgumentList;
     public readonly cache: BundleCache;
     public readonly base: string;
+    public readonly build: string;
 
-    constructor(id: string, args: IArgumentList, base: string) {
+    constructor(id: string, args: IArgumentList, base: string, build: string) {
         this.id = id;
         this.base = base;
+        this.build = build;
         this.args = args;
         this.cache = new BundleCache(this, this.base);
     }

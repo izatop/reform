@@ -33,6 +33,12 @@
                     },
                     "type": "array"
                 },
+                "id": {
+                    "type": [
+                        "string",
+                        "number"
+                    ]
+                },
                 "loader": {
                     "additionalProperties": {
                         "enum": [
@@ -55,6 +61,9 @@
                 },
                 "plugins": {
                     "$ref": "#/definitions/Partial<IPluginList>"
+                },
+                "preset": {
+                    "type": "string"
                 },
                 "serve": {
                     "properties": {
@@ -143,6 +152,9 @@
             },
             "type": "object"
         },
+        "Record<string,IJSONBundle>": {
+            "type": "object"
+        },
         "Record<string,string|number|boolean>": {
             "type": "object"
         },
@@ -185,6 +197,9 @@
                 "$ref": "#/definitions/IJSONBundle"
             },
             "type": "array"
+        },
+        "preset": {
+            "$ref": "#/definitions/Record<string,IJSONBundle>"
         }
     },
     "type": "object"

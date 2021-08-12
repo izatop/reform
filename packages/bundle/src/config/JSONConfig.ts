@@ -1,8 +1,10 @@
 import {existsSync} from "fs";
 import {join} from "path";
 import {BundleArgs} from "../build";
+import {FileList} from "../build/Artifact/FileList";
 import {BuildContext} from "../build/BuildContext";
 import {assert, IArgumentList, resolveStrictAt} from "../internal";
+import {mutate} from "../internal/object";
 import {load} from "../plugins";
 import {IJSONSchema} from "./interfaces";
 
@@ -20,8 +22,11 @@ export class JSONConfig {
     }
 
     public * getBundleArgs(): Generator<BundleArgs> {
-        let id = 1;
-        for (const bundle of this.config?.bundle ?? []) {
+        let increment = 1;
+        const {preset: presetList = {}} = this.config;
+        for (const next of this.config?.bundle ?? []) {
+            const bundle = mutate(mutate({}, presetList[next.preset ?? ""] ?? {}), next);
+
             const base = resolveStrictAt(
                 this.args.path,
                 bundle.base,
@@ -34,13 +39,14 @@ export class JSONConfig {
                 "Missing field: bundle[].build",
             );
 
-            const {splitting, treeShaking, sourcemap} = bundle;
-            const context = new BuildContext(`${id++}`, this.args, base);
+            const {id = increment++, splitting, treeShaking, sourcemap} = bundle;
+            const context = new BuildContext(`${id}`, this.args, base, build);
             const plugins = Object
                 .entries(bundle.plugins ?? {})
                 .map(([id, options]) => load(id, context, options));
 
             const config = {
+                id,
                 base,
                 build,
                 plugins,
@@ -48,7 +54,7 @@ export class JSONConfig {
                 splitting,
                 treeShaking,
                 entry: bundle.entry.map((entry) => join(base, entry)),
-                files: bundle.files,
+                files: new FileList(context, bundle.files),
                 variables: bundle.variables,
                 environment: bundle.environment,
                 loader: bundle.loader,

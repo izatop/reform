@@ -1,4 +1,5 @@
 import {Loader, Plugin, TreeShaking} from "esbuild";
+import {FileList} from "./Artifact/FileList";
 import {BuildContext} from "./BuildContext";
 
 export type PWAManifest = Record<string, any>;
@@ -11,10 +12,10 @@ export interface IPWAApplicationConfig {
 }
 
 export interface IBundleConfig {
+    id?: string | number;
     base: string;
     build: string;
     entry: string[];
-    files?: string[];
     environment?: string[];
     variables?: Record<string, string | boolean | number>;
     loader?: {[ext: string]: Loader};
@@ -35,6 +36,7 @@ export interface IBundleScriptConfig extends IBundleConfig {
     plugins?: Plugin[];
     splitting?: boolean;
     treeShaking?: true | TreeShaking;
+    files: FileList;
 }
 
 export type BuildServerHandle = (vhost: string | undefined,

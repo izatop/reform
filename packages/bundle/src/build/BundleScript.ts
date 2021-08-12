@@ -4,7 +4,6 @@ import {existsSync, watch} from "fs";
 import {join, relative} from "path";
 import {defer, onClose} from "../internal";
 import logger from "../internal/logger";
-import {FileList} from "./Artifact/FileList";
 import {BuildContext} from "./BuildContext";
 import {BundleEntry} from "./BundleEntry";
 import {DisposerStatic} from "./DisposerStatic";
@@ -12,7 +11,6 @@ import {IBundleScriptConfig} from "./interfaces";
 
 export class BundleScript {
     readonly #entry: BundleEntry;
-    readonly #fileList: FileList;
     readonly #config: IBundleScriptConfig;
     readonly #context: BuildContext;
 
@@ -20,7 +18,6 @@ export class BundleScript {
         this.#config = config;
         this.#context = context;
         this.#entry = new BundleEntry(config);
-        this.#fileList = new FileList(context, config);
     }
 
     public get id() {
@@ -63,6 +60,8 @@ export class BundleScript {
     }
 
     public async prepare() {
+        const {files} = this.#config;
+
         if (this.#context.watch) {
             for (const file of this.#entry.getFileList()) {
                 logger.info(this, "watch -> %s", relative(this.#context.base, file));
@@ -73,13 +72,10 @@ export class BundleScript {
 
         const ops = [];
         for (const artifact of this.#entry.getArtifacts()) {
-            logger.info(this, "prepare -> %s", artifact.name);
             ops.push(artifact.prepare(this));
         }
 
-        ops.push(this.#fileList.copy());
-
-        await Promise.all(ops);
+        await Promise.all([...ops, files.copy()]);
     }
 
     public getIncrementalConfig(): BuildOptions & { incremental: true } {

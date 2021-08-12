@@ -3,17 +3,16 @@ import glob from "glob";
 import {dirname, join} from "path";
 import logger from "../../internal/logger";
 import {BuildContext} from "../BuildContext";
-import {IBundleScriptConfig} from "../interfaces";
 
 export class FileList {
     readonly #paths = new Set<string>();
     readonly #files = new Map<string, string>();
     readonly #context: BuildContext;
-    readonly #config: IBundleScriptConfig;
+    readonly patterns: string[];
 
-    constructor(context: BuildContext, config: IBundleScriptConfig) {
+    constructor(context: BuildContext, files: string[] = []) {
+        this.patterns = files;
         this.#context = context;
-        this.#config = config;
         this.update();
 
         if (this.#context.watch) {
@@ -78,8 +77,8 @@ export class FileList {
     }
 
     protected update() {
-        const {files = [], base, build} = this.#config;
-        const iterable = files
+        const {base, build} = this.#context;
+        const iterable = this.patterns
             .map((pattern) => glob.sync(pattern, {cwd: base}))
             .flat();
 

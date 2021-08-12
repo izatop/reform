@@ -15,8 +15,11 @@ export interface IPluginList {
 
 export interface IJSONBundle extends IBundleConfig {
     plugins?: Partial<IPluginList>;
+    preset?: string;
+    files?: string[];
 }
 
 export interface IJSONSchema {
+    preset?: Record<string, IJSONBundle>;
     bundle: IJSONBundle[];
 }

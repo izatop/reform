@@ -26,6 +26,17 @@ export async function main(root?: string) {
         const bundleScriptList: BundleScript[] = [];
         const jsonConfig = new JSONConfig(args);
 
+        if (args.print) {
+            logger.info(
+                "main",
+                "config %o",
+                [...jsonConfig.getBundleArgs()]
+                    .map(({config}) => config),
+            );
+
+            exit(0);
+        }
+
         for (const {context, config} of jsonConfig.getBundleArgs()) {
             bundleScriptList.push(new BundleScript(context, config));
         }
