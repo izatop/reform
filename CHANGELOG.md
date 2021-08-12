@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.10](https://github.com/izatop/reform/compare/v0.4.9...v0.4.10) (2021-08-12)
+
+
+### Bug Fixes
+
+* add config presets ([42ba19c](https://github.com/izatop/reform/commit/42ba19c3ba7d28720195e801355805c04ca89f40))
+* format ([5bb52b2](https://github.com/izatop/reform/commit/5bb52b243aa9a4006b859e058d90ab472be2f05e))
+
+
+
+
+
 ## [0.4.9](https://github.com/izatop/reform/compare/v0.4.8...v0.4.9) (2021-08-12)
 
 
