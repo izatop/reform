@@ -1,4 +1,4 @@
-import {build, BuildFailure, BuildOptions, BuildResult} from "esbuild";
+import {relative} from "path/posix";
 import {IArgumentList} from "../internal";
 import logger from "../internal/logger";
 import {BundleScript} from "./BundleScript";
@@ -10,58 +10,62 @@ export abstract class BuildAbstract {
     constructor(args: IArgumentList, bundleConfigList: BundleScript[]) {
         this.args = args;
         this.bundleScriptList = bundleConfigList;
-        logger.info("run builds { count: %d }", bundleConfigList.length);
+
+        logger.info(
+            this,
+             "run -> %o", 
+            ...bundleConfigList.map(
+                ({id, config: {base, build, entry}}) => [
+                    {
+                        id,
+                        base: relative(args.path, base),
+                        build: relative(args.path, build),
+                        entry: entry.map((e) => relative(args.path, e)),
+                    },
+                ],
+            ),
+        );
     }
 
     public abstract before(): Promise<void>;
 
     public abstract after(): Promise<void>;
 
+    public async start() {
+        if (this.args.watch) {
+            return this.watch();
+        }
+
+        return this.build();
+    }
+
     public async build() {
+        logger.info(this, "build");
+
         await this.before();
         const ops: Promise<void>[] = [];
         for (const bundleScript of this.bundleScriptList) {
-            logger.info("building: ", bundleScript.id);
-            ops.push(
-                bundleScript.prepare(),
-                build(bundleScript.getBuildConfig())
-                    .then((result) => bundleScript.commit(result)),
-            );
+            ops.push(bundleScript.build());
         }
 
         await Promise.all(ops);
         await this.after();
 
-        logger.info("build: finish");
+        logger.info(this, "done");
     }
 
     public async watch() {
+        logger.info(this, "watch");
+
         await this.before();
         const ops: Promise<void>[] = [];
         for (const bundleScript of this.bundleScriptList) {
-            logger.info("watching: ", bundleScript.id);
-            const onRebuild = (error: BuildFailure | null, result: BuildResult | null): void => {
-                if (result) bundleScript.commit(result);
-                if (error) logger.error(error);
-
-                logger.info("rebuild: done");
-            };
-
-            const options: BuildOptions & { incremental: true } = {
-                ...bundleScript.getIncrementalConfig(),
-                watch: {onRebuild},
-            };
-
-            ops.push(
-                bundleScript.prepare(),
-                build(options)
-                    .then((result) => bundleScript.commit(result)),
-            );
+            ops.push(bundleScript.watch());
         }
 
         await Promise.all(ops);
         await this.after();
 
-        logger.info("build: done");
+        logger.info(this, "done");
     }
 }

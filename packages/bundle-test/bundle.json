@@ -1,0 +1,22 @@
+{
+    "bundle": [
+        {
+            "base": "src",
+            "build": "dist",
+            "entry": [
+                "index.ts"
+            ],
+            "plugins": {
+                "@reform/bundle-sass": {}
+            },
+            "files": [
+                "assets/*",
+                "hello.txt"
+            ],
+            "serve": {
+                "port": 8000,
+                "host": "bundle.localhost"
+            }
+        }
+    ]
+}

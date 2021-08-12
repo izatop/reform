@@ -1,0 +1,22 @@
+{
+    "name": "@reform/bundle-test",
+    "version": "0.0.1-dev",
+    "main": "src/index.ts",
+    "repository": "https://github.com/izatop/reform",
+    "scripts": {
+        "clean": "rimraf dist tsconfig.tsbuildinfo",
+        "bundle": "bundle",
+        "bundle:watch": "yarn bundle -w",
+        "test": "yarn clean && yarn bundle"
+    },
+    "devDependencies": {
+        "@reform/bundle": "*",
+        "@reform/bundle-sass": "*"
+    },
+    "author": {
+        "name": "Artur Bier",
+        "email": "izatop@gmail.com"
+    },
+    "private": true,
+    "license": "MIT"
+}

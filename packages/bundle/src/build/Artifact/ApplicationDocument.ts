@@ -1,6 +1,7 @@
 import {ok} from "assert";
 import * as fs from "fs";
 import * as parse5 from "parse5";
+import {assert} from "../../internal";
 import {Node} from "./parse5/Node";
 
 export class ApplicationDocument {
@@ -97,7 +98,7 @@ export class ApplicationDocument {
             this.isElementNode(node) && node.tagName === name
         ));
 
-        ok(node, `The html element ${name} not found`);
+        assert(node, `The html element ${name} not found`);
 
         return node;
     }
@@ -105,7 +106,7 @@ export class ApplicationDocument {
     private createDocumentFrom(file: string): parse5.Document {
         const content = fs.readFileSync(file, {encoding: "utf-8"});
         const document = parse5.parse(content);
-        ok("nodeName" in document && document.nodeName === "#document");
+        assert("nodeName" in document && document.nodeName === "#document");
 
         return document;
     }

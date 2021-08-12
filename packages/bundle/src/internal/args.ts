@@ -1,32 +1,52 @@
+import logger from "./logger";
+
 export interface IArgumentList {
     path: string;
     watch: boolean;
     serve?: boolean;
     mode: "production" | "development";
+
     readonly isProduction: boolean;
     readonly isDevelopment: boolean;
+    readonly verbose: boolean;
+    readonly silent: boolean;
 }
 
-export function getArgumentList(): IArgumentList {
-    const argumentList: IArgumentList = {
+export type InputArgumentList = {
+    -readonly [K in keyof IArgumentList]: IArgumentList[K];
+};
+
+export function getArgumentList(root?: string): IArgumentList {
+    const argumentList: InputArgumentList = {
         get isDevelopment() {
             return !this.isProduction;
         },
         get isProduction() {
             return this.mode !== "development";
         },
-        path: process.cwd(),
+        path: root ?? process.cwd(),
         mode: "production",
         watch: false,
+        verbose: false,
+        silent: false,
     };
 
     const {argv: [...args]} = process;
     while (args.length > 0) {
         const arg = args.shift();
         switch (arg) {
+            case "-v":
+            case "--verbose":
+                argumentList.verbose = true;
+                logger.verbose = true;
+                break;
+            case "-s":
+            case "--silent":
+                argumentList.silent = true;
+                logger.silent = true;
+                break;
             case "--serve":
                 argumentList.serve = true;
-
                 break;
 
             case "--dev":

@@ -1,12 +1,17 @@
 import {Plugin, PluginBuild} from "esbuild";
-import {FSWatcher, watch} from "fs";
+import {BuildContext} from "../build/BuildContext";
+
+export type PluginCtor<C, P extends PluginAbstract<C>> = {
+    new(context: BuildContext, config: C): P;
+    prototype: PluginAbstract;
+};
 
 export abstract class PluginAbstract<TConfig extends (Record<any, any> | undefined) = undefined> {
+    protected readonly context: BuildContext;
     protected readonly config: TConfig;
-    readonly #cache = new Map<string, string | Buffer>();
-    readonly #watch = new Map<string, FSWatcher>();
 
-    constructor(config: TConfig) {
+    constructor(context: BuildContext, config: TConfig) {
+        this.context = context;
         this.config = config;
     }
 
@@ -22,27 +27,4 @@ export abstract class PluginAbstract<TConfig extends (Record<any, any> | undefin
     }
 
     protected abstract connect(build: PluginBuild): void;
-
-    protected async store(file: string, fn: () => Promise<string | Buffer>) {
-        const cache = this.#cache.get(file) ?? await fn();
-
-        if (!this.#cache.has(file)) {
-            this.#cache.set(file, cache);
-        }
-
-        if (!this.#watch.has(file)) {
-            const watcher = watch(file, (state) => {
-                if (state === "rename") {
-                    this.#watch.delete(file);
-                    watcher.close();
-                }
-
-                this.#cache.delete(file);
-            });
-
-            this.#watch.set(file, watcher);
-        }
-
-        return cache;
-    }
 }

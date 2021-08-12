@@ -22,9 +22,8 @@
         "email": "izatop@gmail.com"
     },
     "scripts": {
-        "clean": "yarn build:clean",
-        "build:scss": "copy-and-watch \"src/**/*.scss\" \"sass\"",
-        "build:clean": "rimraf dist sass tsconfig.tsbuildinfo"
+        "clean": "rimraf dist tsconfig.tsbuildinfo",
+        "build:scss": "copy-and-watch \"src/**/*.scss\" \"sass\""
     },
     "publishConfig": {
         "access": "public"
@@ -34,7 +33,7 @@
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.15.3",
-        "@types/react": "^17.0.15",
+        "@types/react": "^17.0.17",
         "@types/react-dom": "^17.0.9",
         "bulma": "^0.9.3",
         "react": "^17.0.2",

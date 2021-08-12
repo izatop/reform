@@ -1,15 +1,22 @@
-import {ok} from "assert";
+import {existsSync} from "fs";
 import * as path from "path";
+import {assert} from "./assert";
 
-export function resolveAt(base: string, resource: string): string {
-    return path.join(base, resource);
+export function resolveThrough(directory: string, resource: string): string | undefined {
+    const paths = directory
+        .split(path.sep)
+        .map((s, i, a) => path.resolve(path.sep, a.slice(0, i + 1).join("/")));
+
+    for (const next of paths) {
+        const filename = path.join(next, resource);
+        if (existsSync(filename)) {
+            return filename;
+        }
+    }
 }
 
 export function resolveStrictAt(base: string, resource: unknown, message: string) {
-    ok(typeof resource === "string", message);
-    return resolveAt(base, resource);
-}
+    assert(typeof resource === "string", message, {resource});
 
-export function relativeTo(from: string, to: string): string {
-    return path.relative(from, to);
+    return path.join(base, resource);
 }

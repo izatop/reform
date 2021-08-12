@@ -1,5 +1,5 @@
-import {ok} from "assert";
 import * as parse5 from "parse5";
+import {assert} from "../../../internal";
 
 export class Node {
     readonly #node: parse5.Element;
@@ -37,7 +37,7 @@ export class Node {
 
     public sure(name: string) {
         const value = this.get(name);
-        ok(!!value, `Unknown key ${name}`);
+        assert(!!value, `Unknown key ${name}`);
         return value;
     }
 

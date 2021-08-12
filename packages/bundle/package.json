@@ -18,18 +18,21 @@
     ],
     "scripts": {
         "clean": "rimraf dist tsconfig.tsbuildinfo",
-        "schema:update": "typescript-json-schema tsconfig.schema.json IJSONSchema -o schema.json"
+        "schema:update": "typescript-json-schema tsconfig.schema.json IJSONSchema -o schema.json",
+        "test:bundle": "ts-node src/bin/bundle",
+        "test:bundle:watch": "ts-node src/bin/bundle -w"
     },
     "dependencies": {
         "@types/glob": "^7.1.4",
         "@types/parse5": "^6.0.1",
         "dotenv": "^10.0.0",
-        "esbuild": "^0.12.17",
+        "esbuild": "^0.12.19",
         "glob": "^7.1.7",
-        "parse5": "^6.0.1"
+        "parse5": "^6.0.1",
+        "watcher": "^1.2.0"
     },
     "devDependencies": {
-        "@types/node": "^16.4.12",
+        "@types/node": "^16.6.0",
         "typescript-json-schema": "^0.50.1"
     },
     "publishConfig": {

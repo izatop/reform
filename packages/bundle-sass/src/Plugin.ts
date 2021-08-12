@@ -1,4 +1,5 @@
 import {assignWithFilter, PluginAbstract} from "@reform/bundle";
+import {BuildContext} from "@reform/bundle/dist/build/BuildContext";
 import {PluginBuild} from "esbuild";
 import {Options, render} from "node-sass";
 import importer from "./importer";
@@ -6,11 +7,8 @@ import importer from "./importer";
 export type Config = { filter: RegExp; compress?: boolean };
 
 export class Plugin extends PluginAbstract<Config> {
-    readonly #cache = new Map<string, string>();
-    readonly #watches = new Map<string, string>();
-
-    constructor(config?: Config) {
-        super(assignWithFilter({filter: /\.(scss|sass)$/}, config));
+    constructor(context: BuildContext, config?: Config) {
+        super(context, assignWithFilter({filter: /\.(scss|sass)$/}, config));
     }
 
     protected connect(build: PluginBuild): void {
@@ -28,9 +26,10 @@ export class Plugin extends PluginAbstract<Config> {
     }
 
     private render(options: { file: string; compress?: boolean }) {
+        const {context: {cache}} = this;
         const {file, compress} = options;
 
-        return this.store(file, async () => {
+        return cache.store(file, async () => {
             const outputStyle = compress ? "compressed" : "expanded";
 
             const sassOptions: Options = {

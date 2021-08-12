@@ -4,7 +4,7 @@ import {BuildResult} from "esbuild";
 import * as fs from "fs";
 import * as parse5 from "parse5";
 import * as path from "path";
-import {relativeTo, resolveAt} from "../../internal";
+import {assert} from "../../internal";
 import {BundleArtifactAbstract} from "../BundleArtifactAbstract";
 import {BundleScript} from "../BundleScript";
 import {ApplicationDocument} from "./ApplicationDocument";
@@ -26,15 +26,15 @@ export class ApplicationEntry extends BundleArtifactAbstract {
         return Promise.resolve(undefined);
     }
 
-    public async commit(context: BundleScript, result: BuildResult): Promise<void> {
+    public async commit(bundleScript: BundleScript, result: BuildResult): Promise<void> {
         this.#document = this.#document.reset();
-        const {args, config: {build, base}} = context;
+        const {args, config: {build, base}} = bundleScript;
         const documentPath = this.#document.path;
-        const saveFile = resolveAt(build, relativeTo(base, documentPath));
+        const saveFile = path.join(build, path.relative(base, documentPath));
         const entryPath = path.dirname(documentPath);
         const savePath = path.dirname(saveFile);
         const read = (file: string) => fs.readFileSync(file, {encoding: "utf-8"});
-        const resolveAtEntry = (file: string) => resolveAt(entryPath, file);
+        const resolveAtEntry = (file: string) => path.join(entryPath, file);
 
         const fileList = this.#document.getFileList();
         const stylesheet: string[] = [];
@@ -54,7 +54,7 @@ export class ApplicationEntry extends BundleArtifactAbstract {
         };
 
         for (const [key] of Object.entries(outputs)) {
-            const file = relativeTo(build, resolveAt(args.path, key));
+            const file = path.relative(build, path.join(args.path, key));
             realpath.set(file, path.join(args.path, key));
 
             if (file.endsWith(".css")) {
@@ -64,8 +64,8 @@ export class ApplicationEntry extends BundleArtifactAbstract {
 
         for (const script of this.#document.getScripts()) {
             const node = this.#document.registry.get(script);
-            ok(node, `Registry.has(${script}): false`);
-            ok(node.tag === "script", `Wrong script node ${node.tag}`);
+            assert(node, `Registry.has(${script}): false`);
+            assert(node.tag === "script", `Wrong script node ${node.tag}`);
             node.set("src", withHash(script.replace(/\.tsx?$/, ".js"), (res) => this.normalize(res)));
         }
 
@@ -112,7 +112,7 @@ export class ApplicationEntry extends BundleArtifactAbstract {
                 const file = manifest.icons;
                 manifest.icons = JSON.parse(read(resolveAtEntry(file)));
                 for (const icon of manifest.icons) {
-                    const resolved = resolveAt(path.dirname(file), icon.src);
+                    const resolved = path.join(path.dirname(file), icon.src);
                     fileList.push(resolved);
                     icon.src = this.normalize(resolved);
                 }
@@ -123,7 +123,7 @@ export class ApplicationEntry extends BundleArtifactAbstract {
                 manifest.shortcuts = JSON.parse(read(resolveAtEntry(file)));
                 for (const shortcut of manifest.shortcuts) {
                     for (const icon of shortcut.icons) {
-                        const resolved = resolveAt(path.dirname(file), icon.src);
+                        const resolved = path.join(path.dirname(file), icon.src);
                         fileList.push(resolved);
                         icon.src = this.normalize(resolved);
                     }
@@ -131,7 +131,7 @@ export class ApplicationEntry extends BundleArtifactAbstract {
             }
 
             fs.writeFileSync(
-                resolveAt(savePath, webManifestFile),
+                path.join(savePath, webManifestFile),
                 JSON.stringify(manifest, null, 2),
                 {encoding: "utf-8"},
             );
@@ -139,8 +139,8 @@ export class ApplicationEntry extends BundleArtifactAbstract {
 
         const ops = [];
         for (const file of fileList) {
-            const source = resolveAt(entryPath, file);
-            const destination = resolveAt(savePath, file);
+            const source = path.join(entryPath, file);
+            const destination = path.join(savePath, file);
             const op = new Promise((resolve, reject) => {
                 try {
                     fs.mkdirSync(path.dirname(destination), {recursive: true});

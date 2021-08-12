@@ -6,7 +6,7 @@ export abstract class BundleArtifactAbstract {
         return this.constructor.name;
     }
 
-    public abstract prepare(context: BundleScript): Promise<void>;
+    public abstract prepare(bundleScript: BundleScript): Promise<void>;
 
-    public abstract commit(context: BundleScript, result: BuildResult): Promise<void>;
+    public abstract commit(bundleScript: BundleScript, result: BuildResult): Promise<void>;
 }

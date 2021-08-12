@@ -1,4 +1,5 @@
 import {Loader, Plugin, TreeShaking} from "esbuild";
+import {BuildContext} from "./BuildContext";
 
 export type PWAManifest = Record<string, any>;
 export type SourceMapVariant = boolean | "inline" | "external" | "both";
@@ -16,7 +17,7 @@ export interface IBundleConfig {
     files?: string[];
     environment?: string[];
     variables?: Record<string, string | boolean | number>;
-    loader?: { [ext: string]: Loader };
+    loader?: {[ext: string]: Loader};
     app?: IPWAApplicationConfig;
     serve?: {
         port: number;
@@ -37,4 +38,6 @@ export interface IBundleScriptConfig extends IBundleConfig {
 }
 
 export type BuildServerHandle = (vhost: string | undefined,
-                                 handle: (resource: string) => Promise<{ path: string }>) => () => void;
+    handle: (resource: string) => Promise<{path: string}>) => void;
+
+export type BundleArgs = {config: IBundleScriptConfig; context: BuildContext};

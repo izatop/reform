@@ -1,52 +1,83 @@
 import {config, DotenvParseOutput} from "dotenv";
-import {BuildOptions, BuildResult} from "esbuild";
-import {copyFileSync, existsSync, mkdirSync, watch} from "fs";
-import glob from "glob";
-import {dirname, join} from "path";
-import {IArgumentList, relativeTo, resolveAt} from "../internal";
+import {build, BuildFailure, BuildOptions, BuildResult} from "esbuild";
+import {existsSync, watch} from "fs";
+import {join, relative} from "path";
+import {defer, onClose} from "../internal";
 import logger from "../internal/logger";
+import {FileList} from "./Artifact/FileList";
+import {BuildContext} from "./BuildContext";
 import {BundleEntry} from "./BundleEntry";
 import {DisposerStatic} from "./DisposerStatic";
 import {IBundleScriptConfig} from "./interfaces";
 
 export class BundleScript {
-    public readonly id: string;
-    public readonly entry: BundleEntry;
-    public readonly config: IBundleScriptConfig;
-    public readonly args: IArgumentList;
-    public readonly files: string[] = [];
+    readonly #entry: BundleEntry;
+    readonly #fileList: FileList;
+    readonly #config: IBundleScriptConfig;
+    readonly #context: BuildContext;
 
-    constructor(args: IArgumentList, config: IBundleScriptConfig) {
-        this.args = args;
-        this.config = config;
-        this.entry = new BundleEntry(config);
-        this.id = relativeTo(args.path, config.base);
-        this.files = this.createFileList();
+    constructor(context: BuildContext, config: IBundleScriptConfig) {
+        this.#config = config;
+        this.#context = context;
+        this.#entry = new BundleEntry(config);
+        this.#fileList = new FileList(context, config);
+    }
 
-        logger.info("[bundle %s]: initialize", this.id);
+    public get id() {
+        return this.#context.id;
+    }
 
-        if (this.args.watch) {
-            const files = this.files ?? [];
-            for (const file of files) {
-                logger.info("[bundle %s]: watch", this.id, file);
-                const watcher = watch(join(this.config.base, file), async () => this.copyFile(file));
-                DisposerStatic.dispose(() => watcher.close());
-            }
+    public get args() {
+        return this.#context.args;
+    }
 
-            for (const file of this.entry.getFileList()) {
-                logger.info("[bundle %s]: watch -> %s", this.id, file);
-                const watcher = watch(file, async () => this.entry.updateEntryPoints());
-                DisposerStatic.dispose(() => watcher.close());
-            }
-        }
+    public get config() {
+        return this.#config;
+    }
+
+    public async build() {
+        logger.info(this, "build");
+        await this.prepare();
+        await this.commit(await build(this.getBuildConfig()));
+    }
+
+    public async watch() {
+        logger.info(this, "watch");
+        const onRebuild = (error: BuildFailure | null, result: BuildResult | null): void => {
+            if (result) this.commit(result);
+            if (error) logger.error(this, error);
+            logger.info(this, "rebuilt");
+        };
+
+        const options: BuildOptions = {
+            ...this.getIncrementalConfig(),
+            watch: {onRebuild},
+        };
+
+        await this.prepare();
+        const buildResult = await build(options);
+        await this.commit(buildResult);
+        onClose(() => buildResult.stop?.());
+
+        return defer<void>(onClose);
     }
 
     public async prepare() {
+        if (this.#context.watch) {
+            for (const file of this.#entry.getFileList()) {
+                logger.info(this, "watch -> %s", relative(this.#context.base, file));
+                const watcher = watch(file, async () => this.#entry.updateEntryPoints());
+                DisposerStatic.add(() => watcher.close());
+            }
+        }
+
         const ops = [];
-        for (const artifact of this.entry.getArtifacts()) {
-            logger.info("[bundle %s]: prepare -> %s", this.id, artifact.name);
+        for (const artifact of this.#entry.getArtifacts()) {
+            logger.info(this, "prepare -> %s", artifact.name);
             ops.push(artifact.prepare(this));
         }
+
+        ops.push(this.#fileList.copy());
 
         await Promise.all(ops);
     }
@@ -59,16 +90,18 @@ export class BundleScript {
     }
 
     public getBuildConfig(): BuildOptions {
+        const {args} = this.#context;
+        const {envFile} = this.#config;
         const define: Record<string, any> = {};
 
         const dotEnvVariables: DotenvParseOutput = {};
-        const dotEnvFile = resolveAt(this.args.path, this.config.envFile ?? ".env");
+        const dotEnvFile = join(args.path, envFile ?? ".env");
         if (existsSync(dotEnvFile)) {
             const {parsed} = config({path: dotEnvFile});
             Object.assign(dotEnvVariables, parsed);
         }
 
-        const {variables = {}, environment = [], loader = {}, plugins} = this.config;
+        const {variables = {}, environment = [], loader = {}, plugins} = this.#config;
         const variableStore = {...variables, ...dotEnvVariables, ...process.env};
         const keys = new Set([...environment, ...Object.keys(variables)]);
 
@@ -76,13 +109,11 @@ export class BundleScript {
             define[variable] = JSON.stringify(variableStore[variable]);
         }
 
-        define["process.env.NODE_ENV"] = define["NODE_ENV"] = JSON.stringify(this.args.mode);
-        define["PRODUCTION"] = this.args.mode !== "development";
+        define["process.env.NODE_ENV"] = define["NODE_ENV"] = JSON.stringify(args.mode);
+        define["PRODUCTION"] = args.mode !== "development";
         define["DEVELOPMENT"] = !define["PRODUCTION"];
 
-        const {sourcemap = this.args.isDevelopment, treeShaking = true, splitting = false} = this.config;
-
-        logger.info("[bundle %s]: config -> %o", this.id, {sourcemap});
+        const {sourcemap = args.isDevelopment, treeShaking = true, splitting = false} = this.#config;
 
         return {
             loader,
@@ -95,12 +126,12 @@ export class BundleScript {
             target: ["es2020"],
             platform: "browser",
             metafile: true,
-            outdir: this.config.build,
-            outbase: this.config.base,
-            entryPoints: this.entry.getEntryPoints(),
-            tsconfig: resolveAt(this.args.path, "tsconfig.json"),
+            outdir: this.#config.build,
+            outbase: this.#config.base,
+            entryPoints: this.#entry.getEntryPoints(),
+            tsconfig: join(args.path, "tsconfig.json"),
             bundle: true,
-            minify: this.args.isProduction,
+            minify: args.isProduction,
             assetNames: "assets/[name].[hash]",
             chunkNames: "chunks/[hash]",
             resolveExtensions: [
@@ -118,39 +149,9 @@ export class BundleScript {
 
     public async commit(result: BuildResult): Promise<void> {
         const ops = [];
-        for (const artifact of this.entry.getArtifacts()) {
-            logger.info("[bundle %s]: commit -> %s", this.id, artifact.name);
+        for (const artifact of this.#entry.getArtifacts()) {
+            logger.info(this, "commit -> %s", this.id, artifact.name);
             ops.push(artifact.commit(this, result));
-        }
-
-        ops.push(this.copyFiles());
-
-        await Promise.all(ops);
-    }
-
-    protected createFileList() {
-        const {config: {files}} = this;
-        if (!files) return [];
-
-        const conf = {cwd: this.config.base};
-        return files
-            .map((pattern) => glob.sync(pattern, conf))
-            .flat();
-    }
-
-    protected async copyFile(file: string) {
-        const copyFrom = join(this.config.base, file);
-        const copyTo = join(this.config.build, file);
-        mkdirSync(dirname(copyTo), {recursive: true});
-        copyFileSync(copyFrom, copyTo);
-
-        logger.info("[bundle %s]: copy -> %s", this.id, file);
-    }
-
-    protected async copyFiles() {
-        const ops = [];
-        for (const file of this.files ?? []) {
-            ops.push(this.copyFile(file));
         }
 
         await Promise.all(ops);

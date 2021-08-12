@@ -1,6 +1,7 @@
-import {ok} from "assert";
 import * as fs from "fs";
 import {join, sep} from "path";
+import {assert} from "./assert";
+import logger, {LogTarget} from "./logger";
 
 const {paths} = module;
 const modulePaths = new Map<string, string>();
@@ -14,7 +15,7 @@ export function isPackageResource(resource: string) {
 }
 
 export function getPackageName(resource: string) {
-    ok(isPackageResource(resource), `This isn't package import: ${resource}`);
+    assert(isPackageResource(resource), `This isn't package import: ${resource}`);
 
     return resource
         .split(sep, resource.startsWith("@") ? 2 : 1)
@@ -34,7 +35,7 @@ export function getModulePath(base: string) {
         }
     }
 
-    ok(resolved, `Module ${base} path not found`);
+    assert(resolved, `Module ${base} path not found`);
     modulePaths.set(base, resolved);
 
     return resolved;
@@ -61,3 +62,34 @@ export function getResourcePath(resource: string) {
 export function assign<C extends Record<any, any>>(conf: C, ...configs: (Partial<C> | undefined)[]): C {
     return Object.assign({}, conf, ...configs);
 }
+
+export function defer<T>(fn: (resolve: (value: T) => unknown) => unknown) {
+    return new Promise<T>(async (resolve, reject) => {
+        try {
+            await fn(resolve);
+        } catch (error) {
+            reject(error);
+        }
+    });
+}
+
+export function trySafe(label: LogTarget, fn: () => unknown) {
+    try {
+        fn();
+    } catch (error) {
+        logger.error(label, error);
+    }
+}
+
+export type Parallel<T extends unknown[]> = Promise<T>[];
+
+const closeListeners: Array<() => void> = [];
+export function onClose(fn: () => void) {
+    closeListeners.push(fn);
+}
+
+process.on("SIGINT", (event) => {
+    process.stdout.write("\r");
+    logger.debug("main", "signal -> %s", event);
+    closeListeners.forEach((fn) => fn());
+});
