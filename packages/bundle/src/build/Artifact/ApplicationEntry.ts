@@ -1,4 +1,3 @@
-import {ok} from "assert";
 import * as crypto from "crypto";
 import {BuildResult} from "esbuild";
 import * as fs from "fs";
@@ -21,8 +20,7 @@ export class ApplicationEntry extends BundleArtifactAbstract {
         return this.#document;
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    public async prepare(context: BundleScript): Promise<void> {
+    public async prepare(/* eslint-disable */ context: BundleScript): Promise<void> {
         return Promise.resolve(undefined);
     }
 

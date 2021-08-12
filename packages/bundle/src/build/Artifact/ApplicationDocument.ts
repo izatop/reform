@@ -1,4 +1,3 @@
-import {ok} from "assert";
 import * as fs from "fs";
 import * as parse5 from "parse5";
 import {assert} from "../../internal";

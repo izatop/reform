@@ -6,6 +6,6 @@ export class AssertionError extends Error {
 
 export function assert(expr: unknown, message = "Assertion error", details?: unknown): asserts expr {
     if (!expr) {
-        throw new AssertionError(message);
+        throw new AssertionError(message, details);
     }
 }

@@ -17,9 +17,7 @@ export abstract class CalendarControllerAbstract<M extends CalendarMode> {
     protected readonly refs = new WeakSet<CalendarLinkType>();
     protected current?: CalendarValue<M>;
 
-    // @todo fix tslint
-    // tslint:disable-next-line:member-ordering
-    #listeners: CalendarUpdateListener<M>[];
+    readonly #listeners: CalendarUpdateListener<M>[];
 
     constructor(props: MakeCalendarProps<Record<any, any>, M>) {
         this.mode = props.mode;
@@ -91,19 +89,16 @@ export abstract class CalendarControllerAbstract<M extends CalendarMode> {
         }
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    protected handleMouseEnter(link: CalendarLink) {
-        // do nothing
+    protected handleMouseEnter(/* eslint-disable */ link: CalendarLink) {
+        // default implementation
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    protected handleMouseLeave(link: CalendarLink) {
-        // do nothing
+    protected handleMouseLeave(/* eslint-disable */ link: CalendarLink) {
+        // default implementation
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    protected handleUpdate(value?: CalendarValue<M>) {
-        // do nothing
+    protected handleUpdate(/* eslint-disable */ value?: CalendarValue<M>) {
+        // default implementation
     }
 
     protected abstract handleClick(link: CalendarLink): void;
