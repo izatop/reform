@@ -6,7 +6,8 @@ import {getArgumentList} from "../../src/internal";
 
 test("Main Test", async () => {
     const id = resolve(__dirname, "plugin/TestPlugin");
+    const ctx = new BuildContext(id, getArgumentList(), __dirname + "/src", __dirname + "/build");
     expect(isPluginCtor(TestPlugin)).toBe(true);
-    expect(load(id, new BuildContext(id, getArgumentList(), __dirname), {})).toMatchSnapshot();
+    expect(load(id, ctx, {})).toMatchSnapshot();
     exit(0);
 });
