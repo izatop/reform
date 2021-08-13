@@ -1,4 +1,4 @@
-import {Loader, Plugin, TreeShaking} from "esbuild";
+import {Loader, Platform, Plugin, TreeShaking} from "esbuild";
 import {FileList} from "./Artifact/FileList";
 import {BuildContext} from "./BuildContext";
 
@@ -16,6 +16,7 @@ export interface IBundleConfig {
     base: string;
     build: string;
     entry: string[];
+    platform?: Platform;
     environment?: string[];
     variables?: Record<string, string | boolean | number>;
     loader?: {[ext: string]: Loader};

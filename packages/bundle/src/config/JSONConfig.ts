@@ -39,7 +39,7 @@ export class JSONConfig {
                 "Missing field: bundle[].build",
             );
 
-            const {id = increment++, splitting, treeShaking, sourcemap} = bundle;
+            const {id = increment++, splitting, treeShaking, platform, sourcemap} = bundle;
             const context = new BuildContext(`${id}`, this.args, base, build);
             const plugins = Object
                 .entries(bundle.plugins ?? {})
@@ -50,6 +50,7 @@ export class JSONConfig {
                 base,
                 build,
                 plugins,
+                platform,
                 sourcemap,
                 splitting,
                 treeShaking,

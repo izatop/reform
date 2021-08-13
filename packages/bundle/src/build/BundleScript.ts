@@ -109,18 +109,18 @@ export class BundleScript {
         define["PRODUCTION"] = args.mode !== "development";
         define["DEVELOPMENT"] = !define["PRODUCTION"];
 
-        const {sourcemap = args.isDevelopment, treeShaking = true, splitting = false} = this.#config;
+        const {sourcemap = args.isDevelopment, platform, treeShaking = true, splitting = false} = this.#config;
 
         return {
             loader,
             define,
             plugins,
+            platform,
             sourcemap,
-            treeShaking,
             splitting,
+            treeShaking,
             format: "esm",
             target: ["es2020"],
-            platform: "browser",
             metafile: true,
             outdir: this.#config.build,
             outbase: this.#config.base,

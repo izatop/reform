@@ -59,6 +59,14 @@
                     },
                     "type": "object"
                 },
+                "platform": {
+                    "enum": [
+                        "browser",
+                        "neutral",
+                        "node"
+                    ],
+                    "type": "string"
+                },
                 "plugins": {
                     "$ref": "#/definitions/Partial<IPluginList>"
                 },
