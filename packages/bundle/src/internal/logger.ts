@@ -42,7 +42,7 @@ const getTargetName = (target: LogArgs[0]) => {
 const logger = {
     args(args: LogArgs) {
         const [target, ...nextArgs] = args;
-    
+
         return [`${getTargetName(target)}`, format(...nextArgs)].join("");
     },
     info(...args: LogArgs) {
@@ -62,7 +62,7 @@ const logger = {
         if (this.verbose && !this.silent) fd2(this.args(args));
     },
     silent: process.env.NODE_ENV === "test",
-    verbose: true,
+    verbose: false,
 };
 
 export default logger;
