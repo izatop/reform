@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.11](https://github.com/izatop/reform/compare/v0.4.10...v0.4.11) (2021-08-13)
+
+
+### Bug Fixes
+
+* add platform option ([d3fad76](https://github.com/izatop/reform/commit/d3fad763d743d934fb3f6484cb793976b0b7e7fb))
+* verbose ([0692bf3](https://github.com/izatop/reform/commit/0692bf37aaffa508e5bf09e6a53f2a29d4c88af6))
+
+
+
+
+
 ## [0.4.10](https://github.com/izatop/reform/compare/v0.4.9...v0.4.10) (2021-08-12)
 
 
