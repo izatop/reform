@@ -1,4 +1,4 @@
-import {Directory, exit, isPluginCtor, load} from "../../src";
+import {Directory, exit, isPluginCtor, load, PluginAbstract} from "../../src";
 import {TestPlugin} from "./plugin/TestPlugin";
 import {resolve} from "path";
 import {BuildContext} from "../../src/build/BuildContext";
@@ -17,6 +17,6 @@ test("Main Test", async () => {
     });
 
     expect(isPluginCtor(TestPlugin)).toBe(true);
-    expect(load(id, ctx, {})).toMatchSnapshot();
+    expect(load(id, ctx, {}).isPrototypeOf(PluginAbstract));
     exit(0);
 });
