@@ -1,6 +1,6 @@
 {
     "name": "@reform/bundle-test",
-    "version": "0.4.10",
+    "version": "0.4.11",
     "main": "src/index.ts",
     "repository": "https://github.com/izatop/reform",
     "scripts": {
@@ -8,6 +8,10 @@
         "bundle": "be",
         "bundle:watch": "yarn bundle -w",
         "test": "yarn clean && yarn bundle"
+    },
+    "devDependencies": {
+        "@reform/bundle": "^0.4.11",
+        "@reform/bundle-sass": "^0.4.11"
     },
     "author": {
         "name": "Artur Bier",
