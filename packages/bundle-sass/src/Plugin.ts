@@ -1,51 +1,59 @@
-import {assignWithFilter, PluginAbstract} from "@reform/bundle";
-import {BuildContext} from "@reform/bundle/dist/build/BuildContext";
-import {PluginBuild} from "esbuild";
+import {assignWithFilter, BuildContext, PluginAbstract} from "@reform/bundle";
 import {Options, render} from "node-sass";
 import importer from "./importer";
 
-export type Config = { filter: RegExp; compress?: boolean };
+export type Config = {filter: RegExp; compress?: boolean};
 
 export class Plugin extends PluginAbstract<Config> {
+    public readonly name = "@reform/bundle-sass";
+
     constructor(context: BuildContext, config?: Config) {
         super(context, assignWithFilter({filter: /\.(scss|sass)$/}, config));
     }
 
-    protected connect(build: PluginBuild): void {
+    protected configure(): void {
         const {filter, compress = false} = this.config;
 
-        build.onLoad({filter}, async (args) => {
+        this.on("load", {filter}, async ({path}) => {
             try {
-                const contents = await this.render({file: args.path, compress});
+                const contents = await this.render({path, compress});
 
                 return {contents, loader: "css"};
             } catch (error) {
-                return {errors: [error]};
+                return {
+                    errors: [
+                        {
+                            text: error.message,
+                            location: error.location,
+                            pluginName: this.name,
+                        },
+                    ],
+                };
             }
         });
     }
 
-    private render(options: { file: string; compress?: boolean }) {
+    private render(options: {path: string; compress?: boolean}) {
         const {context: {cache}} = this;
-        const {file, compress} = options;
+        const {path, compress} = options;
+        const relativePath = this.getRelativePath(path);
 
-        return cache.store(file, async () => {
+        return cache.store(relativePath, async () => {
             const outputStyle = compress ? "compressed" : "expanded";
 
             const sassOptions: Options = {
-                file,
+                file: path,
                 importer,
                 outputStyle,
             };
 
-            return new Promise((resolve, reject) => {
+            return new Promise<string>((resolve, reject) => {
                 render(sassOptions, (error, result) => {
                     if (error) {
                         return reject(error);
                     }
 
-                    const css = result.css.toString("utf-8");
-                    resolve(css);
+                    resolve(result.css.toString("utf-8"));
                 });
             });
         });

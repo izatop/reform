@@ -40,17 +40,15 @@ export const Dropdown = config.factory<MakeProps<IDropdownOptions>, DropdownProp
 
     const className = React.useMemo(
         () => ConfigFactory.resolveClassName(
-            {...options, active: dispatcher.state},
-            config.config,
-        ),
-        [dispatcher],
+            {...options, active: dispatcher.state}, config.config,
+        ), [dispatcher],
     );
 
     return (
         <div {...p} className={className}
-             onMouseLeave={dispatcher.leave}
-             onMouseEnter={dispatcher.enter}
-             onClick={dispatcher.clickOut}>
+            onMouseLeave={dispatcher.leave}
+            onMouseEnter={dispatcher.enter}
+            onClick={dispatcher.clickOut}>
             <div className="dropdown-trigger" onClick={dispatcher.click}>
                 <DropdownButtonDecorator icon={icon} button={button} active={dispatcher.state}/>
             </div>

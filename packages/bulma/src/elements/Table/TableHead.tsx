@@ -10,9 +10,9 @@ export type TableHeadProps = MakeProps<{
 
 export const TableHead: React.FunctionComponent<TableHeadProps> = (props) => (
     <thead>
-    <TableRowContext.Provider value={TableHeadCell}>
-        {props.cells ? <TableRow cells={props.cells}/> : props.children}
-    </TableRowContext.Provider>
+        <TableRowContext.Provider value={TableHeadCell}>
+            {props.cells ? <TableRow cells={props.cells}/> : props.children}
+        </TableRowContext.Provider>
     </thead>
 );
 

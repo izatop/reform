@@ -5,7 +5,7 @@ import {MenuChild} from "./MenuChild";
 import {MenuNode} from "./Store/MenuNode";
 
 const config = ConfigFactory.create({component: "menu-list"});
-export const MenuChildren = config.factory<MakeProps, { children: MenuNode[] }>(({props, children}) => (
+export const MenuChildren = config.factory<MakeProps, {children: MenuNode[]}>(({props, children}) => (
     <ul {...props}>
         {children.map((node) => (
             <li key={node.id}>

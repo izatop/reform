@@ -8,7 +8,7 @@ export class MenuStore extends MenuTrigger<MenuStoreEvents> {
 
     private selected?: MenuNode;
 
-    constructor(children: MenuNode[] = [], options: { select?: { key: string; value: any } } = {}) {
+    constructor(children: MenuNode[] = [], options: {select?: {key: string; value: any}} = {}) {
         super();
 
         for (const child of children) {
@@ -62,8 +62,7 @@ export class MenuStore extends MenuTrigger<MenuStoreEvents> {
 
     public remove(group: MenuNode) {
         this.children.splice(
-            this.children.indexOf(group),
-            1,
+            this.children.indexOf(group), 1,
         );
 
         group.destroy();

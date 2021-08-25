@@ -38,9 +38,7 @@ export class TableStore<T extends ITableSource> {
 
     public footer(fn: (key: string | number, title: React.ReactNode, p: ITableStoreProperty<T>) => React.ReactNode) {
         return this.properties.map((property) => fn(
-            property.key,
-            property.total ? property.total(this.data) : null,
-            property,
+            property.key, property.total ? property.total(this.data) : null, property,
         ));
     }
 
@@ -60,8 +58,7 @@ export class TableStore<T extends ITableSource> {
 
     public map(fn: ITableStoreRender<T>) {
         return this.data.map((data) => fn(
-            this.fetchKey(data),
-            data,
+            this.fetchKey(data), data,
         ));
     }
 }

@@ -5,7 +5,7 @@ import {ConfigFactory} from "../../utils";
 
 export type TabSize = "normal" | "medium" | "large";
 export type TagColors = "black" | "dark" | "light" | "white" | "primary" | "link" | "info" | "success" | "warning"
-    | "danger";
+| "danger";
 
 export interface ITag extends IsColor<TagColors>, IsSize<TabSize> {
     rounded?: boolean;

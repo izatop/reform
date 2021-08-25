@@ -1,30 +1,97 @@
-import {Plugin, PluginBuild} from "esbuild";
-import {BuildContext} from "../build/BuildContext";
+import {PartialMessage, PluginBuild} from "esbuild";
+import {BuildContext, BundleCache} from "../build";
+import {has, Promisify} from "../internal";
+import {IPluginEvent, PluginConfig, PluginEventErrorRet, PluginEventHandle, PluginEventKey, PluginListener} from "./interfaces";
 
-export type PluginCtor<C, P extends PluginAbstract<C>> = {
-    new(context: BuildContext, config: C): P;
-    prototype: PluginAbstract;
-};
+export abstract class PluginAbstract<C extends PluginConfig = null> {
+    public abstract readonly name: string;
 
-export abstract class PluginAbstract<TConfig extends (Record<any, any> | undefined) = undefined> {
     protected readonly context: BuildContext;
-    protected readonly config: TConfig;
+    protected readonly config: C;
 
-    constructor(context: BuildContext, config: TConfig) {
+    readonly #events: Array<Partial<IPluginEvent>> = [];
+
+    constructor(context: BuildContext, config: C) {
         this.context = context;
         this.config = config;
     }
 
-    public get name() {
-        return this.constructor.name;
+    protected get cache(): BundleCache {
+        return this.context.cache;
     }
 
-    public getPluginConfig(): Plugin {
-        return {
-            name: this.name,
-            setup: (build: PluginBuild): void => this.connect(build),
+    public async setup(build: PluginBuild) {
+        await this.configure();
+
+        const keys: PluginEventKey[] = ["start", "resolve", "load", "end"];
+
+        for (const map of this.#events) {
+            for (const event of keys) {
+                if (!has(map, event)) {
+                    continue;
+                }
+
+                switch (event) {
+                    case "start":
+                        build.onStart(this.wrap(map[event][0]));
+                        break;
+
+                    case "resolve":
+                        build.onResolve(map[event][0], this.wrap(map[event][1]));
+                        break;
+
+                    case "load":
+                        build.onLoad(map[event][0], this.wrap(map[event][1]));
+                        break;
+
+                    case "end":
+                        build.onEnd(map[event][0]);
+                        break;
+                }
+            }
+        }
+    }
+
+    protected abstract configure(): Promisify<void>;
+
+    protected on<K extends PluginEventKey>(event: K, ...args: PluginListener<K>) {
+        this.#events.push({[event]: args});
+
+        return this;
+    }
+
+    protected getRelativePath(path: string): string {
+        const {base} = this.context;
+
+        return base.getRelativePath(path);
+    }
+
+    private wrap<T,
+        A extends any[],
+        F extends PluginEventHandle<T, A>>(fn: F): (...args: A) => Promise<T | PluginEventErrorRet> {
+        return (...args: A): Promise<T | PluginEventErrorRet> => {
+            try {
+                return this.try(fn(...args));
+            } catch (error) {
+                return this.report(error);
+            }
         };
     }
 
-    protected abstract connect(build: PluginBuild): void;
+    private async try<T>(result: Promisify<T>): Promise<T | PluginEventErrorRet> {
+        return Promise
+            .resolve(result)
+            .catch(this.report);
+    }
+
+    private report = (error: Error): Promise<PluginEventErrorRet> => {
+        const errors: PartialMessage[] = [
+            {
+                text: error.message,
+                pluginName: this.name,
+            },
+        ];
+
+        return Promise.resolve({errors});
+    };
 }

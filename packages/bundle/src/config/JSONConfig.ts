@@ -1,10 +1,8 @@
+import {PluginBuild} from "esbuild";
 import {existsSync} from "fs";
 import {join} from "path";
-import {BundleArgs} from "../build";
-import {FileList} from "../build/Artifact/FileList";
-import {BuildContext} from "../build/BuildContext";
-import {assert, IArgumentList, resolveStrictAt} from "../internal";
-import {mutate} from "../internal/object";
+import {BuildContext, BundleArgs, Directory, FileCopyList, FileEntryList} from "../build";
+import {arrayify, assert, entriesMap, IArgumentList, mutate} from "../internal";
 import {load} from "../plugins";
 import {IJSONSchema} from "./interfaces";
 
@@ -24,46 +22,46 @@ export class JSONConfig {
     public * getBundleArgs(): Generator<BundleArgs> {
         let increment = 1;
         const {preset: presetList = {}} = this.config;
-        for (const next of this.config?.bundle ?? []) {
-            const bundle = mutate(mutate({}, presetList[next.preset ?? ""] ?? {}), next);
+        for (const {preset, ...next} of this.config?.bundle ?? []) {
+            const bundle = mutate(mutate({}, presetList[preset ?? ""] ?? {}), next);
 
-            const base = resolveStrictAt(
-                this.args.path,
-                bundle.base,
-                "Missing field: bundle[].base",
-            );
-
-            const build = resolveStrictAt(
-                this.args.path,
-                bundle.build,
-                "Missing field: bundle[].build",
-            );
-
-            const {id = increment++, splitting, treeShaking, platform, sourcemap} = bundle;
-            const context = new BuildContext(`${id}`, this.args, base, build);
-            const plugins = Object
-                .entries(bundle.plugins ?? {})
-                .map(([id, options]) => load(id, context, options));
-
-            const config = {
+            // @see https://esbuild.github.io/api/#platform
+            const {format = "iife", platform = "browser"} = bundle;
+            const {id = increment++, entry, files, plugins, ...settings} = bundle;
+            const base = Directory.factory(this.args.path, bundle.base);
+            const build = Directory.factory(this.args.path, bundle.build);
+            const context = new BuildContext({
                 id,
                 base,
                 build,
-                plugins,
+                format,
                 platform,
-                sourcemap,
-                splitting,
-                treeShaking,
-                entry: bundle.entry.map((entry) => join(base, entry)),
-                files: new FileList(context, bundle.files),
-                variables: bundle.variables,
-                environment: bundle.environment,
-                loader: bundle.loader,
-                serve: bundle.serve,
-                app: bundle.app,
-            };
+                args: this.args,
+                entries: arrayify(entry),
+            });
 
-            yield {context, config};
+            yield {
+                context,
+                config: {
+                    ...settings,
+                    id,
+                    base,
+                    build,
+                    format,
+                    platform,
+                    files: new FileCopyList(context, files),
+                    entry: new FileEntryList(context, arrayify(entry)),
+                    plugins: entriesMap(plugins ?? {}, ([id, options]) => {
+                        const plugin = load(id, context, options);
+                        return {
+                            name: plugin.name,
+                            setup(build: PluginBuild) {
+                                return plugin.setup(build);
+                            },
+                        };
+                    }),
+                },
+            };
         }
     }
 }

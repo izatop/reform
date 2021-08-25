@@ -14,6 +14,5 @@ export interface INavbarTabProps {
 
 const config = ConfigFactory.create({displayName: "NavbarTab"});
 export const NavbarTab = config.factory<MakeProps<INavbarTab>, INavbarTabProps>(
-    ({props, children}) => React.cloneElement(children, props),
-    {tab: true},
+    ({props, children}) => React.cloneElement(children, props), {tab: true},
 );

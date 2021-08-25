@@ -51,8 +51,7 @@ export function useDropdownState(options: IUseDropdownStateOptions): IUseDropdow
                 document.body.addEventListener("click", clickOutHandle);
                 return () => document.body.removeEventListener("click", clickOutHandle);
             }
-        },
-        [state, onClickOutTimeout],
+        }, [state, onClickOutTimeout],
     );
 
     return useMemo(
@@ -91,8 +90,7 @@ export function useDropdownState(options: IUseDropdownStateOptions): IUseDropdow
             }
 
             return dispatcher;
-        },
-        [
+        }, [
             controlled,
             state,
             closeOnLeave,

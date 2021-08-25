@@ -1,23 +1,17 @@
 import {config, DotenvParseOutput} from "dotenv";
-import {build, BuildFailure, BuildOptions, BuildResult} from "esbuild";
-import {existsSync, watch} from "fs";
-import {join, relative} from "path";
-import {defer, onClose} from "../internal";
+import {build, BuildFailure, BuildOptions} from "esbuild";
+import {assert, assign, defer, onClose, resolveThrough} from "../internal";
 import logger from "../internal/logger";
 import {BuildContext} from "./BuildContext";
-import {BundleEntry} from "./BundleEntry";
-import {DisposerStatic} from "./DisposerStatic";
 import {IBundleScriptConfig} from "./interfaces";
 
 export class BundleScript {
-    readonly #entry: BundleEntry;
     readonly #config: IBundleScriptConfig;
     readonly #context: BuildContext;
 
     constructor(context: BuildContext, config: IBundleScriptConfig) {
         this.#config = config;
         this.#context = context;
-        this.#entry = new BundleEntry(config);
     }
 
     public get id() {
@@ -34,15 +28,25 @@ export class BundleScript {
 
     public async build() {
         logger.info(this, "build");
-        await this.prepare();
-        await this.commit(await build(this.getBuildConfig()));
+
+        const {files} = this.#config;
+
+        logger.debug(this, "config -> %o", this.getBuildConfig());
+
+        await this.check();
+        await Promise.all([
+            build(this.getBuildConfig()),
+            files.build(),
+        ]);
     }
 
     public async watch() {
         logger.info(this, "watch");
-        const onRebuild = (error: BuildFailure | null, result: BuildResult | null): void => {
-            if (result) this.commit(result);
-            if (error) logger.error(this, error);
+
+        const {files} = this.#config;
+        const onRebuild = async (error: BuildFailure | null) => {
+            if (error) logger.error(error, this, "watch -> %s", error.message);
+
             logger.info(this, "rebuilt");
         };
 
@@ -51,53 +55,63 @@ export class BundleScript {
             watch: {onRebuild},
         };
 
-        await this.prepare();
-        const buildResult = await build(options);
-        await this.commit(buildResult);
+        await this.check();
+        const [buildResult] = await Promise.all([
+            build(options),
+            files.build(),
+        ]);
+
         onClose(() => buildResult.stop?.());
 
         return defer<void>(onClose);
     }
 
-    public async prepare() {
-        const {files} = this.#config;
-
-        if (this.#context.watch) {
-            for (const file of this.#entry.getFileList()) {
-                logger.info(this, "watch -> %s", relative(this.#context.base, file));
-                const watcher = watch(file, async () => this.#entry.updateEntryPoints());
-                DisposerStatic.add(() => watcher.close());
+    private async check() {
+        const {entry} = this.config;
+        const errors = await entry.check();
+        if (errors.length) {
+            for (const {error, file} of errors) {
+                logger.error(error, this, "file -> %s", file);
             }
         }
 
-        const ops = [];
-        for (const artifact of this.#entry.getArtifacts()) {
-            ops.push(artifact.prepare(this));
-        }
-
-        await Promise.all([...ops, files.copy()]);
+        assert(!errors.length, "Wrong entries");
     }
 
-    public getIncrementalConfig(): BuildOptions & { incremental: true } {
+    private getIncrementalConfig(): BuildOptions & {incremental: true} {
         return {
             ...this.getBuildConfig(),
             incremental: true,
         };
     }
 
-    public getBuildConfig(): BuildOptions {
+    private getBuildConfig(): BuildOptions {
         const {args} = this.#context;
         const {envFile} = this.#config;
         const define: Record<string, any> = {};
 
         const dotEnvVariables: DotenvParseOutput = {};
-        const dotEnvFile = join(args.path, envFile ?? ".env");
-        if (existsSync(dotEnvFile)) {
-            const {parsed} = config({path: dotEnvFile});
-            Object.assign(dotEnvVariables, parsed);
+        const dotEnvFile = resolveThrough(args.path, envFile ?? ".env");
+        if (dotEnvFile) {
+            assign(dotEnvVariables, config({path: dotEnvFile}).parsed);
         }
 
-        const {variables = {}, environment = [], loader = {}, plugins} = this.#config;
+        const {
+            id,     // eslint-disable-line
+            base,   // eslint-disable-line
+            build,  // eslint-disable-line
+            serve,  // eslint-disable-line
+            files,  // eslint-disable-line
+            bundle = true,
+            loader = {},
+            plugins,
+            sourcemap = args.isDevelopment,
+            variables = {},
+            environment = [],
+            entry: {paths: entryPoints},
+            ...options
+        } = this.#config;
+
         const variableStore = {...variables, ...dotEnvVariables, ...process.env};
         const keys = new Set([...environment, ...Object.keys(variables)]);
 
@@ -109,47 +123,19 @@ export class BundleScript {
         define["PRODUCTION"] = args.mode !== "development";
         define["DEVELOPMENT"] = !define["PRODUCTION"];
 
-        const {sourcemap = args.isDevelopment, platform, treeShaking = true, splitting = false} = this.#config;
-
         return {
             loader,
             define,
+            bundle,
             plugins,
-            platform,
             sourcemap,
-            splitting,
-            treeShaking,
-            format: "esm",
-            target: ["es2020"],
-            metafile: true,
-            outdir: this.#config.build,
-            outbase: this.#config.base,
-            entryPoints: this.#entry.getEntryPoints(),
-            tsconfig: join(args.path, "tsconfig.json"),
-            bundle: true,
+            entryPoints,
             minify: args.isProduction,
-            assetNames: "assets/[name].[hash]",
-            chunkNames: "chunks/[hash]",
-            resolveExtensions: [
-                ".component.jsx",
-                ".component.js",
-                ".jsx",
-                ".js",
-                ".component.tsx",
-                ".component.ts",
-                ".tsx",
-                ".ts",
-            ],
+            outdir: this.#config.build.path,
+            outbase: this.#config.base.path,
+            metafile: true,
+            tsconfig: resolveThrough(args.path, "tsconfig.json"),
+            ...options,
         };
-    }
-
-    public async commit(result: BuildResult): Promise<void> {
-        const ops = [];
-        for (const artifact of this.#entry.getArtifacts()) {
-            logger.info(this, "commit -> %s", this.id, artifact.name);
-            ops.push(artifact.commit(this, result));
-        }
-
-        await Promise.all(ops);
     }
 }

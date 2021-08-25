@@ -20,7 +20,7 @@ export class MenuNode extends MenuTrigger {
     private selected = false;
 
     constructor(node: ReactChild | ReactFragment,
-                defaults: IMenuNodeDefaults = {}) {
+        defaults: IMenuNodeDefaults = {}) {
         super();
 
         this.node = node;
@@ -89,8 +89,7 @@ export class MenuNode extends MenuTrigger {
 
     public remove(node: MenuNode) {
         this.children.splice(
-            this.children.indexOf(node),
-            1,
+            this.children.indexOf(node), 1,
         );
     }
 

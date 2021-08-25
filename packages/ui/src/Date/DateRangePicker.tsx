@@ -44,9 +44,9 @@ export const DateRangePicker: React.FC<IDateRangePickerProps> = (props) => {
 
     return (
         <Dropdown selectable={false}
-                  listener={listener}
-                  icon={{down: "calendar-alt"}}
-                  button={<span className={"button"}>{input}</span>}>
+            listener={listener}
+            icon={{down: "calendar-alt"}}
+            button={<span className={"button"}>{input}</span>}>
             <DropdownElement>
                 <div className={"date-picker"}
                     onClick={e => e.stopPropagation()}>
@@ -57,8 +57,8 @@ export const DateRangePicker: React.FC<IDateRangePickerProps> = (props) => {
                             </Button>
                         </Column>
                         <Column textAlign={"centered"}
-                                textTransform={"capitalized"}
-                                textSize={5}>
+                            textTransform={"capitalized"}
+                            textSize={5}>
                             {mf.format(month)}
                         </Column>
                         <Column textAlign={"right"}>
@@ -68,9 +68,9 @@ export const DateRangePicker: React.FC<IDateRangePickerProps> = (props) => {
                         </Column>
                     </Columns>
                     <Calendar mode={"range"}
-                              date={month}
-                              onChange={handleChange}
-                              defaultValue={range}/>
+                        date={month}
+                        onChange={handleChange}
+                        defaultValue={range}/>
                 </div>
             </DropdownElement>
         </Dropdown>

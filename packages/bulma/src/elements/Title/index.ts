@@ -9,7 +9,7 @@ export interface ITitle {
     size?: TitleSize;
 }
 
-export type TitleProps = { children: React.ReactNode } & XProps<"h1">;
+export type TitleProps = {children: React.ReactNode} & XProps<"h1">;
 
 const resolvers = {
     spaced: (v: boolean) => v && "is-spaced",

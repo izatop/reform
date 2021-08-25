@@ -15,8 +15,7 @@ const config = ConfigFactory.create({component: "dropdown-item"});
 export const DropdownElement = config.factory<MakeProps<IDropdownElement>, IDropdownElementProps>(
     ({props, children}) => (
         React.cloneElement(
-            children,
-            {
+            children, {
                 ...children.props,
                 ...props,
                 className: [children.props.className, props.className]

@@ -1,2 +1,3 @@
-export * from "./PluginAbstract";
 export * from "./function";
+export * from "./interfaces";
+export * from "./PluginAbstract";

@@ -1,26 +1,33 @@
-import {assignWithFilter, getResourcePath, PluginAbstract} from "@reform/bundle";
-import {BuildContext} from "@reform/bundle/dist/build/BuildContext";
-import {PluginBuild} from "esbuild";
-import {readFile} from "fs/promises";
+import {assignWithFilter, BuildContext, File, getResourcePath, PluginAbstract} from "@reform/bundle";
 
-export type Config = { filter: RegExp };
+export type Config = {filter: RegExp};
 
 export class Plugin extends PluginAbstract<Config> {
+    public readonly name = "@reform/bundle-sass";
+
     constructor(context: BuildContext, config?: Config) {
         super(context, assignWithFilter({filter: /\.(eot|ttf|woff|woff2?|svg)([?|#].+)?$/}, config));
     }
 
-    protected connect(build: PluginBuild): void {
-        const {context: {cache}} = this;
+    protected configure(): void {
+        const {context: {cache, base}} = this;
+        const {fileFactory} = base;
 
-        build.onResolve(this.config, (args) => ({
-            path: getResourcePath(args.path),
-            namespace: "font",
-        }));
+        this
+            .on("resolve", this.config, (args) => {
+                return {
+                    path: getResourcePath(args.path),
+                    namespace: "font",
+                };
+            })
+            .on("load", {namespace: "font", filter: /^./}, async (args) => {
+                const relativePath = this.getRelativePath(args.path);
+                const {contents} = await cache.store<File<Buffer>>(relativePath, fileFactory.read);
 
-        build.onLoad({namespace: "font", filter: /^./}, async (args) => ({
-            contents: await cache.store(args.path, () => readFile(args.path)),
-            loader: "file",
-        }));
+                return {
+                    contents,
+                    loader: "file",
+                };
+            });
     }
 }

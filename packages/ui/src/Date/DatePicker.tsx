@@ -44,9 +44,9 @@ export const DatePicker: React.FC<IDatePickerProps> = (props) => {
 
     return (
         <Dropdown selectable={false}
-                  listener={listener}
-                  icon={{down: "calendar-alt"}}
-                  button={<span className={"button"}>{input}</span>}>
+            listener={listener}
+            icon={{down: "calendar-alt"}}
+            button={<span className={"button"}>{input}</span>}>
             <DropdownElement>
                 <div className={"date-picker"}
                     onClick={e => e.stopPropagation()}>
@@ -57,8 +57,8 @@ export const DatePicker: React.FC<IDatePickerProps> = (props) => {
                             </Button>
                         </Column>
                         <Column textAlign={"centered"}
-                                textTransform={"capitalized"}
-                                textSize={5}>
+                            textTransform={"capitalized"}
+                            textSize={5}>
                             {mf.format(month)}
                         </Column>
                         <Column textAlign={"right"}>
@@ -68,9 +68,9 @@ export const DatePicker: React.FC<IDatePickerProps> = (props) => {
                         </Column>
                     </Columns>
                     <Calendar mode={"date"}
-                              date={month}
-                              onChange={handleChange}
-                              defaultValue={date}/>
+                        date={month}
+                        onChange={handleChange}
+                        defaultValue={date}/>
                 </div>
             </DropdownElement>
         </Dropdown>

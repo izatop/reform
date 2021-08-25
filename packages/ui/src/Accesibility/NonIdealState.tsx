@@ -16,7 +16,7 @@ export const NonIdealState: React.FC<INonIdealState> = (props) => (
                         {
                             typeof props.icon === "string"
                                 ? <Icon size={"large"}
-                                        icon={{name: props.icon, weight: "lg"}}/>
+                                    icon={{name: props.icon, weight: "lg"}}/>
                                 : props.icon
                         }
                     </Title1>

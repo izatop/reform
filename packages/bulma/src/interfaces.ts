@@ -19,7 +19,7 @@ export type IHTMLElementRegistry = JSX.IntrinsicElements;
 
 export type XPropsKeys = keyof IHTMLElementRegistry;
 export type XProps<K extends XPropsKeys> = IHTMLElementRegistry[K];
-export type DefaultProps = { children?: React.ReactNode };
+export type DefaultProps = {children?: React.ReactNode};
 export type XElement<K extends XPropsKeys> = IHTMLElementRegistry[K] extends React.DetailedHTMLProps<any, infer H>
     ? H
     : IHTMLElementRegistry[K] extends React.SVGProps<infer S> ? S : never;
@@ -76,7 +76,7 @@ export interface IComponentConfig {
     displayName?: string;
     resolvers: IPropertyResolvers;
     dependencies?: string[];
-    mutations: { [key: string]: string };
+    mutations: {[key: string]: string};
 }
 
 export interface IProps<T = any> {
@@ -87,8 +87,8 @@ export interface IInProps extends IProps {
     children?: React.ReactNode;
 }
 
-export interface IComputed<P extends { children?: React.ReactNode }, O extends Record<any, any>> {
-    props: Pick<P, Exclude<keyof P, "children">> & { className?: string };
+export interface IComputed<P extends {children?: React.ReactNode}, O extends Record<any, any>> {
+    props: Pick<P, Exclude<keyof P, "children">> & {className?: string};
     children: P["children"];
     options: O;
 }

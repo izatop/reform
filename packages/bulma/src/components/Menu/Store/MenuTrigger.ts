@@ -11,8 +11,7 @@ export class MenuTrigger<T = MenuEvents> {
 
         if (listener && this.listeners.has(event)) {
             this.listeners.set(
-                event,
-                (this.listeners.get(event) ?? [])
+                event, (this.listeners.get(event) ?? [])
                     .filter((child) => child !== listener),
             );
         } else {

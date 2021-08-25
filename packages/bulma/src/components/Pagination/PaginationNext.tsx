@@ -7,8 +7,8 @@ export const PaginationNext: React.FC = (props) => (
     <Consumer>
         {({state, set}) => {
             return <button className={"pagination-next"}
-                           onClick={() => !state.isLast && set(state.next)}
-                           disabled={state.isLast}>{props.children}</button>;
+                onClick={() => !state.isLast && set(state.next)}
+                disabled={state.isLast}>{props.children}</button>;
         }}
     </Consumer>
 );

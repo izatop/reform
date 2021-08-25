@@ -11,3 +11,5 @@ export function defer<T>(fn: (resolve: (value: T) => unknown) => unknown) {
         }
     });
 }
+
+export type Promisify<T> = T | Promise<T>;

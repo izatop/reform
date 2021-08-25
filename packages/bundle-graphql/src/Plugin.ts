@@ -1,25 +1,29 @@
-import {assignWithFilter, PluginAbstract} from "@reform/bundle";
-import {BuildContext} from "@reform/bundle/dist/build/BuildContext";
-import {PluginBuild} from "esbuild";
-import {readFile} from "fs/promises";
+import {assignWithFilter, PluginAbstract, BuildContext, File} from "@reform/bundle";
 
-export type Config = { filter: RegExp };
+export type Config = {filter: RegExp};
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const loader = require("graphql-tag/loader");
+const toQuery = (file: File<string>) => loader.call({cacheable: () => void 0}, file.contents);
 
 export class Plugin extends PluginAbstract<Config> {
+    public readonly name = "@reform/bundle-graphql";
+
     constructor(context: BuildContext, config?: Config) {
         super(context, assignWithFilter({filter: /\.(graphql|gql)$/}, config));
     }
 
-    protected connect(build: PluginBuild): void {
-        const {context: {cache}} = this;
-        build.onLoad(this.config, async (args) => {
-            const contents = await cache.store(args.path, async () => {
-                const content = await readFile(args.path, {encoding: "utf-8"});
-                return loader.call({cacheable: () => void 0}, content);
-            });
+    protected configure(): void {
+        const {context: {cache, base: {fileFactory}}} = this;
+        this.on("load", this.config, async (args) => {
+            const file = this.getRelativePath(args.path);
+
+            const {contents} = await cache.store(
+                file,
+                async () => fileFactory
+                    .read(file, "utf-8")
+                    .then(toQuery),
+            );
 
             return {contents, loader: "js"};
         });

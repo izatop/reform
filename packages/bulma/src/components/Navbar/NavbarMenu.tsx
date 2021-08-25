@@ -17,9 +17,9 @@ export const NavbarMenu = config.factory<MakeProps, INavbarMenu>(({props, option
     <NavbarContext.Consumer>
         {({state}) => (
             <div {...props}
-                 className={getClassName(options, state)}
-                 aria-label="main navigation"
-                 role="navigation">
+                className={getClassName(options, state)}
+                aria-label="main navigation"
+                role="navigation">
                 {children}
             </div>
         )}

@@ -1,26 +1,27 @@
 import {Plugin} from "esbuild";
-import {BuildContext} from "../build/BuildContext";
+import {BuildContext} from "../build";
 import {assert, assign} from "../internal";
 import logger from "../internal/logger";
-import {PluginAbstract, PluginCtor} from "./PluginAbstract";
+import {PluginCtor} from "./interfaces";
+import {PluginAbstract} from "./PluginAbstract";
 
-export function isPluginCtor<C>(type: unknown): type is PluginCtor<C, any> {
+export function isPluginCtor<P extends PluginAbstract>(type: unknown): type is PluginCtor<P> {
     return typeof type === "function" && PluginAbstract.isPrototypeOf(type);
 }
 
 export function load(id: string, context: BuildContext, config: unknown): Plugin {
-    logger.debug("Plugin", "try -> %s", id);
+    logger.debug("plugin", "try -> %s", id);
 
     try {
         // eslint-disable-next-line @typescript-eslint/no-var-requires
         const {default: plugin} = require(id);
         assert(isPluginCtor(plugin), `Wrong default export at ${id}`);
 
-        return new plugin(context, config).getPluginConfig();
+        return new plugin(context, config);
     } catch (error) {
-        logger.error("Plugin", "error -> %o", error);
+        logger.error(error, "plugin", "load -> %s", error.message);
 
-        throw error;
+        throw new Error(`Can't load ${id}`);
     }
 }
 

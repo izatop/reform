@@ -25,8 +25,7 @@ export const NavbarWithChild = (children: ReactElement | ReactFragment | ReactNo
     return Children.map(children, (child) => {
         if (isValidElement<any>(child)) {
             return cloneElement<any>(
-                child,
-                {
+                child, {
                     ...child.props,
                     className: mergeClassName(child.props.className, "navbar-item"),
                 },

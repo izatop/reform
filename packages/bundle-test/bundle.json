@@ -4,10 +4,19 @@
             "base": "src",
             "build": "dist",
             "plugins": {
-                "@reform/bundle-font": {}
+                "@reform/bundle-html-entry": {}
             },
+            "bundle": true,
+            "format": "esm",
+            "platform": "browser",
+            "target": [
+                "es2020"
+            ],
             "serve": {
-                "port": 8000
+                "port": 8000,
+                "fallback": {
+                    "/:route*": "index.html"
+                }
             }
         }
     },
@@ -16,15 +25,14 @@
             "id": "test",
             "base": "src",
             "preset": "default",
-            "entry": [
-                "index.ts"
-            ],
+            "entry": "index.html",
+            "treeShaking": true,
             "plugins": {
                 "@reform/bundle-sass": {}
             },
             "files": [
-                "assets/*",
-                "hello.txt"
+                "sitemap/*",
+                "robots.txt"
             ],
             "serve": {
                 "host": "bundle.localhost"

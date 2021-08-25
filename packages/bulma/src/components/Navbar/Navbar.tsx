@@ -38,8 +38,8 @@ export const Navbar = config.factory<MakeProps<INavbar>, INavbarProps>(({props, 
 
     return (
         <nav {...props}
-             aria-label="main navigation"
-             role="navigation">
+            aria-label="main navigation"
+            role="navigation">
             <Provider value={{state, toggle}}>
                 {children}
             </Provider>

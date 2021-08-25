@@ -4,7 +4,7 @@ import {ConfigFactory} from "../utils";
 
 const config = ConfigFactory.create({displayName: "div"});
 type NodeAttr<K extends XPropsKeys> = XProps<K>;
-type NodeProp<K extends XPropsKeys> = { as: K };
+type NodeProp<K extends XPropsKeys> = {as: K};
 type NodeType<K extends XPropsKeys = XPropsKeys> = React.FC<MakeProps<NodeProp<K>> & NodeAttr<K>>;
 
 export const Node: NodeType = config.factory<MakeProps<NodeProp<any>>, XProps<any>>((input) => {

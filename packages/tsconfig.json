@@ -19,6 +19,9 @@
         },
         {
             "path": "bundle-graphql"
+        },
+        {
+            "path": "bundle-html-entry"
         }
     ]
 }

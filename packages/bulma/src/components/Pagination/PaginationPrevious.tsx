@@ -7,8 +7,8 @@ export const PaginationPrevious: React.FC = (props) => (
     <Consumer>
         {({state, set}) => {
             return <button className={"pagination-previous"}
-                           onClick={() => !state.isFirst && set(state.previous)}
-                           disabled={state.isFirst}>{props.children}</button>;
+                onClick={() => !state.isFirst && set(state.previous)}
+                disabled={state.isFirst}>{props.children}</button>;
         }}
     </Consumer>
 );

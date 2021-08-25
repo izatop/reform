@@ -1,5 +1,7 @@
-import {BuildAbstract, BuildScript, BuildServer, BundleScript, DisposerStatic, JSONConfig} from "../build";
+import {BuildAbstract, Build, BuildServer, BundleScript} from "../build";
+import {JSONConfig} from "../config";
 import {getArgumentList, IArgumentList} from "./args";
+import {Disposer} from "./disposer";
 import logger from "./logger";
 
 export function factory(args: IArgumentList, bundleConfigList: BundleScript[]): BuildAbstract {
@@ -7,30 +9,28 @@ export function factory(args: IArgumentList, bundleConfigList: BundleScript[]): 
         return new BuildServer(args, bundleConfigList);
     }
 
-    return new BuildScript(args, bundleConfigList);
+    return new Build(args, bundleConfigList);
 }
 
 export function exit(code: number) {
-    DisposerStatic.dispose();
+    Disposer.dispose();
     logger.info("main", "exit(%d)", code);
     if (process.env.NODE_ENV !== "test") {
         setImmediate(() => process.exit(code));
     }
 }
 
-export async function main(root?: string) {
+export async function cli(root?: string) {
     try {
         const args = getArgumentList(root);
 
-        logger.info("main", "args: %o", process.argv.slice(2));
+        logger.debug("cli", "args: %o", process.argv.slice(2));
         const bundleScriptList: BundleScript[] = [];
         const jsonConfig = new JSONConfig(args);
 
         if (args.print) {
             logger.info(
-                "main",
-                "config %o",
-                [...jsonConfig.getBundleArgs()]
+                "cli", "config %o", [...jsonConfig.getBundleArgs()]
                     .map(({config}) => config),
             );
 
@@ -45,7 +45,7 @@ export async function main(root?: string) {
         await service.start();
         exit(0);
     } catch (error) {
-        logger.error("main", error);
+        logger.error(error, "cli", "unexpected");
         exit(1);
     }
 }

@@ -34,32 +34,30 @@ export const NavbarDropdown = config.factory<MakeProps<INavbarDropdown>, NavbarD
                     }
 
                     setActive(!active);
-                },
-                [active],
+                }, [active],
             );
 
             p.onMouseLeave = React.useCallback(
                 () => {
                     timer = setTimeout(
-                        () => active && setActive(false),
-                        mouseLeaveTimeout || 500,
+                        () => active && setActive(false), mouseLeaveTimeout || 500,
                     );
-                },
-                [active],
+                }, [active],
             );
 
             p.onMouseEnter = React.useCallback(
-                () => clearTimeout(timer),
-                [active],
+                () => clearTimeout(timer), [active],
             );
         }
 
+        const cloneProps = {
+            ...buttonProps,
+            className: `${buttonProps.className || ""} navbar-link`,
+        };
+
         return (
             <NavbarElement active={active} dropdown={true} {...p}>
-                {React.cloneElement(
-                    button,
-                    {...buttonProps, className: `${buttonProps.className || ""} navbar-link`},
-                    buttonProps.children,
+                {React.cloneElement(button, cloneProps, buttonProps.children,
                 )}
                 <div className="navbar-dropdown">
                     {NavbarWithChild(elements)}

@@ -16,8 +16,8 @@ export const PaginationPager = config.factory<Record<any, any>, IPaginationPager
                         .map(({page}) => (
                             <li key={page}>
                                 <PaginationLink page={page}
-                                                set={set}
-                                                current={page === state.page}/>
+                                    set={set}
+                                    current={page === state.page}/>
                             </li>
                         ));
                 }}

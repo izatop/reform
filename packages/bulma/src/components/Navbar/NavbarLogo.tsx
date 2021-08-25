@@ -6,7 +6,7 @@ import {NavbarBurger} from "./NavbarBurger";
 import {NavbarContext, NavbarWithChild} from "./props";
 
 const config = ConfigFactory.create({component: "navbar-brand"});
-export const NavbarLogo = config.factory<MakeProps, { children: ReactNode }>(({props, children}) => (
+export const NavbarLogo = config.factory<MakeProps, {children: ReactNode}>(({props, children}) => (
     <div {...props}>
         {NavbarWithChild(children)}
 

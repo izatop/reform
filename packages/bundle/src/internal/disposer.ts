@@ -5,7 +5,7 @@ export type Disposable = () => unknown;
 
 const disposables: Disposable[] = [];
 
-export class DisposerStatic {
+export class Disposer {
     public static add(disposable: Disposable) {
         disposables.push(disposable);
     }

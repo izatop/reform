@@ -1,5 +1,21 @@
-export function entries<T extends Record<any, any>>(target: T) {
-    return Object.entries(target);
+export type PickEntry<T, K extends keyof T = keyof T> = [K, T[K]];
+export type PickEntryFn<T, R> = <K extends keyof T>(value: [K, T[K]]) => R;
+
+export function entries<T extends Record<any, any>>(target?: T): PickEntry<T>[] {
+    return Object.entries(target ?? {});
+}
+
+export function entriesMap<T extends Record<any, any>, R>(target: T, fn: PickEntryFn<T, R>): R[] {
+    return entries(target).map(fn);
+}
+
+export type EnsureTargetKey<T extends Record<any, any>, K extends keyof T> = {
+    [S in keyof T]: S extends K ? Exclude<T[S], undefined> : T[S]
+};
+
+export function has<T extends Record<any, any>,
+    K extends keyof T>(target: Partial<T>, key: K): target is EnsureTargetKey<T, K> {
+    return key in target;
 }
 
 export function isNull(target: unknown): target is null {
@@ -48,4 +64,8 @@ export function mergeReplaceArray<T extends any[]>(target: T): any[] {
 
 export function assign<C extends Record<any, any>>(conf: C, ...configs: (Partial<C> | undefined)[]): C {
     return Object.assign({}, conf, ...configs);
+}
+
+export function arrayify<T>(value: T | T[]) {
+    return Array.isArray(value) ? value : [value];
 }

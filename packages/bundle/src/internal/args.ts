@@ -53,6 +53,7 @@ export function getArgumentList(root?: string): IArgumentList {
                 break;
             case "--serve":
                 argumentList.serve = true;
+                argumentList.watch = true;
                 break;
 
             case "--dev":

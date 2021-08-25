@@ -62,8 +62,7 @@ export class Modal extends React.Component<MakeProps<IModal>, IModalState> {
             {
                 ...this.props,
                 active: this.state.state,
-            },
-            config,
+            }, config,
         );
 
         return ReactDOM.createPortal(
@@ -71,8 +70,7 @@ export class Modal extends React.Component<MakeProps<IModal>, IModalState> {
                 <div className="modal-background" onClick={this.close}/>
                 {this.getContent()}
                 <button onClick={this.close} className="modal-close is-large" aria-label="close"/>
-            </div>,
-            this.node,
+            </div>, this.node,
         );
     }
 

@@ -9,7 +9,7 @@ import {
 } from "../interfaces";
 import {CalendarLink} from "./CalendarLink";
 
-type Ref = { link: CalendarLink; dispose: () => void };
+type Ref = {link: CalendarLink; dispose: () => void};
 
 export abstract class CalendarControllerAbstract<M extends CalendarMode> {
     public readonly mode: M;

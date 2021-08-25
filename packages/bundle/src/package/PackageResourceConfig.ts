@@ -14,7 +14,7 @@ export class PackageResourceConfig {
         try {
             return new PackageResourceConfig(path, require(path));
         } catch (error) {
-            logger.error(this, error);
+            logger.error(error, this, "resolve -> %s", error.message);
             return new PackageResourceConfig(path, {});
         }
     }

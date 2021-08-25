@@ -5,18 +5,20 @@
     "repository": "https://github.com/izatop/reform",
     "scripts": {
         "clean": "rimraf dist tsconfig.tsbuildinfo",
-        "bundle": "bundle",
+        "bundle": "be",
         "bundle:watch": "yarn bundle -w",
         "test": "yarn clean && yarn bundle"
-    },
-    "devDependencies": {
-        "@reform/bundle": "^0.4.10",
-        "@reform/bundle-sass": "^0.4.10"
     },
     "author": {
         "name": "Artur Bier",
         "email": "izatop@gmail.com"
     },
     "private": true,
-    "license": "MIT"
+    "license": "MIT",
+    "dependencies": {
+        "@types/react": "^17.0.19",
+        "@types/react-dom": "^17.0.9",
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2"
+    }
 }

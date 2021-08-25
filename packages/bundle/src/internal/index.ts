@@ -6,3 +6,4 @@ export * from "./path";
 export * from "./main";
 export * from "./logger";
 export * from "./object";
+export * from "./disposer";

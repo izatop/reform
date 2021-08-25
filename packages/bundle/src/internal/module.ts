@@ -63,7 +63,7 @@ export function trySafe(label: LogTarget, fn: () => unknown) {
     try {
         fn();
     } catch (error) {
-        logger.error(label, error);
+        logger.error(error, label, "trySafe -> %s", error.message);
     }
 }
 

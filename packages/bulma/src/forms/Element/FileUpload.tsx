@@ -31,13 +31,13 @@ export const FileUpload = config.factoryRef<"input", MakeProps<IFileUpload>, Fil
             <label className="file-label">
                 <input {...p} className={"file-input"} type="file"/>
                 <span className="file-cta">
-              <span className="file-icon">
-                <i className="fas fa-upload"/>
-              </span>
-                <span className="file-label">
-                    {label || children}
+                    <span className="file-icon">
+                        <i className="fas fa-upload"/>
+                    </span>
+                    <span className="file-label">
+                        {label || children}
+                    </span>
                 </span>
-            </span>
                 {files && <span className="file-name">{files}</span>}
             </label>
         </div>

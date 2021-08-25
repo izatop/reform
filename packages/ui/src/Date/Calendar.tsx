@@ -33,11 +33,11 @@ export function Calendar<M extends CalendarMode>(props: MakeCalendarProps<ICalen
                     <TableRow key={key}>
                         {cells.map((day) => (
                             <CalendarCell ref={controller.createRef(day)}
-                                          key={day.getTime()}
-                                          onClick={onClick}
-                                          outOfRange={day.getMonth() !== date.getMonth()}
-                                          onMouseOver={onMouseOver}
-                                          date={day}/>
+                                key={day.getTime()}
+                                onClick={onClick}
+                                outOfRange={day.getMonth() !== date.getMonth()}
+                                onMouseOver={onMouseOver}
+                                date={day}/>
                         ))}
                     </TableRow>
                 ))}

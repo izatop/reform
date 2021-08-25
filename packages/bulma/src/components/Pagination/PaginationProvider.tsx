@@ -39,8 +39,7 @@ export const PaginationProvider = config.factory<MakeProps<IPaginationOptions>, 
                         onPageChange(newState.state as any);
                     }
                 }
-            },
-            deps,
+            }, deps,
         );
 
         const value = useMemo(() => ({state, set}), [state, set]);

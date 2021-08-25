@@ -49,7 +49,7 @@ export interface KnownProps {
 }
 
 export type ResolverProps = BaseProps & IsActive & IsColor & IsSize & AreSizes & KnownProps
-    & IBreakpoint;
+& IBreakpoint;
 
 export const defaultResolvers: MakePropertyResolver<ResolverProps> = {
     textSize: (v: string) => `is-size-${v}`,

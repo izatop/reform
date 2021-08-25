@@ -61,8 +61,8 @@ const renderNode = (path: BreadcrumbPath) => {
 export const Breadcrumbs = config.factory<BreadcrumbsProps, IBreadcrumbsAttr>(({props, children}) => {
     const {paths, ...p} = props;
     const breadcrumbs = React.useMemo(() => (paths
-            ? paths.map(renderNode)
-            : React.Children.toArray(children)
+        ? paths.map(renderNode)
+        : React.Children.toArray(children)
     ), [children, props.paths]);
 
     const lastChild = breadcrumbs.length - 1;

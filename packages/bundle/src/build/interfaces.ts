@@ -1,5 +1,5 @@
-import {Loader, Platform, Plugin, TreeShaking} from "esbuild";
-import {FileList} from "./Artifact/FileList";
+import {Format, Loader, Platform, Plugin, TreeShaking} from "esbuild";
+import {Directory, FileCopyList, FileEntryList} from "./Resources";
 import {BuildContext} from "./BuildContext";
 
 export type PWAManifest = Record<string, any>;
@@ -13,9 +13,9 @@ export interface IPWAApplicationConfig {
 
 export interface IBundleConfig {
     id?: string | number;
-    base: string;
-    build: string;
-    entry: string[];
+    bundle?: boolean;
+    format?: Format;
+    target?: string | string[];
     platform?: Platform;
     environment?: string[];
     variables?: Record<string, string | boolean | number>;
@@ -24,6 +24,7 @@ export interface IBundleConfig {
     serve?: {
         port: number;
         host?: string;
+        fallback?: boolean | Record<string, string>;
     };
 
     envFile?: string;
@@ -34,10 +35,11 @@ export interface IBundleConfig {
 }
 
 export interface IBundleScriptConfig extends IBundleConfig {
-    plugins?: Plugin[];
-    splitting?: boolean;
-    treeShaking?: true | TreeShaking;
-    files: FileList;
+    base: Directory;
+    build: Directory;
+    entry: FileEntryList;
+    files: FileCopyList;
+    plugins: Plugin[];
 }
 
 export type BuildServerHandle = (vhost: string | undefined,

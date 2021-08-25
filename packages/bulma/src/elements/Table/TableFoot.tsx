@@ -10,9 +10,9 @@ export type TableFootProps = MakeProps<{
 
 export const TableFoot: React.FunctionComponent<TableFootProps> = (props) => (
     <tfoot>
-    <TableRowContext.Provider value={TableHeadCell}>
-        {props.cells ? <TableRow cells={props.cells}/> : props.children}
-    </TableRowContext.Provider>
+        <TableRowContext.Provider value={TableHeadCell}>
+            {props.cells ? <TableRow cells={props.cells}/> : props.children}
+        </TableRowContext.Provider>
     </tfoot>
 );
 

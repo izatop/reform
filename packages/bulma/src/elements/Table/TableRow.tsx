@@ -7,7 +7,7 @@ export interface ITableRow {
     selected?: boolean;
 }
 
-export type TableRowProps = XProps<"tr"> & { cells?: React.ReactNode[] };
+export type TableRowProps = XProps<"tr"> & {cells?: React.ReactNode[]};
 
 const config = ConfigFactory.create({displayName: "TableRow"});
 export const TableRow = config.factory<MakeProps<ITableRow>, TableRowProps>(({props, children}) => {

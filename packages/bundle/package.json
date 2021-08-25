@@ -4,7 +4,7 @@
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "bin": {
-        "bundle": "dist/bin/bundle.js"
+        "be": "dist/bin/be.js"
     },
     "files": [
         "dist"
@@ -24,15 +24,14 @@
     },
     "dependencies": {
         "@types/glob": "^7.1.4",
-        "@types/parse5": "^6.0.1",
         "dotenv": "^10.0.0",
-        "esbuild": "^0.12.19",
+        "esbuild": "^0.12.22",
         "glob": "^7.1.7",
-        "parse5": "^6.0.1",
+        "path-to-regexp": "^6.2.0",
         "watcher": "^1.2.0"
     },
     "devDependencies": {
-        "@types/node": "^16.6.0",
+        "@types/node": "^16.7.1",
         "typescript-json-schema": "^0.50.1"
     },
     "publishConfig": {

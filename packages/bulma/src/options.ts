@@ -80,9 +80,9 @@ export enum Color {
 }
 
 export type ColorType = Color | "white" | "black" | "light" | "dark" | "primary" | "info"
-    | "link" | "success" | "warning" | "danger" | "black-bis" | "black-ter"
-    | "grey-darker" | "grey-dark" | "grey" | "grey-light" | "grey-lighter"
-    | "white-ter" | "white-bis" | "text" | "text-strong" | string;
+| "link" | "success" | "warning" | "danger" | "black-bis" | "black-ter"
+| "grey-darker" | "grey-dark" | "grey" | "grey-light" | "grey-lighter"
+| "white-ter" | "white-bis" | "text" | "text-strong" | string;
 
 export enum TextAlign {
     Center = "centered",

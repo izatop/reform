@@ -166,7 +166,7 @@ export class ConfigFactory {
         };
     }
 
-    private static getDisplayName(parameters: { displayName?: string; component?: string }) {
+    private static getDisplayName(parameters: {displayName?: string; component?: string}) {
         const {displayName, component} = parameters;
         if (displayName) {
             return displayName;
@@ -181,13 +181,11 @@ export class ConfigFactory {
 
     public factory<OPT = Record<any, any>
         , P = DefaultProps>(FN: CT<IComputed<P, OPT>>,
-                            defaultProps: Partial<P & OPT> = {}): React.FC<P & OPT> {
+        defaultProps: Partial<P & OPT> = {}): React.FC<P & OPT> {
         FN.displayName = this.config.displayName;
         const container: React.FC<P & OPT> = (props) => (
             React.createElement(
-                FN,
-                ConfigFactory.getPropsOf<P, OPT>(props as P & OPT, this.config),
-                props.children,
+                FN, ConfigFactory.getPropsOf<P, OPT>(props as P & OPT, this.config), props.children,
             )
         );
 
@@ -199,14 +197,12 @@ export class ConfigFactory {
     public factoryRef<K extends XPropsKeys,
         OPT = Record<any, any>,
         P = XProps<K>>(FN: CT<IComputed<P, OPT>>,
-                       defaultProps: Partial<PropsWithoutRef<P & OPT>> = {}) {
+        defaultProps: Partial<PropsWithoutRef<P & OPT>> = {}) {
 
         FN.displayName = this.config.displayName;
         const container = React.forwardRef<XElement<K>, P & OPT>((props, ref) => (
             React.createElement(
-                FN,
-                ConfigFactory.getPropsOf<P, OPT>({...props, ref} as P & OPT, this.config),
-                props.children,
+                FN, ConfigFactory.getPropsOf<P, OPT>({...props, ref} as P & OPT, this.config), props.children,
             )
         ));
 

@@ -5,7 +5,7 @@ import {MenuChildren} from "./MenuChildren";
 import {MenuNode} from "./Store/MenuNode";
 
 const renderLabel = (node: React.ReactNode, onClick: () => void) => {
-    if (React.isValidElement<{ onClick: () => void }>(node)) {
+    if (React.isValidElement<{onClick:() => void}>(node)) {
         return React.cloneElement(node, {...node.props, onClick});
     }
 
