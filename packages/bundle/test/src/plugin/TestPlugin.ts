@@ -1,8 +1,10 @@
 import {PluginAbstract} from "../../../src";
 
 export class TestPlugin extends PluginAbstract {
-    protected connect(): void {
-        return;
+    public readonly name = "test-plugin";
+
+    protected configure() {
+        // test
     }
 }
 
