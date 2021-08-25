@@ -105,8 +105,6 @@
         "object-curly-spacing": "off",
         "@typescript-eslint/object-curly-spacing": [
             "error"
-        ],
-        "camelcase": "off",
-        "@typescript-eslint/naming-convention": "error"
+        ]
     }
 }
