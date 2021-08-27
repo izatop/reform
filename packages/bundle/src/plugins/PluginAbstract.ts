@@ -1,6 +1,6 @@
-import {PartialMessage, PluginBuild} from "esbuild";
+import {PluginBuild} from "esbuild";
 import {BuildContext, BundleCache} from "../build";
-import {has, Promisify} from "../internal";
+import {has, Promisify, withError} from "../internal";
 import {IPluginEvent, PluginConfig, PluginEventErrorRet, PluginEventHandle, PluginEventKey, PluginListener} from "./interfaces";
 
 export abstract class PluginAbstract<C extends PluginConfig = null> {
@@ -84,13 +84,21 @@ export abstract class PluginAbstract<C extends PluginConfig = null> {
             .catch(this.report);
     }
 
-    private report = (error: Error): Promise<PluginEventErrorRet> => {
-        const errors: PartialMessage[] = [
-            {
-                text: error.message,
-                pluginName: this.name,
-            },
-        ];
+    private report = (error: unknown): Promise<PluginEventErrorRet> => {
+        const errors = withError(error,
+            (e) => [
+                {
+                    text: e.message,
+                    pluginName: this.name,
+                },
+            ],
+            () => [
+                {
+                    text: "Unknown error",
+                    pluginName: this.name,
+                },
+            ],
+        );
 
         return Promise.resolve({errors});
     };

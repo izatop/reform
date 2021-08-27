@@ -8,3 +8,4 @@ export * from "./logger";
 export * from "./object";
 export * from "./disposer";
 export * from "./resource";
+export * from "./error";

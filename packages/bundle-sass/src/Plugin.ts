@@ -15,21 +15,9 @@ export class Plugin extends PluginAbstract<Config> {
         const {filter, compress = false} = this.config;
 
         this.on("load", {filter}, async ({path}) => {
-            try {
-                const contents = await this.render({path, compress});
+            const contents = await this.render({path, compress});
 
-                return {contents, loader: "css"};
-            } catch (error) {
-                return {
-                    errors: [
-                        {
-                            text: error.message,
-                            location: error.location,
-                            pluginName: this.name,
-                        },
-                    ],
-                };
-            }
+            return {contents, loader: "css"};
         });
     }
 

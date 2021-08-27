@@ -1,10 +1,11 @@
+import {withError} from "./error";
 import logger, {LogTarget} from "./logger";
 
 export function trySafe(label: LogTarget, fn: () => unknown) {
     try {
         fn();
     } catch (error) {
-        logger.error(error, label, "trySafe -> %s", error.message);
+        withError(error, (e) => logger.error(e, label, "trySafe -> %s", e.message));
     }
 }
 

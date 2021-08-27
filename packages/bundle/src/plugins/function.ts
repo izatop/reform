@@ -1,6 +1,6 @@
 import {Plugin} from "esbuild";
 import {BuildContext} from "../build";
-import {assert, assign} from "../internal";
+import {assert, assign, withError} from "../internal";
 import logger from "../internal/logger";
 import {PluginCtor} from "./interfaces";
 import {PluginAbstract} from "./PluginAbstract";
@@ -19,7 +19,7 @@ export function load(id: string, context: BuildContext, config: unknown): Plugin
 
         return new plugin(context, config);
     } catch (error) {
-        logger.error(error, "plugin", "load -> %s", error.message);
+        withError(error, (e) => logger.error(e, "plugin", "load -> %s", e.message));
 
         throw new Error(`Can't load ${id}`);
     }

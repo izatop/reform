@@ -2,6 +2,7 @@ import {BuildAbstract, Build, BuildServer, BundleScript} from "../build";
 import {JSONConfig} from "../config";
 import {getArgumentList, IArgumentList} from "./args";
 import {Disposer} from "./disposer";
+import {withError} from "./error";
 import logger from "./logger";
 
 export function factory(args: IArgumentList, bundleConfigList: BundleScript[]): BuildAbstract {
@@ -45,7 +46,7 @@ export async function cli(root?: string) {
         await service.start();
         exit(0);
     } catch (error) {
-        logger.error(error, "cli", "unexpected");
+        logger.error(withError(error, (e) => e, () => new Error("Unknown error")), "cli", "unexpected");
         exit(1);
     }
 }

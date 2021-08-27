@@ -1,4 +1,5 @@
 import {dirname, join} from "path";
+import {withError} from "../internal";
 import logger from "../internal/logger";
 
 export class PackageResourceConfig {
@@ -14,7 +15,8 @@ export class PackageResourceConfig {
         try {
             return new PackageResourceConfig(path, require(path));
         } catch (error) {
-            logger.error(error, this, "resolve -> %s", error.message);
+            withError(error, (e) => logger.error(e, this, "resolve -> %s", e.message));
+
             return new PackageResourceConfig(path, {});
         }
     }

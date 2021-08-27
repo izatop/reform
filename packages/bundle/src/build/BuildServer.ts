@@ -3,7 +3,7 @@ import * as http from "http";
 import * as path from "path";
 import {URL} from "url";
 import {BuildAbstract} from "../build";
-import {assert, entries, isObject, onClose} from "../internal";
+import {assert, entries, isObject, onClose, withError} from "../internal";
 import logger from "../internal/logger";
 import {BuildServerHandle} from "./interfaces";
 import {pathToRegexp} from "path-to-regexp";
@@ -101,11 +101,13 @@ export class BuildServer extends BuildAbstract {
                 res.setHeader("content-type", type);
                 createReadStream(result.path).pipe(res);
             } catch (error) {
-                logger.error(error, this, "request -> %s", error.message);
+                withError(error, (e) => logger.error(e, this, "request -> %s", e.message));
+
+                const message = withError(error, (e) => e.message, () => "Unknown error");
 
                 res.statusCode = 404;
-                res.statusMessage = error.message;
-                res.end(error.message);
+                res.statusMessage = message;
+                res.end(message);
             }
         });
 
