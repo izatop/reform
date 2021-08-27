@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.4](https://github.com/izatop/reform/compare/v0.5.3...v0.5.4) (2021-08-27)
+
+
+### Bug Fixes
+
+* graphql ([5d4d204](https://github.com/izatop/reform/commit/5d4d20412b7c3247c0ff6e57b244eaae5b6e3416))
+
+
+
+
+
 ## [0.5.3](https://github.com/izatop/reform/compare/v0.5.2...v0.5.3) (2021-08-27)
 
 **Note:** Version bump only for package @reform/bundle-graphql
