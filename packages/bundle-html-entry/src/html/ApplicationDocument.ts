@@ -8,7 +8,7 @@ export class ApplicationDocument {
     readonly #document: Document;
 
     constructor(contents: string) {
-        this.#document = new Document(p5.parse(contents));
+        this.#document = new Document(contents);
     }
 
     public getEntries() {
@@ -54,7 +54,7 @@ export class ApplicationDocument {
         return sources;
     }
 
-    public build<C extends FileContentType>(entry: File<C>, publicPath: string, format: Format) {
+    public build<C extends FileContentType>(entry: File<C>, publicPath: string, format: Format, pretty = false) {
         for (const source of this.#document.child.query("script")) {
             source.remove();
         }
@@ -67,6 +67,6 @@ export class ApplicationDocument {
         script.setAttribute("async");
         script.setAttribute("type", format === "esm" ? "module" : "text/javascript");
 
-        return this.#document.serialize();
+        return this.#document.serialize(pretty);
     }
 }

@@ -1,15 +1,16 @@
 import {assert} from "@reform/bundle";
 import * as p5 from "parse5";
-import * as TreeAdapter from "parse5/lib/tree-adapters/default";
+import {MinifyAdapter} from "./Document/MinifyAdapter";
+import {PrettyAdapter} from "./Document/PrettyAdapter";
 import {Element} from "./Element";
-import {isElement} from "./functions";
+import {isElement, parseHTML} from "./functions";
 import {NodeAbstract} from "./NodeAbstract";
 
 export class Document extends NodeAbstract<p5.Document> {
     readonly #root: Element;
 
-    constructor(node: p5.Document) {
-        super(node);
+    constructor(contents: string) {
+        super(parseHTML(contents));
 
         const [root] = this
             .node
@@ -26,15 +27,6 @@ export class Document extends NodeAbstract<p5.Document> {
     }
 
     public serialize(pretty = false) {
-        const options = pretty
-            ? {}
-            : {
-                treeAdapter: {
-                    ...TreeAdapter,
-                    getTextNodeContent: (textNode: p5.TextNode) => textNode.value.trim(),
-                },
-            };
-
-        return p5.serialize(this.node, options);
+        return p5.serialize(this.node, {treeAdapter: pretty ? PrettyAdapter : MinifyAdapter});
     }
 }

@@ -62,7 +62,7 @@ export class DocFile extends File<string> {
 
     public async build(metafile?: Metafile) {
         const {relative} = this;
-        const {build: {prefix}} = this.#context;
+        const {build: {path: prefix}, publicPath, args} = this.#context;
         const dest = File.factory({prefix, relative});
         const document = new ApplicationDocument(this.contents);
 
@@ -72,14 +72,13 @@ export class DocFile extends File<string> {
         logger.info(this, "build -> %s?%s", entry.relative, entry.getHash());
 
         await this.#artifacts.build();
-        const publicPath = this.#context.publicPath;
         for (const [file, node] of document.getArtifacts()) {
             const relative = this.getArtifactRelativePath(file);
             const dest = this.#artifacts.getBuilt(relative);
             node.value = `${publicPath}/${file}?${dest.getHash()}`;
         }
 
-        const contents = document.build(entry, publicPath, this.#context.format);
+        const contents = document.build(entry, publicPath, this.#context.format, args.isDevelopment);
 
         await Promise.all([
             this.#artifacts.build(),
@@ -93,7 +92,7 @@ export class DocFile extends File<string> {
         for (const [file, value] of entries(metafile?.outputs)) {
             const entryPoint = join(src, this.relative);
             if (typeof file === "string" && value.entryPoint === entryPoint) {
-                return File.read({prefix: build, relative:relative(build, file)});
+                return File.read({prefix: build, relative: relative(build, file)});
             }
         }
     }
