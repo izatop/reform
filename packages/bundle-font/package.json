@@ -1,6 +1,6 @@
 {
     "name": "@reform/bundle-font",
-    "version": "0.5.1",
+    "version": "0.5.2",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "files": [
@@ -19,7 +19,7 @@
         "build": "tsc"
     },
     "dependencies": {
-        "@reform/bundle": "^0.5.1",
+        "@reform/bundle": "^0.5.2",
         "@types/node": "^16.7.2"
     },
     "publishConfig": {

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.2](https://github.com/izatop/reform/compare/v0.5.1...v0.5.2) (2021-08-27)
+
+
+### Bug Fixes
+
+* plugin name ([28f1ced](https://github.com/izatop/reform/commit/28f1ced50416a524ccd8f815a03cec6332562b8f))
+
+
+
+
+
 ## [0.5.1](https://github.com/izatop/reform/compare/v0.5.0...v0.5.1) (2021-08-26)
 
 

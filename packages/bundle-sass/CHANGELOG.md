@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.2](https://github.com/izatop/reform/compare/v0.5.1...v0.5.2) (2021-08-27)
+
+
+### Bug Fixes
+
+* typescript 4.4 ([114ad76](https://github.com/izatop/reform/commit/114ad7660f4b09a924ffb2f097cd7ef952d886c4))
+
+
+
+
+
 ## [0.5.1](https://github.com/izatop/reform/compare/v0.5.0...v0.5.1) (2021-08-26)
 
 
