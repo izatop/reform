@@ -3,10 +3,10 @@ import {assignWithFilter, BuildContext, File, getResourcePath, PluginAbstract} f
 export type Config = {filter: RegExp};
 
 export class Plugin extends PluginAbstract<Config> {
-    public readonly name = "@reform/bundle-sass";
+    public readonly name = "@reform/bundle-font";
 
     constructor(context: BuildContext, config?: Config) {
-        super(context, assignWithFilter({filter: /\.(eot|ttf|woff|woff2?|svg)([?|#].+)?$/}, config));
+        super(context, assignWithFilter({filter: /\.(eot|ttf|woff2?|svg)([?|#].+)?$/}, config));
     }
 
     protected configure(): void {
