@@ -25,7 +25,7 @@
             "id": "test",
             "base": "src",
             "preset": "default",
-            "entry": "index.tsx",
+            "entry": "index.html",
             "treeShaking": true,
             "plugins": {
                 "@reform/bundle-sass": {},
