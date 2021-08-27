@@ -12,11 +12,21 @@
                 "build": {
                     "type": "string"
                 },
+                "bundle": {
+                    "type": "boolean"
+                },
                 "entry": {
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
+                    "anyOf": [
+                        {
+                            "items": {
+                                "type": "string"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
                 },
                 "envFile": {
                     "type": "string"
@@ -32,6 +42,14 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "format": {
+                    "enum": [
+                        "cjs",
+                        "esm",
+                        "iife"
+                    ],
+                    "type": "string"
                 },
                 "id": {
                     "type": [
@@ -75,6 +93,16 @@
                 },
                 "serve": {
                     "properties": {
+                        "fallback": {
+                            "anyOf": [
+                                {
+                                    "$ref": "#/definitions/Record<string,string>"
+                                },
+                                {
+                                    "type": "boolean"
+                                }
+                            ]
+                        },
                         "host": {
                             "type": "string"
                         },
@@ -95,6 +123,19 @@
                 },
                 "splitting": {
                     "type": "boolean"
+                },
+                "target": {
+                    "anyOf": [
+                        {
+                            "items": {
+                                "type": "string"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
                 },
                 "treeShaking": {
                     "enum": [
@@ -146,6 +187,14 @@
                     },
                     "type": "object"
                 },
+                "@reform/bundle-html-entry": {
+                    "properties": {
+                        "filter": {
+                            "$ref": "#/definitions/RegExp"
+                        }
+                    },
+                    "type": "object"
+                },
                 "@reform/bundle-sass": {
                     "properties": {
                         "compress": {
@@ -161,6 +210,9 @@
             "type": "object"
         },
         "Record<string,IJSONBundle>": {
+            "type": "object"
+        },
+        "Record<string,string>": {
             "type": "object"
         },
         "Record<string,string|number|boolean>": {
