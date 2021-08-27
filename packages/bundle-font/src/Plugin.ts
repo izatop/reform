@@ -22,7 +22,7 @@ export class Plugin extends PluginAbstract<Config> {
             })
             .on("load", {namespace: "font", filter: /^./}, async (args) => {
                 const relativePath = this.getRelativePath(args.path);
-                const {contents} = await cache.store<File<Buffer>>(relativePath, fileFactory.read);
+                const {contents} = await cache.store<File<Buffer>>(relativePath, (file) => fileFactory.read(file));
 
                 return {
                     contents,

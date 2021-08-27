@@ -41,9 +41,7 @@ export function getModulePath(base: string) {
 }
 
 export function getResourcePath(resource: string) {
-    if (resource.includes("?") || resource.includes("#")) {
-        resource = resource.replace(/(\?.+|#.+)/, "");
-    }
+    resource = resource.replace(/([?#].+)?$/, "");
 
     if (isLocalResource(resource)) {
         return resource;
@@ -55,5 +53,6 @@ export function getResourcePath(resource: string) {
 
     const [base] = resource.split("/");
     const modulePath = getModulePath(base);
+
     return join(modulePath, resource);
 }

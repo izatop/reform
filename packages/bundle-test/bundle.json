@@ -28,7 +28,8 @@
             "entry": "index.html",
             "treeShaking": true,
             "plugins": {
-                "@reform/bundle-sass": {}
+                "@reform/bundle-sass": {},
+                "@reform/bundle-font": {}
             },
             "files": [
                 "sitemap/*",

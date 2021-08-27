@@ -130,6 +130,9 @@ export class BundleScript {
             plugins,
             sourcemap,
             entryPoints,
+            entryNames: "build/[name].[hash]",
+            chunkNames: "build/chunk/[name].[hash]", // @todo
+            assetNames: "build/asset/[name].[hash]", // @todo
             minify: args.isProduction,
             outdir: this.#config.build.path,
             outbase: this.#config.base.path,
