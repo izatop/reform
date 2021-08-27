@@ -1,9 +1,9 @@
 import React from "react";
 import {render} from "react-dom";
 import "./index.scss";
+import {Hello} from "./page/Hello";
 
 render(
-    <h1>Hello, world!!!</h1>,
+    <Hello/>,
     document.getElementById("app"),
 );
-

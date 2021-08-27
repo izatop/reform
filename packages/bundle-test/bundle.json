@@ -25,11 +25,12 @@
             "id": "test",
             "base": "src",
             "preset": "default",
-            "entry": "index.html",
+            "entry": "index.tsx",
             "treeShaking": true,
             "plugins": {
                 "@reform/bundle-sass": {},
-                "@reform/bundle-font": {}
+                "@reform/bundle-font": {},
+                "@reform/bundle-graphql": {}
             },
             "files": [
                 "sitemap/*",
