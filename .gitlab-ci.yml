@@ -21,6 +21,6 @@ build:
 
   script:
     - yarn build &&
-      lerna publish --conventional-commits --yes
+      yarn lerna publish --conventional-commits --yes
   #after_script:
   #  - yarn ci:coveralls
