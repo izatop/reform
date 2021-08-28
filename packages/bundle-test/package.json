@@ -1,6 +1,6 @@
 {
     "name": "@reform/bundle-test",
-    "version": "0.6.0",
+    "version": "0.6.1",
     "main": "src/index.ts",
     "repository": "https://github.com/izatop/reform",
     "scripts": {
@@ -10,7 +10,7 @@
     },
     "devDependencies": {
         "@reform/bundle": "^0.6.0",
-        "@reform/bundle-sass": "^0.6.0"
+        "@reform/bundle-sass": "^0.6.1"
     },
     "author": {
         "name": "Artur Bier",
