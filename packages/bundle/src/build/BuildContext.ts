@@ -1,9 +1,9 @@
 import {relative} from "path";
 import {join} from "path/posix";
-import {IArgumentList} from "../internal";
+import {assert, IArgumentList} from "../internal";
 import {Directory, File} from "./Resources";
 import {BundleCache} from "./BundleCache";
-import {Format, Platform} from "esbuild";
+import {Format, Loader, Platform} from "esbuild";
 
 export interface IBuildContextConfig {
     id: string | number;
@@ -24,6 +24,7 @@ export class BuildContext {
     public readonly format: Format;
     public readonly platform: Platform;
     public readonly entries: ReadonlyArray<string>;
+    public readonly loader = new Map<string, Loader>();
 
     // @todo
     public readonly publicPath = "";
@@ -42,6 +43,21 @@ export class BuildContext {
 
     public get watch() {
         return this.args.watch;
+    }
+
+    public addLoaders(loaders: [ext: string, loader: Loader][]) {
+        for (const [ext, loader] of loaders) {
+            assert(
+                !this.loader.has(ext) || this.loader.get(ext) === loader,
+                `Loader ${loader} for ${ext} already exists`,
+            );
+
+            this.loader.set(`.${ext.replace(/^\.*/, "")}`, loader);
+        }
+    }
+
+    public getLoaders() {
+        return [...this.loader.entries()];
     }
 
     public getRelative = (file: string) => {

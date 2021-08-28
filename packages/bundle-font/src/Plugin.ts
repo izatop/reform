@@ -1,32 +1,25 @@
-import {assignWithFilter, BuildContext, File, getResourcePath, PluginAbstract} from "@reform/bundle";
+import {assign, BuildContext, getResourcePath, PluginAbstract} from "@reform/bundle";
 
-export type Config = {filter: RegExp};
+export type Config = {fonts: string[]};
 
 export class Plugin extends PluginAbstract<Config> {
     public readonly name = "@reform/bundle-font";
 
     constructor(context: BuildContext, config?: Config) {
-        super(context, assignWithFilter({filter: /\.(eot|ttf|woff2?|svg)([?|#].+)?$/}, config));
+        super(context, assign({fonts: ["eot", "ttf", "woff", "woff2", "svg"]}, config));
+
+        const {config: {fonts}} = this;
+        this.context.addLoaders(fonts.map((ext) => [ext, "file"]));
     }
 
     protected configure(): void {
-        const {context: {cache, base}} = this;
-        const {fileFactory} = base;
+        const {config: {fonts}} = this;
+        const filter = new RegExp(`\.(${fonts.join("|")})([?|#].+)?$`);
 
         this
-            .on("resolve", this.config, (args) => {
+            .on("resolve", {filter}, (args) => {
                 return {
                     path: getResourcePath(args.path),
-                    namespace: "font",
-                };
-            })
-            .on("load", {namespace: "font", filter: /^./}, async (args) => {
-                const relativePath = this.getRelativePath(args.path);
-                const {contents} = await cache.store<File<Buffer>>(relativePath, (file) => fileFactory.read(file));
-
-                return {
-                    contents,
-                    loader: "file",
                 };
             });
     }

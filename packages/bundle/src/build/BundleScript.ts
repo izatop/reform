@@ -1,6 +1,6 @@
 import {config, DotenvParseOutput} from "dotenv";
 import {build, BuildFailure, BuildOptions} from "esbuild";
-import {assert, assign, defer, onClose, resolveThrough} from "../internal";
+import {assert, assign, defer, entries, fromEntries, onClose, resolveThrough} from "../internal";
 import logger from "../internal/logger";
 import {BuildContext} from "./BuildContext";
 import {IBundleScriptConfig} from "./interfaces";
@@ -124,7 +124,6 @@ export class BundleScript {
         define["DEVELOPMENT"] = !define["PRODUCTION"];
 
         return {
-            loader,
             define,
             bundle,
             plugins,
@@ -138,6 +137,7 @@ export class BundleScript {
             outbase: this.#config.base.path,
             metafile: true,
             tsconfig: resolveThrough(args.path, "tsconfig.json"),
+            loader: fromEntries(...this.#context.getLoaders(), ...entries(loader)),
             ...options,
         };
     }

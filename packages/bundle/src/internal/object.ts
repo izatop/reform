@@ -1,12 +1,15 @@
 export type PickEntry<T, K extends keyof T = keyof T> = [K, T[K]];
-export type PickEntryFn<T, R> = <K extends keyof T>(value: [K, T[K]]) => R;
 
-export function entries<T extends Record<any, any>>(target?: T): PickEntry<T>[] {
+export function entries<T>(target: Record<string, T>): [string, T][] {
     return Object.entries(target ?? {});
 }
 
-export function entriesMap<T extends Record<any, any>, R>(target: T, fn: PickEntryFn<T, R>): R[] {
-    return entries(target).map(fn);
+export function entriesMap<T, R>(target: Record<string, T>, fn: (entry: [key: string, value: T]) => R): R[] {
+    return entries<T>(target).map(fn);
+}
+
+export function fromEntries<T>(...args: [key: string, value: T][]) {
+    return Object.assign({}, ...args.map(([key, value]) => ({[key]: value})));
 }
 
 export type EnsureTargetKey<T extends Record<any, any>, K extends keyof T> = {

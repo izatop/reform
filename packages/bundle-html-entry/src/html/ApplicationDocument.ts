@@ -3,6 +3,7 @@ import {Format} from "esbuild";
 import {assert, File, FileContentType} from "@reform/bundle";
 import {Document} from "./node/Document";
 import {Element} from "./node/Element";
+import {Attachable} from "../interface";
 
 export class ApplicationDocument {
     readonly #document: Document;
@@ -39,12 +40,15 @@ export class ApplicationDocument {
                 case "icon":
                 case "manifest":
                 case "stylesheet":
+                case "apple-touch":
+                case "apple-touch-startup-image":
                     const href = link.ensureAttribute("href");
                     sources.push([href.value, href]);
+
                     break;
 
                 default:
-                    if (/^apple-.+-image$/.test(rel.value)) {
+                    if (/^apple-touch$/.test(rel.value)) {
                         const href = link.ensureAttribute("href");
                         sources.push([href.value, href]);
                     }
@@ -54,7 +58,11 @@ export class ApplicationDocument {
         return sources;
     }
 
-    public build<C extends FileContentType>(entry: File<C>, publicPath: string, format: Format, pretty = false) {
+    public build<C extends FileContentType>(entry: File<C>,
+        attachable: Attachable,
+        publicPath: string,
+        format: Format,
+        pretty = false) {
         for (const source of this.#document.child.query("script")) {
             source.remove();
         }
@@ -67,6 +75,20 @@ export class ApplicationDocument {
         script.setAttribute("async");
         script.setAttribute("type", format === "esm" ? "module" : "text/javascript");
 
+        if (attachable.stylesheet) {
+            this.attachStylesheet(publicPath, attachable.stylesheet);
+        }
+
         return this.#document.serialize(pretty);
+    }
+
+    private attachStylesheet(publicPath: string, files: string[]) {
+        const head = this.#document.child.ensureFirst("head");
+        for (const file of files) {
+            const link = Element.append(head, "link");
+            link.setAttribute("href", `${publicPath}/${file}`);
+            link.setAttribute("type", "text/css");
+            link.setAttribute("rel", "stylesheet");
+        }
     }
 }

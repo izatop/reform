@@ -1,3 +1,4 @@
+import {assert} from "@reform/bundle";
 import * as p5 from "parse5";
 import {AttributeList} from "./AttributeList";
 import {isElement, parseNS} from "./functions";
@@ -65,6 +66,13 @@ export class Element extends NodeAbstract<p5.Element> {
 
             found.push(...child.query(key));
         }
+
+        return found;
+    }
+
+    public ensureFirst(key: string) {
+        const [found] = this.query(key);
+        assert(found, `Node ${key} not found`);
 
         return found;
     }

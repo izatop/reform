@@ -17,6 +17,9 @@
                 "fallback": {
                     "/:route*": "index.html"
                 }
+            },
+            "loader": {
+                ".png": "file"
             }
         }
     },

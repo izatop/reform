@@ -2,17 +2,17 @@ import {IBundleConfig} from "../build";
 
 export interface IPluginList {
     "@reform/bundle-font": {
-        filter: RegExp;
+        resolve: string[];
     };
     "@reform/bundle-sass": {
-        filter: string;
+        filter?: string;
         compress?: RegExp;
     };
     "@reform/bundle-graphql": {
-        filter: RegExp;
+        filter?: RegExp;
     };
     "@reform/bundle-html-entry": {
-        filter: RegExp;
+        filter?: RegExp;
     };
 }
 

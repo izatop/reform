@@ -2,12 +2,12 @@ import {assert, BuildContext, entries, File, FileArtifactList, FileList, logger}
 import {ApplicationDocument} from "../html/ApplicationDocument";
 import {Metafile} from "esbuild";
 import {join, relative, resolve} from "path";
+import {Attachable, AttachFileType} from "../interface";
 
 export class DocFile extends File<string> {
     readonly #context: BuildContext;
     readonly #entries: string[] = [];
     readonly #artifacts: FileList;
-    readonly #cache = new Map<string, string>();
 
     constructor(context: BuildContext, file: File<string>) {
         super(file.config, file.contents);
@@ -60,7 +60,14 @@ export class DocFile extends File<string> {
         return base.getRelativePath(path);
     }
 
-    public async build(metafile?: Metafile) {
+    private getBuildRelativePath(file: string) {
+        const {build} = this.#context;
+        const path = resolve(build.prefix, file);
+
+        return build.getRelativePath(path);
+    }
+
+    public async build(metafile?: Metafile, attach: AttachFileType[] = []) {
         const {relative} = this;
         const {build: {path: prefix}, publicPath, args} = this.#context;
         const dest = File.factory({prefix, relative});
@@ -78,7 +85,24 @@ export class DocFile extends File<string> {
             node.value = `${publicPath}/${file}?${dest.getHash()}`;
         }
 
-        const contents = document.build(entry, publicPath, this.#context.format, args.isDevelopment);
+        const {outputs = {}} = metafile ?? {};
+        const files = Object.keys(outputs)
+            .map((file) => this.getBuildRelativePath(file));
+
+        const attachable: Attachable = {};
+        for (const type of attach) {
+            switch(type) {
+                case "stylesheet":
+                    const stylesheet = files.filter((file) => file.endsWith(".css"));
+                    if (stylesheet.length > 0) {
+                        attachable.stylesheet = stylesheet;
+                    }
+
+                    break;
+            }
+        }
+
+        const contents = document.build(entry, attachable, publicPath, this.#context.format, args.isDevelopment);
 
         await Promise.all([
             this.#artifacts.build(),
@@ -89,7 +113,7 @@ export class DocFile extends File<string> {
     private getEntryFile(metafile?: Metafile) {
         const {base: {relative: src}, build: {relative: build}} = this.#context;
 
-        for (const [file, value] of entries(metafile?.outputs)) {
+        for (const [file, value] of entries(metafile?.outputs ?? {})) {
             const entryPoint = join(src, this.relative);
             if (typeof file === "string" && value.entryPoint === entryPoint) {
                 return File.read({prefix: build, relative: relative(build, file)});
