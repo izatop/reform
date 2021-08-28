@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/izatop/reform/compare/v0.5.6...v0.6.0) (2021-08-28)
+
+
+### Features
+
+* refactor ([a7a63d5](https://github.com/izatop/reform/commit/a7a63d563e96e2f336fc0e82bc8b940f7a52c5f0))
+
+
+
+
+
 ## [0.5.6](https://github.com/izatop/reform/compare/v0.5.5...v0.5.6) (2021-08-28)
 
 

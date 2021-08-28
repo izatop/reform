@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/izatop/reform/compare/v0.5.6...v0.6.0) (2021-08-28)
+
+
+### Bug Fixes
+
+* clean ([b781fad](https://github.com/izatop/reform/commit/b781fadf6f527f24e0f4d6e825fbd60723fef1a6))
+* tsconfig ([f573851](https://github.com/izatop/reform/commit/f573851005fb87466d07686e7bef2ad474c28975))
+
+
+### Features
+
+* refactor ([a7a63d5](https://github.com/izatop/reform/commit/a7a63d563e96e2f336fc0e82bc8b940f7a52c5f0))
+
+
+
+
+
 ## [0.5.6](https://github.com/izatop/reform/compare/v0.5.5...v0.5.6) (2021-08-28)
 
 
