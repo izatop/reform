@@ -1,4 +1,4 @@
-image: node:15-slim
+image: node:15-alpine
 
 stages:
   - build
@@ -15,9 +15,10 @@ build:
 
   before_script:
     - export TZ=Europe/Moscow
+    - apk add --update git
     - export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
     - npm config set //registry.npmjs.org/:_authToken $NPM_TOKEN
-    - yarn install --cache-folder .yarn
+    - yarn install --pure-lockfile --cache-folder .yarn
 
   script:
     - yarn build &&
