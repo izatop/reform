@@ -76,7 +76,7 @@ export class DocFile extends File<string> {
         const entry = await this.getEntryFile(metafile);
         assert(entry, `Can't find entry of ${this.relative}`);
 
-        logger.info(this, "build -> %s?%s", entry.relative, entry.getHash());
+        logger.info(this, "build -> %s", entry.relative);
 
         await this.#artifacts.build();
         for (const [file, node] of document.getArtifacts()) {

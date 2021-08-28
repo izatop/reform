@@ -1,8 +1,10 @@
-import {assignWithFilter, BuildContext, PluginAbstract} from "@reform/bundle";
+import {assert, assignWithFilter, BuildContext, PluginAbstract, resolveThrough} from "@reform/bundle";
 import {Options, render} from "node-sass";
+import {dirname, join, resolve} from "path";
 import importer from "./importer";
 
 export type Config = {filter: RegExp; compress?: boolean};
+const stripRe = /[?#].+$/;
 
 export class Plugin extends PluginAbstract<Config> {
     public readonly name = "@reform/bundle-sass";
@@ -14,19 +16,22 @@ export class Plugin extends PluginAbstract<Config> {
     public configure(): void {
         const {filter, compress = false} = this.config;
 
-        this.on("load", {filter}, async ({path}) => {
-            const contents = await this.render({path, compress});
+        this
+            .on("resolve", {filter: /\.(eot|ttf|woff2?|svg)([?#].*)?$/}, (args) => {
+                return {path: this.normalize(args.importer, args.path)};
+            })
+            .on("load", {filter}, async ({path}) => {
+                const contents = await this.render({path, compress});
 
-            return {contents, loader: "css"};
-        });
+                return {contents, loader: "css"};
+            });
     }
 
     private render(options: {path: string; compress?: boolean}) {
         const {context: {cache}} = this;
         const {path, compress} = options;
-        const relativePath = this.getRelativePath(path);
 
-        return cache.store(relativePath, async () => {
+        return cache.store(path, async () => {
             const outputStyle = compress ? "compressed" : "expanded";
 
             const sassOptions: Options = {
@@ -45,5 +50,18 @@ export class Plugin extends PluginAbstract<Config> {
                 });
             });
         });
+    }
+
+    public normalize(importer: string, file: string) {
+        const path = dirname(importer);
+        const normalized = file.replace(stripRe, "");
+        if (normalized.startsWith("~")) {
+            const modulePath = resolveThrough(path, join("node_modules", normalized.substr(1)));
+            assert(modulePath, `Cannot find ${file} at ${path}`);
+
+            return modulePath;
+        }
+
+        return resolve(path, normalized);
     }
 }

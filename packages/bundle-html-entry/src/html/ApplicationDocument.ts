@@ -71,7 +71,7 @@ export class ApplicationDocument {
         assert(body, "Document body element not found");
 
         const script = Element.append(body, "script");
-        script.setAttribute("src", `${publicPath}/${entry.relative}?${entry.getHash()}`);
+        script.setAttribute("src", `${publicPath}/${entry.relative}`);
         script.setAttribute("async");
         script.setAttribute("type", format === "esm" ? "module" : "text/javascript");
 
