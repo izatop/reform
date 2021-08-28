@@ -3,13 +3,18 @@ image: node:15-slim
 stages:
   - build
 
-before_script:
-  - npm i -g yarn
-  - export PATH=`yarn global bin`:$PATH
-  - npm config set //registry.npmjs.org/:_authToken $NPM_TOKEN
-
 build:
   stage: build
+
+  cache:
+    paths:
+      - .yarn
+
+  before_script:
+    - npm config set //registry.npmjs.org/:_authToken $NPM_TOKEN
+    - export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+    - yarn install --cache-folder .yarn
+
   script:
     - yarn install --pure-lockfile
     - yarn build
