@@ -18,3 +18,4 @@ build:
   script:
     - yarn install --pure-lockfile
     - yarn build
+    - echo Hello
