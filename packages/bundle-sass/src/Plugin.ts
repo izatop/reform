@@ -15,9 +15,11 @@ export class Plugin extends PluginAbstract<Config> {
 
     public configure(): void {
         const {filter, compress = false} = this.config;
+        const fonts = ["eot", "ttf", "woff", "woff2", "svg"];
+        this.context.addLoaders(fonts.map((font) => [font, "file"]));
 
         this
-            .on("resolve", {filter: /\.(eot|ttf|woff2?|svg)([?#].*)?$/}, (args) => {
+            .on("resolve", {filter: new RegExp(`\.(${fonts.join("|")})([?#].*)?$`)}, (args) => {
                 return {path: this.normalize(args.importer, args.path)};
             })
             .on("load", {filter}, async ({path}) => {

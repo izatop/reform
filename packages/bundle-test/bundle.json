@@ -33,7 +33,6 @@
             "treeShaking": true,
             "plugins": {
                 "@reform/bundle-sass": {},
-                "@reform/bundle-font": {},
                 "@reform/bundle-graphql": {}
             },
             "files": [
