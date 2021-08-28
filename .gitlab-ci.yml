@@ -5,17 +5,22 @@ stages:
 
 build:
   stage: build
+  allow_failure: false
+  only:
+    - master
 
   cache:
     paths:
       - .yarn
 
   before_script:
-    - npm config set //registry.npmjs.org/:_authToken $NPM_TOKEN
+    - export TZ=Europe/Moscow
     - export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+    - npm config set //registry.npmjs.org/:_authToken $NPM_TOKEN
     - yarn install --cache-folder .yarn
 
   script:
-    - yarn install --pure-lockfile
-    - yarn build
-    - echo Hello
+    - yarn build &&
+      lerna publish --conventional-commits --yes
+  #after_script:
+  #  - yarn ci:coveralls
