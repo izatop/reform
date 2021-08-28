@@ -12,9 +12,6 @@
             "path": "bundle"
         },
         {
-            "path": "bundle-font"
-        },
-        {
             "path": "bundle-sass"
         },
         {
