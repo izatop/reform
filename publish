@@ -3,5 +3,5 @@
 yarn lint \
     && yarn test \
     && yarn build \
-    && yarn lerna publish version --conventional-commits --yes \
+    && yarn lerna publish --conventional-commits --yes \
     && yarn ci:coveralls
