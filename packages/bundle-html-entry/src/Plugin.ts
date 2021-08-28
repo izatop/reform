@@ -13,7 +13,7 @@ export class Plugin extends PluginAbstract<Config> {
         super(context, assignWithFilter({filter: /\.html?$/, attach: ["stylesheet"]}, config));
     }
 
-    protected async configure(): Promise<void> {
+    public async configure(): Promise<void> {
         const {filter, attach} = this.config;
         const {platform, entries} = this.context;
         for (const entry of entries.filter((file) => filter.test(file))) {

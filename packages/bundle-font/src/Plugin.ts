@@ -1,4 +1,4 @@
-import {assign, BuildContext, getResourcePath, PluginAbstract} from "@reform/bundle";
+import {assign, BuildContext, PluginAbstract} from "@reform/bundle";
 
 export type Config = {fonts: string[]};
 
@@ -7,20 +7,10 @@ export class Plugin extends PluginAbstract<Config> {
 
     constructor(context: BuildContext, config?: Config) {
         super(context, assign({fonts: ["eot", "ttf", "woff", "woff2", "svg"]}, config));
-
-        const {config: {fonts}} = this;
-        this.context.addLoaders(fonts.map((ext) => [ext, "file"]));
     }
 
-    protected configure(): void {
+    public configure(): void {
         const {config: {fonts}} = this;
-        const filter = new RegExp(`\.(${fonts.join("|")})([?|#].+)?$`);
-
-        this
-            .on("resolve", {filter}, (args) => {
-                return {
-                    path: getResourcePath(args.path),
-                };
-            });
+        this.context.addLoaders(fonts.map((ext) => [ext, "file"]));
     }
 }

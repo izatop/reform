@@ -5,9 +5,8 @@
     "repository": "https://github.com/izatop/reform",
     "scripts": {
         "clean": "rimraf dist tsconfig.tsbuildinfo",
-        "bundle": "be",
-        "bundle:watch": "yarn bundle -w",
-        "test": "yarn clean && yarn bundle"
+        "build": "be",
+        "test": "yarn clean && yarn build"
     },
     "devDependencies": {
         "@reform/bundle": "^0.5.5",

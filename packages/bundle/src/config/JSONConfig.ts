@@ -4,7 +4,7 @@ import {join} from "path";
 import {BuildContext, BundleArgs, Directory, FileCopyList, FileEntryList} from "../build";
 import {arrayify, assert, entriesMap, IArgumentList, mutate} from "../internal";
 import {load} from "../plugins";
-import {IJSONSchema} from "./interfaces";
+import {IJSONSchema, IPluginList} from "./interfaces";
 
 export class JSONConfig {
     public readonly config: IJSONSchema;
@@ -19,7 +19,7 @@ export class JSONConfig {
         this.config = require(path);
     }
 
-    public * getBundleArgs(): Generator<BundleArgs> {
+    public async * getBundleArgs(): AsyncGenerator<BundleArgs> {
         let increment = 1;
         const {preset: presetList = {}} = this.config;
         for (const {preset, ...next} of this.config?.bundle ?? []) {
@@ -51,17 +51,25 @@ export class JSONConfig {
                     platform,
                     files: new FileCopyList(context, files),
                     entry: new FileEntryList(context, arrayify(entry)),
-                    plugins: entriesMap(plugins ?? {}, ([id, options]) => {
-                        const plugin = load(id, context, options);
-                        return {
-                            name: plugin.name,
-                            setup(build: PluginBuild) {
-                                return plugin.setup(build);
-                            },
-                        };
-                    }),
+                    plugins: await this.getPlugins(context, plugins),
                 },
             };
         }
+    }
+
+    private getPlugins(context: BuildContext, plugins: Partial<IPluginList> = {}) {
+        const ops = entriesMap(plugins, async ([id, options]) => {
+            const plugin = load(id, context, options);
+            await plugin.configure();
+
+            return {
+                name: plugin.name,
+                setup(build: PluginBuild) {
+                    return plugin.setup(build);
+                },
+            };
+        });
+
+        return Promise.all(ops);
     }
 }

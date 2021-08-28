@@ -21,8 +21,6 @@ export abstract class PluginAbstract<C extends PluginConfig = null> {
     }
 
     public async setup(build: PluginBuild) {
-        await this.configure();
-
         const keys: PluginEventKey[] = ["start", "resolve", "load", "end"];
 
         for (const map of this.#events) {
@@ -52,7 +50,7 @@ export abstract class PluginAbstract<C extends PluginConfig = null> {
         }
     }
 
-    protected abstract configure(): Promisify<void>;
+    public abstract configure(): Promisify<void>;
 
     protected on<K extends PluginEventKey>(event: K, ...args: PluginListener<K>) {
         this.#events.push({[event]: args});

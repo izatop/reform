@@ -29,16 +29,18 @@ export async function cli(root?: string) {
         const bundleScriptList: BundleScript[] = [];
         const jsonConfig = new JSONConfig(args);
 
+        const configList = [];
+        for await (const config of jsonConfig.getBundleArgs()) {
+            configList.push(config);
+        }
+
         if (args.print) {
-            logger.info(
-                "cli", "config %o", [...jsonConfig.getBundleArgs()]
-                    .map(({config}) => config),
-            );
+            logger.info("cli", "config %o", configList.map(({config}) => config));
 
             exit(0);
         }
 
-        for (const {context, config} of jsonConfig.getBundleArgs()) {
+        for (const {context, config} of configList) {
             bundleScriptList.push(new BundleScript(context, config));
         }
 

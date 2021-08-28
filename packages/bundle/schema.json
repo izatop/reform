@@ -173,8 +173,11 @@
             "properties": {
                 "@reform/bundle-font": {
                     "properties": {
-                        "filter": {
-                            "$ref": "#/definitions/RegExp"
+                        "fonts": {
+                            "items": {
+                                "type": "string"
+                            },
+                            "type": "array"
                         }
                     },
                     "type": "object"

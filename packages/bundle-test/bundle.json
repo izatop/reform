@@ -19,7 +19,8 @@
                 }
             },
             "loader": {
-                ".png": "file"
+                ".png": "file",
+                ".svg": "file"
             }
         }
     },

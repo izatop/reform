@@ -1,4 +1,3 @@
-import {Plugin} from "esbuild";
 import {BuildContext} from "../build";
 import {assert, assign, withError} from "../internal";
 import logger from "../internal/logger";
@@ -9,7 +8,7 @@ export function isPluginCtor<P extends PluginAbstract>(type: unknown): type is P
     return typeof type === "function" && PluginAbstract.isPrototypeOf(type);
 }
 
-export function load(id: string, context: BuildContext, config: unknown): Plugin {
+export function load(id: string, context: BuildContext, config: unknown): PluginAbstract {
     logger.debug("plugin", "try -> %s", id);
 
     try {

@@ -11,7 +11,7 @@ export class Plugin extends PluginAbstract<Config> {
         super(context, assignWithFilter({filter: /\.(scss|sass)$/}, config));
     }
 
-    protected configure(): void {
+    public configure(): void {
         const {filter, compress = false} = this.config;
 
         this.on("load", {filter}, async ({path}) => {

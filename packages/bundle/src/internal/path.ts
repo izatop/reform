@@ -2,6 +2,12 @@ import {existsSync} from "fs";
 import * as path from "path";
 import {assert} from "./assert";
 
+/**
+ * @todo cache
+ * @param directory
+ * @param resource
+ * @returns string
+ */
 export function resolveThrough(directory: string, resource: string): string | undefined {
     const paths = directory
         .split(path.sep)

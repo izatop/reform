@@ -13,7 +13,7 @@ export class Plugin extends PluginAbstract<Config> {
         super(context, assignWithFilter({filter: /\.(graphql|gql)$/}, config));
     }
 
-    protected configure(): void {
+    public configure(): void {
         const {context: {cache, base: {fileFactory}}} = this;
         this.on("load", this.config, async (args) => {
             const file = this.getRelativePath(args.path);

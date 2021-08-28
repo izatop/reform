@@ -31,8 +31,6 @@ export class BundleScript {
 
         const {files} = this.#config;
 
-        logger.debug(this, "config -> %o", this.getBuildConfig());
-
         await this.check();
         await Promise.all([
             build(this.getBuildConfig()),
