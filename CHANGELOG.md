@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.5](https://github.com/izatop/reform/compare/v0.5.4...v0.5.5) (2021-08-28)
+
+
+### Bug Fixes
+
+* add lerna ([8d4e3af](https://github.com/izatop/reform/commit/8d4e3aff761ce92f93f709fbe1a014122b7a0203))
+* args ([9bcef96](https://github.com/izatop/reform/commit/9bcef961244cc92264bfd26f0b35573e966c4ce8))
+* ci ([ad81497](https://github.com/izatop/reform/commit/ad8149707397770ebab0ae20edf59314d4010c22))
+* ci ([5444455](https://github.com/izatop/reform/commit/54444550d911113d3b2226f6e8756e0a4a0cdbe4))
+* ci ([05412c3](https://github.com/izatop/reform/commit/05412c3a81b9efd296372af1a9dc3bdcdc2fe7dd))
+* ci ([fa6ac85](https://github.com/izatop/reform/commit/fa6ac85ac9c6d6a087dcb6798092779ed53b6f89))
+* ci ([60514e4](https://github.com/izatop/reform/commit/60514e4d652917d9895f267d4338cf7aa7463b55))
+* ci ([84b1c9c](https://github.com/izatop/reform/commit/84b1c9ceac16634994015a7f550c6c121759b826))
+* ci ([8f3b58e](https://github.com/izatop/reform/commit/8f3b58e37920b3f90be366204140d37725467637))
+* ci ([40a94b1](https://github.com/izatop/reform/commit/40a94b1a99fde196a4aad1c52a1f7b29eadf149d))
+* gitlab-ci ([d393dd2](https://github.com/izatop/reform/commit/d393dd222e22e85072f87f8c97845d15ed205e34))
+* gitlab-ci ([016bd0a](https://github.com/izatop/reform/commit/016bd0add0fbe6c7cd04e214567c3f1f7725781a))
+* plugins, update deps ([2e5f7f7](https://github.com/izatop/reform/commit/2e5f7f714fc0961f770c4cca72c528e3e257f54b))
+* publish ([1e76df7](https://github.com/izatop/reform/commit/1e76df70e4edfec2e586f57667bec2645cece2bc))
+* publish manually ([e3b56f4](https://github.com/izatop/reform/commit/e3b56f43c497671cc8b5e160ab16852db04e63cd))
+
+
+
+
+
 ## [0.5.4](https://github.com/izatop/reform/compare/v0.5.3...v0.5.4) (2021-08-27)
 
 
