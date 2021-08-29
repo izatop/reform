@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.3](https://github.com/izatop/reform/compare/v0.6.2...v0.6.3) (2021-08-29)
+
+**Note:** Version bump only for package @reform/bundle-html-entry
+
+
+
+
+
 ## [0.6.2](https://github.com/izatop/reform/compare/v0.6.1...v0.6.2) (2021-08-29)
 
 **Note:** Version bump only for package @reform/bundle-html-entry
