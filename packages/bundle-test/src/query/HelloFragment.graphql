@@ -1,0 +1,3 @@
+fragment HelloFragment on Hello {
+    hello
+}

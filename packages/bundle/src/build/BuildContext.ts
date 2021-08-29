@@ -25,6 +25,7 @@ export class BuildContext {
     public readonly platform: Platform;
     public readonly entries: ReadonlyArray<string>;
     public readonly loader = new Map<string, Loader>();
+    public readonly extensions = new Set<string>();
 
     // @todo
     public readonly publicPath = "";
@@ -54,6 +55,14 @@ export class BuildContext {
 
             this.loader.set(`.${ext.replace(/^\.*/, "")}`, loader);
         }
+    }
+
+    public addExtensions(...extensions: string[]) {
+        extensions.forEach((ext) => this.extensions.add(`.${ext.replace(/^\.*/, "")}`));
+    }
+
+    public getExtensions() {
+        return [...this.extensions.values()];
     }
 
     public getLoaders() {

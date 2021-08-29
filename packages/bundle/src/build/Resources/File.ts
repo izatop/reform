@@ -9,18 +9,14 @@ export type FileEnc = BufferEncoding;
 export type FileTag = Record<any, any>;
 export type FilePrefix = string | Directory;
 export type FileContentType = string | Buffer;
-export type FileContentTransform<T extends FileContentType | null> = T extends null
-    ? undefined
-    : (contents: T) => T;
+export type FileContentTransform<T extends FileContentType> = (contents: T) => T;
 
 export interface FileConfig<T extends FileContentType | null = null> {
     readonly prefix: FilePrefix;
     readonly relative: string;
-    readonly transform?: T extends null ? never : FileContentTransform<T>;
 }
 
 export class File<T extends FileContentType | null = null> extends ResourceAbstract {
-    #transform?: FileContentTransform<T>;
     #contents: T;
     #hash?: string;
 
@@ -31,7 +27,6 @@ export class File<T extends FileContentType | null = null> extends ResourceAbstr
 
         this.#config = config;
         this.#contents = contents;
-        this.#transform = config.transform;
     }
 
     public get id() {
@@ -48,6 +43,10 @@ export class File<T extends FileContentType | null = null> extends ResourceAbstr
 
     public get config() {
         return this.#config;
+    }
+
+    public includes(chunk: string) {
+        return this.#contents?.includes(chunk);
     }
 
     public hasContent(this: File<T>): this is File<FileContentType> {
@@ -75,10 +74,8 @@ export class File<T extends FileContentType | null = null> extends ResourceAbstr
         return new File<any>({prefix, relative}, await readFile(path, enc));
     }
 
-    public async transform<S extends FileContentType>(this: File<S>, transform: FileContentTransform<T>) {
-        const {prefix, relative} = this;
-
-        return File.factory({prefix, relative, transform}, this.contents);
+    public transform<S extends FileContentType>(this: File<S>, transform: FileContentTransform<S>): File<S> {
+        return new File(this.config, transform(this.contents));
     }
 
     public async copy<S extends FileContentType>(this: File<S>, dest: File<null>) {

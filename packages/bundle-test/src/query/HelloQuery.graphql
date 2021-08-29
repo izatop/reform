@@ -1,0 +1,7 @@
+#import HelloFragment
+
+query HelloWorld {
+    hello {
+        ...HelloFragment
+    }
+}

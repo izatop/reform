@@ -1,3 +1,3 @@
-declare module "*.gql";
+declare module "*.graphql";
 declare module "*.png";
 declare module "*.svg";
