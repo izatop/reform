@@ -32,7 +32,6 @@ export interface IBundleConfig {
     splitting?: boolean;
     treeShaking?: true | TreeShaking;
     sourcemap?: SourceMapVariant;
-    extensions?: string[];
 }
 
 export interface IBundleScriptConfig extends IBundleConfig {

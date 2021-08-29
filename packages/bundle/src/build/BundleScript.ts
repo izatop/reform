@@ -103,7 +103,6 @@ export class BundleScript {
             bundle = true,
             loader = {},
             plugins,
-            extensions = ["js", "jsx", "ts", "tsx", "css"],
             sourcemap = args.isDevelopment,
             variables = {},
             environment = [],
@@ -122,15 +121,12 @@ export class BundleScript {
         define["PRODUCTION"] = args.mode !== "development";
         define["DEVELOPMENT"] = !define["PRODUCTION"];
 
-        // this.#context.addExtensions("js", "jsx", "ts", "tsx");
-
         return {
             define,
             bundle,
             plugins,
             sourcemap,
             entryPoints,
-            // resolveExtensions: this.#context.getExtensions(),
             entryNames: "build/[name].[hash]",
             chunkNames: "build/chunk/[name].[hash]", // @todo
             assetNames: "build/asset/[name].[hash]", // @todo

@@ -11,7 +11,7 @@ export type FilePrefix = string | Directory;
 export type FileContentType = string | Buffer;
 export type FileContentTransform<T extends FileContentType> = (contents: T) => T;
 
-export interface FileConfig<T extends FileContentType | null = null> {
+export interface FileConfig {
     readonly prefix: FilePrefix;
     readonly relative: string;
 }
@@ -20,9 +20,9 @@ export class File<T extends FileContentType | null = null> extends ResourceAbstr
     #contents: T;
     #hash?: string;
 
-    readonly #config: FileConfig<T>;
+    readonly #config: FileConfig;
 
-    constructor(config: FileConfig<T>, contents: T) {
+    constructor(config: FileConfig, contents: T) {
         super(config.prefix, config.relative);
 
         this.#config = config;
@@ -53,15 +53,15 @@ export class File<T extends FileContentType | null = null> extends ResourceAbstr
         return this.contents !== null;
     }
 
-    public static factory(config: FileConfig<null>): File<null>;
-    public static factory<T extends FileContentType>(config: FileConfig<T>, contents: T): File<T>;
-    public static factory(config: FileConfig<any>, contents?: any): File<any> {
+    public static factory(config: FileConfig): File;
+    public static factory<T extends FileContentType>(config: FileConfig, contents: T): File<T>;
+    public static factory(config: FileConfig, contents?: any): File<any> {
         return new File<any>(config, contents ?? null);
     }
 
-    public static async read(config: FileConfig<string>, enc: FileEnc): Promise<File<string>>;
-    public static async read(config: FileConfig<Buffer>): Promise<File<Buffer>>;
-    public static async read(config: FileConfig<any>, enc?: any): Promise<File<any>> {
+    public static async read(config: FileConfig, enc: FileEnc): Promise<File<string>>;
+    public static async read(config: FileConfig): Promise<File<Buffer>>;
+    public static async read(config: FileConfig, enc?: any): Promise<File<any>> {
         return File.factory(config)
             .read(enc);
     }
