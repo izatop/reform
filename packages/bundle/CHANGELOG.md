@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.2](https://github.com/izatop/reform/compare/v0.6.1...v0.6.2) (2021-08-29)
+
+
+### Bug Fixes
+
+* plugin ([c0d0dde](https://github.com/izatop/reform/commit/c0d0ddea0405642a10132e3556af033c6e30bd63))
+
+
+
+
+
 # [0.6.0](https://github.com/izatop/reform/compare/v0.5.6...v0.6.0) (2021-08-28)
 
 **Note:** Version bump only for package @reform/bundle
