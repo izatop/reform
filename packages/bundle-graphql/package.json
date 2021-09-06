@@ -20,7 +20,7 @@
     },
     "dependencies": {
         "@reform/bundle": "^0.6.3",
-        "@types/node": "^16.7.4",
+        "@types/node": "^16.7.10",
         "graphql-tag": "^2.12.5"
     },
     "publishConfig": {
@@ -32,6 +32,6 @@
     },
     "license": "MIT",
     "devDependencies": {
-        "graphql": "^15.5.1"
+        "graphql": "^15.5.3"
     }
 }
