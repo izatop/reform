@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.5](https://github.com/izatop/reform/compare/v0.6.4...v0.6.5) (2021-09-07)
+
+
+### Bug Fixes
+
+* assign ([c8ddee9](https://github.com/izatop/reform/commit/c8ddee970581623992638d96025e066d7d7ed7c0))
+* revert & change .env assigning ([29dabeb](https://github.com/izatop/reform/commit/29dabeb6b04b762b6b63648edbbfd452d7ee2d98))
+
+
+
+
+
 ## [0.6.4](https://github.com/izatop/reform/compare/v0.6.3...v0.6.4) (2021-09-06)
 
 
