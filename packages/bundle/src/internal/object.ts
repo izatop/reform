@@ -66,7 +66,7 @@ export function mergeReplaceArray<T extends any[]>(target: T): any[] {
 }
 
 export function assign<C extends Record<any, any>>(conf: C, ...configs: (Partial<C> | undefined)[]): C {
-    return Object.assign(conf, ...configs);
+    return Object.assign({}, conf, ...configs);
 }
 
 export function arrayify<T>(value: T | T[]) {
