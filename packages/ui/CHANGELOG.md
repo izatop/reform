@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.7](https://github.com/izatop/reform/compare/v0.6.6...v0.6.7) (2021-09-09)
+
+
+### Bug Fixes
+
+* table factory create typing ([32c43d1](https://github.com/izatop/reform/commit/32c43d17fc1b893dcc75c2946decae685ab3e9d3))
+
+
+
+
+
 ## [0.6.6](https://github.com/izatop/reform/compare/v0.6.5...v0.6.6) (2021-09-09)
 
 **Note:** Version bump only for package @reform/ui
