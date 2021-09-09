@@ -67,7 +67,7 @@ export class TableFactory<T extends ITableSource = ITableSource>
         return state;
     }
 
-    public static create<T extends ITableSource>(_?: T): IFactoryType<T> {
+    public static create<T extends ITableSource>(_?: T[]): IFactoryType<T> {
         return {
             Factory: this,
             Config: TableConfig,

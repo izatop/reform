@@ -8,7 +8,7 @@ test("TableFactory", () => {
         {id: 2, f1: 98, f2: "Text 2"},
     ];
 
-    const Table = TableFactory.create<typeof data[0]>();
+    const Table = TableFactory.create(data);
 
     const element = (
         <Table.Factory data={data}>

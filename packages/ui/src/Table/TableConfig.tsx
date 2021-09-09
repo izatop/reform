@@ -1,5 +1,5 @@
-import {ITableRow, XProps} from "@reform/bulma";
 import * as React from "react";
+import {ITableRow, XProps} from "@reform/bulma";
 import {ITableSource} from "./props";
 import {ITableProperty} from "./TableProperty";
 
