@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.9](https://github.com/izatop/reform/compare/v0.6.8...v0.6.9) (2021-09-09)
+
+
+### Bug Fixes
+
+* rest ([ea8e917](https://github.com/izatop/reform/commit/ea8e9176f548532b7d11c0e7d312e53fbf025dda))
+
+
+
+
+
 ## [0.6.8](https://github.com/izatop/reform/compare/v0.6.7...v0.6.8) (2021-09-09)
 
 **Note:** Version bump only for package @reform/ui
