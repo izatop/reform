@@ -35,4 +35,8 @@ export class AttributeList {
 
         return node;
     }
+
+    public has(key: string) {
+        return this.#index.has(key);
+    }
 }

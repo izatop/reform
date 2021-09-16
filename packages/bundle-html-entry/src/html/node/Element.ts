@@ -53,6 +53,10 @@ export class Element extends NodeAbstract<p5.Element> {
         return this.#attributes.ensure(key);
     }
 
+    public hasAttribute(key: string) {
+        return this.#attributes.has(key);
+    }
+
     public get children() {
         return this.#children;
     }

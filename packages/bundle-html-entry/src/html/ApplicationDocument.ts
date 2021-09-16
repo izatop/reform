@@ -18,6 +18,10 @@ export class ApplicationDocument {
 
         const mime = ["text/javascript", "module"];
         for (const script of scripts) {
+            if (!script.hasAttribute("src")) {
+                continue;
+            }
+
             const type = script.getAttribute("type");
             if (type && mime.includes(type.value)) {
                 entries.push(script.ensureAttribute("src").value);
@@ -63,8 +67,11 @@ export class ApplicationDocument {
         publicPath: string,
         format: Format,
         pretty = false) {
+
         for (const source of this.#document.child.query("script")) {
-            source.remove();
+            if (source.hasAttribute("src")) {
+                source.remove();
+            }
         }
 
         const [body] = this.#document.child.query("body");
