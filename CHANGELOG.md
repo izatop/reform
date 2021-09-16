@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.10](https://github.com/izatop/reform/compare/v0.6.9...v0.6.10) (2021-09-16)
+
+
+### Bug Fixes
+
+* inline-script ([17a4efc](https://github.com/izatop/reform/commit/17a4efc21665d6f5d07d78ba84290b5eaf7333ac))
+
+
+
+
+
 ## [0.6.9](https://github.com/izatop/reform/compare/v0.6.8...v0.6.9) (2021-09-09)
 
 
