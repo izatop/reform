@@ -2,6 +2,15 @@ $fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
 @import "~@fortawesome/fontawesome-free/scss/fontawesome";
 @import "~@fortawesome/fontawesome-free/scss/solid";
 
-#id {
-    color: black;
+section {
+    margin-top: 2em;
+}
+
+.flex {
+    display: flex;
+}
+
+h1 {
+    font-size: 3em;
+    line-height: 0.5em;
 }

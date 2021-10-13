@@ -1,18 +1,16 @@
 import {TargetEvent} from "watcher/dist/enums";
-
-export type CacheQueueHandle = (event: TargetEvent) => unknown;
-export type CacheQueueDispose = () => void;
+import {CacheQueueDispose, CacheQueueHandle, CacheQueueOnceHandle} from "./interfaces";
 
 export class CacheQueue {
     public readonly id: string;
 
-    readonly #queue = new Map<string, Set<CacheQueueHandle>>();
+    readonly #queue = new Map<string, Set<CacheQueueHandle | CacheQueueOnceHandle>>();
 
     constructor(id: string) {
         this.id = id;
     }
 
-    public add(key: string, handle: CacheQueueHandle): CacheQueueDispose {
+    public add(key: string, handle: CacheQueueHandle | CacheQueueOnceHandle): CacheQueueDispose {
         const queue = this.ensure(key);
         queue.add(handle);
 

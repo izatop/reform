@@ -12,6 +12,12 @@ export class FileFactory {
         return File.factory({prefix, relative: file});
     }
 
+    public from(path: string) {
+        const {prefix: {path: prefix}} = this;
+        const relative = this.prefix.getRelativePath(path);
+        return File.factory({prefix, relative});
+    }
+
     public read(file: string): Promise<File<Buffer>>;
     public read(file: string, enc: FileEnc): Promise<File<string>>;
     public read(file: string, enc?: any): Promise<File<any>> {

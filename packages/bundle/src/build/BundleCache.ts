@@ -4,7 +4,8 @@ import logger from "../internal/logger";
 import {Directory, File} from "./Resources";
 import {BuildContext} from "./BuildContext";
 import {Disposer} from "../internal";
-import {CacheQueue, CacheQueueHandle} from "./Cache/CacheQueue";
+import {CacheQueue} from "./Cache/CacheQueue";
+import {CacheQueueHandle, CACHE_QUEUE_ONCE_QUEUE_HANDLE} from "./Cache/interfaces";
 
 export type CacheCallback<T> = (key: string) => Promise<T>;
 
@@ -46,6 +47,10 @@ export class BundleCache {
         this.#queue.add(key, handle);
     }
 
+    public once(key: string, handle: CacheQueueHandle) {
+        this.#queue.add(key, Object.assign(handle, {[CACHE_QUEUE_ONCE_QUEUE_HANDLE]: true}));
+    }
+
     public off(key: string) {
         logger.debug(this, "off -> %s", key);
         this.#queue.off(key);
@@ -63,6 +68,10 @@ export class BundleCache {
         }
 
         return value as T;
+    }
+
+    public drop(key: string) {
+        this.#store.delete(key);
     }
 
     public reset() {
