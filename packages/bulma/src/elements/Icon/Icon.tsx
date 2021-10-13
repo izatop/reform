@@ -1,4 +1,4 @@
-import { Children } from "react";
+import {Children} from "react";
 import {MakeProps} from "../../interfaces";
 import {IsColor, IsSize} from "../../props";
 import {ConfigFactory} from "../../utils";

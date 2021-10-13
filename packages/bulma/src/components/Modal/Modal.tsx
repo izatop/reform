@@ -1,4 +1,4 @@
-import { isValidElement, Component, ReactElement } from "react";
+import {isValidElement, Component, ReactElement} from "react";
 import * as ReactDOM from "react-dom";
 import {MakeProps} from "../../interfaces";
 import {ConfigFactory} from "../../utils";

@@ -1,4 +1,4 @@
-import { useMemo, ReactElement } from "react";
+import {useMemo, ReactElement} from "react";
 import {useDropdownState} from "../../functions";
 import {MakeProps, XProps} from "../../interfaces";
 import {ConfigFactory, Listener} from "../../utils";

@@ -1,4 +1,4 @@
-import { isValidElement } from "react";
+import {isValidElement} from "react";
 import {Icon} from "../../elements";
 import {MakeProps, XProps} from "../../interfaces";
 import {ConfigFactory} from "../../utils";

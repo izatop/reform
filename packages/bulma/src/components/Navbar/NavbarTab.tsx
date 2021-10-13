@@ -1,4 +1,4 @@
-import { cloneElement, ReactElement } from "react";
+import {cloneElement, ReactElement} from "react";
 import {MakeProps} from "../../interfaces";
 import {IsActive} from "../../props";
 import {ConfigFactory} from "../../utils";
