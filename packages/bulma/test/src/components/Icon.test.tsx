@@ -1,4 +1,3 @@
-import * as React from "react";
 import * as renderer from "react-test-renderer";
 import {Size} from "../../../src";
 import {Icon} from "../../../src/elements/Icon";

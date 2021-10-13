@@ -1,4 +1,3 @@
-import * as React from "react";
 import {MakeBreakpoint, XProps} from "../../interfaces";
 import {ConfigFactory} from "../../utils";
 

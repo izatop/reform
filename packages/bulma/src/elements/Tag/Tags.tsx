@@ -1,4 +1,3 @@
-import * as React from "react";
 import {MakeProps} from "../../interfaces";
 import {AreSizes} from "../../props";
 import {ConfigFactory} from "../../utils";

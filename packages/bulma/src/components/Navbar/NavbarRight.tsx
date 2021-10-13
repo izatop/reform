@@ -1,4 +1,3 @@
-import * as React from "react";
 import {ReactNode, ReactNodeArray} from "react";
 import {MakeProps} from "../../interfaces";
 import {ConfigFactory} from "../../utils";

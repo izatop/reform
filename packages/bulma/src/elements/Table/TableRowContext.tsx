@@ -1,4 +1,4 @@
-import * as React from "react";
+import { createContext } from "react";
 import {TableCell} from "./TableCell";
 
-export const TableRowContext = React.createContext(TableCell);
+export const TableRowContext = createContext(TableCell);

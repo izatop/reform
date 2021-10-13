@@ -1,4 +1,4 @@
-import * as React from "react";
+import { useMemo } from "react";
 import {MakeProps, XProps} from "../../interfaces";
 import {IsColor, IsSize} from "../../props";
 import {ConfigFactory} from "../../utils";
@@ -48,7 +48,7 @@ const getOptions = (options: SelectOptionType[], emptiness?: string | boolean) =
 
 export const Select = config.factoryRef<"select", MakeProps<ISelect>, SelectProps>(({props}) => {
     const {className, options, emptiness, ...p} = props;
-    const optimizedOptions = React.useMemo(() => getOptions(options, emptiness), [options, emptiness]);
+    const optimizedOptions = useMemo(() => getOptions(options, emptiness), [options, emptiness]);
     return (
         <div className={className}>
             <select {...p}>

@@ -1,4 +1,3 @@
-import * as React from "react";
 import {ConfigFactory} from "../../utils";
 import {PaginationLink} from "./PaginationLink";
 import {IPaginationPagerProps, PaginationContext} from "./props";

@@ -1,4 +1,3 @@
-import * as React from "react";
 import * as renderer from "react-test-renderer";
 import {Button, Dropdown, DropdownDivider, DropdownElement} from "../../../src";
 

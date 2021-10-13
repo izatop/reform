@@ -1,5 +1,4 @@
-import * as React from "react";
-import {ReactElement} from "react";
+import { useState, useCallback, ReactElement } from "react";
 import {MakeProps, XProps} from "../../interfaces";
 import {IsColor} from "../../props";
 import {ConfigFactory} from "../../utils";
@@ -27,8 +26,8 @@ const config = ConfigFactory.create({
 });
 
 export const Navbar = config.factory<MakeProps<INavbar>, INavbarProps>(({props, options: {fixed}, children}) => {
-    const [state, setState] = React.useState(false);
-    const toggle = React.useCallback(() => setState(!state), [state]);
+    const [state, setState] = useState(false);
+    const toggle = useCallback(() => setState(!state), [state]);
     if (fixed) {
         const bodyClass = fixed === true || fixed === "top" ? "has-navbar-fixed-top" : "has-navbar-fixed-bottom";
         if (!document.body.classList.contains(bodyClass)) {

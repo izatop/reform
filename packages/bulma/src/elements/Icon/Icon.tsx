@@ -1,4 +1,4 @@
-import * as React from "react";
+import { Children } from "react";
 import {MakeProps} from "../../interfaces";
 import {IsColor, IsSize} from "../../props";
 import {ConfigFactory} from "../../utils";
@@ -30,6 +30,6 @@ const config = ConfigFactory.create({
 export const Icon = config.factory<MakeProps<IIconInput>, IIcon>(({props: {className, ...props}, children}) => (
     <>
         <span className={className}><FontAwesome {...props}/></span>
-        {React.Children.count(children) > 0 && <span>{children}</span>}
+        {Children.count(children) > 0 && <span>{children}</span>}
     </>
 ));

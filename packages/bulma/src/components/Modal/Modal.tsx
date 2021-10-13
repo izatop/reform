@@ -1,5 +1,4 @@
-import * as React from "react";
-import {ReactElement} from "react";
+import { isValidElement, Component, ReactElement } from "react";
 import * as ReactDOM from "react-dom";
 import {MakeProps} from "../../interfaces";
 import {ConfigFactory} from "../../utils";
@@ -20,7 +19,7 @@ export interface IModal {
 
 const config = ConfigFactory.createConfig({component: "modal"});
 
-export class Modal extends React.Component<MakeProps<IModal>, IModalState> {
+export class Modal extends Component<MakeProps<IModal>, IModalState> {
     public state = this.resolveState(this.props.active || false);
 
     private node = document.createElement("div");
@@ -75,7 +74,7 @@ export class Modal extends React.Component<MakeProps<IModal>, IModalState> {
     }
 
     private getContent() {
-        if (React.isValidElement(this.props.children)) {
+        if (isValidElement(this.props.children)) {
             return this.props.children;
         }
 

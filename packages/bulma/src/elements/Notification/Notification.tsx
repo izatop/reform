@@ -1,4 +1,3 @@
-import * as React from "react";
 import {MakeProps, XProps} from "../../interfaces";
 import {IsColor} from "../../props";
 import {ConfigFactory} from "../../utils";

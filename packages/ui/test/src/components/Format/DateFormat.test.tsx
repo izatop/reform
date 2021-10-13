@@ -1,4 +1,3 @@
-import * as React from "react";
 import renderer from "react-test-renderer";
 import {DateFormat, DateTimeFormat, TimeFormat} from "../../../../src/Format";
 

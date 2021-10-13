@@ -1,4 +1,3 @@
-import * as React from "react";
 import {ConfigFactory} from "../../utils";
 
 const config = ConfigFactory.create({component: "message-body"});

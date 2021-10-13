@@ -1,5 +1,4 @@
-import * as React from "react";
-import {ReactElement} from "react";
+import { cloneElement, ReactElement } from "react";
 import {MakeProps} from "../../interfaces";
 import {ConfigFactory} from "../../utils";
 
@@ -14,7 +13,7 @@ export interface IDropdownElementProps {
 const config = ConfigFactory.create({component: "dropdown-item"});
 export const DropdownElement = config.factory<MakeProps<IDropdownElement>, IDropdownElementProps>(
     ({props, children}) => (
-        React.cloneElement(
+        cloneElement(
             children, {
                 ...children.props,
                 ...props,

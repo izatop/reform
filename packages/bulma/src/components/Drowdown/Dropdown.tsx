@@ -1,5 +1,4 @@
-import * as React from "react";
-import {ReactElement} from "react";
+import { useMemo, ReactElement } from "react";
 import {useDropdownState} from "../../functions";
 import {MakeProps, XProps} from "../../interfaces";
 import {ConfigFactory, Listener} from "../../utils";
@@ -38,7 +37,7 @@ export const Dropdown = config.factory<MakeProps<IDropdownOptions>, DropdownProp
         listener,
     });
 
-    const className = React.useMemo(
+    const className = useMemo(
         () => ConfigFactory.resolveClassName(
             {...options, active: dispatcher.state}, config.config,
         ), [dispatcher],

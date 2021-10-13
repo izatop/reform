@@ -1,4 +1,3 @@
-import * as React from "react";
 import {ConfigFactory} from "../../utils";
 
 interface IPaginationLink {
