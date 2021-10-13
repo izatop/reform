@@ -126,6 +126,9 @@ export class BundleScript {
             plugins,
             sourcemap,
             entryPoints,
+            banner: {
+                js: "import {jsx as _jsx} from 'react/jsx-runtime';",
+            },
             entryNames: "build/[name].[hash]",
             chunkNames: "build/chunk/[name].[hash]", // @todo
             assetNames: "build/asset/[name].[hash]", // @todo

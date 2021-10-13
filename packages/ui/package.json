@@ -31,8 +31,10 @@
     },
     "dependencies": {
         "@reform/bulma": "^0.6.6",
-        "@types/react": "^17.0.20",
-        "bulma": "^0.9.3",
+        "@types/react": "^17.0.29",
+        "bulma": "^0.9.3"
+    },
+    "peerDependencies": {
         "react": "^17.0.2"
     },
     "license": "MIT"

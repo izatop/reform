@@ -1,7 +1,14 @@
 import {PluginBuild} from "esbuild";
 import {BuildContext, BundleCache} from "../build";
 import {has, Promisify, withError} from "../internal";
-import {IPluginEvent, PluginConfig, PluginEventErrorRet, PluginEventHandle, PluginEventKey, PluginListener} from "./interfaces";
+import {
+    IPluginEvent,
+    PluginConfig,
+    PluginEventErrorRet,
+    PluginEventHandle,
+    PluginEventKey,
+    PluginListener,
+} from "./interfaces";
 
 export abstract class PluginAbstract<C extends PluginConfig = null> {
     public abstract readonly name: string;

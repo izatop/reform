@@ -1,4 +1,14 @@
-import {BuildResult, OnLoadArgs, OnLoadOptions, OnLoadResult, OnResolveArgs, OnResolveOptions, OnResolveResult, OnStartResult, PartialMessage} from "esbuild";
+import {
+    BuildResult,
+    OnLoadArgs,
+    OnLoadOptions,
+    OnLoadResult,
+    OnResolveArgs,
+    OnResolveOptions,
+    OnResolveResult,
+    OnStartResult,
+    PartialMessage,
+} from "esbuild";
 import {BuildContext} from "../build";
 import {Promisify} from "../internal";
 import {PluginAbstract} from "./PluginAbstract";

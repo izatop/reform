@@ -1,4 +1,4 @@
-import {Format, Loader, Platform, Plugin, TreeShaking} from "esbuild";
+import {Format, Loader, Platform, Plugin} from "esbuild";
 import {Directory, FileCopyList, FileEntryList} from "./Resources";
 import {BuildContext} from "./BuildContext";
 
@@ -30,7 +30,7 @@ export interface IBundleConfig {
     envFile?: string;
 
     splitting?: boolean;
-    treeShaking?: true | TreeShaking;
+    treeShaking?: boolean;
     sourcemap?: SourceMapVariant;
 }
 
