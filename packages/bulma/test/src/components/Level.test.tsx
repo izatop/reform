@@ -1,3 +1,4 @@
+import * as React from "react";
 import * as renderer from "react-test-renderer";
 import {Level, LevelElement, LevelLeft, LevelRight} from "../../../src";
 
