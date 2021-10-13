@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/izatop/reform/compare/v0.6.10...v0.7.0) (2021-10-13)
+
+
+### Bug Fixes
+
+* tests ([4a93efb](https://github.com/izatop/reform/commit/4a93efb5e9b29683225f460fe0c94b7a7e704ac2))
+
+
+### Features
+
+* update deps ([264f90b](https://github.com/izatop/reform/commit/264f90b46b472246643e0d3e000bca4008e0f8b3))
+* update to react v17 ([9c350bb](https://github.com/izatop/reform/commit/9c350bbd22a4ee1e03e580314f995084132dceeb))
+
+
+
+
+
 ## [0.6.9](https://github.com/izatop/reform/compare/v0.6.8...v0.6.9) (2021-09-09)
 
 

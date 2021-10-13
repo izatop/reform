@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/izatop/reform/compare/v0.6.10...v0.7.0) (2021-10-13)
+
+
+### Bug Fixes
+
+* scss cache ([befe315](https://github.com/izatop/reform/commit/befe315f2e478dcfcd465c53819884c25239868a))
+
+
+### Features
+
+* update deps ([264f90b](https://github.com/izatop/reform/commit/264f90b46b472246643e0d3e000bca4008e0f8b3))
+
+
+
+
+
 ## [0.6.6](https://github.com/izatop/reform/compare/v0.6.5...v0.6.6) (2021-09-09)
 
 **Note:** Version bump only for package @reform/bundle
