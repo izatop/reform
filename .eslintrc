@@ -3,26 +3,42 @@
     "plugins": [
         "@typescript-eslint",
         "unused-imports",
+        "import",
         "react"
     ],
     "extends": [
+        "eslint:recommended",
         "plugin:@typescript-eslint/recommended",
+        "plugin:import/recommended",
+        "plugin:import/typescript",
         "plugin:react/recommended"
     ],
     "settings": {
         "react": {
             "version": "detect"
-        }
+        },
+        "import/extensions": [
+            ".ts",
+            ".tsx"
+        ]
     },
     "rules": {
         "max-len": [
-            "warn",
+            "error",
             120
         ],
         "semi": "off",
+        "linebreak-style": [
+            "error",
+            "unix"
+        ],
         "@typescript-eslint/semi": [
             "error",
             "always"
+        ],
+        "curly": [
+            "error",
+            "all"
         ],
         "quotes": "off",
         "@typescript-eslint/quotes": "error",
@@ -47,14 +63,43 @@
                 "functions": "always-multiline"
             }
         ],
+        "object-curly-newline": [
+            "error",
+            {
+                "ObjectExpression": {
+                    "multiline": true,
+                    "minProperties": 5
+                },
+                "ObjectPattern": {
+                    "multiline": true,
+                    "minProperties": 5
+                },
+                "ImportDeclaration": {
+                    "multiline": true,
+                    "minProperties": 5
+                },
+                "ExportDeclaration": {
+                    "multiline": true,
+                    "minProperties": 5
+                }
+            }
+        ],
+        "comma-spacing": "error",
         "unused-imports/no-unused-imports": "error",
         "unused-imports/no-unused-vars": [
             "warn",
             {
                 "vars": "all",
-                "varsIgnorePattern": "^_",
                 "args": "after-used",
+                "varsIgnorePattern": "^_",
                 "argsIgnorePattern": "^_"
+            }
+        ],
+        "import/order": [
+            "error",
+            {
+                "warnOnUnassignedImports": false,
+                "newlines-between": "never"
             }
         ],
         "space-in-parens": [
@@ -100,8 +145,6 @@
                 }
             }
         ],
-        "react/jsx-uses-react": "off",
-        "react/react-in-jsx-scope": "off",
         "react/prop-types": "off",
         "react/display-name": "off",
         "object-curly-spacing": "off",
