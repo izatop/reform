@@ -4,8 +4,20 @@ import logger from "../internal/logger";
 import {PluginCtor} from "./interfaces";
 import {PluginAbstract} from "./PluginAbstract";
 
+const isPrototypeOf = (target: unknown, value: unknown) => {
+    if (typeof target !== "object" || target === null) {
+        return false;
+    }
+
+    if (typeof value === "object" && value) {
+        return Object.prototype.isPrototypeOf.call(target, value);
+    }
+
+    return false;
+};
+
 export function isPluginCtor<P extends PluginAbstract>(type: unknown): type is PluginCtor<P> {
-    return typeof type === "function" && PluginAbstract.isPrototypeOf(type);
+    return typeof type === "function" && isPrototypeOf(PluginAbstract, type);
 }
 
 export function load(id: string, context: BuildContext, config: unknown): PluginAbstract {

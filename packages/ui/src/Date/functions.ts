@@ -61,7 +61,9 @@ export function useCalendarMonth(options: DateRangeOptions = {}) {
             ]);
         }
 
-        return {dates, week, month, year, day, locales};
+        return {
+            dates, week, month, year, day, locales,
+        };
     }, [options.date, options.startWeekDay]);
 }
 

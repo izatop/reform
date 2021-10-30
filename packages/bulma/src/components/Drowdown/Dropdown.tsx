@@ -28,7 +28,9 @@ export type DropdownProps = XProps<"div"> & IDropdown;
 
 const config = ConfigFactory.create({component: "dropdown"});
 export const Dropdown = config.factory<MakeProps<IDropdownOptions>, DropdownProps>(({props, children, options}) => {
-    const {active, defaultActive, listener, closeOnLeave, closeOnLeaveTimeout, icon, button, ...p} = props;
+    const {
+        active, defaultActive, listener, closeOnLeave, closeOnLeaveTimeout, icon, button, ...p
+    } = props;
     const dispatcher = useDropdownState({
         active,
         defaultActive,

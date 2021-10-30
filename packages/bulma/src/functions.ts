@@ -30,7 +30,9 @@ export interface IUseDropdownDispatcher {
 
 export function useDropdownState(options: IUseDropdownStateOptions): IUseDropdownDispatcher {
     const controlled = typeof options.active === "boolean";
-    const {active, defaultActive, closeOnLeave, closeOnLeaveTimeout, listener} = options;
+    const {
+        active, defaultActive, closeOnLeave, closeOnLeaveTimeout, listener,
+    } = options;
     const [state, setActive] = useState<boolean>(active ?? defaultActive ?? false);
     const onLeaveTimeout = useTimeout(closeOnLeaveTimeout);
     const onClickOutTimeout = useTimeout(10);

@@ -1,6 +1,6 @@
-import {assert, resolveThrough} from "@reform/bundle";
 import {dirname, join} from "path";
 import {basename} from "path/posix";
+import {assert, resolveThrough} from "@reform/bundle";
 
 function resolveUrl(initiator: string, url: string): string {
     if (url.startsWith("~")) {

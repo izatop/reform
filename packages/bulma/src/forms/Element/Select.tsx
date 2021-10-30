@@ -36,7 +36,7 @@ const config = ConfigFactory.create({
 });
 
 const getOptions = (options: SelectOptionType[], emptiness?: string | boolean) => {
-    if (!!emptiness) {
+    if (emptiness) {
         return [
             typeof emptiness === "string" ? {label: emptiness} : undefined,
             ...options,

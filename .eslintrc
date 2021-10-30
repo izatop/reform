@@ -102,6 +102,7 @@
                 "newlines-between": "never"
             }
         ],
+        "import/no-named-as-default": "off",
         "space-in-parens": [
             "error",
             "never"
@@ -147,6 +148,7 @@
         ],
         "react/prop-types": "off",
         "react/display-name": "off",
+        "react/react-in-jsx-scope": "off",
         "object-curly-spacing": "off",
         "@typescript-eslint/object-curly-spacing": [
             "error"

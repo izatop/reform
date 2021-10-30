@@ -2,11 +2,19 @@ import {createReadStream, promises as fs} from "fs";
 import * as http from "http";
 import * as path from "path";
 import {URL} from "url";
+import {pathToRegexp} from "path-to-regexp";
 import {BuildAbstract} from "../build";
-import {assert, entries, isObject, onClose, withError} from "../internal";
+import {
+    assert,
+    entries,
+    isObject,
+    onClose,
+    withError,
+} from "../internal";
 import logger from "../internal/logger";
 import {BuildServerHandle} from "./interfaces";
-import {pathToRegexp} from "path-to-regexp";
+
+type Handle = (resource: string) => Promise<{path: string}>;
 
 export class BuildServer extends BuildAbstract {
     public async watch() {
@@ -83,7 +91,7 @@ export class BuildServer extends BuildAbstract {
             [".js.map", "application/json"],
         ]);
 
-        const handles = new Map<string,(resource: string) => Promise<{path: string}>>();
+        const handles = new Map<string, Handle>();
         const server = http.createServer(async (req, res) => {
             try {
                 const {host: headerHost = "localhost"} = req.headers;

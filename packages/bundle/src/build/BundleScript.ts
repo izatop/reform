@@ -1,6 +1,8 @@
 import {config, DotenvParseOutput} from "dotenv";
 import {build, BuildFailure, BuildOptions} from "esbuild";
-import {assert, assign, defer, entries, fromEntries, onClose, resolveThrough} from "../internal";
+import {
+    assert, assign, defer, entries, fromEntries, onClose, resolveThrough,
+} from "../internal";
 import logger from "../internal/logger";
 import {BuildContext} from "./BuildContext";
 import {IBundleScriptConfig} from "./interfaces";
@@ -43,7 +45,7 @@ export class BundleScript {
 
         const {files} = this.#config;
         const onRebuild = async (error: BuildFailure | null) => {
-            if (error) logger.error(error, this, "watch -> %s", error.message);
+            if (error) {logger.error(error, this, "watch -> %s", error.message);}
 
             logger.info(this, "rebuilt");
         };

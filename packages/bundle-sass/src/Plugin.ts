@@ -1,8 +1,14 @@
-import {assert, assignWithFilter, BuildContext, PluginAbstract, resolveThrough} from "@reform/bundle";
-import {Options, render} from "node-sass";
 import {dirname, join, resolve} from "path";
-import importer from "./importer";
 import {stat} from "fs/promises";
+import {
+    assert,
+    assignWithFilter,
+    BuildContext,
+    PluginAbstract,
+    resolveThrough,
+} from "@reform/bundle";
+import {Options, render} from "node-sass";
+import importer from "./importer";
 
 export type Config = {filter: RegExp; compress?: boolean};
 const stripRe = /[?#].+$/;
@@ -23,7 +29,7 @@ export class Plugin extends PluginAbstract<Config> {
         const cache = new Map();
 
         this
-            .on("resolve", {filter: new RegExp(`\.(${fonts.join("|")})([?#].*)?$`)}, async (args) => {
+            .on("resolve", {filter: new RegExp(`\\.(${fonts.join("|")})([?#].*)?$`)}, async (args) => {
                 return {path: this.normalize(args.importer, args.path)};
             })
             .on("load", {filter}, async ({path}) => {
@@ -39,12 +45,6 @@ export class Plugin extends PluginAbstract<Config> {
 
                 return {contents, loader: "css"};
             });
-    }
-
-    private addCacheRemover(key: string) {
-        if (this.#removers.has(key)) {
-
-        }
     }
 
     private render(options: {path: string; compress?: boolean}) {

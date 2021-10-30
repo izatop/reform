@@ -1,6 +1,8 @@
 import * as React from "react";
 import {PropsWithoutRef} from "react";
-import {DefaultProps, IComponentConfig, IComputed, IInProps, XElement, XProps, XPropsKeys} from "../interfaces";
+import {
+    DefaultProps, IComponentConfig, IComputed, IInProps, XElement, XProps, XPropsKeys,
+} from "../interfaces";
 import {defaultResolvers} from "../props";
 
 export type CT<T> = React.ComponentType<T>;
@@ -79,7 +81,9 @@ export class ConfigFactory {
     }
 
     public static createConfig(options: Partial<IComponentConfig>): IComponentConfig {
-        const {component, resolvers, dependencies, displayName, mutations} = options;
+        const {
+            component, resolvers, dependencies, displayName, mutations,
+        } = options;
         return {
             component,
             displayName: this.getDisplayName({displayName, component}),

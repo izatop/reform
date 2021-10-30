@@ -22,8 +22,6 @@ export const TableBody: React.FunctionComponent<TableBodyProps> = (props) => (
     </tbody>
 );
 
-TableBody.defaultProps = {
-    indexKey: 0,
-};
+TableBody.defaultProps = {indexKey: 0};
 
 TableBody.displayName = "TableBody";

@@ -1,8 +1,12 @@
-import {PluginBuild} from "esbuild";
 import {existsSync} from "fs";
 import {join} from "path";
-import {BuildContext, BundleArgs, Directory, FileCopyList, FileEntryList} from "../build";
-import {arrayify, assert, entriesMap, IArgumentList, mutate} from "../internal";
+import {PluginBuild} from "esbuild";
+import {
+    BuildContext, BundleArgs, Directory, FileCopyList, FileEntryList,
+} from "../build";
+import {
+    arrayify, assert, entriesMap, IArgumentList, mutate,
+} from "../internal";
 import {load} from "../plugins";
 import {IJSONSchema, IPluginList} from "./interfaces";
 
@@ -27,7 +31,9 @@ export class JSONConfig {
 
             // @see https://esbuild.github.io/api/#platform
             const {format = "iife", platform = "browser"} = bundle;
-            const {id = increment++, entry, files, plugins, ...settings} = bundle;
+            const {
+                id = increment++, entry, files, plugins, ...settings
+            } = bundle;
             const base = Directory.factory(this.args.path, bundle.base);
             const build = Directory.factory(this.args.path, bundle.build);
             const context = new BuildContext({

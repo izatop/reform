@@ -3,9 +3,11 @@ export function isFulfilled<T>(state: PromiseSettledResult<T>): state is Promise
 }
 
 export function defer<T>(fn: (resolve: (value: T) => unknown) => unknown) {
-    return new Promise<T>(async (resolve, reject) => {
+    return new Promise<T>((resolve, reject) => {
         try {
-            await fn(resolve);
+            Promise
+                .resolve(fn(resolve))
+                .catch(reject);
         } catch (error) {
             reject(error);
         }

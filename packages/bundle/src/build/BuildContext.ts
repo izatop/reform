@@ -1,9 +1,9 @@
 import {relative} from "path";
 import {join} from "path/posix";
+import {Format, Loader, Platform} from "esbuild";
 import {assert, IArgumentList} from "../internal";
 import {Directory, File} from "./Resources";
 import {BundleCache} from "./BundleCache";
-import {Format, Loader, Platform} from "esbuild";
 
 export interface IBuildContextConfig {
     id: string | number;

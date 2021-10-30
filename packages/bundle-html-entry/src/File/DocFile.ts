@@ -1,7 +1,15 @@
-import {assert, BuildContext, entries, File, FileArtifactList, FileList, logger} from "@reform/bundle";
-import {ApplicationDocument} from "../html/ApplicationDocument";
-import {Metafile} from "esbuild";
 import {join, relative, resolve} from "path";
+import {
+    assert,
+    BuildContext,
+    entries,
+    File,
+    FileArtifactList,
+    FileList,
+    logger,
+} from "@reform/bundle";
+import {Metafile} from "esbuild";
+import {ApplicationDocument} from "../html/ApplicationDocument";
 import {Attachable, AttachFileType} from "../interface";
 
 export class DocFile extends File<string> {
@@ -91,14 +99,11 @@ export class DocFile extends File<string> {
 
         const attachable: Attachable = {};
         for (const type of attach) {
-            switch(type) {
-                case "stylesheet":
-                    const stylesheet = files.filter((file) => file.endsWith(".css"));
-                    if (stylesheet.length > 0) {
-                        attachable.stylesheet = stylesheet;
-                    }
-
-                    break;
+            if (type === "stylesheet") {
+                const stylesheet = files.filter((file) => file.endsWith(".css"));
+                if (stylesheet.length > 0) {
+                    attachable.stylesheet = stylesheet;
+                }
             }
         }
 

@@ -23,9 +23,7 @@ export interface IBreadcrumbsAttr extends XProps<"nav"> {
 
 const config = ConfigFactory.create({
     component: "breadcrumb",
-    resolvers: {
-        separator: (v) => `has-${v}-separator`,
-    },
+    resolvers: {separator: (v) => `has-${v}-separator`},
 });
 
 const renderIcon = (icon?: string | null | React.ReactElement) => {

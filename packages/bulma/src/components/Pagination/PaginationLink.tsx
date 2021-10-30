@@ -11,9 +11,7 @@ interface IPaginationLinkProps {
 
 const config = ConfigFactory.create({
     component: "pagination-link",
-    resolvers: {
-        current: (v) => v && "is-current",
-    },
+    resolvers: {current: (v) => v && "is-current"},
 });
 
 export const PaginationLink = config.factory <IPaginationLink, IPaginationLinkProps>(({props}) => {

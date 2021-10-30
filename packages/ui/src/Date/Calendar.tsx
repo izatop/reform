@@ -1,4 +1,6 @@
-import {Table, TableBody, TableHead, TableHeadCell, TableRow} from "@reform/bulma";
+import {
+    Table, TableBody, TableHead, TableHeadCell, TableRow,
+} from "@reform/bulma";
 import * as React from "react";
 import {forwardRef, useCallback, useEffect} from "react";
 import {useCalendarController, useCalendarMonth} from "./functions";
@@ -12,7 +14,9 @@ export interface ICalendarProps {
 }
 
 export function Calendar<M extends CalendarMode>(props: MakeCalendarProps<ICalendarProps, M>) {
-    const {onMouseOver, onClick, onChange, locales, date, ...options} = props;
+    const {
+        onMouseOver, onClick, onChange, locales, date, ...options
+    } = props;
     const {week, dates} = useCalendarMonth({date, locales});
     const controller = useCalendarController<M>(options as MakeCalendarProps<Record<any, any>, M>, [dates]);
     useEffect(() => controller.listen(onChange as any), [controller]);

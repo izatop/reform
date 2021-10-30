@@ -1,6 +1,14 @@
-import {assignWithFilter, PluginAbstract, BuildContext, File, assert} from "@reform/bundle";
 import {existsSync} from "fs";
 import {dirname, resolve} from "path";
+// bug in eslint rule
+// eslint-disable-next-line
+import {
+    assignWithFilter,
+    PluginAbstract,
+    BuildContext,
+    File,
+    assert,
+} from "@reform/bundle";
 
 export type Config = {filter: RegExp};
 
@@ -9,10 +17,10 @@ const loader = require("graphql-tag/loader");
 const toQuery = (file: File<string>) => loader.call({cacheable: () => void 0}, file.contents);
 
 const extensions = ["gql", "graphql"];
-const defaultFilter = new RegExp(`\.(${extensions.join("|")})$`);
-const importsRe = /#\s*import ['"]?([0-9a-z_-]+)['"]?/ig;
+const defaultFilter = new RegExp(`\\.(${extensions.join("|")})$`);
+const re = /#\s*import ['"]?([0-9a-z_-]+)['"]?/ig;
 
-const resolveImport = (dir: string, name: string) => {
+const getReference = (dir: string, name: string) => {
     const real = extensions
         .map((ext) => resolve(dir, `${name}.${ext}`))
         .find((file) => existsSync(file));
@@ -22,10 +30,10 @@ const resolveImport = (dir: string, name: string) => {
     return real;
 };
 
-const parseImports = (file: File<string>): File<string> => {
+const parse = (file: File<string>): File<string> => {
     if (file.includes("import")) {
-        return file.transform((raw) => raw.replace(importsRe, (...[, name]) => {
-            return `#import '${resolveImport(file.dir, name)}'`;
+        return file.transform((raw) => raw.replace(re, (...[, name]) => {
+            return `#import '${getReference(file.dir, name)}'`;
         }));
     }
 
@@ -49,7 +57,7 @@ export class Plugin extends PluginAbstract<Config> {
                     file,
                     async () => fileFactory
                         .read(file, "utf-8")
-                        .then(parseImports)
+                        .then(parse)
                         .then(toQuery),
                 );
 

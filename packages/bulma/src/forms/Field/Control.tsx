@@ -15,9 +15,7 @@ export interface IControlProps {
 
 const config = ConfigFactory.create({
     component: "control",
-    resolvers: {
-        expanded: "is-expanded",
-    },
+    resolvers: {expanded: "is-expanded"},
     mutations: {
         state: "has-icons-right",
         type: "has-icons-left",

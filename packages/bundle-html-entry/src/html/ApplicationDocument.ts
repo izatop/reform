@@ -1,9 +1,9 @@
 import * as p5 from "parse5";
 import {Format} from "esbuild";
 import {assert, File, FileContentType} from "@reform/bundle";
+import {Attachable} from "../interface";
 import {Document} from "./node/Document";
 import {Element} from "./node/Element";
-import {Attachable} from "../interface";
 
 export class ApplicationDocument {
     readonly #document: Document;
@@ -46,8 +46,10 @@ export class ApplicationDocument {
                 case "stylesheet":
                 case "apple-touch":
                 case "apple-touch-startup-image":
-                    const href = link.ensureAttribute("href");
-                    sources.push([href.value, href]);
+                    sources.push([
+                        link.ensureAttribute("href").value,
+                        link.ensureAttribute("href"),
+                    ]);
 
                     break;
 

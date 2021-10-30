@@ -1,8 +1,14 @@
-import {Directory, exit, isPluginCtor, load, PluginAbstract} from "../../src";
-import {TestPlugin} from "./plugin/TestPlugin";
 import {resolve} from "path";
+import {
+    Directory,
+    exit,
+    isPluginCtor,
+    load,
+    PluginAbstract,
+} from "../../src";
 import {BuildContext} from "../../src/build/BuildContext";
 import {getArgumentList} from "../../src/internal";
+import {TestPlugin} from "./plugin/TestPlugin";
 
 test("Main Test", async () => {
     const id = resolve(__dirname, "plugin/TestPlugin");
@@ -17,6 +23,6 @@ test("Main Test", async () => {
     });
 
     expect(isPluginCtor(TestPlugin)).toBe(true);
-    expect(load(id, ctx, {}).isPrototypeOf(PluginAbstract));
+    expect(load(id, ctx, {})).toBeInstanceOf(PluginAbstract);
     exit(0);
 });

@@ -1,9 +1,9 @@
 import {dirname, relative} from "path";
 import {readFile, stat, mkdir, writeFile} from "fs/promises";
+import {createHash} from "crypto";
+import logger from "../../internal/logger";
 import {ResourceAbstract} from "./ResourceAbstract";
 import {Directory} from "./Directory";
-import logger from "../../internal/logger";
-import {createHash} from "crypto";
 
 export type FileEnc = BufferEncoding;
 export type FileTag = Record<any, any>;

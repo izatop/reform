@@ -86,7 +86,7 @@ export const logger = {
     },
     info(...args: LogArgs) {
         const [label, message] = this.format(args, colors.bg.blue);
-        if (!this.silent) fd1(`${label} ${message}`);
+        if (!this.silent) {fd1(`${label} ${message}`);}
     },
     debug(...args: LogArgs) {
         if (this.verbose && !this.silent) {

@@ -18,9 +18,7 @@ export type FileUploadProps = XProps<"input"> & {
 const config = ConfigFactory.create({
     component: "file",
     displayName: "FileUpload",
-    mutations: {
-        files: "has-name",
-    },
+    mutations: {files: "has-name"},
 });
 
 export const FileUpload = config.factoryRef<"input", MakeProps<IFileUpload>, FileUploadProps>(({props, children}) => {

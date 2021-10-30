@@ -41,9 +41,7 @@ interface IFigure {
 
 const config = ConfigFactory.create({
     component: "image",
-    resolvers: {
-        dimension: (v) => `is-${v}`,
-    },
+    resolvers: {dimension: (v) => `is-${v}`},
 });
 
 export const Figure = config.factory<IFigure, XProps<"figure">>(({props, children}) => (

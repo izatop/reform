@@ -1,7 +1,7 @@
-import {BuildContext} from "../BuildContext";
-import {File} from "./File";
 import {stat} from "fs/promises";
+import {BuildContext} from "../BuildContext";
 import {assert, logger} from "../../internal";
+import {File} from "./File";
 
 export type FileListResult = {src: File<Buffer>; dest: File<Buffer>};
 export type FileError = {error: Error; file: string};

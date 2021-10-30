@@ -14,6 +14,4 @@ export const DateTimeFormat: React.FC<IDateFormat> = (props) => {
     return <>{value}</>;
 };
 
-DateTimeFormat.defaultProps = {
-    format: "? ?",
-};
+DateTimeFormat.defaultProps = {format: "? ?"};

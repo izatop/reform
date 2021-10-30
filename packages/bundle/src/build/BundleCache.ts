@@ -1,9 +1,9 @@
 import Watcher from "watcher";
 import {WatcherOptions} from "watcher/dist/types";
 import logger from "../internal/logger";
+import {Disposer} from "../internal";
 import {Directory, File} from "./Resources";
 import {BuildContext} from "./BuildContext";
-import {Disposer} from "../internal";
 import {CacheQueue} from "./Cache/CacheQueue";
 import {CacheQueueHandle, CACHE_QUEUE_ONCE_QUEUE_HANDLE} from "./Cache/interfaces";
 
