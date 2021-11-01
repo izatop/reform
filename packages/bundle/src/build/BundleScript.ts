@@ -128,7 +128,6 @@ export class BundleScript {
             plugins,
             sourcemap,
             entryPoints,
-            inject: ["src/runtime.js"],
             entryNames: "build/[name].[hash]",
             chunkNames: "build/chunk/[name].[hash]", // @todo
             assetNames: "build/asset/[name].[hash]", // @todo

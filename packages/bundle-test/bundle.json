@@ -41,7 +41,8 @@
             ],
             "serve": {
                 "host": "bundle.localhost"
-            }
+            },
+            "inject": ["runtime.js"]
         }
     ]
 }

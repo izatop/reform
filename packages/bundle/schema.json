@@ -57,6 +57,12 @@
                         "number"
                     ]
                 },
+                "inject": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "loader": {
                     "additionalProperties": {
                         "enum": [
@@ -138,10 +144,7 @@
                     ]
                 },
                 "treeShaking": {
-                    "enum": [
-                        "ignore-annotations",
-                        true
-                    ]
+                    "type": "boolean"
                 },
                 "variables": {
                     "$ref": "#/definitions/Record<string,string|number|boolean>"

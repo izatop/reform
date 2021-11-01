@@ -1,6 +1,6 @@
 import {Format, Loader, Platform, Plugin} from "esbuild";
-import {Directory, FileCopyList, FileEntryList} from "./Resources";
 import {BuildContext} from "./BuildContext";
+import {Directory, FileCopyList, FileEntryList} from "./Resources";
 
 export type PWAManifest = Record<string, any>;
 export type SourceMapVariant = boolean | "inline" | "external" | "both";
@@ -32,6 +32,8 @@ export interface IBundleConfig {
     splitting?: boolean;
     treeShaking?: boolean;
     sourcemap?: SourceMapVariant;
+
+    inject?: string[];
 }
 
 export interface IBundleScriptConfig extends IBundleConfig {
