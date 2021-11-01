@@ -1,6 +1,6 @@
 {
     "name": "@reform/bundle-graphql",
-    "version": "0.8.0",
+    "version": "0.8.1",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "files": [
@@ -19,7 +19,7 @@
         "build": "tsc"
     },
     "dependencies": {
-        "@reform/bundle": "^0.8.0",
+        "@reform/bundle": "^0.8.1",
         "@types/node": "^16.11.6",
         "graphql-tag": "^2.12.5"
     },

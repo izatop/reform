@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.1](https://github.com/izatop/reform/compare/v0.8.0...v0.8.1) (2021-11-01)
+
+
+### Bug Fixes
+
+* add inject option ([8cd0b4c](https://github.com/izatop/reform/commit/8cd0b4c366f9937dbfebb5696c3b202cee32501a))
+* update deps ([2f99179](https://github.com/izatop/reform/commit/2f99179267db39dbeac93fc37cec42a3ced368f9))
+
+
+
+
+
 # [0.8.0](https://github.com/izatop/reform/compare/v0.7.0...v0.8.0) (2021-10-30)
 
 
