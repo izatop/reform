@@ -11,7 +11,7 @@
     "devDependencies": {
         "@reform/bundle": "^0.8.1",
         "@reform/bundle-sass": "^0.8.1",
-        "graphql": "^16.0.0"
+        "graphql": "^16.0.1"
     },
     "author": {
         "name": "Artur Bier",
@@ -20,8 +20,8 @@
     "private": true,
     "license": "MIT",
     "dependencies": {
-        "@types/react": "^17.0.33",
-        "@types/react-dom": "^17.0.10",
+        "@types/react": "^17.0.34",
+        "@types/react-dom": "^17.0.11",
         "react": "^17.0.2",
         "react-dom": "^17.0.2"
     }

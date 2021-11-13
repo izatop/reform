@@ -29,12 +29,12 @@
         "access": "public"
     },
     "devDependencies": {
-        "copy-and-watch": "^0.1.5"
+        "copy-and-watch": "^0.1.6"
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.15.3",
-        "@types/react": "^17.0.33",
-        "@types/react-dom": "^17.0.10",
+        "@types/react": "^17.0.34",
+        "@types/react-dom": "^17.0.11",
         "bulma": "^0.9.3"
     },
     "peerDependencies": {

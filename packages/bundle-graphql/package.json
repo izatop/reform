@@ -20,8 +20,8 @@
     },
     "dependencies": {
         "@reform/bundle": "^0.8.1",
-        "@types/node": "^16.11.6",
-        "graphql-tag": "^2.12.5"
+        "@types/node": "^16.11.7",
+        "graphql-tag": "^2.12.6"
     },
     "publishConfig": {
         "access": "public"
