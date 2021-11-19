@@ -34,6 +34,12 @@ export interface IBundleConfig {
     sourcemap?: SourceMapVariant;
 
     inject?: string[];
+
+    paths?: {
+        asset?: string;
+        chunk?: string;
+        entry?: string;
+    };
 }
 
 export interface IBundleScriptConfig extends IBundleConfig {

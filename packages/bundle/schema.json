@@ -83,6 +83,20 @@
                     },
                     "type": "object"
                 },
+                "paths": {
+                    "properties": {
+                        "asset": {
+                            "type": "string"
+                        },
+                        "chunk": {
+                            "type": "string"
+                        },
+                        "entry": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
                 "platform": {
                     "enum": [
                         "browser",
@@ -174,17 +188,6 @@
         },
         "Partial<IPluginList>": {
             "properties": {
-                "@reform/bundle-font": {
-                    "properties": {
-                        "fonts": {
-                            "items": {
-                                "type": "string"
-                            },
-                            "type": "array"
-                        }
-                    },
-                    "type": "object"
-                },
                 "@reform/bundle-graphql": {
                     "properties": {
                         "filter": {

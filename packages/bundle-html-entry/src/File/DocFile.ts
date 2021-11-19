@@ -46,7 +46,11 @@ export class DocFile extends File<string> {
 
     public async parse() {
         const document = new ApplicationDocument(this.contents);
-        this.#entries.push(...document.getEntries());
+        const entries = document
+            .getEntries()
+            .map((entry) => join(this.#context.base.getRelativePath(this.dir), entry));
+
+        this.#entries.push(...entries);
 
         for (const [file] of document.getArtifacts()) {
             this.#artifacts.add(this.getArtifactRelativePath(file));

@@ -103,6 +103,7 @@ export class BundleScript {
             files,  // eslint-disable-line
             bundle = true,
             loader = {},
+            paths = {},
             plugins,
             sourcemap = args.isDevelopment,
             variables = {},
@@ -128,9 +129,9 @@ export class BundleScript {
             plugins,
             sourcemap,
             entryPoints,
-            entryNames: "build/[name].[hash]",
-            chunkNames: "build/chunk/[name].[hash]", // @todo
-            assetNames: "build/asset/[name].[hash]", // @todo
+            entryNames: paths.entry,
+            chunkNames: paths.chunk,
+            assetNames: paths.asset,
             publicPath: "/",
             minify: args.isProduction,
             outdir: this.#config.build.path,

@@ -1,5 +1,5 @@
 import {dirname, join, resolve} from "path";
-import {stat} from "fs/promises";
+import {stat, readFile} from "fs/promises";
 import {
     assert,
     assignWithFilter,
@@ -15,7 +15,6 @@ const stripRe = /[?#].+$/;
 
 export class Plugin extends PluginAbstract<Config> {
     public readonly name = "@reform/bundle-sass";
-    readonly #removers = new Map();
 
     constructor(context: BuildContext, config?: Config) {
         super(context, assignWithFilter({filter: /\.(scss|sass)$/}, config));
@@ -27,20 +26,39 @@ export class Plugin extends PluginAbstract<Config> {
         this.context.addLoaders(fonts.map((font) => [font, "file"]));
 
         const cache = new Map();
+        const filterFonts = new RegExp(`\\.(${fonts.join("|")})([?#].*)?$`);
+
+        const checkCache = async (path: string) => {
+            const ctime = cache.get(path) ?? new Date(0);
+            const state = await stat(path);
+
+            if (state.ctime > ctime) {
+                cache.set(path, state.ctime);
+                this.cache.drop(path);
+            }
+        };
 
         this
-            .on("resolve", {filter: new RegExp(`\\.(${fonts.join("|")})([?#].*)?$`)}, async (args) => {
-                return {path: this.normalize(args.importer, args.path)};
+            .on("resolve", {filter: filterFonts}, async (args) => {
+                const fontPath = this.getFontPath(args.importer, args.path);
+
+                return {
+                    path: fontPath,
+                    watchFiles: [fontPath],
+                    namespace: "font",
+                };
+            })
+            .on("load", {filter: filterFonts, namespace: "font"}, async ({path}) => {
+                await checkCache(path);
+                const contents = await this.cache.store(path, () => readFile(path, {encoding: "binary"}));
+
+                return {
+                    contents,
+                    loader: "file",
+                };
             })
             .on("load", {filter}, async ({path}) => {
-                const ctime = cache.get(path) ?? new Date(0);
-                const state = await stat(path);
-
-                if (state.ctime > ctime) {
-                    cache.set(path, state.ctime);
-                    this.cache.drop(path);
-                }
-
+                await checkCache(path);
                 const contents = await this.render({path, compress});
 
                 return {contents, loader: "css"};
@@ -72,7 +90,7 @@ export class Plugin extends PluginAbstract<Config> {
         });
     }
 
-    public normalize(importer: string, file: string) {
+    public getFontPath(importer: string, file: string) {
         const path = dirname(importer);
         const normalized = file.replace(stripRe, "");
         if (normalized.startsWith("~")) {

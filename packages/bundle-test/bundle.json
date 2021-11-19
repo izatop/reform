@@ -2,7 +2,6 @@
     "preset": {
         "default": {
             "base": "src",
-            "build": "dist",
             "plugins": {
                 "@reform/bundle-html-entry": {}
             },
@@ -21,6 +20,11 @@
             "loader": {
                 ".png": "file",
                 ".svg": "file"
+            },
+            "paths": {
+                "entry": "js/[name].[hash]",
+                "chunk": "js/chunk/[name].[hash]",
+                "asset": "asset/[name].[hash]"
             }
         }
     },
@@ -30,6 +34,7 @@
             "base": "src",
             "preset": "default",
             "entry": "index.html",
+            "build": "dist/test",
             "treeShaking": true,
             "plugins": {
                 "@reform/bundle-sass": {},
@@ -43,6 +48,21 @@
                 "host": "bundle.localhost"
             },
             "inject": ["runtime.js"]
+        },
+        {
+            "id": "foobar",
+            "base": "src-relative-test",
+            "preset": "default",
+            "entry": [
+                "foo/index.html",
+                "bar/index.html"
+            ],
+            "build": "dist/foobar",
+            "paths": {
+                "entry": "[dir]/js/[name].[hash]",
+                "chunk": "[dir]/js/chunk/[name].[hash]",
+                "asset": "[dir]/asset/[name].[hash]"
+            }
         }
     ]
 }

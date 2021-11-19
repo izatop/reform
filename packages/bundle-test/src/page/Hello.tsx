@@ -1,7 +1,7 @@
 import {FC} from "react";
 import {HelloQuery} from "../query";
-import icon from "./icons/icon.png";
-import svg from "./icons/icon.svg";
+import icon from "../icons/icon.png";
+import svg from "../icons/icon.svg";
 
 export const Hello: FC = () => {
     return (

@@ -1,5 +1,4 @@
-import {dirname, join} from "path";
-import {basename} from "path/posix";
+import {dirname, join, basename} from "path";
 import {assert, resolveThrough} from "@reform/bundle";
 
 function resolveUrl(initiator: string, url: string): string {

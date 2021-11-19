@@ -1,9 +1,6 @@
 import {IBundleConfig} from "../build";
 
 export interface IPluginList {
-    "@reform/bundle-font": {
-        fonts?: string[];
-    };
     "@reform/bundle-sass": {
         filter?: string;
         compress?: RegExp;
