@@ -50,7 +50,7 @@ export class Plugin extends PluginAbstract<Config> {
             })
             .on("load", {filter: filterFonts, namespace: "font"}, async ({pluginData: {fontRealPath: path}}) => {
                 await checkCache(path, this.drop);
-                const contents = await this.cache.store(path, () => readFile(path, {encoding: "binary"}));
+                const contents = await this.cache.store(path, () => readFile(path, null));
 
                 return {
                     contents,
