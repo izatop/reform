@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.4](https://github.com/izatop/reform/compare/v0.8.3...v0.8.4) (2021-11-22)
+
+
+### Bug Fixes
+
+* scss ([71c0676](https://github.com/izatop/reform/commit/71c0676d12f38ec39d98758f0a4189ae379f0975))
+* tests ([acc7a7d](https://github.com/izatop/reform/commit/acc7a7df11b713fbf8ab4a67be37645b0ab80fef))
+
+
+
+
+
 ## [0.8.3](https://github.com/izatop/reform/compare/v0.8.2...v0.8.3) (2021-11-19)
 
 
