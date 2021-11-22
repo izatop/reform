@@ -1,4 +1,4 @@
-import "./index.css";
+import "./index.scss";
 import icon from "./icon.png";
 
 // eslint-disable-next-line

@@ -1,5 +1,4 @@
-import {relative} from "path";
-import {join} from "path/posix";
+import {relative, join} from "path";
 import {Format, Loader, Platform} from "esbuild";
 import {assert, IArgumentList} from "../internal";
 import {Directory, File} from "./Resources";

@@ -7,8 +7,8 @@ function resolveUrl(initiator: string, url: string): string {
         const filePath = dirname(normalized);
         const fileName = basename(normalized);
         const modulePath = resolveThrough(initiator, join("node_modules", filePath));
-
         assert(modulePath, `Cannot resolve ${url} at ${initiator}`);
+
         return join(modulePath, fileName);
     }
 

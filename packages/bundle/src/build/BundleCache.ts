@@ -8,12 +8,13 @@ import {CacheQueue} from "./Cache/CacheQueue";
 import {CacheQueueHandle, CACHE_QUEUE_ONCE_QUEUE_HANDLE} from "./Cache/interfaces";
 
 export type CacheCallback<T> = (key: string) => Promise<T>;
+const cache = new Map<string, unknown>();
 
 export class BundleCache {
     public readonly base: Directory;
     readonly #context: BuildContext;
     readonly #queue: CacheQueue;
-    readonly #store = new Map<string, unknown>();
+    readonly #store = cache;
 
     constructor(context: BuildContext, base: Directory) {
         this.base = base;
