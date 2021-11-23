@@ -18,21 +18,21 @@
     ],
     "scripts": {
         "clean": "rimraf dist tsconfig.tsbuildinfo",
-        "schema:update": "typescript-json-schema tsconfig.schema.json IJSONSchema -o schema.json",
+        "schema:update": "typescript-json-schema -o schema.json ${PWD}/tsconfig.schema.json IJSONSchema",
         "test:bundle": "ts-node src/bin/bundle",
         "test:bundle:watch": "ts-node src/bin/bundle -w"
     },
     "dependencies": {
         "@types/glob": "^7.2.0",
         "dotenv": "^10.0.0",
-        "esbuild": "^0.13.14",
+        "esbuild": "^0.13.15",
         "glob": "^7.2.0",
         "path-to-regexp": "^6.2.0",
         "watcher": "^1.2.0"
     },
     "devDependencies": {
         "@types/node": "^16.11.9",
-        "typescript-json-schema": "^0.51.0"
+        "typescript-json-schema": "^0.52.0"
     },
     "publishConfig": {
         "access": "public"

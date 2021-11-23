@@ -6,7 +6,6 @@
         "types": []
     },
     "include": [
-        "src",
-        "src/bin"
+        "src"
     ]
 }

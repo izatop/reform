@@ -21,5 +21,6 @@
         "strictFunctionTypes": true,
         "skipLibCheck": true,
         "incremental": true
-    }
+    },
+    "exclude": ["node_modules"]
 }
