@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.5](https://github.com/izatop/reform/compare/v0.8.4...v0.8.5) (2021-11-23)
+
+
+### Bug Fixes
+
+* broken font ([73c726a](https://github.com/izatop/reform/commit/73c726a82deaf911b3b7d5e9d47d42e359a6ab60))
+
+
+
+
+
 ## [0.8.4](https://github.com/izatop/reform/compare/v0.8.3...v0.8.4) (2021-11-22)
 
 

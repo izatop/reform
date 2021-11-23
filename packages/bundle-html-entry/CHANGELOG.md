@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.5](https://github.com/izatop/reform/compare/v0.8.4...v0.8.5) (2021-11-23)
+
+
+### Bug Fixes
+
+* upgrade ([be274b1](https://github.com/izatop/reform/commit/be274b143ddb871047b3431d36d001ac4da226f7))
+
+
+
+
+
 ## [0.8.4](https://github.com/izatop/reform/compare/v0.8.3...v0.8.4) (2021-11-22)
 
 **Note:** Version bump only for package @reform/bundle-html-entry
