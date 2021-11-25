@@ -27,7 +27,7 @@ export interface IBundleConfig {
         fallback?: boolean | Record<string, string>;
     };
 
-    envFile?: string;
+    envFiles?: string[];
 
     splitting?: boolean;
     treeShaking?: boolean;

@@ -87,13 +87,14 @@ export class BundleScript {
 
     private getBuildConfig(): BuildOptions {
         const {args} = this.#context;
-        const {envFile} = this.#config;
+        const {envFiles = []} = this.#config;
         const define: Record<string, any> = {};
+        const dotEnvVariables: DotenvParseOutput = {};
 
-        const dotEnvFile = resolveThrough(args.path, envFile ?? ".env");
-        const dotEnvVariables: DotenvParseOutput = dotEnvFile
-            ? assign({}, config({path: dotEnvFile}).parsed)
-            : {};
+        for (const envFile of envFiles) {
+            const dotEnvFile = resolveThrough(args.path, envFile);
+            assign(dotEnvVariables, config({path: dotEnvFile}).parsed);
+        }
 
         const {
             id,     // eslint-disable-line
