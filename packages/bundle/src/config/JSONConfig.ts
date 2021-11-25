@@ -42,7 +42,6 @@ export class JSONConfig {
                 platform,
                 args: this.args,
                 entries: arrayify(entry),
-                envFiles: arrayify(envFiles ?? []),
             });
 
             yield {
@@ -57,6 +56,7 @@ export class JSONConfig {
                     files: new FileCopyList(context, files),
                     entry: new FileEntryList(context, arrayify(entry)),
                     plugins: await this.getPlugins(context, plugins),
+                    envFiles: arrayify(envFiles ?? []),
                 },
             };
         }

@@ -12,6 +12,8 @@
             "target": [
                 "es2020"
             ],
+            "environment": ["TEST"],
+            "envFiles": [".env"],
             "serve": {
                 "port": 8000,
                 "fallback": {
@@ -21,8 +23,7 @@
             "loader": {
                 ".png": "file",
                 ".svg": "file"
-            },
-            "envFiles": [".env"]
+            }
         }
     },
     "bundle": [

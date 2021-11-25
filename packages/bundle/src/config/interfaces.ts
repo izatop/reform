@@ -21,6 +21,7 @@ export interface IJSONBundle extends IBundleConfig {
     plugins?: Partial<IPluginList>;
     preset?: string;
     files?: string[];
+    envFiles?: string | string[];
 }
 
 export interface IJSONSchema {

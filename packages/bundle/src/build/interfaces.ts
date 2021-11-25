@@ -18,7 +18,6 @@ export interface IBundleConfig {
     target?: string | string[];
     platform?: Platform;
     environment?: string[];
-    envFiles?: string | string[];
     variables?: Record<string, string | boolean | number>;
     loader?: {[ext: string]: Loader};
     app?: IPWAApplicationConfig;
@@ -47,6 +46,7 @@ export interface IBundleScriptConfig extends IBundleConfig {
     entry: FileEntryList;
     files: FileCopyList;
     plugins: Plugin[];
+    envFiles?: string[];
 }
 
 export type BuildServerHandle = (vhost: string | undefined,

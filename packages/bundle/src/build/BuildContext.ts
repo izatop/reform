@@ -12,7 +12,6 @@ export interface IBuildContextConfig {
     format: Format;
     platform: Platform;
     entries: string[];
-    envFiles: string[];
 }
 
 export class BuildContext {
