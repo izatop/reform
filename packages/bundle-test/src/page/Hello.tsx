@@ -12,6 +12,7 @@ export const Hello: FC = () => {
                 </div>
                 <div>
                     <h1>Hello!</h1>
+                    <h2>Test: {TEST}</h2>
                 </div>
             </section>
             <section>

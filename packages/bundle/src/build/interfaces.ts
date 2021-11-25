@@ -18,6 +18,7 @@ export interface IBundleConfig {
     target?: string | string[];
     platform?: Platform;
     environment?: string[];
+    envFiles?: string | string[];
     variables?: Record<string, string | boolean | number>;
     loader?: {[ext: string]: Loader};
     app?: IPWAApplicationConfig;
@@ -26,8 +27,6 @@ export interface IBundleConfig {
         host?: string;
         fallback?: boolean | Record<string, string>;
     };
-
-    envFiles?: string[];
 
     splitting?: boolean;
     treeShaking?: boolean;

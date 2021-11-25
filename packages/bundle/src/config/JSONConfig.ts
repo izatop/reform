@@ -31,7 +31,7 @@ export class JSONConfig {
 
             // @see https://esbuild.github.io/api/#platform
             const {format = "iife", platform = "browser"} = bundle;
-            const {id = increment++, entry, files, plugins, ...settings} = bundle;
+            const {id = increment++, entry, envFiles, files, plugins, ...settings} = bundle;
             const base = Directory.factory(this.args.path, bundle.base);
             const build = Directory.factory(this.args.path, bundle.build);
             const context = new BuildContext({
@@ -42,6 +42,7 @@ export class JSONConfig {
                 platform,
                 args: this.args,
                 entries: arrayify(entry),
+                envFiles: arrayify(envFiles ?? []),
             });
 
             yield {
