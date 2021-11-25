@@ -21,7 +21,7 @@ export type PluginCtor<P extends PluginAbstract<any>> = {
 };
 
 export type PluginEventStartRet = Promisify<OnStartResult | null | void>;
-export type PluginEventResolveRet = Promisify<OnResolveResult | null | undefined>;
+export type PluginEventResolveRet = (OnResolveResult | null | undefined | Promise<OnResolveResult | null | undefined>);
 export type PluginEventLoadRet = Promisify<OnLoadResult | null | undefined>;
 export type PluginEventErrorRet = {errors?: PartialMessage[]};
 export type PluginEventHandle<T, A extends any[]> = (...args: A) => Promisify<T>;

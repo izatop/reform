@@ -3,6 +3,7 @@ import {IBundleConfig} from "../build";
 export interface IPluginList {
     "@reform/bundle-sass": {
         filter?: string;
+        resolves?: string[];
         compress?: RegExp;
     };
     "@reform/bundle-graphql": {

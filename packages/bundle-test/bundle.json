@@ -48,16 +48,6 @@
                 "host": "bundle.localhost"
             },
             "inject": ["runtime.js"]
-        },
-        {
-            "id": "foobar",
-            "base": "src-relative-test",
-            "preset": "default",
-            "entry": [
-                "foo/index.html",
-                "bar/index.html"
-            ],
-            "build": "dist/foobar"
         }
     ]
 }

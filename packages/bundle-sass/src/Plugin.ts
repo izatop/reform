@@ -1,5 +1,5 @@
-import {dirname, join, resolve} from "path";
-import {stat, readFile} from "fs/promises";
+import {dirname, join} from "path";
+import {stat} from "fs/promises";
 import {
     assert,
     assignWithFilter,
@@ -10,7 +10,7 @@ import {
 import {Options, render} from "node-sass";
 import importer from "./importer";
 
-export type Config = {filter: RegExp; compress?: boolean};
+export type Config = {filter: RegExp; resolves?: string[]; compress?: boolean};
 const stripRe = /[?#].+$/;
 const cache = new Map();
 const checkCache = async (path: string, drop: (key: string) => unknown) => {
@@ -31,32 +31,15 @@ export class Plugin extends PluginAbstract<Config> {
     }
 
     public configure(): void {
-        const {filter, compress = false} = this.config;
-        const fonts = ["eot", "ttf", "woff", "woff2", "svg"];
-        this.context.addLoaders(fonts.map((font) => [font, "file"]));
+        const {filter, resolves = ["eot", "ttf", "woff", "woff2", "svg"], compress = false} = this.config;
+        this.context.addLoaders(resolves.map((extension) => [extension, "file"]));
 
-        const filterFonts = new RegExp(`\\.(${fonts.join("|")})([?#].*)?$`);
+        const resolvesRegex = new RegExp(`^~.+\\.(${resolves.join("|")})([?#].*)?$`);
 
         this
-            .on("resolve", {filter: filterFonts}, async (args) => {
-                const {fontPath, fontRealPath} = this.getFontPath(args.importer, args.path);
-
-                return {
-                    path: fontPath,
-                    watchFiles: [fontRealPath],
-                    pluginData: {fontRealPath},
-                    namespace: "font",
-                };
-            })
-            .on("load", {filter: filterFonts, namespace: "font"}, async ({pluginData: {fontRealPath: path}}) => {
-                await checkCache(path, this.drop);
-                const contents = await this.cache.store(path, () => readFile(path, null));
-
-                return {
-                    contents,
-                    loader: "file",
-                };
-            })
+            .on("resolve", {filter: resolvesRegex}, (args) => (
+                {path: this.getModulePath(args.importer, args.path)}
+            ))
             .on("load", {filter}, async ({path}) => {
                 await checkCache(path, this.drop);
                 const contents = await this.render({path, compress});
@@ -90,18 +73,13 @@ export class Plugin extends PluginAbstract<Config> {
         });
     }
 
-    public getFontPath(importer: string, file: string) {
+    public getModulePath(importer: string, file: string) {
         const path = dirname(importer);
         const normalized = file.replace(stripRe, "");
-        if (normalized.startsWith("~")) {
-            const fontPath = normalized.substr(1);
-            const fontRealPath = resolveThrough(path, join("node_modules", normalized.substr(1)));
-            assert(fontRealPath, `Cannot find ${file} at ${path}`);
+        const fontRealPath = resolveThrough(path, join("node_modules", normalized.substr(1)));
+        assert(fontRealPath, `Cannot find ${file} at ${path}`);
 
-            return {fontPath, fontRealPath};
-        }
-
-        return {fontPath: normalized, fontRealPath: resolve(path, normalized)};
+        return fontRealPath;
     }
 
     private drop = (key: string) => {
