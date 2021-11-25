@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.7](https://github.com/izatop/reform/compare/v0.8.6...v0.8.7) (2021-11-25)
+
+
+### Bug Fixes
+
+* envFiles ([caed219](https://github.com/izatop/reform/commit/caed21958376fcf2ae22b3057140f4bc6a9520cd))
+
+
+
+
+
 ## [0.8.6](https://github.com/izatop/reform/compare/v0.8.5...v0.8.6) (2021-11-25)
 
 
