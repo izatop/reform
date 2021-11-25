@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.8](https://github.com/izatop/reform/compare/v0.8.7...v0.8.8) (2021-11-25)
+
+
+### Bug Fixes
+
+* env ([04de91f](https://github.com/izatop/reform/commit/04de91f8f4d19b2734848a9eba8739372b809dbd))
+* env ([e14ec30](https://github.com/izatop/reform/commit/e14ec30cbc22c888322cf712813444c06552b153))
+
+
+
+
+
 ## [0.8.7](https://github.com/izatop/reform/compare/v0.8.6...v0.8.7) (2021-11-25)
 
 **Note:** Version bump only for package @reform/bundle-test
