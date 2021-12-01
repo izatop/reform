@@ -27,7 +27,7 @@ export class Plugin extends PluginAbstract<Config> {
                 const document = this.getContents(this.getRelativePath(path));
                 const {code: contents, prefix: resolveDir, watchFiles} = document;
 
-                return {contents, resolveDir, watchFiles};
+                return {contents, resolveDir, watchFiles: [...watchFiles, path]};
             })
             .on("end", async ({metafile}) => {
                 const ops = [];

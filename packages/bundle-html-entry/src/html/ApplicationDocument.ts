@@ -5,6 +5,9 @@ import {Attachable} from "../interface";
 import {Document} from "./node/Document";
 import {Element} from "./node/Element";
 
+const scriptMimeType = ["text/javascript", "module"];
+const scriptHandleFlag = "build";
+
 export class ApplicationDocument {
     readonly #document: Document;
 
@@ -16,14 +19,13 @@ export class ApplicationDocument {
         const entries: string[] = [];
         const scripts = this.#document.child.query("script");
 
-        const mime = ["text/javascript", "module"];
         for (const script of scripts) {
             if (!script.hasAttribute("src")) {
                 continue;
             }
 
             const type = script.getAttribute("type");
-            if (type && mime.includes(type.value)) {
+            if (type && scriptMimeType.includes(type.value)) {
                 entries.push(script.ensureAttribute("src").value);
             }
         }
@@ -71,7 +73,10 @@ export class ApplicationDocument {
         pretty = false) {
 
         for (const source of this.#document.child.query("script")) {
-            if (source.hasAttribute("src")) {
+            const type = source.getAttribute("type");
+            if (source.hasAttribute("src")
+                && (type && scriptMimeType.includes(type.value))
+                && source.hasAttribute(scriptHandleFlag)) {
                 source.remove();
             }
         }

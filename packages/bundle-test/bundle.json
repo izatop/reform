@@ -44,7 +44,8 @@
             },
             "files": [
                 "sitemap/*",
-                "robots.txt"
+                "robots.txt",
+                "test.js"
             ],
             "serve": {
                 "host": "bundle.localhost"

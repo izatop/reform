@@ -33,7 +33,7 @@ export class DocFile extends File<string> {
     public get watchFiles() {
         const {base} = this.#context;
 
-        return this.#entries.map((file) => base.resolve(file));
+        return [this.path, this.#entries.map((file) => base.resolve(file))];
     }
 
     public static async parse(context: BuildContext, relative: string): Promise<DocFile> {
