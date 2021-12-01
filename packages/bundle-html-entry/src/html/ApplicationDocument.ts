@@ -6,7 +6,7 @@ import {Document} from "./node/Document";
 import {Element} from "./node/Element";
 
 const scriptMimeType = ["text/javascript", "module"];
-const scriptHandleFlag = "build";
+const scriptBuildFlag = "build";
 
 export class ApplicationDocument {
     readonly #document: Document;
@@ -25,7 +25,7 @@ export class ApplicationDocument {
             }
 
             const type = script.getAttribute("type");
-            if (type && scriptMimeType.includes(type.value)) {
+            if (type && scriptMimeType.includes(type.value) && script.hasAttribute(scriptBuildFlag)) {
                 entries.push(script.ensureAttribute("src").value);
             }
         }
@@ -76,7 +76,7 @@ export class ApplicationDocument {
             const type = source.getAttribute("type");
             if (source.hasAttribute("src")
                 && (type && scriptMimeType.includes(type.value))
-                && source.hasAttribute(scriptHandleFlag)) {
+                && source.hasAttribute(scriptBuildFlag)) {
                 source.remove();
             }
         }
