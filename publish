@@ -1,7 +1,9 @@
 #!/bin/sh
 
-yarn lint \
-    && yarn test \
+yarn clean \
+    && yarn lint \
     && yarn build \
+    && yarn test \
     && yarn lerna publish --conventional-commits --yes
 
+yarn --force

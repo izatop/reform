@@ -112,7 +112,10 @@ export class BundleScript {
 
         for (const envFile of envFiles) {
             const dotEnvFile = resolveThrough(args.path, envFile);
-            assign(dotEnvVariables, config({path: dotEnvFile}).parsed);
+            const nextVariables = config({path: dotEnvFile}).parsed;
+            assign(dotEnvVariables, nextVariables);
+
+            logger.debug(this, "env -> %s, %o", envFile, nextVariables);
         }
 
         const variableStore = {...variables, ...dotEnvVariables, ...process.env};

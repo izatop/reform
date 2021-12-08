@@ -20,9 +20,9 @@
     },
     "dependencies": {
         "@reform/bundle": "^0.8.9",
-        "@types/node": "^16.11.11",
+        "@types/node": "^16.11.12",
         "@types/node-sass": "^4.11.2",
-        "node-sass": "^6.0.1"
+        "node-sass": "^7.0.0"
     },
     "publishConfig": {
         "access": "public"
