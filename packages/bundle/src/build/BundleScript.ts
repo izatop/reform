@@ -90,8 +90,6 @@ export class BundleScript {
         const define: Record<string, any> = {};
         const dotEnvVariables: DotenvParseOutput = {};
 
-
-
         const {
             id,     // eslint-disable-line
             base,   // eslint-disable-line
@@ -110,8 +108,9 @@ export class BundleScript {
             ...options
         } = this.#config;
 
+        const {path: envBasePath} = this.config.base;
         for (const envFile of envFiles) {
-            const dotEnvFile = resolveThrough(args.path, envFile);
+            const dotEnvFile = resolveThrough(envBasePath, envFile);
             const nextVariables = config({path: dotEnvFile}).parsed;
             assign(dotEnvVariables, nextVariables);
 
