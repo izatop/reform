@@ -1,6 +1,6 @@
 {
     "name": "@reform/bundle-test",
-    "version": "0.8.11",
+    "version": "0.8.12",
     "main": "src/index.ts",
     "repository": "https://github.com/izatop/reform",
     "scripts": {
@@ -9,8 +9,8 @@
         "test": "yarn clean && yarn build"
     },
     "devDependencies": {
-        "@reform/bundle": "^0.8.11",
-        "@reform/bundle-sass": "^0.8.11",
+        "@reform/bundle": "^0.8.12",
+        "@reform/bundle-sass": "^0.8.12",
         "graphql": "^16.1.0"
     },
     "author": {

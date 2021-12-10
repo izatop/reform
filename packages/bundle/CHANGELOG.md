@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.12](https://github.com/izatop/reform/compare/v0.8.11...v0.8.12) (2021-12-10)
+
+
+### Bug Fixes
+
+* .env path resolution ([f102cda](https://github.com/izatop/reform/commit/f102cda8e9068a013ed470aa046e4974a913316c))
+
+
+
+
+
 ## [0.8.11](https://github.com/izatop/reform/compare/v0.8.10...v0.8.11) (2021-12-08)
 
 
