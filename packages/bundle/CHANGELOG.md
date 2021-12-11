@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.15](https://github.com/izatop/reform/compare/v0.8.14...v0.8.15) (2021-12-11)
+
+
+### Bug Fixes
+
+* dotenv config -> parse ([e68e2ca](https://github.com/izatop/reform/commit/e68e2ca8a2f6839c15c7392f18f9d74a2936570c))
+
+
+
+
+
 ## [0.8.14](https://github.com/izatop/reform/compare/v0.8.13...v0.8.14) (2021-12-11)
 
 
