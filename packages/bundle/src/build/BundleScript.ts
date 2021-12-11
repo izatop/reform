@@ -1,4 +1,5 @@
-import {config, DotenvParseOutput} from "dotenv";
+import {readFileSync} from "fs";
+import {DotenvParseOutput, parse} from "dotenv";
 import {build, BuildFailure, BuildOptions} from "esbuild";
 import {
     assert,
@@ -118,10 +119,12 @@ export class BundleScript {
         const {path: envBasePath} = this.config.base;
         for (const envFile of envFiles) {
             const dotEnvFile = resolveThrough(envBasePath, envFile);
-            const nextVariables = config({path: dotEnvFile}).parsed;
-            mutate(dotEnvVariables, nextVariables ?? {});
+            if(dotEnvFile) {
+                const dotEnvContents = readFileSync(dotEnvFile, {encoding: "utf-8"});
+                mutate(dotEnvVariables, parse(dotEnvContents));
 
-            logger.debug(this, "env -> %s, %o", envFile, dotEnvVariables);
+                logger.debug(this, "env -> %s, %o", envFile, dotEnvVariables);
+            }
         }
 
         const variableStore = {...variables, ...dotEnvVariables, ...process.env};
