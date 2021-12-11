@@ -1,7 +1,14 @@
 import {config, DotenvParseOutput} from "dotenv";
 import {build, BuildFailure, BuildOptions} from "esbuild";
 import {
-    assert, assign, defer, entries, fromEntries, onClose, resolveThrough,
+    assert,
+    defer,
+    entries,
+    fromEntries,
+    onClose,
+    resolveThrough,
+    mutate,
+    keys,
 } from "../internal";
 import logger from "../internal/logger";
 import {BuildContext} from "./BuildContext";
@@ -112,15 +119,15 @@ export class BundleScript {
         for (const envFile of envFiles) {
             const dotEnvFile = resolveThrough(envBasePath, envFile);
             const nextVariables = config({path: dotEnvFile}).parsed;
-            assign(dotEnvVariables, nextVariables);
+            mutate(dotEnvVariables, nextVariables ?? {});
 
-            logger.debug(this, "env -> %s, %o", envFile, nextVariables);
+            logger.debug(this, "env -> %s, %o", envFile, dotEnvVariables);
         }
 
         const variableStore = {...variables, ...dotEnvVariables, ...process.env};
-        const keys = new Set([...environment, ...Object.keys(variables)]);
+        const uniqueKeys = new Set([...environment, ...keys(variables)]);
 
-        for (const variable of keys.values()) {
+        for (const variable of uniqueKeys.values()) {
             define[variable] = JSON.stringify(variableStore[variable]);
         }
 

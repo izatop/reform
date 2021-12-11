@@ -1,7 +1,7 @@
 import Watcher from "watcher";
 import {WatcherOptions} from "watcher/dist/types";
 import logger from "../internal/logger";
-import {Disposer} from "../internal";
+import {Disposer, assign} from "../internal";
 import {Directory, File} from "./Resources";
 import {BuildContext} from "./BuildContext";
 import {CacheQueue} from "./Cache/CacheQueue";
@@ -49,7 +49,7 @@ export class BundleCache {
     }
 
     public once(key: string, handle: CacheQueueHandle) {
-        this.#queue.add(key, Object.assign(handle, {[CACHE_QUEUE_ONCE_QUEUE_HANDLE]: true}));
+        this.#queue.add(key, assign(handle, {[CACHE_QUEUE_ONCE_QUEUE_HANDLE]: true}));
     }
 
     public off(key: string) {

@@ -1,5 +1,9 @@
 export type PickEntry<T, K extends keyof T = keyof T> = [K, T[K]];
 
+export function keys<T extends Record<string, any>, K extends keyof T>(target: T): K[] {
+    return Object.keys(target) as K[];
+}
+
 export function entries<T>(target: Record<string, T>): [string, T][] {
     return Object.entries(target ?? {});
 }
