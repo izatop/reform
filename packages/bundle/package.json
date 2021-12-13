@@ -25,7 +25,7 @@
     "dependencies": {
         "@types/glob": "^7.2.0",
         "dotenv": "^10.0.0",
-        "esbuild": "^0.14.2",
+        "esbuild": "^0.14.3",
         "glob": "^7.2.0",
         "path-to-regexp": "^6.2.0",
         "watcher": "^1.2.0"
