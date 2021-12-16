@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.17](https://github.com/izatop/reform/compare/v0.8.16...v0.8.17) (2021-12-16)
+
+
+### Bug Fixes
+
+* update deps, add the --id/-i option ([5e49f14](https://github.com/izatop/reform/commit/5e49f147e481b6a05023818e3041a82db74097b1))
+
+
+
+
+
 ## [0.8.16](https://github.com/izatop/reform/compare/v0.8.15...v0.8.16) (2021-12-13)
 
 **Note:** Version bump only for package @reform/bundle-graphql
