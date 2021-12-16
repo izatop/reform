@@ -25,8 +25,13 @@ export class JSONConfig {
 
     public async * getBundleArgs(): AsyncGenerator<BundleArgs> {
         let increment = 1;
+        const {ids} = this.args;
         const {preset: presetList = {}} = this.config;
         for (const {preset, ...next} of this.config?.bundle ?? []) {
+            if (ids.length > 0 && next.id && !ids.includes(next.id.toString())) {
+                continue;
+            }
+
             const bundle = mutate(mutate({}, presetList[preset ?? ""] ?? {}), next);
 
             // @see https://esbuild.github.io/api/#platform

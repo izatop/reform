@@ -1,4 +1,5 @@
 import logger from "./logger";
+import {assert} from ".";
 
 export interface IArgumentList {
     print?: true;
@@ -6,6 +7,7 @@ export interface IArgumentList {
     watch: boolean;
     serve?: boolean;
     mode: "production" | "development";
+    ids: string[];
 
     readonly isProduction: boolean;
     readonly isDevelopment: boolean;
@@ -25,6 +27,7 @@ export function getArgumentList(root?: string): IArgumentList {
         get isProduction() {
             return this.mode !== "development";
         },
+        ids: [],
         path: root ?? process.cwd(),
         mode: "production",
         watch: false,
@@ -64,6 +67,11 @@ export function getArgumentList(root?: string): IArgumentList {
             case "--watch":
                 argumentList.watch = true;
                 break;
+            case "-i":
+            case "--id":
+                assert(args[0], "The bundle ID expected after --id/-i option");
+                argumentList.ids.push(args[0]);
+                args.shift();
         }
     }
 
