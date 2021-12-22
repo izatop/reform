@@ -11,7 +11,7 @@
     "devDependencies": {
         "@reform/bundle": "^0.8.17",
         "@reform/bundle-sass": "^0.8.17",
-        "graphql": "^16.1.0"
+        "graphql": "^16.2.0"
     },
     "author": {
         "name": "Artur Bier",

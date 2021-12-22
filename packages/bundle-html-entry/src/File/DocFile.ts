@@ -56,12 +56,6 @@ export class DocFile extends File<string> {
             this.#artifacts.add(this.getArtifactRelativePath(file));
         }
 
-        this.#context.cache.on(this.relative, (event) => {
-            if (event === "change") {
-                this.build();
-            }
-        });
-
         return this;
     }
 
@@ -88,7 +82,7 @@ export class DocFile extends File<string> {
         const entry = await this.getEntryFile(metafile);
         assert(entry, `Can't find entry of ${this.relative}`);
 
-        logger.info(this, "build -> %s", entry.relative);
+        logger.info(this, "entry -> %s", entry.relative);
 
         await this.#artifacts.build();
         for (const [file, node] of document.getArtifacts()) {
@@ -124,7 +118,7 @@ export class DocFile extends File<string> {
 
         for (const [file, value] of entries(metafile?.outputs ?? {})) {
             const entryPoint = join(src, this.relative);
-            if (typeof file === "string" && value.entryPoint === entryPoint) {
+            if (typeof value.entryPoint === "string" && value.entryPoint === entryPoint) {
                 return File.read({prefix: build, relative: relative(build, file)});
             }
         }

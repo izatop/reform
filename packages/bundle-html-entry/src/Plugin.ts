@@ -15,16 +15,16 @@ export class Plugin extends PluginAbstract<Config> {
 
     public async configure(): Promise<void> {
         const {filter, attach} = this.config;
-        const {platform, entries} = this.context;
-        for (const entry of entries.filter((file) => filter.test(file))) {
-            this.#documents.set(entry, await DocFile.parse(this.context, entry));
-        }
-
+        const {platform} = this.context;
         assert(platform !== "node", `The ${this.name} plugin works with browser or neutral platform`);
 
         this
             .on("load", {filter}, async ({path}) => {
+                const entry = this.getRelativePath(path);
+                this.#documents.set(entry, await DocFile.parse(this.context, entry));
+
                 const document = this.getContents(this.getRelativePath(path));
+                await document.parse();
                 const {code: contents, prefix: resolveDir, watchFiles} = document;
 
                 return {contents, resolveDir, watchFiles};
