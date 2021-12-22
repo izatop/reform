@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.18](https://github.com/izatop/reform/compare/v0.8.17...v0.8.18) (2021-12-22)
+
+
+### Bug Fixes
+
+* update deps, fix html entry plugin ([63b51f6](https://github.com/izatop/reform/commit/63b51f645307b6d070d314c1ceecbba3fd1ff258))
+
+
+
+
+
 ## [0.8.17](https://github.com/izatop/reform/compare/v0.8.16...v0.8.17) (2021-12-16)
 
 
