@@ -57,6 +57,10 @@ export class Element extends NodeAbstract<p5.Element> {
         return this.#attributes.has(key);
     }
 
+    public getAttributes() {
+        return this.#attributes.getAll();
+    }
+
     public get children() {
         return this.#children;
     }

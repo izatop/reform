@@ -78,11 +78,15 @@ export class ApplicationDocument {
         format: Format,
         pretty = false) {
 
+        let async = false;
         for (const source of this.#document.child.query("script")) {
             const type = source.getAttribute("type");
             if (source.hasAttribute("src")
                 && (type && scriptMimeType.includes(type.value))
                 && source.hasAttribute(scriptBuildFlag)) {
+                if (!async) {
+                    async = source.hasAttribute("async");
+                }
                 source.remove();
             }
         }
@@ -92,8 +96,11 @@ export class ApplicationDocument {
 
         const script = Element.append(body, "script");
         script.setAttribute("src", `${publicPath}/${entry.relative}`);
-        script.setAttribute("async");
         script.setAttribute("type", format === "esm" ? "module" : "text/javascript");
+
+        if (async) {
+            script.setAttribute("async");
+        }
 
         if (attachable.stylesheet) {
             this.attachStylesheet(publicPath, attachable.stylesheet);

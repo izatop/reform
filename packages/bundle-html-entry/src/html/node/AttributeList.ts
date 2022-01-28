@@ -21,6 +21,10 @@ export class AttributeList {
         return this.#index.get(key);
     }
 
+    public getAll() {
+        return [...this.#index.values()];
+    }
+
     public set(ns: string, value = "") {
         const {namespace, name} = parseNS(ns);
         const attribute = {name, namespace, value};
