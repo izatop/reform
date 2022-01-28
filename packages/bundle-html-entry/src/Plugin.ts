@@ -10,7 +10,7 @@ export class Plugin extends PluginAbstract<Config> {
     readonly #documents = new Map<string, DocFile>();
 
     constructor(context: BuildContext, config?: Config) {
-        super(context, assignWithFilter({filter: /\.html?$/, attach: ["stylesheet"]}, config));
+        super(context, assignWithFilter({filter: /\.html?$/}, config));
     }
 
     public async configure(): Promise<void> {
