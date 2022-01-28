@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.22](https://github.com/izatop/reform/compare/v0.8.21...v0.8.22) (2022-01-28)
+
+**Note:** Version bump only for package @reform/bundle-test
+
+
+
+
+
 ## [0.8.19](https://github.com/izatop/reform/compare/v0.8.18...v0.8.19) (2022-01-28)
 
 

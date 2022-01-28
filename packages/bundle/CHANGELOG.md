@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.22](https://github.com/izatop/reform/compare/v0.8.21...v0.8.22) (2022-01-28)
+
+
+### Bug Fixes
+
+* add artifacts option ([4b5ead2](https://github.com/izatop/reform/commit/4b5ead2a7260eccf396bdf9ef848bdc15defcea1))
+
+
+
+
+
 ## [0.8.18](https://github.com/izatop/reform/compare/v0.8.17...v0.8.18) (2021-12-22)
 
 
