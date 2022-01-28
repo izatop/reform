@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.19](https://github.com/izatop/reform/compare/v0.8.18...v0.8.19) (2022-01-28)
+
+
+### Bug Fixes
+
+* skip remote source ([2fd9c52](https://github.com/izatop/reform/commit/2fd9c5272df2badb073ac1709594446ebb3e72fb))
+
+
+
+
+
 ## [0.8.18](https://github.com/izatop/reform/compare/v0.8.17...v0.8.18) (2021-12-22)
 
 

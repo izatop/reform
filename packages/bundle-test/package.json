@@ -1,6 +1,6 @@
 {
     "name": "@reform/bundle-test",
-    "version": "0.8.18",
+    "version": "0.8.19",
     "main": "src/index.ts",
     "repository": "https://github.com/izatop/reform",
     "scripts": {
