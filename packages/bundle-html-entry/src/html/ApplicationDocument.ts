@@ -34,11 +34,17 @@ export class ApplicationDocument {
     }
 
     public getArtifacts() {
+        const isRemoteSource = /^https?:\/\//;
         const sources: [string, p5.Attribute][] = [];
         const links = this.#document.child.query("link");
         for (const link of links) {
             const rel = link.getAttribute("rel");
             if (!rel) {
+                continue;
+            }
+
+            const href = link.getAttribute("href");
+            if (href && isRemoteSource.test(href.value)) {
                 continue;
             }
 
