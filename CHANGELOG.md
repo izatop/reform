@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.20](https://github.com/izatop/reform/compare/v0.8.19...v0.8.20) (2022-01-28)
+
+
+### Bug Fixes
+
+* an optional async attribute ([1a5258d](https://github.com/izatop/reform/commit/1a5258d444913a016d400f2e4dd6ef3bfbc98e54))
+
+
+
+
+
 ## [0.8.19](https://github.com/izatop/reform/compare/v0.8.18...v0.8.19) (2022-01-28)
 
 
