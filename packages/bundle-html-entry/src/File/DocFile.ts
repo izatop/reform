@@ -73,7 +73,7 @@ export class DocFile extends File<string> {
         return build.getRelativePath(path);
     }
 
-    public async build(metafile?: Metafile, attach: AttachFileType[] = []) {
+    public async build(metafile?: Metafile, attach: AttachFileType[] = [], artifacts?: string) {
         const {relative} = this;
         const {build: {path: prefix}, publicPath, args} = this.#context;
         const dest = File.factory({prefix, relative});
@@ -85,7 +85,7 @@ export class DocFile extends File<string> {
         logger.info(this, "entry -> %s", entry.relative);
 
         await this.#artifacts.build();
-        for (const [file, node] of document.getArtifacts()) {
+        for (const [file, node] of document.getArtifacts(artifacts)) {
             const relative = this.getArtifactRelativePath(file);
             const dest = this.#artifacts.getBuilt(relative);
             node.value = `${publicPath}/${file}?${dest.getHash()}`;

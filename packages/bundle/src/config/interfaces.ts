@@ -11,6 +11,8 @@ export interface IPluginList {
     };
     "@reform/bundle-html-entry": {
         filter?: RegExp;
+        attach?: "stylesheet"[];
+        artifacts?: string;
     };
 }
 

@@ -2,7 +2,9 @@ import {BuildContext, PluginAbstract, assignWithFilter, assert} from "@reform/bu
 import {DocFile} from "./File";
 import {AttachFileType} from "./interface";
 
-export type Config = {filter: RegExp; attach?: AttachFileType[]};
+export type Config = {filter: RegExp; attach?: AttachFileType[]; artifacts?: string};
+export const artifacts = "^.+$";
+export const attach: AttachFileType[] = ["stylesheet"];
 
 export class Plugin extends PluginAbstract<Config> {
     public readonly name = "@reform/bundle-html-entry";
@@ -10,11 +12,11 @@ export class Plugin extends PluginAbstract<Config> {
     readonly #documents = new Map<string, DocFile>();
 
     constructor(context: BuildContext, config?: Config) {
-        super(context, assignWithFilter({filter: /\.html?$/}, config));
+        super(context, assignWithFilter({filter: /\.html?$/, attach, artifacts}, config));
     }
 
     public async configure(): Promise<void> {
-        const {filter, attach} = this.config;
+        const {filter, ...config} = this.config;
         const {platform} = this.context;
         assert(platform !== "node", `The ${this.name} plugin works with browser or neutral platform`);
 
@@ -32,7 +34,7 @@ export class Plugin extends PluginAbstract<Config> {
             .on("end", async ({metafile}) => {
                 const ops = [];
                 for (const document of this.#documents.values()) {
-                    ops.push(document.build(metafile, attach));
+                    ops.push(document.build(metafile, config.attach, config.artifacts));
                 }
 
                 await Promise.all(ops);
