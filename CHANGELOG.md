@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.21](https://github.com/izatop/reform/compare/v0.8.20...v0.8.21) (2022-01-28)
+
+
+### Bug Fixes
+
+* set optional an attach option ([7063ea2](https://github.com/izatop/reform/commit/7063ea29c051abe470cd6209927a55080f32afd3))
+
+
+
+
+
 ## [0.8.20](https://github.com/izatop/reform/compare/v0.8.19...v0.8.20) (2022-01-28)
 
 
