@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.23](https://github.com/izatop/reform/compare/v0.8.22...v0.8.23) (2022-02-05)
+
+
+### Bug Fixes
+
+* update deps, fix artifacts loading ([50f3ad4](https://github.com/izatop/reform/commit/50f3ad4f261538cd3bc5d47f6e6811125b24de36))
+
+
+
+
+
 ## [0.8.22](https://github.com/izatop/reform/compare/v0.8.21...v0.8.22) (2022-01-28)
 
 **Note:** Version bump only for package @reform/bundle-sass
