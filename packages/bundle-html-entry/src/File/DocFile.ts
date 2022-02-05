@@ -16,12 +16,18 @@ export class DocFile extends File<string> {
     readonly #context: BuildContext;
     readonly #entries: string[] = [];
     readonly #artifacts: FileList;
+    readonly #attachType: AttachFileType[];
+    readonly #artifactsFilter?: RegExp;
 
-    constructor(context: BuildContext, file: File<string>) {
+    constructor(context: BuildContext, file: File<string>, attach: AttachFileType[] = [], artifacts?: string) {
         super(file.config, file.contents);
 
         this.#context = context;
+        this.#attachType = attach;
         this.#artifacts = new FileArtifactList(this.#context);
+        if (artifacts) {
+            this.#artifactsFilter = new RegExp(artifacts);
+        }
     }
 
     public get code() {
@@ -36,10 +42,13 @@ export class DocFile extends File<string> {
         return [this.path, ...this.#entries.map((file) => base.resolve(file))];
     }
 
-    public static async parse(context: BuildContext, relative: string): Promise<DocFile> {
+    public static async parse(context: BuildContext,
+        relative: string,
+        attach: AttachFileType[] = [],
+        artifacts?: string): Promise<DocFile> {
         const {base: {path: prefix}} = context;
         const file = await File.read({prefix, relative}, "utf-8");
-        const docFile = new this(context, file);
+        const docFile = new this(context, file, attach, artifacts);
 
         return docFile.parse();
     }
@@ -52,7 +61,7 @@ export class DocFile extends File<string> {
 
         this.#entries.push(...entries);
 
-        for (const [file] of document.getArtifacts()) {
+        for (const [file] of document.getArtifacts(this.#artifactsFilter)) {
             this.#artifacts.add(this.getArtifactRelativePath(file));
         }
 
@@ -73,7 +82,7 @@ export class DocFile extends File<string> {
         return build.getRelativePath(path);
     }
 
-    public async build(metafile?: Metafile, attach: AttachFileType[] = [], artifacts?: string) {
+    public async build(metafile?: Metafile) {
         const {relative} = this;
         const {build: {path: prefix}, publicPath, args} = this.#context;
         const dest = File.factory({prefix, relative});
@@ -85,7 +94,7 @@ export class DocFile extends File<string> {
         logger.info(this, "entry -> %s", entry.relative);
 
         await this.#artifacts.build();
-        for (const [file, node] of document.getArtifacts(artifacts)) {
+        for (const [file, node] of document.getArtifacts(this.#artifactsFilter)) {
             const relative = this.getArtifactRelativePath(file);
             const dest = this.#artifacts.getBuilt(relative);
             node.value = `${publicPath}/${file}?${dest.getHash()}`;
@@ -96,7 +105,7 @@ export class DocFile extends File<string> {
             .map((file) => this.getBuildRelativePath(file));
 
         const attachable: Attachable = {};
-        for (const type of attach) {
+        for (const type of this.#attachType) {
             if (type === "stylesheet") {
                 const stylesheet = files.filter((file) => file.endsWith(".css"));
                 if (stylesheet.length > 0) {

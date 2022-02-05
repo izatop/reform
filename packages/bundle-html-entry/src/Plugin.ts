@@ -23,7 +23,10 @@ export class Plugin extends PluginAbstract<Config> {
         this
             .on("load", {filter}, async ({path}) => {
                 const entry = this.getRelativePath(path);
-                this.#documents.set(entry, await DocFile.parse(this.context, entry));
+                this.#documents.set(
+                    entry,
+                    await DocFile.parse(this.context, entry, config.attach, config.artifacts),
+                );
 
                 const document = this.getContents(this.getRelativePath(path));
                 await document.parse();
@@ -34,7 +37,7 @@ export class Plugin extends PluginAbstract<Config> {
             .on("end", async ({metafile}) => {
                 const ops = [];
                 for (const document of this.#documents.values()) {
-                    ops.push(document.build(metafile, config.attach, config.artifacts));
+                    ops.push(document.build(metafile));
                 }
 
                 await Promise.all(ops);

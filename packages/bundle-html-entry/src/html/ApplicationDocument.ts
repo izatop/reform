@@ -33,18 +33,17 @@ export class ApplicationDocument {
         return entries;
     }
 
-    public getArtifacts(artifacts?: string) {
+    public getArtifacts(artifacts?: RegExp) {
         if (!artifacts) {
             return [];
         }
 
-        const re = new RegExp(artifacts);
         const isRemoteSource = /^https?:\/\//;
         const sources: [string, p5.Attribute][] = [];
         const links = this.#document.child.query("link");
         for (const link of links) {
             const rel = link.getAttribute("rel");
-            if (!rel || !re.test(rel.value)) {
+            if (!rel || !artifacts.test(rel.value)) {
                 continue;
             }
 
