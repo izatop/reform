@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.25](https://github.com/izatop/reform/compare/v0.8.24...v0.8.25) (2022-03-14)
+
+
+### Bug Fixes
+
+* graphql import ([875516c](https://github.com/izatop/reform/commit/875516c8f145fe2b85138d74ce0f3d7770966581))
+
+
+
+
+
 ## [0.8.24](https://github.com/izatop/reform/compare/v0.8.23...v0.8.24) (2022-03-11)
 
 

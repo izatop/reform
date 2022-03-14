@@ -1,6 +1,6 @@
 {
     "name": "@reform/bundle-graphql",
-    "version": "0.8.24",
+    "version": "0.8.25",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "files": [
