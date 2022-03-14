@@ -18,7 +18,7 @@ const toQuery = (file: File<string>) => loader.call({cacheable: () => void 0}, f
 
 const extensions = ["gql", "graphql"];
 const defaultFilter = new RegExp(`\\.(${extensions.join("|")})$`);
-const re = /#\s*import ['"]?([0-9a-z_-]+)['"]?/ig;
+const re = /#\s*import\s+['"]?([\\/0-9a-z_\\.-]+)['"]?/ig;
 
 const getReference = (dir: string, name: string) => {
     const real = extensions
