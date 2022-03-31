@@ -13,6 +13,9 @@
         "plugin:import/typescript",
         "plugin:react/recommended"
     ],
+    "ignorePatterns": [
+        "**/dist/**/*"
+    ],
     "settings": {
         "react": {
             "version": "detect"
@@ -68,7 +71,7 @@
             {
                 "ImportDeclaration": {
                     "multiline": true,
-                    "minProperties": 5
+                    "minProperties": 10
                 }
             }
         ],

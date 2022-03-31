@@ -1,44 +1,13 @@
-import {existsSync} from "fs";
-import {dirname, resolve} from "path";
-// bug in eslint rule
-// eslint-disable-next-line
-import {
-    assignWithFilter,
-    PluginAbstract,
-    BuildContext,
-    File,
-    assert,
-} from "@reform/bundle";
+import {dirname} from "path";
+import {assignWithFilter, PluginAbstract, BuildContext} from "@reform/bundle";
+import {loadDocuments} from "@graphql-tools/load";
+import {GraphQLFileLoader} from "@graphql-tools/graphql-file-loader";
 
 export type Config = {filter: RegExp};
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const loader = require("graphql-tag/loader");
-const toQuery = (file: File<string>) => loader.call({cacheable: () => void 0}, file.contents);
-
 const extensions = ["gql", "graphql"];
 const defaultFilter = new RegExp(`\\.(${extensions.join("|")})$`);
-const re = /#\s*import\s+['"]?([\\/0-9a-z_\\.-]+)['"]?/ig;
-
-const getReference = (dir: string, name: string) => {
-    const real = extensions
-        .map((ext) => resolve(dir, `${name}.${ext}`))
-        .find((file) => existsSync(file));
-
-    assert(real, `Cannot resolve ${name} at ${dir}`);
-
-    return real;
-};
-
-const parse = (file: File<string>): File<string> => {
-    if (file.includes("import")) {
-        return file.transform((raw) => raw.replace(re, (...[, name]) => {
-            return `#import '${getReference(file.dir, name)}'`;
-        }));
-    }
-
-    return file;
-};
+const re = /#\s*import\s*([0-9a-z_]+) from "([\\/0-9a-z_\\.-]+)"/ig;
 
 export class Plugin extends PluginAbstract<Config> {
     public readonly name = "@reform/bundle-graphql";
@@ -48,20 +17,21 @@ export class Plugin extends PluginAbstract<Config> {
     }
 
     public configure(): void {
-        const {context: {cache, base: {fileFactory}}} = this;
+        const {context: {cache}} = this;
 
         this
             .on("load", this.config, async (args) => {
                 const file = this.getRelativePath(args.path);
                 const contents = await cache.store(
                     file,
-                    async () => fileFactory
-                        .read(file, "utf-8")
-                        .then(parse)
-                        .then(toQuery),
+                    async () => {
+                        const [{document}] = await loadDocuments(args.path, {loaders: [new GraphQLFileLoader()]});
+
+                        return JSON.stringify(document);
+                    },
                 );
 
-                return {contents, loader: "js", resolveDir: dirname(args.path)};
+                return {contents, loader: "json", resolveDir: dirname(args.path)};
             });
     }
 }

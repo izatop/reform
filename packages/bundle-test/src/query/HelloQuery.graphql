@@ -1,4 +1,4 @@
-#import HelloFragment
+#import HelloFragment from "HelloFragment.graphql"
 
 query HelloWorld {
     hello {
