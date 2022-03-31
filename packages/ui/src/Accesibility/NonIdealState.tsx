@@ -1,6 +1,4 @@
-import {
-    Column, Columns, Content, Icon, Subtitle3, TextAlign, Title1,
-} from "@reform/bulma";
+import {Column, Columns, Content, Icon, Subtitle3, TextAlign, Title1} from "@reform/bulma";
 import * as React from "react";
 
 interface INonIdealState {

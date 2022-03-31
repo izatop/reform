@@ -1,6 +1,4 @@
-import {
-    Table, TableBody, TableHead, TableHeadCell, TableRow,
-} from "@reform/bulma";
+import {Table, TableBody, TableHead, TableHeadCell, TableRow} from "@reform/bulma";
 import * as React from "react";
 import {forwardRef, useCallback, useEffect} from "react";
 import {useCalendarController, useCalendarMonth} from "./functions";

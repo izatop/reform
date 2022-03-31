@@ -1,12 +1,8 @@
 import {existsSync} from "fs";
 import {join} from "path";
 import {PluginBuild} from "esbuild";
-import {
-    BuildContext, BundleArgs, Directory, FileCopyList, FileEntryList,
-} from "../build";
-import {
-    arrayify, assert, entriesMap, IArgumentList, mutate,
-} from "../internal";
+import {BuildContext, BundleArgs, Directory, FileCopyList, FileEntryList} from "../build";
+import {arrayify, assert, entriesMap, IArgumentList, mutate} from "../internal";
 import {load} from "../plugins";
 import {IJSONSchema, IPluginList} from "./interfaces";
 

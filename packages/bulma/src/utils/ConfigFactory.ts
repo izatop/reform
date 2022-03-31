@@ -1,8 +1,6 @@
 import * as React from "react";
 import {PropsWithoutRef} from "react";
-import {
-    DefaultProps, IComponentConfig, IComputed, IInProps, XElement, XProps, XPropsKeys,
-} from "../interfaces";
+import {DefaultProps, IComponentConfig, IComputed, IInProps, XElement, XProps, XPropsKeys} from "../interfaces";
 import {defaultResolvers} from "../props";
 
 export type CT<T> = React.ComponentType<T>;

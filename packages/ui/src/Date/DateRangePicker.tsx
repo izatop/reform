@@ -1,6 +1,4 @@
-import {
-    Button, Column, Columns, Dropdown, DropdownElement, Icon, useListener,
-} from "@reform/bulma";
+import {Button, Column, Columns, Dropdown, DropdownElement, Icon, useListener} from "@reform/bulma";
 import * as React from "react";
 import {useCallback, useMemo, useState} from "react";
 import {Calendar} from "./Calendar";
