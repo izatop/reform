@@ -7,7 +7,6 @@ export type Config = {filter: RegExp};
 
 const extensions = ["gql", "graphql"];
 const defaultFilter = new RegExp(`\\.(${extensions.join("|")})$`);
-const re = /#\s*import\s*([0-9a-z_]+) from "([\\/0-9a-z_\\.-]+)"/ig;
 
 export class Plugin extends PluginAbstract<Config> {
     public readonly name = "@reform/bundle-graphql";
