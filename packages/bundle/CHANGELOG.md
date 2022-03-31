@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.27](https://github.com/izatop/reform/compare/v0.8.26...v0.8.27) (2022-03-31)
+
+
+### Bug Fixes
+
+* lint\ ([4e1cac7](https://github.com/izatop/reform/commit/4e1cac7af4777038b9367ea8d9c695f5ac11f605))
+
+
+
+
+
 ## [0.8.26](https://github.com/izatop/reform/compare/v0.8.25...v0.8.26) (2022-03-31)
 
 

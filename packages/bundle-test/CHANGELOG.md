@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.27](https://github.com/izatop/reform/compare/v0.8.26...v0.8.27) (2022-03-31)
+
+
+### Bug Fixes
+
+* replace graphql-tag/loader to [@graphql-tools](https://github.com/graphql-tools) ([398809d](https://github.com/izatop/reform/commit/398809d29460ee15c57f4f055377e4d5ed05efc9))
+
+
+
+
+
 ## [0.8.26](https://github.com/izatop/reform/compare/v0.8.25...v0.8.26) (2022-03-31)
 
 
