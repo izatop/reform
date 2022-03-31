@@ -31,7 +31,7 @@
     },
     "dependencies": {
         "@reform/bulma": "^0.8.24",
-        "@types/react": "^17.0.40",
+        "@types/react": "^17.0.43",
         "bulma": "^0.9.3"
     },
     "peerDependencies": {
