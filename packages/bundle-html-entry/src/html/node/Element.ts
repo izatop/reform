@@ -1,15 +1,16 @@
 import {assert} from "@reform/bundle";
-import * as p5 from "parse5";
+import {html} from "parse5";
 import {AttributeList} from "./AttributeList";
 import {isElement, parseNS} from "./functions";
 import {NodeAbstract} from "./NodeAbstract";
+import {P5Pick, P5TypeMap} from "./p5";
 
-export class Element extends NodeAbstract<p5.Element> {
+export class Element extends NodeAbstract<P5Pick<"element">> {
     readonly #attributes: AttributeList;
     readonly #children: Element[];
     readonly #parent?: Element;
 
-    constructor(node: p5.Element, parent?: Element) {
+    constructor(node: P5TypeMap["element"], parent?: Element) {
         super(node);
         this.#parent = parent;
         this.#attributes = new AttributeList(this, node.attrs);
@@ -28,7 +29,7 @@ export class Element extends NodeAbstract<p5.Element> {
             {
                 tagName: name,
                 nodeName: name,
-                namespaceURI: namespace,
+                namespaceURI: namespace as html.NS,
                 parentNode: parent.node,
                 childNodes: [],
                 attrs: [],

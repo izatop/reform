@@ -1,8 +1,9 @@
-import * as p5 from "parse5";
+import {parse} from "parse5";
+import {P5Pick} from "./p5";
 
-export const isElement = (value: p5.Node): value is p5.Element => "tagName" in value;
-export const isParentNode = (value: p5.Node): value is p5.ParentNode => "childNodes" in value;
-export const isTextNode = (value: p5.Node): value is p5.TextNode => value.nodeName === "#text";
+export const isElement = (value: P5Pick<"node">): value is P5Pick<"element"> => "tagName" in value;
+export const isParentNode = (value: P5Pick<"node">): value is P5Pick<"parentNode"> => "childNodes" in value;
+export const isTextNode = (value: P5Pick<"node">): value is P5Pick<"textNode"> => value.nodeName === "#text";
 
 export function parseNS(ns: string) {
     const parts = ns.split(":");
@@ -16,5 +17,5 @@ export function formatNS(name: string, namespace = "") {
 }
 
 export function parseHTML(contents: string) {
-    return p5.parse(contents, {scriptingEnabled: false});
+    return parse(contents, {scriptingEnabled: false});
 }

@@ -1,6 +1,6 @@
-import * as p5 from "parse5";
+import {P5Pick} from "./p5";
 
-export abstract class NodeAbstract<T extends p5.ParentNode> {
+export abstract class NodeAbstract<T extends P5Pick<"parentNode">> {
     readonly #node: T;
 
     constructor(node: T) {

@@ -1,8 +1,9 @@
-import * as p5 from "parse5";
-import * as TreeAdapter from "parse5/lib/tree-adapters/default";
+import {defaultTreeAdapter} from "parse5";
+import {NodeType} from "parse5/dist/tree-adapters/default";
 import {isElement, isParentNode, isTextNode} from "../functions";
+import {P5Pick} from "../p5";
 
-const getNodeDeep = (node: p5.Node, start = 0): number => {
+const getNodeDeep = (node: P5Pick<"node">, start = 0): number => {
     if (isElement(node) && node.parentNode) {
         return getNodeDeep(node.parentNode, start + 1);
     }
@@ -10,30 +11,30 @@ const getNodeDeep = (node: p5.Node, start = 0): number => {
     return start > 1 ? start - 1 : 0;
 };
 
-const createIndent = (node: p5.ParentNode, deep: number): p5.TextNode => {
+const createIndent = (node: P5Pick<"parentNode">, deep: number): P5Pick<"textNode"> => {
     return {
-        nodeName: "#text",
+        nodeName: "#text" as NodeType.Text,
         parentNode: node,
         value: " ".repeat(deep * 2),
     };
 };
 
-const createLineBreak = (node: p5.ParentNode): p5.TextNode => {
+const createLineBreak = (node: P5Pick<"parentNode">): P5Pick<"textNode"> => {
     return {
-        nodeName: "#text",
+        nodeName: "#text" as NodeType.Text,
         parentNode: node,
         value: "\n",
     };
 };
 
-const trimTextNode = (node: p5.TextNode): p5.TextNode => {
+const trimTextNode = (node: P5Pick<"textNode">): P5Pick<"textNode"> => {
     return {
         ...node,
         value: node.value.trim(),
     };
 };
 
-const indentChild = (parent: p5.ParentNode, child: p5.ChildNode, deep: number) => {
+const indentChild = (parent: P5Pick<"parentNode">, child: P5Pick<"childNode">, deep: number) => {
     if (isElement(child)) {
         return [
             createIndent(parent, deep),
@@ -51,8 +52,8 @@ const indentChild = (parent: p5.ParentNode, child: p5.ChildNode, deep: number) =
 };
 
 export const PrettyAdapter = {
-    ...TreeAdapter,
-    getChildNodes: (node: p5.Node) => {
+    ...defaultTreeAdapter,
+    getChildNodes: (node: P5Pick<"parentNode">) => {
         if (isParentNode(node) && node.childNodes.length > 1) {
             const deep = getNodeDeep(node);
             const {childNodes} = node;
@@ -65,6 +66,6 @@ export const PrettyAdapter = {
             ];
         }
 
-        return TreeAdapter.getChildNodes(node);
+        return defaultTreeAdapter.getChildNodes(node);
     },
 };

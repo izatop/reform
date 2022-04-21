@@ -1,14 +1,14 @@
 import {assert} from "@reform/bundle";
-import p5 from "parse5";
+import {Token} from "parse5";
 import {Element} from "./Element";
 import {formatNS, parseNS} from "./functions";
 
 export class AttributeList {
     readonly #node: Element;
-    readonly #children: p5.Attribute[];
-    readonly #index = new Map<string, p5.Attribute>();
+    readonly #children: Token.Attribute[];
+    readonly #index = new Map<string, Token.Attribute>();
 
-    constructor(node: Element, children: p5.Attribute[]) {
+    constructor(node: Element, children: Token.Attribute[]) {
         this.#node = node;
         this.#children = children;
         for (const child of this.#children) {

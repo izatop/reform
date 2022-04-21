@@ -1,7 +1,7 @@
-import * as p5 from "parse5";
-import * as TreeAdapter from "parse5/lib/tree-adapters/default";
+import {defaultTreeAdapter} from "parse5";
+import {P5Pick} from "../p5";
 
 export const MinifyAdapter = {
-    ...TreeAdapter,
-    getTextNodeContent: (textNode: p5.TextNode) => textNode.value.trim(),
+    ...defaultTreeAdapter,
+    getTextNodeContent: (textNode: P5Pick<"textNode">) => textNode.value.trim(),
 };

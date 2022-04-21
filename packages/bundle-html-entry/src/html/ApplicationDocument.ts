@@ -1,6 +1,6 @@
-import * as p5 from "parse5";
 import {Format} from "esbuild";
 import {assert, File, FileContentType} from "@reform/bundle";
+import {Token} from "parse5";
 import {Attachable} from "../interface";
 import {Document} from "./node/Document";
 import {Element} from "./node/Element";
@@ -39,7 +39,7 @@ export class ApplicationDocument {
         }
 
         const isRemoteSource = /^https?:\/\//;
-        const sources: [string, p5.Attribute][] = [];
+        const sources: [string, Token.Attribute][] = [];
         const links = this.#document.child.query("link");
         for (const link of links) {
             const rel = link.getAttribute("rel");

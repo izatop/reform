@@ -1,12 +1,13 @@
 import {assert} from "@reform/bundle";
-import * as p5 from "parse5";
+import {serialize} from "parse5";
 import {MinifyAdapter} from "./Document/MinifyAdapter";
 import {PrettyAdapter} from "./Document/PrettyAdapter";
 import {Element} from "./Element";
 import {isElement, parseHTML} from "./functions";
 import {NodeAbstract} from "./NodeAbstract";
+import {P5Pick} from "./p5";
 
-export class Document extends NodeAbstract<p5.Document> {
+export class Document extends NodeAbstract<P5Pick<"document">> {
     readonly #root: Element;
 
     constructor(contents: string) {
@@ -27,6 +28,6 @@ export class Document extends NodeAbstract<p5.Document> {
     }
 
     public serialize(pretty = false) {
-        return p5.serialize(this.node, {treeAdapter: pretty ? PrettyAdapter : MinifyAdapter});
+        return serialize(this.node, {treeAdapter: pretty ? PrettyAdapter : MinifyAdapter});
     }
 }
