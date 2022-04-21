@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/izatop/reform/compare/v0.8.27...v0.9.0) (2022-04-21)
+
+
+### Features
+
+* update deps + react 18 ([3d1a520](https://github.com/izatop/reform/commit/3d1a5202e117579060a0426a98f0583afc493d37))
+
+
+
+
+
 ## [0.8.27](https://github.com/izatop/reform/compare/v0.8.26...v0.8.27) (2022-03-31)
 
 **Note:** Version bump only for package @reform/bundle-html-entry
