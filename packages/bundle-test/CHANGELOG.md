@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.4](https://github.com/izatop/reform/compare/v0.9.3...v0.9.4) (2022-05-27)
+
+
+### Bug Fixes
+
+* update deps ([e9f5b6f](https://github.com/izatop/reform/commit/e9f5b6fcb159880997009fdc06460f85d51eefd0))
+
+
+
+
+
 ## [0.9.3](https://github.com/izatop/reform/compare/v0.9.2...v0.9.3) (2022-05-19)
 
 
