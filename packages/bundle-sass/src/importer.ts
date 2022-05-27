@@ -3,7 +3,7 @@ import {assert, resolveThrough} from "@reform/bundle";
 
 function resolveUrl(initiator: string, url: string): string {
     if (url.startsWith("~")) {
-        const normalized = url.substr(1);
+        const normalized = url.substring(1);
         const filePath = dirname(normalized);
         const fileName = basename(normalized);
         const modulePath = resolveThrough(initiator, join("node_modules", filePath));
