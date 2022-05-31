@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0](https://github.com/izatop/reform/compare/v0.9.4...v0.10.0) (2022-05-31)
+
+
+### Features
+
+* rename packages ([3627445](https://github.com/izatop/reform/commit/3627445074f8e05cdd623d74868626170c6e31ee))
+
+
+
+
+
 ## [0.9.4](https://github.com/izatop/reform/compare/v0.9.3...v0.9.4) (2022-05-27)
 
 
