@@ -1,11 +1,13 @@
-import {FC} from "react";
+import React, {FC} from "react";
 import {HelloQuery} from "../query";
 import icon from "../icons/icon.png";
 import svg from "../icons/icon.svg";
+import {Card} from "./Card";
 
-export const Hello: FC = () => {
+export const Hello: FC<{children: React.ReactElement}> = () => {
     return (
         <div>
+            <Card/>
             <section className="flex">
                 <div>
                     <a href={svg}><img src={icon} alt={"icon"} /></a>
@@ -18,7 +20,6 @@ export const Hello: FC = () => {
             <section>
                 <pre>{JSON.stringify(HelloQuery, null, 2)}</pre>
             </section>
-
         </div>
     );
 };

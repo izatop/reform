@@ -1,13 +1,8 @@
 # Reform
 
-[![Build Status](https://travis-ci.org/izatop/reform.svg?branch=master)](https://travis-ci.org/izatop/reform)
+A TypeScript library for bundling react apps and components.
 
-Reform is a clean UI components based on Bulma CSS framework. 
-
-## Features
-
- * [Components](./packages/bulma)
- * [Extended](./packages/ui)
+Documentation in progress.
 
 ## License
 MIT

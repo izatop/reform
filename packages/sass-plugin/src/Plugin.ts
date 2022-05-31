@@ -26,13 +26,15 @@ export class Plugin extends PluginAbstract<Config> {
         this.context.addLoaders(resolves.map((extension) => [extension, "file"]));
 
         this
-            .on("resolve", {filter: resolvesRegex}, (args) => (
-                {path: this.getModulePath(args.importer, args.path)}
-            ))
-            .on("load", {filter}, async ({path}) => {
-                const contents = await this.render({path, compress});
+            .on("resolve", {filter: resolvesRegex}, (args) => {
+                const path = this.getModulePath(args.importer, args.path);
 
-                return {contents, loader: "css"};
+                return {path};
+            })
+            .on("load", {filter}, async ({path}) => {
+                const {contents, watchFiles} = await this.render({path, compress});
+
+                return {contents, watchFiles, loader: "css"};
             });
     }
 
@@ -49,13 +51,20 @@ export class Plugin extends PluginAbstract<Config> {
                 outputStyle,
             };
 
-            return new Promise<string>((resolve, reject) => {
+            return new Promise<{contents: string; watchFiles: string[]}>((resolve, reject) => {
                 render(sassOptions, (error, result) => {
                     if (error) {
                         return reject(error);
                     }
 
-                    resolve(result.css.toString("utf-8"));
+                    const watchFiles = [
+                        result.stats.entry,
+                        ...result.stats.includedFiles,
+                    ];
+
+                    const contents = result.css.toString("utf-8");
+
+                    resolve({contents, watchFiles});
                 });
             });
         });
@@ -64,7 +73,7 @@ export class Plugin extends PluginAbstract<Config> {
     public getModulePath(importer: string, file: string) {
         const path = dirname(importer);
         const normalized = file.replace(stripRe, "");
-        const fontRealPath = resolveThrough(path, join("node_modules", normalized.substr(1)));
+        const fontRealPath = resolveThrough(path, join("node_modules", normalized.substring(1)));
         assert(fontRealPath, `Cannot find ${file} at ${path}`);
 
         return fontRealPath;

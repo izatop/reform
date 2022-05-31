@@ -1,5 +1,5 @@
 {
-    "name": "@reform/bundle-html-entry",
+    "name": "@reform/html-entry-plugin",
     "version": "0.9.4",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
@@ -9,7 +9,7 @@
     "repository": "https://github.com/izatop/reform",
     "keywords": [
         "esbuild",
-        "bundle",
+        "html-entry",
         "graphql",
         "react",
         "typescript"
