@@ -6,13 +6,13 @@
             "path": "bundle"
         },
         {
-            "path": "sass-plugin"
+            "path": "sass"
         },
         {
-            "path": "graphql-plugin"
+            "path": "graphql"
         },
         {
-            "path": "html-entry-plugin"
+            "path": "html"
         }
     ]
 }

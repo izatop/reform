@@ -7,16 +7,26 @@ import {P5Pick, P5TypeMap} from "./p5";
 
 export class Element extends NodeAbstract<P5Pick<"element">> {
     readonly #attributes: AttributeList;
-    readonly #children: Element[];
+    readonly #children: Element[] = [];
     readonly #parent?: Element;
 
     constructor(node: P5TypeMap["element"], parent?: Element) {
         super(node);
         this.#parent = parent;
         this.#attributes = new AttributeList(this, node.attrs);
-        this.#children = node.childNodes
+        this.updateChildren();
+    }
+
+    public get parent() {
+        return this.#parent;
+    }
+
+    private updateChildren() {
+        this.#children.splice(0, this.#children.length);
+        this.#children.push(...this.node.childNodes
             .filter(isElement)
-            .map((node) => new Element(node, this));
+            .map((node) => new Element(node, this)),
+        );
     }
 
     public get name() {
@@ -89,6 +99,27 @@ export class Element extends NodeAbstract<P5Pick<"element">> {
     public remove() {
         if (this.#parent) {
             this.#parent.detach(this);
+        }
+    }
+
+    public replace(elements: Element[]) {
+        if (this.#parent) {
+            const parentNode = this.#parent.node;
+            const index = this.#parent.node.childNodes.indexOf(this.node);
+            const insertChildren = [];
+            for (const {node} of elements) {
+                node.parentNode = parentNode;
+                insertChildren.push(node);
+            }
+
+            parentNode.childNodes.splice(index, 1);
+            parentNode.childNodes = [
+                ...this.node.childNodes.slice(0, index),
+                ...insertChildren,
+                ...this.node.childNodes.slice(index),
+            ];
+
+            this.#parent.updateChildren();
         }
     }
 

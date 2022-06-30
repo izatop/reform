@@ -1,7 +1,6 @@
 .idea/
 .vscode/
 node_modules/
-sass/
 dist/
 coverage/
 yarn-*.log

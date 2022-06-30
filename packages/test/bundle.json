@@ -3,8 +3,8 @@
         "default": {
             "base": "src",
             "plugins": {
-                "@reform/bundle-sass": {},
-                "@reform/bundle-html-entry": {}
+                "@reform/sass": {},
+                "@reform/html": {}
             },
             "bundle": true,
             "format": "esm",
@@ -12,8 +12,12 @@
             "target": [
                 "es2020"
             ],
-            "environment": ["TEST"],
-            "envFiles": [".env"],
+            "environment": [
+                "TEST"
+            ],
+            "envFiles": [
+                ".env"
+            ],
             "serve": {
                 "port": 8000,
                 "fallback": {
@@ -40,7 +44,7 @@
                 "asset": "asset/[name].[hash]"
             },
             "plugins": {
-                "@reform/bundle-graphql": {}
+                "@reform/graphql": {}
             },
             "files": [
                 "sitemap/*",
@@ -50,7 +54,9 @@
             "serve": {
                 "host": "bundle.localhost"
             },
-            "inject": ["runtime.js"]
+            "inject": [
+                "runtime.js"
+            ]
         }
     ]
 }
