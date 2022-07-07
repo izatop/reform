@@ -31,7 +31,7 @@
         "watcher": "^1.2.0"
     },
     "devDependencies": {
-        "@types/node": "^18.0.0",
+        "@types/node": "^18.0.3",
         "typescript-json-schema": "^0.53.1"
     },
     "publishConfig": {
