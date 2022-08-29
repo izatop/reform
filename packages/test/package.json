@@ -11,7 +11,7 @@
     "devDependencies": {
         "@fortawesome/fontawesome-free": "^6.1.1",
         "@reform/bundle": "^0.11.2",
-        "esbuild": "^0.14.49",
+        "esbuild": "^0.15.5",
         "graphql": "^16.5.0"
     },
     "author": {
