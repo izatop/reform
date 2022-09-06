@@ -1,11 +1,9 @@
 {
     "compilerOptions": {
         "module": "commonjs",
-        "target": "ES2019",
+        "target": "ES2022",
         "lib": [
-            "ES2020",
-            "dom",
-            "dom.iterable"
+            "ES2022"
         ],
         "types": [],
         "strict": true,
@@ -22,5 +20,7 @@
         "skipLibCheck": true,
         "incremental": true
     },
-    "exclude": ["node_modules"]
+    "exclude": [
+        "node_modules"
+    ]
 }
