@@ -1,5 +1,4 @@
 import {defaultTreeAdapter} from "parse5";
-import {NodeType} from "parse5/dist/tree-adapters/default";
 import {isElement, isParentNode, isTextNode} from "../functions";
 import {P5Pick} from "../p5";
 
@@ -13,7 +12,7 @@ const getNodeDeep = (node: P5Pick<"node">, start = 0): number => {
 
 const createIndent = (node: P5Pick<"parentNode">, deep: number): P5Pick<"textNode"> => {
     return {
-        nodeName: "#text" as NodeType.Text,
+        nodeName: "#text",
         parentNode: node,
         value: " ".repeat(deep * 2),
     };
@@ -21,7 +20,7 @@ const createIndent = (node: P5Pick<"parentNode">, deep: number): P5Pick<"textNod
 
 const createLineBreak = (node: P5Pick<"parentNode">): P5Pick<"textNode"> => {
     return {
-        nodeName: "#text" as NodeType.Text,
+        nodeName: "#text",
         parentNode: node,
         value: "\n",
     };
