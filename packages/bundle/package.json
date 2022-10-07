@@ -24,14 +24,14 @@
     },
     "dependencies": {
         "@types/glob": "^8.0.0",
-        "dotenv": "^16.0.2",
-        "esbuild": "^0.15.7",
+        "dotenv": "^16.0.3",
+        "esbuild": "^0.15.10",
         "glob": "^8.0.3",
         "path-to-regexp": "^6.2.1",
         "watcher": "^1.2.0"
     },
     "devDependencies": {
-        "@types/node": "^18.7.16",
+        "@types/node": "^18.8.3",
         "typescript-json-schema": "^0.54.0"
     },
     "publishConfig": {
