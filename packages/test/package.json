@@ -9,9 +9,9 @@
         "test": "yarn clean && yarn build"
     },
     "devDependencies": {
-        "@fortawesome/fontawesome-free": "^6.2.0",
+        "@fortawesome/fontawesome-free": "^6.2.1",
         "@reform/bundle": "^0.11.9",
-        "esbuild": "^0.15.12",
+        "esbuild": "^0.15.16",
         "graphql": "^16.5.0"
     },
     "author": {
@@ -21,8 +21,8 @@
     "private": true,
     "license": "MIT",
     "dependencies": {
-        "@types/react": "^18.0.24",
-        "@types/react-dom": "^18.0.8",
+        "@types/react": "^18.0.25",
+        "@types/react-dom": "^18.0.9",
         "react": "^18.1.0",
         "react-dom": "^18.1.0"
     }

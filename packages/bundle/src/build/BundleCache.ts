@@ -1,6 +1,6 @@
 import {stat} from "fs/promises";
-import Watcher from "watcher";
 import {WatcherOptions} from "watcher/dist/types";
+import Watcher from "watcher";
 import logger from "../internal/logger";
 import {Disposer, assign} from "../internal";
 import {Directory, File} from "./Resources";
