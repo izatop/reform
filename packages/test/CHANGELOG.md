@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.11](https://github.com/izatop/reform/compare/v0.11.10...v0.11.11) (2023-04-05)
+
+**Note:** Version bump only for package @reform/test
+
+
+
+
+
 ## [0.11.10](https://github.com/izatop/reform/compare/v0.11.9...v0.11.10) (2022-12-02)
 
 

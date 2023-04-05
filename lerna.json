@@ -1,24 +1,24 @@
 {
-    "packages": [
-        "packages/*"
-    ],
-    "command": {
-        "version": {
-            "allowBranch": "master",
-            "ignoreChanges": [
-                "*.md",
-                "packages/**/test"
-            ],
-            "conventionalCommits": true,
-            "noCommitHooks": true,
-            "noChangelog": true
-        },
-        "publish": {
-            "yes": true
-        }
+  "packages": [
+    "packages/*"
+  ],
+  "command": {
+    "version": {
+      "allowBranch": "master",
+      "ignoreChanges": [
+        "*.md",
+        "packages/**/test"
+      ],
+      "conventionalCommits": true,
+      "noCommitHooks": true,
+      "noChangelog": true
     },
-    "stream": true,
-    "npmClient": "yarn",
-    "useWorkspaces": true,
-    "version": "0.11.10"
+    "publish": {
+      "yes": true
+    }
+  },
+  "stream": true,
+  "npmClient": "yarn",
+  "useWorkspaces": true,
+  "version": "0.11.11"
 }
