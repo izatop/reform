@@ -29,10 +29,17 @@
                     ]
                 },
                 "envFiles": {
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
+                    "anyOf": [
+                        {
+                            "items": {
+                                "type": "string"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
                 },
                 "environment": {
                     "items": {
@@ -68,21 +75,7 @@
                 },
                 "loader": {
                     "additionalProperties": {
-                        "enum": [
-                            "base64",
-                            "binary",
-                            "css",
-                            "dataurl",
-                            "default",
-                            "file",
-                            "js",
-                            "json",
-                            "jsx",
-                            "text",
-                            "ts",
-                            "tsx"
-                        ],
-                        "type": "string"
+                        "$ref": "#/definitions/Loader"
                     },
                     "type": "object"
                 },
@@ -186,6 +179,24 @@
             },
             "type": "object"
         },
+        "Loader": {
+            "enum": [
+                "base64",
+                "binary",
+                "copy",
+                "css",
+                "dataurl",
+                "default",
+                "file",
+                "js",
+                "json",
+                "jsx",
+                "text",
+                "ts",
+                "tsx"
+            ],
+            "type": "string"
+        },
         "PWAManifest": {
             "type": "object"
         },
@@ -201,6 +212,18 @@
                 },
                 "@reform/bundle-html-entry": {
                     "properties": {
+                        "artifacts": {
+                            "type": "string"
+                        },
+                        "attach": {
+                            "items": {
+                                "enum": [
+                                    "stylesheet"
+                                ],
+                                "type": "string"
+                            },
+                            "type": "array"
+                        },
                         "filter": {
                             "$ref": "#/definitions/RegExp"
                         }
