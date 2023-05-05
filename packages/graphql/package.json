@@ -1,6 +1,6 @@
 {
     "name": "@reform/graphql",
-    "version": "0.11.11",
+    "version": "0.12.0",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "files": [
@@ -20,7 +20,7 @@
     "dependencies": {
         "@graphql-tools/graphql-file-loader": "^7.5.11",
         "@graphql-tools/load": "^7.8.6",
-        "@reform/bundle": "^0.11.11",
+        "@reform/bundle": "^0.12.0",
         "@types/node": "^20.0.0",
         "graphql": "^16.5.0",
         "graphql-tag": "^2.12.6"

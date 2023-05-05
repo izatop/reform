@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.12.0](https://github.com/izatop/reform/compare/v0.11.11...v0.12.0) (2023-05-05)
+
+
+### Features
+
+* **breaks:** update deps ([13372c5](https://github.com/izatop/reform/commit/13372c54fce9f5b54074324e98e195f0b224300a))
+
+
+
+
+
 ## [0.11.11](https://github.com/izatop/reform/compare/v0.11.10...v0.11.11) (2023-04-05)
 
 **Note:** Version bump only for package @reform/html

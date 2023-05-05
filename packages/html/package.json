@@ -1,6 +1,6 @@
 {
     "name": "@reform/html",
-    "version": "0.11.11",
+    "version": "0.12.0",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "files": [
@@ -18,7 +18,7 @@
         "build": "tsc"
     },
     "dependencies": {
-        "@reform/bundle": "^0.11.11",
+        "@reform/bundle": "^0.12.0",
         "@types/node": "^20.0.0",
         "@types/parse5": "^7.0.0",
         "esbuild": "^0.17.18",
