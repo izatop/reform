@@ -1,4 +1,4 @@
-import {BuildAbstract, Build, BuildServer, BundleScript} from "../build";
+import {BuildAbstract, Build, BundleScript} from "../build";
 import {JSONConfig} from "../config";
 import {getArgumentList, IArgumentList} from "./args";
 import {Disposer} from "./disposer";
@@ -6,10 +6,6 @@ import {withError} from "./error";
 import logger from "./logger";
 
 export function factory(args: IArgumentList, bundleConfigList: BundleScript[]): BuildAbstract {
-    if (args.serve) {
-        return new BuildServer(args, bundleConfigList);
-    }
-
     return new Build(args, bundleConfigList);
 }
 

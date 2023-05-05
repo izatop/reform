@@ -1,5 +1,5 @@
 import {assert} from "@reform/bundle";
-import {html} from "parse5";
+import {Token, html} from "parse5";
 import {AttributeList} from "./AttributeList";
 import {isElement, parseNS} from "./functions";
 import {NodeAbstract} from "./NodeAbstract";
@@ -52,7 +52,7 @@ export class Element extends NodeAbstract<P5Pick<"element">> {
         return node;
     }
 
-    public getAttribute(key: string) {
+    public getAttribute(key: string): Token.Attribute | undefined {
         return this.#attributes.get(key);
     }
 

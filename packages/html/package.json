@@ -15,14 +15,13 @@
         "typescript"
     ],
     "scripts": {
-        "clean": "rimraf dist tsconfig.tsbuildinfo",
         "build": "tsc"
     },
     "dependencies": {
         "@reform/bundle": "^0.11.11",
-        "@types/node": "^18.11.10",
+        "@types/node": "^20.0.0",
         "@types/parse5": "^7.0.0",
-        "esbuild": "^0.15.16",
+        "esbuild": "^0.17.18",
         "parse5": "^7.1.2"
     },
     "publishConfig": {

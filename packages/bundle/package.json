@@ -17,7 +17,6 @@
         "typescript"
     ],
     "scripts": {
-        "clean": "rimraf dist tsconfig.tsbuildinfo",
         "schema:update": "typescript-json-schema -o schema.json ${PWD}/tsconfig.schema.json IJSONSchema",
         "test:bundle": "ts-node src/bin/bundle",
         "test:bundle:watch": "ts-node src/bin/bundle -w"
@@ -25,14 +24,14 @@
     "dependencies": {
         "@types/glob": "^8.0.0",
         "dotenv": "^16.0.3",
-        "esbuild": "^0.15.16",
-        "glob": "^8.0.3",
+        "esbuild": "^0.17.18",
+        "glob": "^10.2.2",
         "path-to-regexp": "^6.2.1",
-        "watcher": "^1"
+        "watcher": "^2.2.2"
     },
     "devDependencies": {
-        "@types/node": "^18.11.10",
-        "typescript-json-schema": "^0.55.0"
+        "@types/node": "^20.0.0",
+        "typescript-json-schema": "^0.56.0"
     },
     "publishConfig": {
         "access": "public"

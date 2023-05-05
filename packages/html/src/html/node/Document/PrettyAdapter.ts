@@ -1,4 +1,4 @@
-import {defaultTreeAdapter} from "parse5";
+import {DefaultTreeAdapterMap, TreeAdapter, defaultTreeAdapter} from "parse5";
 import {isElement, isParentNode, isTextNode} from "../functions";
 import {P5Pick} from "../p5";
 
@@ -50,7 +50,7 @@ const indentChild = (parent: P5Pick<"parentNode">, child: P5Pick<"childNode">, d
     return child;
 };
 
-export const PrettyAdapter = {
+export const PrettyAdapter: TreeAdapter<DefaultTreeAdapterMap> = {
     ...defaultTreeAdapter,
     getChildNodes: (node: P5Pick<"parentNode">) => {
         if (isParentNode(node) && node.childNodes.length > 1) {

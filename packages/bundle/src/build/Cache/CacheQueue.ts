@@ -1,4 +1,3 @@
-import {TargetEvent} from "watcher/dist/enums";
 import {CacheQueueDispose, CacheQueueHandle, CacheQueueOnceHandle} from "./interfaces";
 
 export class CacheQueue {
@@ -30,7 +29,7 @@ export class CacheQueue {
         return queue;
     }
 
-    public fire(key: string, event: TargetEvent) {
+    public fire(key: string, event: any) {
         const queue = this.ensure(key);
         for (const fn of queue.values()) {
             fn(event);

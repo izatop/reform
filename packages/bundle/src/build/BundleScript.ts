@@ -1,6 +1,6 @@
 import {readFileSync} from "fs";
 import {DotenvParseOutput, parse} from "dotenv";
-import {build, BuildFailure, BuildOptions} from "esbuild";
+import {build, BuildOptions, context} from "esbuild";
 import {
     assert,
     defer,
@@ -21,8 +21,7 @@ export class BundleScript {
 
     constructor(context: BuildContext, config: IBundleScriptConfig) {
         this.#config = config;
-        this.#context = context;
-    }
+        this.#context = context;    }
 
     public get id() {
         return this.#context.id;
@@ -52,24 +51,21 @@ export class BundleScript {
         logger.info(this, "watch");
 
         const {files} = this.#config;
-        const onRebuild = async (error: BuildFailure | null) => {
-            if (error) {logger.error(error, this, "watch -> %s", error.message);}
-
-            logger.info(this, "rebuilt");
-        };
-
-        const options: BuildOptions = {
-            ...this.getIncrementalConfig(),
-            watch: {onRebuild},
-        };
+        const bundle = await context(this.getBuildConfig());
 
         await this.check();
-        const [buildResult] = await Promise.all([
-            build(options),
+        await Promise.all([
+            bundle.watch({}),
             files.build(),
         ]);
 
-        onClose(() => buildResult.stop?.());
+        onClose(() => bundle.dispose());
+
+        if (this.config.serve) {
+            const {serve: {host, port}, build} = this.config;
+            logger.info(this, "serve (%o)", {host, port});
+            await bundle.serve({host, port, servedir: build.path});
+        }
 
         return defer<void>(onClose);
     }
@@ -84,13 +80,6 @@ export class BundleScript {
         }
 
         assert(!errors.length, "Wrong entries");
-    }
-
-    private getIncrementalConfig(): BuildOptions & {incremental: true} {
-        return {
-            ...this.getBuildConfig(),
-            incremental: true,
-        };
     }
 
     private getBuildConfig(): BuildOptions {
@@ -135,8 +124,8 @@ export class BundleScript {
         }
 
         define["process.env.NODE_ENV"] = define["NODE_ENV"] = JSON.stringify(args.mode);
-        define["PRODUCTION"] = args.mode !== "development";
-        define["DEVELOPMENT"] = !define["PRODUCTION"];
+        define["PRODUCTION"] = JSON.stringify(args.mode !== "development");
+        define["DEVELOPMENT"] = JSON.stringify(!define["PRODUCTION"]);
 
         return {
             define,

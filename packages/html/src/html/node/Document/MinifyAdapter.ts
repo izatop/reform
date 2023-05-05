@@ -1,7 +1,7 @@
-import {defaultTreeAdapter} from "parse5";
+import {DefaultTreeAdapterMap, TreeAdapter, defaultTreeAdapter} from "parse5";
 import {P5Pick} from "../p5";
 
-export const MinifyAdapter = {
+export const MinifyAdapter: TreeAdapter<DefaultTreeAdapterMap> = {
     ...defaultTreeAdapter,
     getTextNodeContent: (textNode: P5Pick<"textNode">) => textNode.value.trim(),
 };

@@ -1,6 +1,4 @@
 import {stat} from "fs/promises";
-import {WatcherOptions} from "watcher/dist/types";
-import Watcher from "watcher";
 import logger from "../internal/logger";
 import {Disposer, assign} from "../internal";
 import {Directory, File} from "./Resources";
@@ -26,12 +24,17 @@ export class BundleCache {
         logger.debug(this, "open");
 
         if (this.#context.watch) {
-            const watcherOptions: WatcherOptions = {ignoreInitial: true, recursive: true};
-            const watcher = new Watcher(this.base.path, watcherOptions, (event, file) => {
-                this.#queue.fire(file, event);
-            });
+            const enforceWatch = async () => {
+                const Watcher = (await import("watcher")).default;
+                const watcherOptions = {ignoreInitial: true, recursive: true};
+                const watcher = new Watcher(this.base.path, watcherOptions, (event: any, file: any) => {
+                    this.#queue.fire(file, event);
+                });
 
-            Disposer.add(() => watcher.close());
+                Disposer.add(() => watcher.close());
+            };
+
+            setImmediate(enforceWatch);
         }
 
         Disposer.add(() => {
