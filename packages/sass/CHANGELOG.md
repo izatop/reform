@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.6](https://github.com/izatop/reform/compare/v0.12.3...v0.12.6) (2023-05-09)
+
+
+### Bug Fixes
+
+* patch ([f23d88f](https://github.com/izatop/reform/commit/f23d88fb4439bbddd5a23bad3b4d06fcf02f0459))
+
+
+
+
+
 ## [0.12.5](https://github.com/izatop/reform/compare/v0.12.3...v0.12.5) (2023-05-09)
 
 **Note:** Version bump only for package @reform/sass
