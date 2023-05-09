@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.1](https://github.com/izatop/reform/compare/v0.12.0...v0.12.1) (2023-05-09)
+
+
+### Bug Fixes
+
+* variables ([04c0f7c](https://github.com/izatop/reform/commit/04c0f7c77c4d4af96d0e3807891523ce7154bc98))
+
+
+
+
+
 # [0.12.0](https://github.com/izatop/reform/compare/v0.11.11...v0.12.0) (2023-05-05)
 
 

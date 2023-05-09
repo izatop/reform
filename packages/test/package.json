@@ -1,6 +1,6 @@
 {
     "name": "@reform/test",
-    "version": "0.12.0",
+    "version": "0.12.1",
     "main": "src/index.ts",
     "repository": "https://github.com/izatop/reform",
     "scripts": {
@@ -9,7 +9,7 @@
     },
     "devDependencies": {
         "@fortawesome/fontawesome-free": "^6.2.1",
-        "@reform/bundle": "^0.12.0",
+        "@reform/bundle": "^0.12.1",
         "esbuild": "^0.17.18",
         "graphql": "^16.5.0"
     },
