@@ -120,7 +120,7 @@ export class BundleScript {
         const uniqueKeys = new Set([...environment, ...keys(variables)]);
 
         for (const variable of uniqueKeys.values()) {
-            define[variable] = JSON.stringify(variableStore[variable]);
+            define[variable] = JSON.stringify(variableStore[variable] ?? null);
         }
 
         define["process.env.NODE_ENV"] = define["NODE_ENV"] = JSON.stringify(args.mode);

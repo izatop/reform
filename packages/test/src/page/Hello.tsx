@@ -4,7 +4,7 @@ import icon from "../icons/icon.png";
 import svg from "../icons/icon.svg";
 import {Card} from "./Card";
 
-export const Hello: React.FC<{children: React.ReactElement}> = () => {
+export const Hello: React.FC = () => {
     return (
         <div>
             <Card/>
@@ -14,7 +14,12 @@ export const Hello: React.FC<{children: React.ReactElement}> = () => {
                 </div>
                 <div>
                     <h1>Hello!</h1>
-                    <h2>Test: {TEST}</h2>
+                    <h2>Var: {TEST},
+                        Num: {JSON.stringify(NUM_VAR)},
+                        Bool: {JSON.stringify(BOOL_VAR)},
+                        Null: {JSON.stringify(NULL_VAR)},
+                        Undefined: {JSON.stringify(UNDEFINED_VAR)}
+                    </h2>
                 </div>
             </section>
             <section>

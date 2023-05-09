@@ -13,7 +13,8 @@
                 "es2020"
             ],
             "environment": [
-                "TEST"
+                "TEST",
+                "UNDEFINED_VAR"
             ],
             "envFiles": [
                 ".env"
@@ -45,6 +46,11 @@
             },
             "plugins": {
                 "@reform/graphql": {}
+            },
+            "variables": {
+                "NUM_VAR": 1,
+                "BOOL_VAR": true,
+                "NULL_VAR": null
             },
             "files": [
                 "sitemap/*",
