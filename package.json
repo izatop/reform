@@ -16,9 +16,10 @@
         "build": "tsc -b packages",
         "watch": "yarn build -w",
         "ci:build": "yarn build",
+        "ci:test": "yarn test && yarn workspace @reform/test test",
         "lint": "eslint 'packages/*/{src,test}/**/*.{ts,tsx}'",
         "lint:fix": "eslint --fix 'packages/*/{src,test}/**/*.{ts,tsx}'",
-        "test": "yarn test:clean && jest --coverage",
+        "test": "yarn test:clean && jest",
         "test:clean": "rimraf coverage",
         "test:watch": "jest --watch",
         "check": "yarn lint && yarn build && yarn test"
