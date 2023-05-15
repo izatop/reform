@@ -4,10 +4,11 @@
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "bin": {
-        "be": "dist/bin/be.js"
+        "be": "bin/be"
     },
     "files": [
-        "dist"
+        "dist/",
+        "bin/"
     ],
     "repository": "https://github.com/izatop/reform",
     "keywords": [
