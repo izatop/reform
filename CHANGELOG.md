@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.8](https://github.com/izatop/reform/compare/v0.12.6...v0.12.8) (2023-05-15)
+
+
+### Bug Fixes
+
+* bin ([d52b70e](https://github.com/izatop/reform/commit/d52b70e6ea3f8642e431ba986a33e513cba0ba83))
+* lint ([c34a3a7](https://github.com/izatop/reform/commit/c34a3a7495b5ef44b59bac04e7c21c11e61cb824))
+* update deps ([588846d](https://github.com/izatop/reform/commit/588846d3da038cdf0eac4dd6feb7d88b9795dc78))
+* version ([1a7c4da](https://github.com/izatop/reform/commit/1a7c4dac0dba73c59f18fd6e2dd509c94e4610ca))
+
+
+
+
+
 ## [0.12.7](https://github.com/izatop/reform/compare/v0.12.6...v0.12.7) (2023-05-09)
 
 **Note:** Version bump only for package reform
