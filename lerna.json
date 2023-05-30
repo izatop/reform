@@ -1,24 +1,15 @@
 {
-  "packages": [
-    "packages/*"
-  ],
+  "$schema": "node_modules/lerna/schemas/lerna-schema.json",
+  "useWorkspaces": true,
   "command": {
     "version": {
       "allowBranch": "master",
       "ignoreChanges": [
-        "*.md",
-        "packages/**/test"
-      ],
-      "conventionalCommits": true,
-      "noCommitHooks": true,
-      "noChangelog": true
-    },
-    "publish": {
-      "yes": true
+        "**/*.md",
+        "packages/*/test",
+        "packages/test"
+      ]
     }
   },
-  "stream": true,
-  "npmClient": "yarn",
-  "useWorkspaces": true,
   "version": "0.12.8"
 }

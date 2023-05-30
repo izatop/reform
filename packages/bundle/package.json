@@ -23,15 +23,15 @@
         "test:bundle:watch": "ts-node src/bin/bundle -w"
     },
     "dependencies": {
-        "@types/glob": "^8.0.0",
+        "@types/glob": "^8.1.0",
         "dotenv": "^16.0.3",
         "esbuild": "^0.17.19",
-        "glob": "^10.2.4",
+        "glob": "^10.2.6",
         "path-to-regexp": "^6.2.1",
         "watcher": "^2.2.2"
     },
     "devDependencies": {
-        "@types/node": "^20.1.4",
+        "@types/node": "^20.2.5",
         "typescript-json-schema": "^0.56.0"
     },
     "publishConfig": {

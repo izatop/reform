@@ -19,9 +19,9 @@
     },
     "dependencies": {
         "@reform/bundle": "^0.12.8",
-        "@types/node": "^20.1.4",
+        "@types/node": "^20.2.5",
         "@types/node-sass": "^4.11.3",
-        "node-sass": "^8.0.0"
+        "node-sass": "^9.0.0"
     },
     "publishConfig": {
         "access": "public"
