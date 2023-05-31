@@ -1729,13 +1729,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@reform/bundle@^0.12.8, @reform/bundle@workspace:packages/bundle":
+"@reform/bundle@^0.13.0, @reform/bundle@workspace:packages/bundle":
   version: 0.0.0-use.local
   resolution: "@reform/bundle@workspace:packages/bundle"
   dependencies:
     "@types/glob": ^8.1.0
     "@types/node": ^20.2.5
-    dotenv: ^16.0.3
+    dotenv: ^16.1.1
     esbuild: ^0.17.19
     glob: ^10.2.6
     path-to-regexp: ^6.2.1
@@ -1752,7 +1752,7 @@ __metadata:
   dependencies:
     "@graphql-tools/graphql-file-loader": ^8.0.0
     "@graphql-tools/load": ^8.0.0
-    "@reform/bundle": ^0.12.8
+    "@reform/bundle": ^0.13.0
     "@types/node": ^20.2.5
     graphql: ^16.6.0
     graphql-tag: ^2.12.6
@@ -1763,7 +1763,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@reform/html@workspace:packages/html"
   dependencies:
-    "@reform/bundle": ^0.12.8
+    "@reform/bundle": ^0.13.0
     "@types/node": ^20.2.5
     "@types/parse5": ^7.0.0
     esbuild: ^0.17.19
@@ -1775,7 +1775,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@reform/sass@workspace:packages/sass"
   dependencies:
-    "@reform/bundle": ^0.12.8
+    "@reform/bundle": ^0.13.0
     "@types/node": ^20.2.5
     "@types/node-sass": ^4.11.3
     node-sass: ^9.0.0
@@ -1787,7 +1787,7 @@ __metadata:
   resolution: "@reform/test@workspace:packages/test"
   dependencies:
     "@fortawesome/fontawesome-free": ^6.4.0
-    "@reform/bundle": ^0.12.8
+    "@reform/bundle": ^0.13.0
     "@types/react": ^18.2.7
     "@types/react-dom": ^18.2.4
     esbuild: ^0.17.19
@@ -3818,10 +3818,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dotenv@npm:^16.0.3":
-  version: 16.0.3
-  resolution: "dotenv@npm:16.0.3"
-  checksum: afcf03f373d7a6d62c7e9afea6328e62851d627a4e73f2e12d0a8deae1cd375892004f3021883f8aec85932cd2834b091f568ced92b4774625b321db83b827f8
+"dotenv@npm:^16.1.1":
+  version: 16.1.1
+  resolution: "dotenv@npm:16.1.1"
+  checksum: e3786267ce7951e747edef6bf45ac60fdba8b846201f82f8811b7222e78aef9cdc51763f07696934d4feebab2ab4d01b1d61ac9301919a8f317dc66672127814
   languageName: node
   linkType: hard
 
