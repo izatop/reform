@@ -101,6 +101,7 @@ export class BundleScript {
             variables = {},
             environment = [],
             envFiles = [],
+            jsx = {},
             entry: {paths: entryPoints},
             ...options
         } = this.#config;
@@ -133,6 +134,12 @@ export class BundleScript {
             plugins,
             sourcemap,
             entryPoints,
+            jsx: jsx.jsx,
+            jsxDev: jsx.dev,
+            jsxFactory: jsx.factory,
+            jsxFragment: jsx.fragment,
+            jsxImportSource: jsx.importSource,
+            jsxSideEffects: jsx.sideEffects,
             entryNames: paths.entry,
             chunkNames: paths.chunk,
             assetNames: paths.asset,

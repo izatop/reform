@@ -12,6 +12,9 @@
             "target": [
                 "es2020"
             ],
+            "jsx": {
+                "jsx": "automatic"
+            },
             "environment": [
                 "TEST",
                 "UNDEFINED_VAR"

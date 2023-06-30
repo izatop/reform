@@ -11,6 +11,15 @@ export interface IPWAApplicationConfig {
     manifest: PWAManifest;
 }
 
+export interface IJSXOptions {
+    jsx?: "transform" | "preserve" | "automatic";
+    dev?: boolean;
+    factory?: string;
+    fragment?: string;
+    importSource?: string;
+    sideEffects?: boolean;
+}
+
 export interface IBundleConfig {
     id?: string | number;
     bundle?: boolean;
@@ -38,6 +47,8 @@ export interface IBundleConfig {
         chunk?: string;
         entry?: string;
     };
+
+    jsx?: IJSXOptions;
 }
 
 export interface IBundleScriptConfig extends IBundleConfig {

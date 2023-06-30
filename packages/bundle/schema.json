@@ -73,6 +73,9 @@
                     },
                     "type": "array"
                 },
+                "jsx": {
+                    "$ref": "#/definitions/IJSXOptions"
+                },
                 "loader": {
                     "additionalProperties": {
                         "$ref": "#/definitions/Loader"
@@ -162,6 +165,34 @@
             },
             "type": "object"
         },
+        "IJSXOptions": {
+            "properties": {
+                "dev": {
+                    "type": "boolean"
+                },
+                "factory": {
+                    "type": "string"
+                },
+                "fragment": {
+                    "type": "string"
+                },
+                "importSource": {
+                    "type": "string"
+                },
+                "jsx": {
+                    "enum": [
+                        "automatic",
+                        "preserve",
+                        "transform"
+                    ],
+                    "type": "string"
+                },
+                "sideEffects": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
         "IPWAApplicationConfig": {
             "properties": {
                 "bundle": {
@@ -187,6 +218,7 @@
                 "css",
                 "dataurl",
                 "default",
+                "empty",
                 "file",
                 "js",
                 "json",
@@ -217,9 +249,7 @@
                         },
                         "attach": {
                             "items": {
-                                "enum": [
-                                    "stylesheet"
-                                ],
+                                "const": "stylesheet",
                                 "type": "string"
                             },
                             "type": "array"

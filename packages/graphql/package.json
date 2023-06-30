@@ -21,8 +21,8 @@
         "@graphql-tools/graphql-file-loader": "^8.0.0",
         "@graphql-tools/load": "^8.0.0",
         "@reform/bundle": "^0.13.2",
-        "@types/node": "^20.3.1",
-        "graphql": "^16.7.0",
+        "@types/node": "^20.3.2",
+        "graphql": "^16.7.1",
         "graphql-tag": "^2.12.6"
     },
     "publishConfig": {
