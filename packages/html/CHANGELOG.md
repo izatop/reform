@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.3](https://github.com/izatop/reform/compare/v0.13.2...v0.13.3) (2023-06-30)
+
+
+### Bug Fixes
+
+* update deps, add jsx options ([dae1e81](https://github.com/izatop/reform/commit/dae1e81e83dcf96e5ca2eda258c11f6b845957eb))
+
+
+
+
+
 ## [0.13.2](https://github.com/izatop/reform/compare/v0.13.1...v0.13.2) (2023-06-22)
 
 
