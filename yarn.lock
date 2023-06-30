@@ -1552,7 +1552,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@reform/bundle@^0.13.2, @reform/bundle@workspace:packages/bundle":
+"@reform/bundle@^0.13.3, @reform/bundle@workspace:packages/bundle":
   version: 0.0.0-use.local
   resolution: "@reform/bundle@workspace:packages/bundle"
   dependencies:
@@ -1575,7 +1575,7 @@ __metadata:
   dependencies:
     "@graphql-tools/graphql-file-loader": ^8.0.0
     "@graphql-tools/load": ^8.0.0
-    "@reform/bundle": ^0.13.2
+    "@reform/bundle": ^0.13.3
     "@types/node": ^20.3.2
     graphql: ^16.7.1
     graphql-tag: ^2.12.6
@@ -1586,7 +1586,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@reform/html@workspace:packages/html"
   dependencies:
-    "@reform/bundle": ^0.13.2
+    "@reform/bundle": ^0.13.3
     "@types/node": ^20.3.2
     "@types/parse5": ^7.0.0
     esbuild: ^0.18.10
@@ -1598,7 +1598,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@reform/sass@workspace:packages/sass"
   dependencies:
-    "@reform/bundle": ^0.13.2
+    "@reform/bundle": ^0.13.3
     "@types/node": ^20.3.2
     "@types/node-sass": ^4.11.3
     node-sass: ^9.0.0
@@ -1610,7 +1610,7 @@ __metadata:
   resolution: "@reform/test@workspace:packages/test"
   dependencies:
     "@fortawesome/fontawesome-free": ^6.4.0
-    "@reform/bundle": ^0.13.2
+    "@reform/bundle": ^0.13.3
     "@types/react": ^18.2.14
     "@types/react-dom": ^18.2.6
     esbuild: ^0.18.10
