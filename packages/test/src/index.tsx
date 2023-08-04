@@ -1,8 +1,6 @@
 import "./index.scss";
-import {render} from "react-dom";
+import {createRoot} from "react-dom/client";
 import {Hello} from "./page/Hello";
 
-render(
-    <Hello/>,
-    document.getElementById("app"),
-);
+const root = createRoot(document.getElementById("app")!);
+root.render(<Hello/>);
