@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.4](https://github.com/izatop/reform/compare/v0.13.3...v0.13.4) (2023-08-04)
+
+
+### Bug Fixes
+
+* attrs ([c55fd71](https://github.com/izatop/reform/commit/c55fd71bd0c4c631b53e58cc016dc3ad12bdb788))
+* react 18 upgrade -> createRoot ([9bf2fcf](https://github.com/izatop/reform/commit/9bf2fcf3db9cbed506e1c6b3df0f4fc47dbf43ac))
+* update deps ([c86beef](https://github.com/izatop/reform/commit/c86beef03970a1b5141a25d0a85ea5785e0a5651))
+* yarn.lock ([a5e68a1](https://github.com/izatop/reform/commit/a5e68a196287d2c85a511d163330b800a4ed43eb))
+
+
+
+
+
 ## [0.13.3](https://github.com/izatop/reform/compare/v0.13.2...v0.13.3) (2023-06-30)
 
 
