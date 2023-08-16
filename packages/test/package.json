@@ -10,8 +10,8 @@
     "devDependencies": {
         "@fortawesome/fontawesome-free": "^6.4.2",
         "@reform/bundle": "^0.13.3",
-        "esbuild": "^0.18.17",
-        "graphql": "^16.7.1"
+        "esbuild": "^0.18.20",
+        "graphql": "^16.8.0"
     },
     "author": {
         "name": "Artur Bier",
@@ -20,7 +20,7 @@
     "private": true,
     "license": "MIT",
     "dependencies": {
-        "@types/react": "^18.2.18",
+        "@types/react": "^18.2.20",
         "@types/react-dom": "^18.2.7",
         "react": "^18.2.0",
         "react-dom": "^18.2.0"

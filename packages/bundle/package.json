@@ -25,13 +25,13 @@
     "dependencies": {
         "@types/glob": "^8.1.0",
         "dotenv": "^16.3.1",
-        "esbuild": "^0.18.17",
+        "esbuild": "^0.18.20",
         "glob": "^10.3.3",
         "path-to-regexp": "^6.2.1",
         "watcher": "^2.3.0"
     },
     "devDependencies": {
-        "@types/node": "^20.4.7",
+        "@types/node": "^20.5.0",
         "typescript-json-schema": "^0.59.0"
     },
     "publishConfig": {
