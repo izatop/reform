@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.6](https://github.com/izatop/reform/compare/v0.13.5...v0.13.6) (2023-08-30)
+
+
+### Bug Fixes
+
+* tsconfig ([d5ee0f6](https://github.com/izatop/reform/commit/d5ee0f6f47e4b6f62c12acfccd088b4f6d96580a))
+* update deps ([1fae296](https://github.com/izatop/reform/commit/1fae296e84cf28bf7da8aef358bacd5d91a82f9b))
+
+
+
+
+
 ## [0.13.5](https://github.com/izatop/reform/compare/v0.13.4...v0.13.5) (2023-08-16)
 
 
