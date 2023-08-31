@@ -1,4 +1,4 @@
-import {IBundleConfig} from "../build";
+import {IBundleConfig} from "../build/index.js";
 
 export interface IPluginList {
     "@reform/bundle-sass": {

@@ -1,11 +1,11 @@
 import {stat} from "fs/promises";
 
-import {assign, Disposer} from "../internal";
-import logger from "../internal/logger";
-import {BuildContext} from "./BuildContext";
-import {CacheQueue} from "./Cache/CacheQueue";
-import {CACHE_QUEUE_ONCE_QUEUE_HANDLE, CacheQueueHandle} from "./Cache/interfaces";
-import {Directory, File} from "./Resources";
+import {assign, Disposer} from "../internal/index.js";
+import logger from "../internal/logger.js";
+import {BuildContext} from "./BuildContext.js";
+import {CacheQueue} from "./Cache/CacheQueue.js";
+import {CACHE_QUEUE_ONCE_QUEUE_HANDLE, CacheQueueHandle} from "./Cache/interfaces.js";
+import {Directory, File} from "./Resources/index.js";
 
 export type CacheCallback<T> = (deps: string[]) => Promise<T>;
 export type CacheContainer<T = unknown> = {result: T; modified: Date; deps: string[]};
@@ -85,7 +85,7 @@ export class BundleCache {
 
             if (maxTime <= container.modified.getTime()) {
                 logger.debug(this, "hit -> %s", key);
-                
+
                 return container.result as T;
             }
         }

@@ -2,15 +2,16 @@ import {createHash} from "crypto";
 import {mkdir, readFile, stat, writeFile} from "fs/promises";
 import {dirname, relative} from "path";
 
-import logger from "../../internal/logger";
-import {Directory} from "./Directory";
-import {ResourceAbstract} from "./ResourceAbstract";
+import {assert} from "../../internal/assert.js";
+import logger from "../../internal/logger.js";
+import {Directory} from "./Directory.js";
+import {ResourceAbstract} from "./ResourceAbstract.js";
 
 export type FileEnc = BufferEncoding;
 export type FileTag = Record<any, any>;
 export type FilePrefix = string | Directory;
 export type FileContentType = string | Buffer;
-export type FileContentTransform<T extends FileContentType> = (contents: T) => T;
+export type FileContentTransform<T extends FileContentType> = (contents: FileContentType) => T;
 
 export interface FileConfig {
     readonly prefix: FilePrefix;
@@ -31,24 +32,24 @@ export class File<T extends FileContentType | null = null> extends ResourceAbstr
         this.#contents = contents;
     }
 
-    public get id() {
+    public get id(): string {
         return this.relative;
     }
 
-    public get contents() {
+    public get contents(): T {
         return this.#contents;
     }
 
-    public get dir() {
+    public get dir(): string {
         return dirname(this.path);
     }
 
-    public get config() {
+    public get config(): FileConfig {
         return this.#config;
     }
 
-    public includes(chunk: string) {
-        return this.#contents?.includes(chunk);
+    public includes(chunk: string): boolean {
+        return this.#contents?.includes(chunk) ?? false;
     }
 
     public hasContent(this: File<T>): this is File<FileContentType> {
@@ -83,35 +84,39 @@ export class File<T extends FileContentType | null = null> extends ResourceAbstr
     }
 
     public transform<S extends FileContentType>(this: File<S>, transform: FileContentTransform<S>): File<S> {
+        assert(this.contents !== null, "Empty content");
+
         return new File(this.config, transform(this.contents));
     }
 
-    public async copy<S extends FileContentType>(this: File<S>, dest: File<null>) {
+    public async copy<S extends FileContentType>(this: File<S>, dest: File<null>): Promise<File<S>> {
         await File.ensurePath(dest);
 
         const {contents} = this;
+        assert(contents !== null, "Empty content");
+
         const {prefix, relative} = dest;
         await writeFile(dest.path, contents);
 
-        return File.factory({prefix, relative}, contents);
+        return File.factory<S>({prefix, relative}, contents as S);
     }
 
-    public async write<N extends FileContentType>(contents: N) {
+    public async write<N extends FileContentType>(contents: N): Promise<this> {
         await File.ensurePath(this);
         await writeFile(this.path, contents);
 
         return this;
     }
 
-    public isExtensionEquals(candidate: string) {
+    public isExtensionEquals(candidate: string): boolean {
         return this.path.endsWith(`.${candidate}`);
     }
 
-    public toString() {
+    public toString(): string {
         return this.path;
     }
 
-    public static async ensurePath(file: File<any>) {
+    public static async ensurePath(file: File<any>): Promise<void> {
         const prefix = relative(file.prefix, file.dir);
 
         try {
@@ -123,15 +128,16 @@ export class File<T extends FileContentType | null = null> extends ResourceAbstr
         }
     }
 
-    public getHash<C extends FileContentType>(this: File<C>, len = 4) {
+    public getHash<C extends FileContentType>(this: File<C>, len = 4): string {
         if (this.#hash) {
-            return this.#hash.substr(0, len);
+            return this.#hash.substring(0, len);
         }
 
+        assert(this.contents !== null, "Empty content");
         this.#hash = createHash("sha1")
             .update(this.contents)
             .digest("hex");
 
-        return this.#hash.substr(0, len);
+        return this.#hash.substring(0, len);
     }
 }

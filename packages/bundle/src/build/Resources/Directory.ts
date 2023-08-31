@@ -1,8 +1,8 @@
 import {relative} from "path";
 
-import {FilePrefix} from "./File";
-import {FileFactory} from "./FileFactory";
-import {ResourceAbstract} from "./ResourceAbstract";
+import {FilePrefix} from "./File.js";
+import {FileFactory} from "./FileFactory.js";
+import {ResourceAbstract} from "./ResourceAbstract.js";
 
 export class Directory extends ResourceAbstract {
     public readonly fileFactory: FileFactory;
@@ -13,11 +13,11 @@ export class Directory extends ResourceAbstract {
         this.fileFactory = new FileFactory(this);
     }
 
-    public static factory(prefix: FilePrefix, relative: string) {
+    public static factory(prefix: FilePrefix, relative: string): Directory {
         return new this(prefix, relative);
     }
 
-    public getRelativePath(file: FilePrefix) {
+    public getRelativePath(file: FilePrefix): string {
         return relative(this.path, file.toString());
     }
 }

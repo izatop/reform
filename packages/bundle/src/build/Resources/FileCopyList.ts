@@ -1,7 +1,8 @@
 import {glob} from "glob";
 
-import {BuildContext} from "../BuildContext";
-import {FileArtifactList} from "./FileArtifactList";
+import {BuildContext} from "../BuildContext.js";
+import {File} from "./File.js";
+import {FileArtifactList} from "./FileArtifactList.js";
 
 export class FileCopyList extends FileArtifactList {
     public readonly patterns: string[];
@@ -12,13 +13,13 @@ export class FileCopyList extends FileArtifactList {
         this.patterns = patterns;
     }
 
-    public static scan(cwd: string, patterns: string[]) {
+    public static scan(cwd: string, patterns: string[]): string[] {
         return patterns
             .map((pattern) => glob.sync(pattern, {cwd, nodir: true}))
             .flat();
     }
 
-    public add(file: string) {
+    public add(file: string): File<null> {
         const origin = super.add(file);
 
         this.cache.on(origin.dir, (event) => {

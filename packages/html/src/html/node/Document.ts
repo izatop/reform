@@ -1,12 +1,12 @@
 import {assert} from "@reform/bundle";
 import {serialize} from "parse5";
 
-import {MinifyAdapter} from "./Document/MinifyAdapter";
-import {PrettyAdapter} from "./Document/PrettyAdapter";
-import {Element} from "./Element";
-import {isElement, parseHTML} from "./functions";
-import {NodeAbstract} from "./NodeAbstract";
-import {P5Pick} from "./p5";
+import {MinifyAdapter} from "./Document/MinifyAdapter.js";
+import {PrettyAdapter} from "./Document/PrettyAdapter.js";
+import {Element} from "./Element.js";
+import {isElement, parseHTML} from "./functions.js";
+import {NodeAbstract} from "./NodeAbstract.js";
+import {P5Pick} from "./p5.js";
 
 export class Document extends NodeAbstract<P5Pick<"document">> {
     readonly #root: Element;

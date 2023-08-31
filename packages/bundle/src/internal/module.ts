@@ -1,5 +1,5 @@
-import {withError} from "./error";
-import logger, {LogTarget} from "./logger";
+import {withError} from "./error.js";
+import logger, {LogTarget} from "./logger.js";
 
 export function trySafe(label: LogTarget, fn: () => unknown) {
     try {

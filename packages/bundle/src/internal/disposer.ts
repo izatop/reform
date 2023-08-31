@@ -1,5 +1,5 @@
-import {trySafe} from "../internal";
-import logger from "../internal/logger";
+import {trySafe} from "../internal/index.js";
+import logger from "../internal/logger.js";
 
 export type Disposable = () => unknown;
 

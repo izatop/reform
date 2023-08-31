@@ -1,2 +1,2 @@
-export * from "./interfaces";
-export * from "./JSONConfig";
+export * from "./interfaces.js";
+export * from "./JSONConfig.js";

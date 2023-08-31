@@ -1,19 +1,18 @@
-import {BuildContext} from "../build";
-import {assert, assign, withError} from "../internal";
-import logger from "../internal/logger";
-import {PluginCtor} from "./interfaces";
-import {PluginAbstract} from "./PluginAbstract";
+import {BuildContext} from "../build/index.js";
+import {assert, assign, withError} from "../internal/index.js";
+import logger from "../internal/logger.js";
+import {PluginCtor} from "./interfaces.js";
+import {PluginAbstract} from "./PluginAbstract.js";
 
 export function isPluginCtor<P extends PluginAbstract>(type: unknown): type is PluginCtor<P> {
     return typeof type === "function" && PluginAbstract.isPrototypeOf(type);
 }
 
-export function load(id: string, context: BuildContext, config: unknown): PluginAbstract {
+export async function load(id: string, context: BuildContext, config: unknown): Promise<PluginAbstract> {
     logger.debug("plugin", "try -> %s", id);
 
     try {
-        // eslint-disable-next-line @typescript-eslint/no-var-requires
-        const {default: plugin} = require(id);
+        const {default: plugin} = await import(id);
         assert(isPluginCtor(plugin), `Wrong default export at ${id}`);
 
         return new plugin(context, config);

@@ -1,4 +1,4 @@
-import {CacheQueueDispose, CacheQueueHandle, CacheQueueOnceHandle} from "./interfaces";
+import {CacheQueueDispose, CacheQueueHandle, CacheQueueOnceHandle} from "./interfaces.js";
 
 export class CacheQueue {
     public readonly id: string;
@@ -16,11 +16,11 @@ export class CacheQueue {
         return () => queue.delete(handle);
     }
 
-    public off(key: string) {
+    public off(key: string): void {
         this.ensure(key).clear();
     }
 
-    public ensure(key: string) {
+    public ensure(key: string): Set<CacheQueueHandle | CacheQueueOnceHandle> {
         const queue = this.#queue.get(key) ?? new Set();
         if (!this.#queue.has(key)) {
             this.#queue.set(key, queue);
@@ -29,14 +29,14 @@ export class CacheQueue {
         return queue;
     }
 
-    public fire(key: string, event: any) {
+    public fire(key: string, event: any): void {
         const queue = this.ensure(key);
         for (const fn of queue.values()) {
             fn(event);
         }
     }
 
-    public reset() {
+    public reset(): void {
         for (const queue of this.#queue.values()) {
             queue.clear();
         }

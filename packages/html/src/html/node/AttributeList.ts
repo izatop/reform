@@ -1,8 +1,8 @@
 import {assert} from "@reform/bundle";
 import {Token} from "parse5";
 
-import {Element} from "./Element";
-import {formatNS, parseNS} from "./functions";
+import {Element} from "./Element.js";
+import {formatNS, parseNS} from "./functions.js";
 
 export class AttributeList {
     readonly #node: Element;

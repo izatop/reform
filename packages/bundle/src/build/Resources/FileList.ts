@@ -1,8 +1,10 @@
 import {stat} from "fs/promises";
 
-import {assert, logger} from "../../internal";
-import {BuildContext} from "../BuildContext";
-import {File} from "./File";
+import {assert, logger} from "../../internal/index.js";
+import {BuildContext} from "../BuildContext.js";
+import {BundleCache} from "../BundleCache.js";
+import {Directory} from "./Directory.js";
+import {File} from "./File.js";
 
 export type FileListResult = {src: File<Buffer>; dest: File<Buffer>};
 export type FileError = {error: Error; file: string};
@@ -20,41 +22,41 @@ export class FileList {
         files.forEach((file) => this.add(file));
     }
 
-    public get id() {
+    public get id(): string {
         return this.#context.id;
     }
 
-    public get files() {
+    public get files(): string[] {
         return [...this.#origins.values()]
             .map((file) => file.relative);
     }
 
-    public get paths() {
+    public get paths(): string[] {
         return [...this.#origins.values()]
             .map((file) => file.path);
     }
 
-    public get built() {
+    public get built(): File<Buffer>[] {
         return [...this.#result.values()]
             .map(({dest}) => dest);
     }
 
-    protected get cache() {
+    protected get cache(): BundleCache {
         return this.#context.cache;
     }
 
-    protected get base() {
+    protected get base(): Directory {
         return this.#context.base;
     }
 
-    public getBuilt(file: string) {
+    public getBuilt(file: string): File<Buffer> {
         const result = this.#result.get(file);
         assert(result, `Can't find built ${file}`);
 
         return result.dest;
     }
 
-    public add(file: string) {
+    public add(file: string): File {
         const {base: {fileFactory}} = this.#context;
         const origin = fileFactory.factory(file);
         this.#origins.set(file, origin);
@@ -75,18 +77,18 @@ export class FileList {
         return origin;
     }
 
-    public change(file: string) {
+    public change(file: string): void {
         this.#result.delete(file);
     }
 
-    public remove(file: string) {
+    public remove(file: string): void {
         this.#origins.delete(file);
         this.#result.delete(file);
 
         this.cache.off(file);
     }
 
-    public reset(files: string[]) {
+    public reset(files: string[]): this {
         if (files.length) {
             this.cache.reset();
             this.#origins.clear();
@@ -98,7 +100,7 @@ export class FileList {
         return this;
     }
 
-    public async build() {
+    public async build(): Promise<void> {
         const ops = [];
         for (const src of this.#origins.values()) {
             ops.push(this.copy(src));
@@ -107,7 +109,7 @@ export class FileList {
         await Promise.all(ops);
     }
 
-    private async copy(file: File<null>) {
+    private async copy(file: File<null>): Promise<void> {
         if (this.#result.has(file.relative)) {
             return;
         }

@@ -2,7 +2,7 @@ import {assert, assignWithFilter, BuildContext, PluginAbstract, resolveThrough} 
 import {Options, render} from "node-sass";
 import {dirname, join} from "path";
 
-import importer from "./importer";
+import importer from "./importer.js";
 
 export type Config = {filter: RegExp; resolves?: string[]; compress?: boolean};
 const stripRe = /[?#].+$/;

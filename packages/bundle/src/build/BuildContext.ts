@@ -1,9 +1,9 @@
 import {Format, Loader, Platform} from "esbuild";
 import {join, relative} from "path";
 
-import {assert, IArgumentList} from "../internal";
-import {BundleCache} from "./BundleCache";
-import {Directory, File} from "./Resources";
+import {assert, IArgumentList} from "../internal/index.js";
+import {BundleCache} from "./BundleCache.js";
+import {Directory, File} from "./Resources/index.js";
 
 export interface IBuildContextConfig {
     id: string | number;

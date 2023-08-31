@@ -1,6 +1,6 @@
-import {IArgumentList} from "../internal";
-import logger from "../internal/logger";
-import {BundleScript} from "./BundleScript";
+import {IArgumentList} from "../internal/index.js";
+import logger from "../internal/logger.js";
+import {BundleScript} from "./BundleScript.js";
 
 export abstract class BuildAbstract {
     public readonly args: IArgumentList;
@@ -25,7 +25,7 @@ export abstract class BuildAbstract {
         );
     }
 
-    public start() {
+    public start(): Promise<void> {
         if (this.args.watch) {
             return this.watch();
         }
@@ -33,7 +33,7 @@ export abstract class BuildAbstract {
         return this.build();
     }
 
-    public async build() {
+    public async build(): Promise<void> {
         logger.info(this, "building...");
 
         const ops: Promise<void>[] = [];
@@ -46,7 +46,7 @@ export abstract class BuildAbstract {
         logger.info(this, "done");
     }
 
-    public async watch() {
+    public async watch(): Promise<void> {
         logger.info(this, "watching...");
 
         const ops: Promise<void>[] = [];

@@ -1,7 +1,7 @@
 import {Format, Loader, Platform, Plugin} from "esbuild";
 
-import {BuildContext} from "./BuildContext";
-import {Directory, FileCopyList, FileEntryList} from "./Resources";
+import {BuildContext} from "./BuildContext.js";
+import {Directory, FileCopyList, FileEntryList} from "./Resources/index.js";
 
 export type PWAManifest = Record<string, any>;
 export type SourceMapVariant = boolean | "inline" | "external" | "both";

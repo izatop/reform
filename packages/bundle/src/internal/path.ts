@@ -1,7 +1,7 @@
 import {existsSync} from "fs";
 import * as path from "path";
 
-import {assert} from "./assert";
+import {assert} from "./assert.js";
 
 /**
  * @todo cache

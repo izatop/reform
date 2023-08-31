@@ -1,11 +1,11 @@
 import {PluginBuild} from "esbuild";
-import {existsSync} from "fs";
+import {existsSync, readFileSync} from "fs";
 import {join} from "path";
 
-import {BuildContext, BundleArgs, Directory, FileCopyList, FileEntryList} from "../build";
-import {arrayify, assert, entriesMap, IArgumentList, mutate} from "../internal";
-import {load} from "../plugins";
-import {IJSONSchema, IPluginList} from "./interfaces";
+import {BuildContext, BundleArgs, Directory, FileCopyList, FileEntryList} from "../build/index.js";
+import {arrayify, assert, entriesMap, IArgumentList, mutate} from "../internal/index.js";
+import {load} from "../plugins/index.js";
+import {IJSONSchema, IPluginList} from "./interfaces.js";
 
 export class JSONConfig {
     public readonly config: IJSONSchema;
@@ -18,7 +18,7 @@ export class JSONConfig {
         const path = join(args.path, "bundle.json");
         assert(existsSync(path), "Configuration file not found", {path});
 
-        this.config = require(path);
+        this.config = JSON.parse(readFileSync(path, "utf-8"));
     }
 
     public async * getBundleArgs(): AsyncGenerator<BundleArgs> {
@@ -65,9 +65,9 @@ export class JSONConfig {
         }
     }
 
-    private getPlugins(context: BuildContext, plugins: Partial<IPluginList> = {}) {
+    private async getPlugins(context: BuildContext, plugins: Partial<IPluginList> = {}) {
         const ops = entriesMap(plugins, async ([id, options]) => {
-            const plugin = load(id, context, options);
+            const plugin = await load(id, context, options);
             await plugin.configure();
 
             return {

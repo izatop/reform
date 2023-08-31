@@ -1,7 +1,7 @@
 import {join} from "path";
 
-import {assert} from "../../internal";
-import {FilePrefix} from "./File";
+import {assert} from "../../internal/index.js";
+import {FilePrefix} from "./File.js";
 
 export class ResourceAbstract {
     public readonly prefix: string;
@@ -19,11 +19,11 @@ export class ResourceAbstract {
         this.path = join(this.prefix, relative);
     }
 
-    public resolve(path: FilePrefix) {
+    public resolve(path: FilePrefix): string {
         return join(this.path, path.toString());
     }
 
-    public toString() {
+    public toString(): string {
         return this.path;
     }
 }

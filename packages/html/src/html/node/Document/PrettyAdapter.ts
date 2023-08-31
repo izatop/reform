@@ -1,7 +1,7 @@
 import {defaultTreeAdapter, DefaultTreeAdapterMap, TreeAdapter} from "parse5";
 
-import {isElement, isParentNode, isTextNode} from "../functions";
-import {P5Pick} from "../p5";
+import {isElement, isParentNode, isTextNode} from "../functions.js";
+import {P5Pick} from "../p5.js";
 
 const getNodeDeep = (node: P5Pick<"node">, start = 0): number => {
     if (isElement(node) && node.parentNode) {

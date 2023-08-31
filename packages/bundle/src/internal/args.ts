@@ -1,5 +1,5 @@
-import {assert} from ".";
-import logger from "./logger";
+import {assert} from "./assert.js";
+import logger from "./logger.js";
 
 export interface IArgumentList {
     print?: true;

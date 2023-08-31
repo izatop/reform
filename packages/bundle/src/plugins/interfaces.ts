@@ -10,9 +10,9 @@ import {
     PartialMessage,
 } from "esbuild";
 
-import {BuildContext} from "../build";
-import {Promisify} from "../internal";
-import {PluginAbstract} from "./PluginAbstract";
+import {BuildContext} from "../build/index.js";
+import {Promisify} from "../internal/index.js";
+import {PluginAbstract} from "./PluginAbstract.js";
 
 export type PluginConfig = Record<any, any> | null;
 

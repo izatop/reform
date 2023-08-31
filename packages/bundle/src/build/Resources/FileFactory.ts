@@ -1,5 +1,5 @@
-import {Directory} from "./Directory";
-import {File, FileEnc} from "./File";
+import {Directory} from "./Directory.js";
+import {File, FileEnc} from "./File.js";
 
 export class FileFactory {
     public readonly prefix: Directory;
@@ -8,16 +8,16 @@ export class FileFactory {
         this.prefix = prefix;
     }
 
-    public factory(file: string) {
+    public factory(file: string): File {
         const {prefix: {path: prefix}} = this;
-        
+
         return File.factory({prefix, relative: file});
     }
 
-    public from(path: string) {
+    public from(path: string): File {
         const {prefix: {path: prefix}} = this;
         const relative = this.prefix.getRelativePath(path);
-        
+
         return File.factory({prefix, relative});
     }
 

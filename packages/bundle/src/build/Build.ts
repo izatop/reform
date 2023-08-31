@@ -1,4 +1,4 @@
-import {BuildAbstract} from "./BuildAbstract";
+import {BuildAbstract} from "./BuildAbstract.js";
 
 export class Build extends BuildAbstract {
 }

@@ -11,10 +11,10 @@ import {
     mutate,
     onClose,
     resolveThrough,
-} from "../internal";
-import logger from "../internal/logger";
-import {BuildContext} from "./BuildContext";
-import {IBundleScriptConfig} from "./interfaces";
+} from "../internal/index.js";
+import logger from "../internal/logger.js";
+import {BuildContext} from "./BuildContext.js";
+import {IBundleScriptConfig} from "./interfaces.js";
 
 export class BundleScript {
     readonly #config: IBundleScriptConfig;
@@ -23,7 +23,7 @@ export class BundleScript {
 
     constructor(context: BuildContext, config: IBundleScriptConfig) {
         this.#config = config;
-        this.#context = context;    
+        this.#context = context;
     }
 
     public get id() {

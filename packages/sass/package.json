@@ -1,8 +1,10 @@
 {
   "name": "@reform/sass",
-  "version": "0.13.5",
+  "version": "0.13.6",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "module": "dist/index.js",
+  "type": "module",
   "files": [
     "dist"
   ],
@@ -18,7 +20,7 @@
     "build": "tsc"
   },
   "dependencies": {
-    "@reform/bundle": "^0.13.5",
+    "@reform/bundle": "^0.13.6",
     "@types/node": "^20.5.7",
     "@types/node-sass": "^4.11.3",
     "node-sass": "^9.0.0"

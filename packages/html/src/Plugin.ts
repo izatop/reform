@@ -1,7 +1,7 @@
 import {assert, assignWithFilter, BuildContext, PluginAbstract} from "@reform/bundle";
 
-import {DocFile} from "./File";
-import {AttachFileType} from "./interface";
+import {DocFile} from "./File/index.js";
+import {AttachFileType} from "./interface.js";
 
 export type Config = {filter: RegExp; attach?: AttachFileType[]; artifacts?: string};
 export const artifacts = "^.+$";

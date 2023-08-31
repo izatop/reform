@@ -2,9 +2,9 @@ import {assert, File, FileContentType} from "@reform/bundle";
 import {Format} from "esbuild";
 import {Token} from "parse5";
 
-import {Attachable} from "../interface";
-import {Document} from "./node/Document";
-import {Element} from "./node/Element";
+import {Attachable} from "../interface.js";
+import {Document} from "./node/Document.js";
+import {Element} from "./node/Element.js";
 
 const scriptMimeType = ["text/javascript", "module"];
 const scriptBuildFlag = "build";

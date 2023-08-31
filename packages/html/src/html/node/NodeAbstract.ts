@@ -1,4 +1,4 @@
-import {P5Pick} from "./p5";
+import {P5Pick} from "./p5.js";
 
 export abstract class NodeAbstract<T extends P5Pick<"parentNode">> {
     readonly #node: T;

@@ -1,10 +1,12 @@
 {
   "name": "@reform/bundle",
-  "version": "0.13.5",
+  "version": "0.13.6",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "module": "dist/index.js",
+  "type": "module",
   "bin": {
-    "be": "bin/be"
+    "be": "dist/bin/be.js"
   },
   "files": [
     "dist/",

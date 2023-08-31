@@ -10,8 +10,8 @@ import {
 import {Metafile} from "esbuild";
 import {join, relative, resolve} from "path";
 
-import {ApplicationDocument} from "../html/ApplicationDocument";
-import {Attachable, AttachFileType} from "../interface";
+import {ApplicationDocument} from "../html/ApplicationDocument.js";
+import {Attachable, AttachFileType} from "../interface.js";
 
 export class DocFile extends File<string> {
     readonly #context: BuildContext;

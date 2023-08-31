@@ -1,3 +1,4 @@
 #!/usr/bin/env node
 
-require("../dist/bin/be.js");
+import {cli} from "../dist/internal/index.js";
+cli();
