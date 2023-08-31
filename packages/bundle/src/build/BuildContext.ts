@@ -1,8 +1,9 @@
-import {relative, join} from "path";
 import {Format, Loader, Platform} from "esbuild";
+import {join, relative} from "path";
+
 import {assert, IArgumentList} from "../internal";
-import {Directory, File} from "./Resources";
 import {BundleCache} from "./BundleCache";
+import {Directory, File} from "./Resources";
 
 export interface IBuildContextConfig {
     id: string | number;
@@ -16,14 +17,23 @@ export interface IBuildContextConfig {
 
 export class BuildContext {
     public readonly id: string;
+
     public readonly args: IArgumentList;
+
     public readonly cache: BundleCache;
+
     public readonly base: Directory;
+
     public readonly build: Directory;
+
     public readonly format: Format;
+
     public readonly platform: Platform;
+
     public readonly entries: ReadonlyArray<string>;
+
     public readonly loader = new Map<string, Loader>();
+
     public readonly extensions = new Set<string>();
 
     // @todo

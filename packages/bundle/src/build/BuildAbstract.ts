@@ -4,6 +4,7 @@ import {BundleScript} from "./BundleScript";
 
 export abstract class BuildAbstract {
     public readonly args: IArgumentList;
+
     public readonly bundleScriptList: BundleScript[];
 
     constructor(args: IArgumentList, bundleConfigList: BundleScript[]) {

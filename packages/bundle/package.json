@@ -1,45 +1,45 @@
 {
-    "name": "@reform/bundle",
-    "version": "0.13.5",
-    "main": "dist/index.js",
-    "types": "dist/index.d.ts",
-    "bin": {
-        "be": "bin/be"
-    },
-    "files": [
-        "dist/",
-        "bin/"
-    ],
-    "repository": "https://github.com/izatop/reform",
-    "keywords": [
-        "esbuild",
-        "bundle",
-        "react",
-        "typescript"
-    ],
-    "scripts": {
-        "schema:update": "typescript-json-schema -o schema.json ${PWD}/tsconfig.schema.json IJSONSchema",
-        "test:bundle": "ts-node src/bin/bundle",
-        "test:bundle:watch": "ts-node src/bin/bundle -w"
-    },
-    "dependencies": {
-        "@types/glob": "^8.1.0",
-        "dotenv": "^16.3.1",
-        "esbuild": "^0.19.2",
-        "glob": "^10.3.3",
-        "path-to-regexp": "^6.2.1",
-        "watcher": "^2.3.0"
-    },
-    "devDependencies": {
-        "@types/node": "^20.5.7",
-        "typescript-json-schema": "^0.60.0"
-    },
-    "publishConfig": {
-        "access": "public"
-    },
-    "author": {
-        "name": "Artur Bier",
-        "email": "izatop@gmail.com"
-    },
-    "license": "MIT"
+  "name": "@reform/bundle",
+  "version": "0.13.5",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "be": "bin/be"
+  },
+  "files": [
+    "dist/",
+    "bin/"
+  ],
+  "repository": "https://github.com/izatop/reform",
+  "keywords": [
+    "esbuild",
+    "bundle",
+    "react",
+    "typescript"
+  ],
+  "scripts": {
+    "schema:update": "typescript-json-schema -o schema.json ${PWD}/tsconfig.schema.json IJSONSchema",
+    "test:bundle": "ts-node src/bin/bundle",
+    "test:bundle:watch": "ts-node src/bin/bundle -w"
+  },
+  "dependencies": {
+    "@types/glob": "^8.1.0",
+    "dotenv": "^16.3.1",
+    "esbuild": "^0.19.2",
+    "glob": "^10.3.3",
+    "path-to-regexp": "^6.2.1",
+    "watcher": "^2.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.5.7",
+    "typescript-json-schema": "^0.60.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": {
+    "name": "Artur Bier",
+    "email": "izatop@gmail.com"
+  },
+  "license": "MIT"
 }

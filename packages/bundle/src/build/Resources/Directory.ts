@@ -1,7 +1,8 @@
 import {relative} from "path";
-import {ResourceAbstract} from "./ResourceAbstract";
+
 import {FilePrefix} from "./File";
 import {FileFactory} from "./FileFactory";
+import {ResourceAbstract} from "./ResourceAbstract";
 
 export class Directory extends ResourceAbstract {
     public readonly fileFactory: FileFactory;

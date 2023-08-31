@@ -1,72 +1,72 @@
 {
-    "preset": {
-        "default": {
-            "base": "src",
-            "plugins": {
-                "@reform/sass": {},
-                "@reform/html": {}
-            },
-            "bundle": true,
-            "format": "esm",
-            "platform": "browser",
-            "target": [
-                "es2020"
-            ],
-            "jsx": {
-                "jsx": "automatic"
-            },
-            "environment": [
-                "TEST",
-                "UNDEFINED_VAR"
-            ],
-            "envFiles": [
-                ".env"
-            ],
-            "serve": {
-                "port": 8000,
-                "fallback": {
-                    "/:route*": "index.html"
-                }
-            },
-            "loader": {
-                ".png": "file",
-                ".svg": "file"
-            }
+  "preset": {
+    "default": {
+      "base": "src",
+      "plugins": {
+        "@reform/sass": {},
+        "@reform/html": {}
+      },
+      "bundle": true,
+      "format": "esm",
+      "platform": "browser",
+      "target": [
+        "es2020"
+      ],
+      "jsx": {
+        "jsx": "automatic"
+      },
+      "environment": [
+        "TEST",
+        "UNDEFINED_VAR"
+      ],
+      "envFiles": [
+        ".env"
+      ],
+      "serve": {
+        "port": 8000,
+        "fallback": {
+          "/:route*": "index.html"
         }
-    },
-    "bundle": [
-        {
-            "id": "test",
-            "base": "src",
-            "preset": "default",
-            "entry": "index.html",
-            "build": "dist/test",
-            "treeShaking": true,
-            "paths": {
-                "entry": "js/[name].[hash]",
-                "chunk": "js/chunk/[name].[hash]",
-                "asset": "asset/[name].[hash]"
-            },
-            "plugins": {
-                "@reform/graphql": {}
-            },
-            "variables": {
-                "NUM_VAR": 1,
-                "BOOL_VAR": true,
-                "NULL_VAR": null
-            },
-            "files": [
-                "sitemap/*",
-                "robots.txt",
-                "test.js"
-            ],
-            "serve": {
-                "host": "localhost",
-                "port": 3000
-            },
-            "inject": [
-                "runtime.js"
-            ]
-        }
-    ]
+      },
+      "loader": {
+        ".png": "file",
+        ".svg": "file"
+      }
+    }
+  },
+  "bundle": [
+    {
+      "id": "test",
+      "base": "src",
+      "preset": "default",
+      "entry": "index.html",
+      "build": "dist/test",
+      "treeShaking": true,
+      "paths": {
+        "entry": "js/[name].[hash]",
+        "chunk": "js/chunk/[name].[hash]",
+        "asset": "asset/[name].[hash]"
+      },
+      "plugins": {
+        "@reform/graphql": {}
+      },
+      "variables": {
+        "NUM_VAR": 1,
+        "BOOL_VAR": true,
+        "NULL_VAR": null
+      },
+      "files": [
+        "sitemap/*",
+        "robots.txt",
+        "test.js"
+      ],
+      "serve": {
+        "host": "localhost",
+        "port": 3000
+      },
+      "inject": [
+        "runtime.js"
+      ]
+    }
+  ]
 }

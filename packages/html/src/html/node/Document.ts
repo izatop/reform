@@ -1,5 +1,6 @@
 import {assert} from "@reform/bundle";
 import {serialize} from "parse5";
+
 import {MinifyAdapter} from "./Document/MinifyAdapter";
 import {PrettyAdapter} from "./Document/PrettyAdapter";
 import {Element} from "./Element";

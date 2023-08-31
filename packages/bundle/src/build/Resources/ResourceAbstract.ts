@@ -1,10 +1,13 @@
 import {join} from "path";
+
 import {assert} from "../../internal";
 import {FilePrefix} from "./File";
 
 export class ResourceAbstract {
     public readonly prefix: string;
+
     public readonly relative: string;
+
     public readonly path: string;
 
     constructor(prefix: FilePrefix, relative: string) {

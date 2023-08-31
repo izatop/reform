@@ -1,4 +1,5 @@
-import {BuildContext, PluginAbstract, assignWithFilter, assert} from "@reform/bundle";
+import {assert, assignWithFilter, BuildContext, PluginAbstract} from "@reform/bundle";
+
 import {DocFile} from "./File";
 import {AttachFileType} from "./interface";
 

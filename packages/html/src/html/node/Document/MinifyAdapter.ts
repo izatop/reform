@@ -1,4 +1,5 @@
-import {DefaultTreeAdapterMap, TreeAdapter, defaultTreeAdapter} from "parse5";
+import {defaultTreeAdapter, DefaultTreeAdapterMap, TreeAdapter} from "parse5";
+
 import {P5Pick} from "../p5";
 
 export const MinifyAdapter: TreeAdapter<DefaultTreeAdapterMap> = {

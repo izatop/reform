@@ -1,9 +1,9 @@
-import {dirname, resolve} from "path";
-import {readFileSync} from "fs";
-import {assignWithFilter, PluginAbstract, BuildContext} from "@reform/bundle";
-import {loadDocuments} from "@graphql-tools/load";
-import {extractImportLines, parseImportLine} from "@graphql-tools/import";
 import {GraphQLFileLoader} from "@graphql-tools/graphql-file-loader";
+import {extractImportLines, parseImportLine} from "@graphql-tools/import";
+import {loadDocuments} from "@graphql-tools/load";
+import {assignWithFilter, BuildContext, PluginAbstract} from "@reform/bundle";
+import {readFileSync} from "fs";
+import {dirname, resolve} from "path";
 
 export type Config = {filter: RegExp};
 

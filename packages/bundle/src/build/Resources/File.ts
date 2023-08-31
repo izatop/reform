@@ -1,9 +1,10 @@
-import {dirname, relative} from "path";
-import {readFile, stat, mkdir, writeFile} from "fs/promises";
 import {createHash} from "crypto";
+import {mkdir, readFile, stat, writeFile} from "fs/promises";
+import {dirname, relative} from "path";
+
 import logger from "../../internal/logger";
-import {ResourceAbstract} from "./ResourceAbstract";
 import {Directory} from "./Directory";
+import {ResourceAbstract} from "./ResourceAbstract";
 
 export type FileEnc = BufferEncoding;
 export type FileTag = Record<any, any>;
@@ -18,6 +19,7 @@ export interface FileConfig {
 
 export class File<T extends FileContentType | null = null> extends ResourceAbstract {
     #contents: T;
+
     #hash?: string;
 
     readonly #config: FileConfig;
@@ -54,20 +56,26 @@ export class File<T extends FileContentType | null = null> extends ResourceAbstr
     }
 
     public static factory(config: FileConfig): File;
+
     public static factory<T extends FileContentType>(config: FileConfig, contents: T): File<T>;
+
     public static factory(config: FileConfig, contents?: any): File<any> {
         return new File<any>(config, contents ?? null);
     }
 
     public static async read(config: FileConfig, enc: FileEnc): Promise<File<string>>;
+
     public static async read(config: FileConfig): Promise<File<Buffer>>;
+
     public static async read(config: FileConfig, enc?: any): Promise<File<any>> {
         return File.factory(config)
             .read(enc);
     }
 
     public async read(this: File<T>): Promise<File<Buffer>>;
+
     public async read(this: File<T>, enc: FileEnc): Promise<File<string>>;
+
     public async read(this: File<any>, enc?: any): Promise<File<any>> {
         const {prefix, relative, path} = this;
 

@@ -1,11 +1,6 @@
 import {resolve} from "path";
-import {
-    Directory,
-    exit,
-    isPluginCtor,
-    load,
-    PluginAbstract,
-} from "../../src";
+
+import {Directory, exit, isPluginCtor, load, PluginAbstract} from "../../src";
 import {BuildContext} from "../../src/build/BuildContext";
 import {getArgumentList} from "../../src/internal";
 import {TestPlugin} from "./plugin/TestPlugin";

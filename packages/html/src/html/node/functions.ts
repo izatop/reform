@@ -1,4 +1,5 @@
 import {parse} from "parse5";
+
 import {P5Pick} from "./p5";
 
 export type IS1 = (value: P5Pick<"node">) => value is P5Pick<"element">;

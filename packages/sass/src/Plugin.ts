@@ -1,12 +1,7 @@
-import {dirname, join} from "path";
-import {
-    assert,
-    assignWithFilter,
-    BuildContext,
-    PluginAbstract,
-    resolveThrough,
-} from "@reform/bundle";
+import {assert, assignWithFilter, BuildContext, PluginAbstract, resolveThrough} from "@reform/bundle";
 import {Options, render} from "node-sass";
+import {dirname, join} from "path";
+
 import importer from "./importer";
 
 export type Config = {filter: RegExp; resolves?: string[]; compress?: boolean};

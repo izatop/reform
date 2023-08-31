@@ -1,18 +1,18 @@
 {
-    "files": [],
-    "include": [],
-    "references": [
-        {
-            "path": "bundle"
-        },
-        {
-            "path": "sass"
-        },
-        {
-            "path": "graphql"
-        },
-        {
-            "path": "html"
-        }
-    ]
+  "files": [],
+  "include": [],
+  "references": [
+    {
+      "path": "bundle"
+    },
+    {
+      "path": "sass"
+    },
+    {
+      "path": "graphql"
+    },
+    {
+      "path": "html"
+    }
+  ]
 }

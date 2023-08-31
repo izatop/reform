@@ -1,15 +1,16 @@
-import {readFileSync} from "fs";
 import {DotenvParseOutput, parse} from "dotenv";
 import {build, BuildOptions, context} from "esbuild";
+import {readFileSync} from "fs";
+
 import {
     assert,
     defer,
     entries,
     fromEntries,
+    keys,
+    mutate,
     onClose,
     resolveThrough,
-    mutate,
-    keys,
 } from "../internal";
 import logger from "../internal/logger";
 import {BuildContext} from "./BuildContext";
@@ -17,11 +18,13 @@ import {IBundleScriptConfig} from "./interfaces";
 
 export class BundleScript {
     readonly #config: IBundleScriptConfig;
+
     readonly #context: BuildContext;
 
     constructor(context: BuildContext, config: IBundleScriptConfig) {
         this.#config = config;
-        this.#context = context;    }
+        this.#context = context;    
+    }
 
     public get id() {
         return this.#context.id;
@@ -109,7 +112,7 @@ export class BundleScript {
         const {path: envBasePath} = this.config.base;
         for (const envFile of envFiles) {
             const dotEnvFile = resolveThrough(envBasePath, envFile);
-            if(dotEnvFile) {
+            if (dotEnvFile) {
                 const dotEnvContents = readFileSync(dotEnvFile, {encoding: "utf-8"});
                 mutate(dotEnvVariables, parse(dotEnvContents));
 

@@ -1,5 +1,6 @@
 import {assert} from "@reform/bundle";
-import {Token, html} from "parse5";
+import {html, Token} from "parse5";
+
 import {AttributeList} from "./AttributeList";
 import {isElement, parseNS} from "./functions";
 import {NodeAbstract} from "./NodeAbstract";
@@ -7,7 +8,9 @@ import {P5Pick, P5TypeMap} from "./p5";
 
 export class Element extends NodeAbstract<P5Pick<"element">> {
     readonly #attributes: AttributeList;
+
     readonly #children: Element[] = [];
+
     readonly #parent?: Element;
 
     constructor(node: P5TypeMap["element"], parent?: Element) {

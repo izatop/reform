@@ -1,11 +1,14 @@
 import {assert} from "@reform/bundle";
 import {Token} from "parse5";
+
 import {Element} from "./Element";
 import {formatNS, parseNS} from "./functions";
 
 export class AttributeList {
     readonly #node: Element;
+
     readonly #children: Token.Attribute[];
+
     readonly #index = new Map<string, Token.Attribute>();
 
     constructor(node: Element, children: Token.Attribute[]) {

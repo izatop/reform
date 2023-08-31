@@ -1,149 +1,230 @@
 {
-    "parser": "@typescript-eslint/parser",
-    "plugins": [
-        "@typescript-eslint",
-        "unused-imports",
-        "import",
-        "react"
-    ],
-    "extends": [
-        "eslint:recommended",
-        "plugin:@typescript-eslint/recommended",
-        "plugin:import/recommended",
-        "plugin:import/typescript",
-        "plugin:react/recommended"
-    ],
-    "ignorePatterns": [
-        "**/dist/**/*"
-    ],
-    "settings": {
-        "react": {
-            "version": "detect"
-        },
-        "import/extensions": [
-            ".ts",
-            ".tsx"
-        ]
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint",
+    "import-newlines",
+    "simple-import-sort",
+    "unused-imports",
+    "import",
+    "react"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "plugin:react/jsx-runtime"
+  ],
+  "ignorePatterns": [
+    "*/node_modules/**/*",
+    "**/dist/**/*",
+    "*.js",
+    "**/schema.ts",
+    "bin/"
+  ],
+  "settings": {
+    "react": {
+      "version": "detect"
     },
-    "rules": {
-        "max-len": [
-            "error",
-            120
-        ],
-        "semi": "off",
-        "linebreak-style": [
-            "error",
-            "unix"
-        ],
-        "@typescript-eslint/semi": [
-            "error",
-            "always"
-        ],
-        "curly": [
-            "error",
-            "all"
-        ],
-        "quotes": "off",
-        "@typescript-eslint/quotes": "error",
-        "indent": "off",
-        "@typescript-eslint/indent": "error",
-        "no-console": "error",
-        "no-debugger": "error",
-        "semi-spacing": [
-            "error",
-            {
-                "before": false,
-                "after": true
-            }
-        ],
-        "comma-dangle": [
-            "error",
-            {
-                "arrays": "always-multiline",
-                "objects": "always-multiline",
-                "imports": "always-multiline",
-                "exports": "always-multiline",
-                "functions": "always-multiline"
-            }
-        ],
-        "object-curly-newline": [
-            "error",
-            {
-                "ImportDeclaration": {
-                    "multiline": true,
-                    "minProperties": 10
-                }
-            }
-        ],
-        "comma-spacing": "error",
-        "no-prototype-builtins": "off",
-        "unused-imports/no-unused-imports": "error",
-        "unused-imports/no-unused-vars": [
-            "warn",
-            {
-                "vars": "all",
-                "args": "after-used",
-                "varsIgnorePattern": "^_",
-                "argsIgnorePattern": "^_"
-            }
-        ],
-        "import/order": [
-            "error",
-            {
-                "warnOnUnassignedImports": false,
-                "newlines-between": "never"
-            }
-        ],
-        "import/no-named-as-default": "off",
-        "space-in-parens": [
-            "error",
-            "never"
-        ],
-        "space-before-blocks": [
-            "error",
-            "always"
-        ],
-        "func-call-spacing": [
-            "error",
-            "never"
-        ],
-        "space-before-function-paren": [
-            "error",
-            {
-                "anonymous": "always",
-                "named": "never",
-                "asyncArrow": "always"
-            }
-        ],
-        "function-call-argument-newline": [
-            "off"
-        ],
-        "@typescript-eslint/explicit-function-return-type": "off",
-        "@typescript-eslint/no-explicit-any": "off",
-        "@typescript-eslint/no-empty-interface": "warn",
-        "@typescript-eslint/interface-name-prefix": "off",
-        "@typescript-eslint/explicit-module-boundary": "off",
-        "@typescript-eslint/explicit-module-boundary-types": "off",
-        "@typescript-eslint/no-unused-vars": "off",
-        "@typescript-eslint/member-delimiter-style": [
-            "error",
-            {
-                "multiline": {
-                    "delimiter": "semi",
-                    "requireLast": true
-                },
-                "singleline": {
-                    "delimiter": "semi",
-                    "requireLast": false
-                }
-            }
-        ],
-        "react/prop-types": "off",
-        "react/display-name": "off",
-        "react/react-in-jsx-scope": "off",
-        "object-curly-spacing": "off",
-        "@typescript-eslint/object-curly-spacing": [
-            "error"
+    "import/extensions": [
+      ".ts",
+      ".tsx"
+    ]
+  },
+  "rules": {
+    "max-len": [
+      "warn",
+      120
+    ],
+    "import-newlines/enforce": [
+      "warn",
+      {
+        "items": 6,
+        "max-len": 120,
+        "semi": true
+      }
+    ],
+    "semi": "off",
+    "linebreak-style": [
+      "error",
+      "unix"
+    ],
+    "@typescript-eslint/semi": [
+      "error",
+      "always"
+    ],
+    "curly": [
+      "error",
+      "all"
+    ],
+    "quotes": "off",
+    "prefer-template": "error",
+    "arrow-parens": "warn",
+    "no-unexpected-multiline": "error",
+    "brace-style": "error",
+    "@typescript-eslint/quotes": "error",
+    "indent": "off",
+    "no-multiple-empty-lines": [
+      "error",
+      {
+        "max": 1
+      }
+    ],
+    "padded-blocks": [
+      "error",
+      "never"
+    ],
+    "lines-between-class-members": [
+      "error",
+      "always"
+    ],
+    "keyword-spacing": "error",
+    "no-implicit-coercion": "error",
+    "no-unneeded-ternary": "error",
+    "no-extra-boolean-cast": [
+      "error",
+      {
+        "enforceForLogicalOperands": true
+      }
+    ],
+    "@typescript-eslint/indent": "error",
+    "@typescript-eslint/no-non-null-assertion": "error",
+    "@typescript-eslint/type-annotation-spacing": [
+      "error"
+    ],
+    "computed-property-spacing": "error",
+    "key-spacing": "error",
+    "no-console": "error",
+    "no-debugger": "error",
+    "newline-before-return": "error",
+    "arrow-spacing": "error",
+    "semi-spacing": [
+      "error",
+      {
+        "before": false,
+        "after": true
+      }
+    ],
+    "comma-dangle": [
+      "error",
+      {
+        "arrays": "always-multiline",
+        "objects": "always-multiline",
+        "imports": "always-multiline",
+        "exports": "always-multiline",
+        "functions": "always-multiline"
+      }
+    ],
+    "object-curly-newline": [
+      "error",
+      {
+        "ImportDeclaration": {
+          "multiline": true,
+          "minProperties": 10
+        }
+      }
+    ],
+    "comma-spacing": "error",
+    "simple-import-sort/exports": "warn",
+    "simple-import-sort/imports": "warn",
+    "no-prototype-builtins": "off",
+    "export/named": "off",
+    "import/no-named-as-default": "off",
+    "space-in-parens": [
+      "error",
+      "never"
+    ],
+    "space-before-blocks": [
+      "error",
+      "always"
+    ],
+    "func-call-spacing": [
+      "error",
+      "never"
+    ],
+    "space-before-function-paren": [
+      "error",
+      {
+        "anonymous": "always",
+        "named": "never",
+        "asyncArrow": "always"
+      }
+    ],
+    "space-unary-ops": [
+      "error",
+      {
+        "words": true,
+        "nonwords": false
+      }
+    ],
+    "space-infix-ops": [
+      "error"
+    ],
+    "function-call-argument-newline": [
+      "off"
+    ],
+    "@typescript-eslint/explicit-function-return-type": [
+      "warn",
+      {
+        "allowExpressions": true
+      }
+    ],
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-empty-interface": "warn",
+    "@typescript-eslint/interface-name-prefix": "off",
+    "@typescript-eslint/explicit-module-boundary": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-unused-vars": "off",
+    "unused-imports/no-unused-imports": "error",
+    "unused-imports/no-unused-vars": [
+      "warn",
+      {
+        "vars": "all",
+        "varsIgnorePattern": "^_",
+        "args": "after-used",
+        "argsIgnorePattern": "^_"
+      }
+    ],
+    "@typescript-eslint/member-delimiter-style": [
+      "error",
+      {
+        "multiline": {
+          "delimiter": "semi",
+          "requireLast": true
+        },
+        "singleline": {
+          "delimiter": "semi",
+          "requireLast": false
+        }
+      }
+    ],
+    "react/prop-types": "off",
+    "react/display-name": "off",
+    "object-curly-spacing": "off",
+    "@typescript-eslint/object-curly-spacing": [
+      "error"
+    ],
+    "react/no-unescaped-entities": [
+      "error",
+      {
+        "forbid": [
+          ">",
+          "}"
         ]
-    }
+      }
+    ],
+    "react/self-closing-comp": [
+      "error",
+      {
+        "component": true,
+        "html": true
+      }
+    ],
+    "react/jsx-no-target-blank": [
+      "warn",
+      {
+        "allowReferrer": true,
+        "enforceDynamicLinks": "always"
+      }
+    ]
+  }
 }

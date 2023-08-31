@@ -1,5 +1,5 @@
-import logger from "./logger";
 import {assert} from ".";
+import logger from "./logger";
 
 export interface IArgumentList {
     print?: true;

@@ -1,9 +1,8 @@
 {
-    "extends": "./tsconfig.json",
-    "compilerOptions": {
-        "moduleResolution": "Node",
-        "types": [
-            "node"
-        ]
-    }
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "types": [
+      "node"
+    ]
+  }
 }

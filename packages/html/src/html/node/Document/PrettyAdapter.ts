@@ -1,4 +1,5 @@
-import {DefaultTreeAdapterMap, TreeAdapter, defaultTreeAdapter} from "parse5";
+import {defaultTreeAdapter, DefaultTreeAdapterMap, TreeAdapter} from "parse5";
+
 import {isElement, isParentNode, isTextNode} from "../functions";
 import {P5Pick} from "../p5";
 

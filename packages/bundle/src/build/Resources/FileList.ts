@@ -1,6 +1,7 @@
 import {stat} from "fs/promises";
-import {BuildContext} from "../BuildContext";
+
 import {assert, logger} from "../../internal";
+import {BuildContext} from "../BuildContext";
 import {File} from "./File";
 
 export type FileListResult = {src: File<Buffer>; dest: File<Buffer>};
@@ -8,7 +9,9 @@ export type FileError = {error: Error; file: string};
 
 export class FileList {
     readonly #result = new Map<string, FileListResult>();
+
     readonly #origins = new Map<string, File<null>>();
+
     readonly #context: BuildContext;
 
     constructor(context: BuildContext, files: string[] = []) {

@@ -1,28 +1,28 @@
 {
-    "name": "@reform/test",
-    "version": "0.13.5",
-    "main": "src/index.ts",
-    "repository": "https://github.com/izatop/reform",
-    "scripts": {
-        "build": "be",
-        "test": "yarn build"
-    },
-    "devDependencies": {
-        "@fortawesome/fontawesome-free": "^6.4.2",
-        "@reform/bundle": "^0.13.5",
-        "esbuild": "^0.19.2",
-        "graphql": "^16.8.0"
-    },
-    "author": {
-        "name": "Artur Bier",
-        "email": "izatop@gmail.com"
-    },
-    "private": true,
-    "license": "MIT",
-    "dependencies": {
-        "@types/react": "^18.2.21",
-        "@types/react-dom": "^18.2.7",
-        "react": "^18.2.0",
-        "react-dom": "^18.2.0"
-    }
+  "name": "@reform/test",
+  "version": "0.13.5",
+  "main": "src/index.ts",
+  "repository": "https://github.com/izatop/reform",
+  "scripts": {
+    "build": "be",
+    "test": "yarn build"
+  },
+  "devDependencies": {
+    "@fortawesome/fontawesome-free": "^6.4.2",
+    "@reform/bundle": "^0.13.5",
+    "esbuild": "^0.19.2",
+    "graphql": "^16.8.0"
+  },
+  "author": {
+    "name": "Artur Bier",
+    "email": "izatop@gmail.com"
+  },
+  "private": true,
+  "license": "MIT",
+  "dependencies": {
+    "@types/react": "^18.2.21",
+    "@types/react-dom": "^18.2.7",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
 }

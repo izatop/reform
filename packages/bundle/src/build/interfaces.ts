@@ -1,4 +1,5 @@
 import {Format, Loader, Platform, Plugin} from "esbuild";
+
 import {BuildContext} from "./BuildContext";
 import {Directory, FileCopyList, FileEntryList} from "./Resources";
 

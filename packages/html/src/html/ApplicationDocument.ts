@@ -1,6 +1,7 @@
-import {Format} from "esbuild";
 import {assert, File, FileContentType} from "@reform/bundle";
+import {Format} from "esbuild";
 import {Token} from "parse5";
+
 import {Attachable} from "../interface";
 import {Document} from "./node/Document";
 import {Element} from "./node/Element";
@@ -81,7 +82,6 @@ export class ApplicationDocument {
         publicPath: string,
         format: Format,
         pretty = false) {
-
         let async = false;
         for (const source of this.#document.child.query("script")) {
             const type = source.getAttribute("type");

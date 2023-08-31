@@ -1,4 +1,5 @@
 import {PluginBuild} from "esbuild";
+
 import {BuildContext, BundleCache} from "../build";
 import {has, Promisify, withError} from "../internal";
 import {
@@ -14,6 +15,7 @@ export abstract class PluginAbstract<C extends PluginConfig = null> {
     public abstract readonly name: string;
 
     protected readonly context: BuildContext;
+
     protected readonly config: C;
 
     readonly #events: Array<Partial<IPluginEvent>> = [];

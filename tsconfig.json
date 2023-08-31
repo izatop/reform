@@ -1,26 +1,23 @@
 {
-    "compilerOptions": {
-        "module": "commonjs",
-        "target": "ES2022",
-        "lib": [
-            "ES2022"
-        ],
-        "types": [],
-        "strict": true,
-        "declaration": true,
-        "esModuleInterop": true,
-        "inlineSourceMap": true,
-        "strictNullChecks": true,
-        "noImplicitThis": true,
-        "noImplicitAny": true,
-        "forceConsistentCasingInFileNames": true,
-        "strictPropertyInitialization": true,
-        "experimentalDecorators": true,
-        "strictFunctionTypes": true,
-        "skipLibCheck": true,
-        "incremental": true
-    },
-    "exclude": [
-        "node_modules"
-    ]
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "ESNext",
+    "types": [],
+    "strict": true,
+    "declaration": true,
+    "esModuleInterop": true,
+    "inlineSourceMap": true,
+    "strictNullChecks": true,
+    "noImplicitThis": true,
+    "noImplicitAny": true,
+    "forceConsistentCasingInFileNames": true,
+    "strictPropertyInitialization": true,
+    "experimentalDecorators": true,
+    "strictFunctionTypes": true,
+    "skipLibCheck": true,
+    "incremental": true
+  },
+  "exclude": [
+    "node_modules"
+  ]
 }

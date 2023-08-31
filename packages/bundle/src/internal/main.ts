@@ -1,4 +1,4 @@
-import {BuildAbstract, Build, BundleScript} from "../build";
+import {Build, BuildAbstract, BundleScript} from "../build";
 import {JSONConfig} from "../config";
 import {getArgumentList, IArgumentList} from "./args";
 import {Disposer} from "./disposer";

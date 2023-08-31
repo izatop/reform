@@ -1,4 +1,3 @@
-import {join, relative, resolve} from "path";
 import {
     assert,
     BuildContext,
@@ -9,14 +8,20 @@ import {
     logger,
 } from "@reform/bundle";
 import {Metafile} from "esbuild";
+import {join, relative, resolve} from "path";
+
 import {ApplicationDocument} from "../html/ApplicationDocument";
 import {Attachable, AttachFileType} from "../interface";
 
 export class DocFile extends File<string> {
     readonly #context: BuildContext;
+
     readonly #entries: string[] = [];
+
     readonly #artifacts: FileList;
+
     readonly #attachType: AttachFileType[];
+
     readonly #artifactsFilter?: RegExp;
 
     constructor(context: BuildContext, file: File<string>, attach: AttachFileType[] = [], artifacts?: string) {
