@@ -1,8 +1,9 @@
 #!/bin/sh
 
+#&& yarn test --bail=1 --ci \
+
 yarn clean \
     && yarn build \
     && yarn lint \
-    #&& yarn test --bail=1 --ci \
     && yarn workspace @reform/test test \
     && yarn lerna publish --conventional-commits -y --no-progress
