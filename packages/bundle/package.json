@@ -27,14 +27,14 @@
   "dependencies": {
     "@types/glob": "^8.1.0",
     "dotenv": "^16.3.1",
-    "esbuild": "^0.19.2",
-    "glob": "^10.3.3",
+    "esbuild": "^0.19.3",
+    "glob": "^10.3.4",
     "path-to-regexp": "^6.2.1",
     "watcher": "^2.3.0"
   },
   "devDependencies": {
-    "@types/node": "^20.5.7",
-    "typescript-json-schema": "^0.60.0"
+    "@types/node": "^20.6.0",
+    "typescript-json-schema": "^0.61.0"
   },
   "publishConfig": {
     "access": "public"
