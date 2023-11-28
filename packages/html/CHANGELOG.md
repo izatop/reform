@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.14.4](https://github.com/izatop/reform/compare/v0.14.3...v0.14.4) (2023-11-28)
+
+
+### Bug Fixes
+
+* update deps + yarn version ([fdb1a00](https://github.com/izatop/reform/commit/fdb1a00125d42c780c539b56e9da075d0bc330e0))
+* version ([5c7a7a5](https://github.com/izatop/reform/commit/5c7a7a5d22bdf9e4ad3abff51b3e0c3a2affcffa))
+
+
+
+
+
 ## [0.14.3](https://github.com/izatop/reform/compare/v0.14.2...v0.14.3) (2023-10-20)
 
 
