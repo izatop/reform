@@ -1581,7 +1581,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@reform/bundle@npm:^0.14.3, @reform/bundle@workspace:packages/bundle":
+"@reform/bundle@npm:^0.14.4, @reform/bundle@workspace:packages/bundle":
   version: 0.0.0-use.local
   resolution: "@reform/bundle@workspace:packages/bundle"
   dependencies:
@@ -1604,7 +1604,7 @@ __metadata:
   dependencies:
     "@graphql-tools/graphql-file-loader": "npm:^8.0.0"
     "@graphql-tools/load": "npm:^8.0.1"
-    "@reform/bundle": "npm:^0.14.3"
+    "@reform/bundle": "npm:^0.14.4"
     "@types/node": "npm:^20.10.0"
     graphql: "npm:^16.8.1"
     graphql-tag: "npm:^2.12.6"
@@ -1615,7 +1615,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@reform/html@workspace:packages/html"
   dependencies:
-    "@reform/bundle": "npm:^0.14.3"
+    "@reform/bundle": "npm:^0.14.4"
     "@types/node": "npm:^20.10.0"
     "@types/parse5": "npm:^7.0.0"
     esbuild: "npm:^0.19.8"
@@ -1627,7 +1627,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@reform/sass@workspace:packages/sass"
   dependencies:
-    "@reform/bundle": "npm:^0.14.3"
+    "@reform/bundle": "npm:^0.14.4"
     "@types/node": "npm:^20.10.0"
     "@types/node-sass": "npm:^4.11.7"
     node-sass: "npm:^9.0.0"
@@ -1639,7 +1639,7 @@ __metadata:
   resolution: "@reform/test@workspace:packages/test"
   dependencies:
     "@fortawesome/fontawesome-free": "npm:^6.4.2"
-    "@reform/bundle": "npm:^0.14.3"
+    "@reform/bundle": "npm:^0.14.4"
     "@types/react": "npm:^18.2.39"
     "@types/react-dom": "npm:^18.2.17"
     esbuild: "npm:^0.19.8"
