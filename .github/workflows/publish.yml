@@ -14,10 +14,10 @@ jobs:
         fetch-depth: 0
     - uses: actions/setup-node@v3
       with:
-        node-version: 18.16.0
+        node-version: 20.10.0
         registry-url: 'https://registry.npmjs.org'
     - uses: fregante/setup-git-user@v2
-    - run: yarn
+    - run: yarn --immutable
     - run: bin/publish
       env:
         NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
