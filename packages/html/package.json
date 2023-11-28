@@ -20,7 +20,7 @@
     "build": "tsc"
   },
   "dependencies": {
-    "@reform/bundle": "^0.14.2",
+    "@reform/bundle": "^0.14.3",
     "@types/node": "^20.10.0",
     "@types/parse5": "^7.0.0",
     "esbuild": "^0.19.8",

@@ -22,7 +22,7 @@
   "dependencies": {
     "@graphql-tools/graphql-file-loader": "^8.0.0",
     "@graphql-tools/load": "^8.0.1",
-    "@reform/bundle": "^0.14.2",
+    "@reform/bundle": "^0.14.3",
     "@types/node": "^20.10.0",
     "graphql": "^16.8.1",
     "graphql-tag": "^2.12.6"

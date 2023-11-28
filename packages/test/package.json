@@ -9,7 +9,7 @@
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^6.4.2",
-    "@reform/bundle": "^0.14.2",
+    "@reform/bundle": "^0.14.3",
     "esbuild": "^0.19.8",
     "graphql": "^16.8.1"
   },

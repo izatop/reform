@@ -20,7 +20,7 @@
     "build": "tsc"
   },
   "dependencies": {
-    "@reform/bundle": "^0.14.2",
+    "@reform/bundle": "^0.14.3",
     "@types/node": "^20.10.0",
     "@types/node-sass": "^4.11.7",
     "node-sass": "^9.0.0"
