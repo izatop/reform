@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@reform/bundle": "^0.14.7",
-    "@types/node": "^20.11.26",
+    "@types/node": "^20.11.30",
     "@types/node-sass": "^4.11.7",
     "node-sass": "^9.0.0"
   },
