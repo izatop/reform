@@ -4,7 +4,8 @@
       "base": "src",
       "plugins": {
         "@reform/sass": {},
-        "@reform/html": {}
+        "@reform/html": {},
+        "@reform/graphql-tag-min": {}
       },
       "bundle": true,
       "format": "esm",

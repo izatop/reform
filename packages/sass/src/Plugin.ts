@@ -8,7 +8,7 @@ export type Config = {filter: RegExp; resolves?: string[]; compress?: boolean};
 const stripRe = /[?#].+$/;
 
 export class Plugin extends PluginAbstract<Config> {
-    public readonly name = "@reform/bundle-sass";
+    public readonly name = "@reform/sass";
 
     constructor(context: BuildContext, config?: Config) {
         super(context, assignWithFilter({filter: /\.(scss|sass)$/}, config));

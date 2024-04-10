@@ -11,7 +11,7 @@ const extensions = ["gql", "graphql"];
 const defaultFilter = new RegExp(`\\.(${extensions.join("|")})$`);
 
 export class Plugin extends PluginAbstract<Config> {
-    public readonly name = "@reform/bundle-graphql";
+    public readonly name = "@reform/graphql";
 
     constructor(context: BuildContext, config?: Config) {
         super(context, assignWithFilter({filter: defaultFilter}, config));

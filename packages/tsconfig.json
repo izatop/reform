@@ -12,6 +12,9 @@
       "path": "graphql"
     },
     {
+      "path": "graphql-tag-min"
+    },
+    {
       "path": "html"
     }
   ]

@@ -1,6 +1,6 @@
 import icon from "../icons/icon.png";
 import svg from "../icons/icon.svg";
-import {HelloQuery} from "../query";
+import {HelloQuery, InlineQuery1, InlineQuery2} from "../query";
 import {Card} from "./Card";
 
 export const Hello: React.FC = () => {
@@ -23,6 +23,9 @@ export const Hello: React.FC = () => {
             </section>
             <section>
                 <pre>{JSON.stringify(HelloQuery, null, 2)}</pre>
+            </section>
+            <section>
+                <pre>{JSON.stringify({InlineQuery1, InlineQuery2}, null, 2)}</pre>
             </section>
         </div>
     );

@@ -8,7 +8,7 @@ export const artifacts = "^.+$";
 export const attach: AttachFileType[] = ["stylesheet"];
 
 export class Plugin extends PluginAbstract<Config> {
-    public readonly name = "@reform/bundle-html-entry";
+    public readonly name = "@reform/html";
 
     readonly #documents = new Map<string, DocFile>();
 
