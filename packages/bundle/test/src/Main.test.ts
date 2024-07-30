@@ -1,4 +1,4 @@
-import {resolve} from "path";
+import {dirname, resolve} from "path";
 
 import {Directory, exit, isPluginCtor, load, PluginAbstract} from "../../src";
 import {BuildContext} from "../../src/build/BuildContext";
@@ -7,7 +7,7 @@ import {TestPlugin} from "./plugin/TestPlugin";
 import test from "node:test";
 import {equal} from "assert";
 
-const __dirname = import.meta.dirname;
+const __dirname = dirname(import.meta.filename);
 test("Main Test", async () => {
     const id = resolve(__dirname, "plugin/TestPlugin");
     const ctx = new BuildContext({
