@@ -1,6 +1,6 @@
 {
   "name": "@reform/graphql-tag-min",
-  "version": "0.14.9",
+  "version": "0.15.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "module": "dist/index.js",
@@ -20,7 +20,7 @@
     "build": "tsc"
   },
   "dependencies": {
-    "@reform/bundle": "^0.14.9",
+    "@reform/bundle": "^0.15.0",
     "@types/node": "^22.0.0"
   },
   "publishConfig": {
