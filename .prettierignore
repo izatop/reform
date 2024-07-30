@@ -1,0 +1,6 @@
+.*
+*.js
+*.cjs
+*.mjs
+dist/
+coverage/

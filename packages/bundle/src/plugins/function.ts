@@ -33,11 +33,13 @@ export function str2re(filter: string | RegExp) {
 
 export type WithFilter = {filter: string | RegExp} & Record<any, any>;
 export type TransformFilter<T extends WithFilter> = {
-    [K in keyof T]: K extends "filter" ? RegExp : T[K]
+    [K in keyof T]: K extends "filter" ? RegExp : T[K];
 };
 
-export function assignWithFilter<C extends WithFilter>(conf: C,
-    ...configs: (Partial<C> | undefined)[]): TransformFilter<C> {
+export function assignWithFilter<C extends WithFilter>(
+    conf: C,
+    ...configs: (Partial<C> | undefined)[]
+): TransformFilter<C> {
     const res = assign(conf, ...configs);
     if ("filter" in res) {
         return {...res, filter: str2re(res.filter)};

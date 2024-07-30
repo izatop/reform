@@ -5,9 +5,7 @@ export function isFulfilled<T>(state: PromiseSettledResult<T>): state is Promise
 export function defer<T>(fn: (resolve: (value: T) => unknown) => unknown) {
     return new Promise<T>((resolve, reject) => {
         try {
-            Promise
-                .resolve(fn(resolve))
-                .catch(reject);
+            Promise.resolve(fn(resolve)).catch(reject);
         } catch (error) {
             reject(error);
         }

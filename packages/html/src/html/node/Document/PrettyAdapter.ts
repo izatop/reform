@@ -36,12 +36,7 @@ const trimTextNode = (node: P5Pick<"textNode">): P5Pick<"textNode"> => {
 
 const indentChild = (parent: P5Pick<"parentNode">, child: P5Pick<"childNode">, deep: number) => {
     if (isElement(child)) {
-        return [
-            createIndent(parent, deep),
-            child,
-            createLineBreak(parent),
-            createIndent(parent, deep),
-        ];
+        return [createIndent(parent, deep), child, createLineBreak(parent), createIndent(parent, deep)];
     }
 
     if (isTextNode(child)) {
@@ -58,12 +53,7 @@ export const PrettyAdapter: TreeAdapter<DefaultTreeAdapterMap> = {
             const deep = getNodeDeep(node);
             const {childNodes} = node;
 
-            return [
-                createLineBreak(node),
-                ...childNodes
-                    .map((child) => indentChild(node, child, deep))
-                    .flat(),
-            ];
+            return [createLineBreak(node), ...childNodes.map((child) => indentChild(node, child, deep)).flat()];
         }
 
         return defaultTreeAdapter.getChildNodes(node);

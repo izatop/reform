@@ -4,7 +4,10 @@ import {Directory, exit, isPluginCtor, load, PluginAbstract} from "../../src";
 import {BuildContext} from "../../src/build/BuildContext";
 import {getArgumentList} from "../../src/internal";
 import {TestPlugin} from "./plugin/TestPlugin";
+import test from "node:test";
+import {equal} from "assert";
 
+const __dirname = import.meta.dirname;
 test("Main Test", async () => {
     const id = resolve(__dirname, "plugin/TestPlugin");
     const ctx = new BuildContext({
@@ -17,7 +20,7 @@ test("Main Test", async () => {
         platform: "browser",
     });
 
-    expect(isPluginCtor(TestPlugin)).toBe(true);
-    expect(load(id, ctx, {})).toBeInstanceOf(PluginAbstract);
+    equal(isPluginCtor(TestPlugin), true);
+    equal((await load(id, ctx, {})) instanceof PluginAbstract, true);
     exit(0);
 });

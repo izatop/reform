@@ -3,11 +3,7 @@
   "command": {
     "version": {
       "allowBranch": "master",
-      "ignoreChanges": [
-        "**/*.md",
-        "packages/*/test",
-        "packages/test"
-      ]
+      "ignoreChanges": ["**/*.md", "packages/*/test", "packages/test"]
     }
   },
   "version": "0.14.9"

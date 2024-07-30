@@ -27,18 +27,15 @@ export class FileList {
     }
 
     public get files(): string[] {
-        return [...this.#origins.values()]
-            .map((file) => file.relative);
+        return [...this.#origins.values()].map((file) => file.relative);
     }
 
     public get paths(): string[] {
-        return [...this.#origins.values()]
-            .map((file) => file.path);
+        return [...this.#origins.values()].map((file) => file.path);
     }
 
     public get built(): File<Buffer>[] {
-        return [...this.#result.values()]
-            .map(({dest}) => dest);
+        return [...this.#result.values()].map(({dest}) => dest);
     }
 
     protected get cache(): BundleCache {
@@ -57,7 +54,9 @@ export class FileList {
     }
 
     public add(file: string): File {
-        const {base: {fileFactory}} = this.#context;
+        const {
+            base: {fileFactory},
+        } = this.#context;
         const origin = fileFactory.factory(file);
         this.#origins.set(file, origin);
         this.#result.delete(file);
@@ -114,7 +113,9 @@ export class FileList {
             return;
         }
 
-        const {build: {fileFactory}} = this.#context;
+        const {
+            build: {fileFactory},
+        } = this.#context;
 
         const src = await file.read();
         const dest = fileFactory.factory(file.relative);

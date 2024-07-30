@@ -10,19 +10,12 @@
       "bundle": true,
       "format": "esm",
       "platform": "browser",
-      "target": [
-        "es2020"
-      ],
+      "target": ["es2020"],
       "jsx": {
         "jsx": "automatic"
       },
-      "environment": [
-        "TEST",
-        "UNDEFINED_VAR"
-      ],
-      "envFiles": [
-        ".env"
-      ],
+      "environment": ["TEST", "UNDEFINED_VAR"],
+      "envFiles": [".env"],
       "serve": {
         "port": 8000,
         "fallback": {
@@ -44,9 +37,9 @@
       "build": "dist/test",
       "treeShaking": true,
       "paths": {
-        "entry": "js/[name].[hash]",
-        "chunk": "js/chunk/[name].[hash]",
-        "asset": "asset/[name].[hash]"
+        "entry": "entry/[name]",
+        "chunk": "chunk/[name]",
+        "asset": "asset/[name]"
       },
       "plugins": {
         "@reform/graphql": {}
@@ -56,18 +49,12 @@
         "BOOL_VAR": true,
         "NULL_VAR": null
       },
-      "files": [
-        "sitemap/*",
-        "robots.txt",
-        "test.js"
-      ],
+      "files": ["sitemap/*", "robots.txt", "test.js"],
       "serve": {
         "host": "localhost",
         "port": 3000
       },
-      "inject": [
-        "runtime.js"
-      ]
+      "inject": ["runtime.js"]
     }
   ]
 }

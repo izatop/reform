@@ -73,9 +73,9 @@ export abstract class PluginAbstract<C extends PluginConfig = null> {
         return base.getRelativePath(path);
     }
 
-    private wrap<T,
-        A extends any[],
-        F extends PluginEventHandle<T, A>>(fn: F): (...args: A) => Promise<T | PluginEventErrorRet> {
+    private wrap<T, A extends any[], F extends PluginEventHandle<T, A>>(
+        fn: F,
+    ): (...args: A) => Promise<T | PluginEventErrorRet> {
         return (...args: A): Promise<T | PluginEventErrorRet> => {
             try {
                 return this.try(fn(...args));
@@ -86,13 +86,12 @@ export abstract class PluginAbstract<C extends PluginConfig = null> {
     }
 
     private async try<T>(result: Promisify<T>): Promise<T | PluginEventErrorRet> {
-        return Promise
-            .resolve(result)
-            .catch(this.report);
+        return Promise.resolve(result).catch(this.report);
     }
 
     private report = (error: unknown): Promise<PluginEventErrorRet> => {
-        const errors = withError(error,
+        const errors = withError(
+            error,
             (e) => [
                 {
                     text: e.message,

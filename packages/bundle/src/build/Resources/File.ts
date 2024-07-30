@@ -69,8 +69,7 @@ export class File<T extends FileContentType | null = null> extends ResourceAbstr
     public static async read(config: FileConfig): Promise<File<Buffer>>;
 
     public static async read(config: FileConfig, enc?: any): Promise<File<any>> {
-        return File.factory(config)
-            .read(enc);
+        return File.factory(config).read(enc);
     }
 
     public async read(this: File<T>): Promise<File<Buffer>>;
@@ -128,15 +127,22 @@ export class File<T extends FileContentType | null = null> extends ResourceAbstr
         }
     }
 
+    public getRelativeWithHash<C extends FileContentType>(this: File<C>): string {
+        let relative = this.relative;
+        if (!relative.includes("?")) {
+            relative += "?";
+        }
+
+        return relative + this.getHash();
+    }
+
     public getHash<C extends FileContentType>(this: File<C>, len = 4): string {
         if (this.#hash) {
             return this.#hash.substring(0, len);
         }
 
         assert(this.contents !== null, "Empty content");
-        this.#hash = createHash("sha1")
-            .update(this.contents)
-            .digest("hex");
+        this.#hash = createHash("sha1").update(this.contents).digest("hex");
 
         return this.#hash.substring(0, len);
     }

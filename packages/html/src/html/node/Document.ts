@@ -14,11 +14,7 @@ export class Document extends NodeAbstract<P5Pick<"document">> {
     constructor(contents: string) {
         super(parseHTML(contents));
 
-        const [root] = this
-            .node
-            .childNodes
-            .filter(isElement)
-            .map((node) => new Element(node));
+        const [root] = this.node.childNodes.filter(isElement).map((node) => new Element(node));
 
         assert(root, "Wrong document");
         this.#root = root;

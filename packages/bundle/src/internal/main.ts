@@ -31,7 +31,11 @@ export async function cli(root?: string) {
         }
 
         if (args.print) {
-            logger.info("cli", "config %o", configList.map(({config}) => config));
+            logger.info(
+                "cli",
+                "config %o",
+                configList.map(({config}) => config),
+            );
 
             exit(0);
         }
@@ -44,7 +48,15 @@ export async function cli(root?: string) {
         await service.start();
         exit(0);
     } catch (error) {
-        logger.error(withError(error, (e) => e, () => new Error("Unknown error")), "cli", "unexpected");
+        logger.error(
+            withError(
+                error,
+                (e) => e,
+                () => new Error("Unknown error"),
+            ),
+            "cli",
+            "unexpected",
+        );
         exit(1);
     }
 }

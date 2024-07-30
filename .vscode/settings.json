@@ -1,0 +1,85 @@
+{
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": false,
+  "editor.detectIndentation": false,
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  "editor.unicodeHighlight.ambiguousCharacters": false,
+  "editor.snippetSuggestions": "bottom",
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+  "terminal.explorerKind": "external",
+  "terminal.integrated.copyOnSelection": true,
+  "terminal.integrated.detectLocale": "off",
+  "terminal.integrated.defaultProfile.linux": "bash",
+  "terminal.integrated.profiles.linux": {
+    "bash": {
+      "path": "/usr/bin/bash",
+      "args": [
+        "-i"
+      ]
+    }
+  },
+  "emmet.showSuggestionsAsSnippets": true,
+  "eslint.format.enable": true,
+  "eslint.validate": [
+    "typescript",
+    "javascript",
+    "typescriptreact"
+  ],
+  "[dockercompose]": {
+    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[graphql]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[md]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.suggest.showSnippets": false
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.suggest.showSnippets": false
+  },
+  "npm.scriptExplorerAction": "run",
+  "npm.packageManager": "yarn",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "json.schemas": [
+    {
+      "fileMatch": [
+        "bundle.json"
+      ],
+      "url": "https://raw.githubusercontent.com/izatop/reform/master/packages/bundle/schema.json"
+    }
+  ],
+  "npm.exclude": "**/@(vendor|.bootstrap|node_modules)/**",
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/*.code-search": true,
+    "**/dist": true,
+    "**/.yarn": true,
+    "**/.pnp.*": true
+  },
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/node_modules/*/**": true
+  }
+}

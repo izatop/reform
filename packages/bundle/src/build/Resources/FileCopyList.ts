@@ -14,9 +14,7 @@ export class FileCopyList extends FileArtifactList {
     }
 
     public static scan(cwd: string, patterns: string[]): string[] {
-        return patterns
-            .map((pattern) => glob.sync(pattern, {cwd, nodir: true}))
-            .flat();
+        return patterns.map((pattern) => glob.sync(pattern, {cwd, nodir: true})).flat();
     }
 
     public add(file: string): File<null> {

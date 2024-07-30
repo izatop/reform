@@ -2,16 +2,7 @@ import {DotenvParseOutput, parse} from "dotenv";
 import {build, BuildOptions, context} from "esbuild";
 import {readFileSync} from "fs";
 
-import {
-    assert,
-    defer,
-    entries,
-    fromEntries,
-    keys,
-    mutate,
-    onClose,
-    resolveThrough,
-} from "../internal/index.js";
+import {assert, defer, entries, fromEntries, keys, mutate, onClose, resolveThrough} from "../internal/index.js";
 import logger from "../internal/logger.js";
 import {BuildContext} from "./BuildContext.js";
 import {IBundleScriptConfig} from "./interfaces.js";
@@ -44,10 +35,7 @@ export class BundleScript {
         const {files} = this.#config;
 
         await this.check();
-        await Promise.all([
-            build(this.getBuildConfig()),
-            files.build(),
-        ]);
+        await Promise.all([build(this.getBuildConfig()), files.build()]);
     }
 
     public async watch() {
@@ -57,15 +45,15 @@ export class BundleScript {
         const bundle = await context(this.getBuildConfig());
 
         await this.check();
-        await Promise.all([
-            bundle.watch({}),
-            files.build(),
-        ]);
+        await Promise.all([bundle.watch({}), files.build()]);
 
         onClose(() => bundle.dispose());
 
         if (this.config.serve) {
-            const {serve: {host, port}, build} = this.config;
+            const {
+                serve: {host, port},
+                build,
+            } = this.config;
             logger.info(this, "serve (%o)", {host, port});
             await bundle.serve({host, port, servedir: build.path});
         }
@@ -91,11 +79,11 @@ export class BundleScript {
         const dotEnvVariables: DotenvParseOutput = {};
 
         const {
-            id,     // eslint-disable-line
-            base,   // eslint-disable-line
-            build,  // eslint-disable-line
-            serve,  // eslint-disable-line
-            files,  // eslint-disable-line
+            id, // eslint-disable-line
+            base, // eslint-disable-line
+            build, // eslint-disable-line
+            serve, // eslint-disable-line
+            files, // eslint-disable-line
             bundle = true,
             loader = {},
             paths = {},

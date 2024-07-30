@@ -12,16 +12,16 @@ export abstract class BuildAbstract {
         this.bundleScriptList = bundleConfigList;
 
         logger.debug(
-            this, "run -> %o", ...bundleConfigList.map(
-                ({id, config: {base, build, entry}}) => [
-                    {
-                        id,
-                        entry,
-                        base: base.relative,
-                        build: build.relative,
-                    },
-                ],
-            ),
+            this,
+            "run -> %o",
+            ...bundleConfigList.map(({id, config: {base, build, entry}}) => [
+                {
+                    id,
+                    entry,
+                    base: base.relative,
+                    build: build.relative,
+                },
+            ]),
         );
     }
 

@@ -18,31 +18,30 @@ export class Plugin extends PluginAbstract<Config> {
     }
 
     public configure(): void {
-        this
-            .on("load", this.config, async ({path}) => {
-                const options = await this.cache.store(path, async (deps) => {
-                    const watchFiles: string[] = [];
-                    const {importLines} = extractImportLines(readFileSync(path, "utf-8"));
-                    for (const line of importLines) {
-                        const {from} = parseImportLine(line.replace("#", "").trim());
-                        const importPath = resolve(dirname(path), from);
-                        watchFiles.push(importPath);
-                        deps.push(importPath);
-                    }
+        this.on("load", this.config, async ({path}) => {
+            const options = await this.cache.store(path, async (deps) => {
+                const watchFiles: string[] = [];
+                const {importLines} = extractImportLines(readFileSync(path, "utf-8"));
+                for (const line of importLines) {
+                    const {from} = parseImportLine(line.replace("#", "").trim());
+                    const importPath = resolve(dirname(path), from);
+                    watchFiles.push(importPath);
+                    deps.push(importPath);
+                }
 
-                    const [{document}] = await loadDocuments(path, {loaders: [new GraphQLFileLoader()]});
-
-                    return {
-                        contents: JSON.stringify(document),
-                        watchFiles,
-                    };
-                });
+                const [{document}] = await loadDocuments(path, {loaders: [new GraphQLFileLoader()]});
 
                 return {
-                    loader: "json",
-                    resolveDir: dirname(path),
-                    ...options,
+                    contents: JSON.stringify(document),
+                    watchFiles,
                 };
             });
+
+            return {
+                loader: "json",
+                resolveDir: dirname(path),
+                ...options,
+            };
+        });
     }
 }

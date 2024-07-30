@@ -8,10 +8,10 @@
     "test": "yarn build"
   },
   "devDependencies": {
-    "@fortawesome/fontawesome-free": "^6.5.2",
+    "@fortawesome/fontawesome-free": "^6.6.0",
     "@reform/bundle": "^0.14.9",
-    "esbuild": "^0.20.2",
-    "graphql": "^16.8.1"
+    "esbuild": "^0.23.0",
+    "graphql": "^16.9.0"
   },
   "author": {
     "name": "Artur Bier",
@@ -20,10 +20,10 @@
   "private": true,
   "license": "MIT",
   "dependencies": {
-    "@types/react": "^18.2.75",
-    "@types/react-dom": "^18.2.24",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
     "graphql-tag": "^2.12.6",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   }
 }

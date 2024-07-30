@@ -9,13 +9,17 @@ export class FileFactory {
     }
 
     public factory(file: string): File {
-        const {prefix: {path: prefix}} = this;
+        const {
+            prefix: {path: prefix},
+        } = this;
 
         return File.factory({prefix, relative: file});
     }
 
     public from(path: string): File {
-        const {prefix: {path: prefix}} = this;
+        const {
+            prefix: {path: prefix},
+        } = this;
         const relative = this.prefix.getRelativePath(path);
 
         return File.factory({prefix, relative});
@@ -26,7 +30,6 @@ export class FileFactory {
     public read(file: string, enc: FileEnc): Promise<File<string>>;
 
     public read(file: string, enc?: any): Promise<File<any>> {
-        return this.factory(file)
-            .read(enc);
+        return this.factory(file).read(enc);
     }
 }

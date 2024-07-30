@@ -21,28 +21,23 @@ export class Plugin extends PluginAbstract<Config> {
         const {platform} = this.context;
         assert(platform !== "node", `The ${this.name} plugin works with browser or neutral platform`);
 
-        this
-            .on("load", {filter}, async ({path}) => {
-                const entry = this.getRelativePath(path);
-                this.#documents.set(
-                    entry,
-                    await DocFile.parse(this.context, entry, config.attach, config.artifacts),
-                );
+        this.on("load", {filter}, async ({path}) => {
+            const entry = this.getRelativePath(path);
+            this.#documents.set(entry, await DocFile.parse(this.context, entry, config.attach, config.artifacts));
 
-                const document = this.getContents(this.getRelativePath(path));
-                await document.parse();
-                const {code: contents, prefix: resolveDir, watchFiles} = document;
+            const document = this.getContents(this.getRelativePath(path));
+            await document.parse();
+            const {code: contents, prefix: resolveDir, watchFiles} = document;
 
-                return {contents, resolveDir, watchFiles};
-            })
-            .on("end", async ({metafile}) => {
-                const ops = [];
-                for (const document of this.#documents.values()) {
-                    ops.push(document.build(metafile));
-                }
+            return {contents, resolveDir, watchFiles};
+        }).on("end", async ({metafile}) => {
+            const ops = [];
+            for (const document of this.#documents.values()) {
+                ops.push(document.build(metafile));
+            }
 
-                await Promise.all(ops);
-            });
+            await Promise.all(ops);
+        });
     }
 
     private getContents(path: string): DocFile {

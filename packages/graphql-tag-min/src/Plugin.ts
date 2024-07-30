@@ -14,12 +14,11 @@ export class Plugin extends PluginAbstract<Config> {
     }
 
     public configure(): void {
-        this
-            .on("load", this.config, async ({path}) => {
-                const contents = await readFile(path, {encoding: "utf-8"});
+        this.on("load", this.config, async ({path}) => {
+            const contents = await readFile(path, {encoding: "utf-8"});
 
-                return {contents: this.#patch(contents), loader: "tsx"};
-            });
+            return {contents: this.#patch(contents), loader: "tsx"};
+        });
     }
 
     #patch(contents: string): string {

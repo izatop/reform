@@ -2,7 +2,7 @@ import {assert, File, FileContentType} from "@reform/bundle";
 import {Format} from "esbuild";
 import {Token} from "parse5";
 
-import {Attachable} from "../interface.js";
+import {Attachable, AttachableFile, AttachFileType} from "../interface.js";
 import {Document} from "./node/Document.js";
 import {Element} from "./node/Element.js";
 
@@ -59,10 +59,7 @@ export class ApplicationDocument {
                 case "stylesheet":
                 case "apple-touch":
                 case "apple-touch-startup-image":
-                    sources.push([
-                        link.ensureAttribute("href").value,
-                        link.ensureAttribute("href"),
-                    ]);
+                    sources.push([link.ensureAttribute("href").value, link.ensureAttribute("href")]);
 
                     break;
 
@@ -77,17 +74,22 @@ export class ApplicationDocument {
         return sources;
     }
 
-    public build<C extends FileContentType>(entry: File<C>,
+    public build<C extends FileContentType>(
+        entry: File<C>,
         attachable: Attachable,
         publicPath: string,
         format: Format,
-        pretty = false) {
+        pretty = false,
+    ) {
         let async = false;
         for (const source of this.#document.child.query("script")) {
             const type = source.getAttribute("type");
-            if (source.hasAttribute("src")
-                && (type && scriptMimeType.includes(type.value))
-                && source.hasAttribute(scriptBuildFlag)) {
+            if (
+                source.hasAttribute("src") &&
+                type &&
+                scriptMimeType.includes(type.value) &&
+                source.hasAttribute(scriptBuildFlag)
+            ) {
                 if (!async) {
                     async = source.hasAttribute("async");
                 }
@@ -99,7 +101,7 @@ export class ApplicationDocument {
         assert(body, "Document body element not found");
 
         const script = Element.append(body, "script");
-        script.setAttribute("src", `${publicPath}/${entry.relative}`);
+        script.setAttribute("src", `${publicPath}/${entry.getRelativeWithHash()}`);
         script.setAttribute("type", format === "esm" ? "module" : "text/javascript");
 
         if (async) {
@@ -113,11 +115,11 @@ export class ApplicationDocument {
         return this.#document.serialize(pretty);
     }
 
-    private attachStylesheet(publicPath: string, files: string[]) {
+    private attachStylesheet(publicPath: string, files: AttachableFile[]) {
         const head = this.#document.child.ensureFirst("head");
         for (const file of files) {
             const link = Element.append(head, "link");
-            link.setAttribute("href", `${publicPath}/${file}`);
+            link.setAttribute("href", `${publicPath}/${file.uri}?${file.hash}`);
             link.setAttribute("type", "text/css");
             link.setAttribute("rel", "stylesheet");
         }

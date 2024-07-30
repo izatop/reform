@@ -1,343 +1,320 @@
 {
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "definitions": {
-        "IJSONBundle": {
-            "properties": {
-                "app": {
-                    "$ref": "#/definitions/IPWAApplicationConfig"
-                },
-                "base": {
-                    "type": "string"
-                },
-                "build": {
-                    "type": "string"
-                },
-                "bundle": {
-                    "type": "boolean"
-                },
-                "entry": {
-                    "anyOf": [
-                        {
-                            "items": {
-                                "type": "string"
-                            },
-                            "type": "array"
-                        },
-                        {
-                            "type": "string"
-                        }
-                    ]
-                },
-                "envFiles": {
-                    "anyOf": [
-                        {
-                            "items": {
-                                "type": "string"
-                            },
-                            "type": "array"
-                        },
-                        {
-                            "type": "string"
-                        }
-                    ]
-                },
-                "environment": {
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "files": {
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "format": {
-                    "enum": [
-                        "cjs",
-                        "esm",
-                        "iife"
-                    ],
-                    "type": "string"
-                },
-                "id": {
-                    "type": [
-                        "string",
-                        "number"
-                    ]
-                },
-                "inject": {
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "jsx": {
-                    "$ref": "#/definitions/IJSXOptions"
-                },
-                "loader": {
-                    "additionalProperties": {
-                        "$ref": "#/definitions/Loader"
-                    },
-                    "type": "object"
-                },
-                "paths": {
-                    "properties": {
-                        "asset": {
-                            "type": "string"
-                        },
-                        "chunk": {
-                            "type": "string"
-                        },
-                        "entry": {
-                            "type": "string"
-                        }
-                    },
-                    "type": "object"
-                },
-                "platform": {
-                    "enum": [
-                        "browser",
-                        "neutral",
-                        "node"
-                    ],
-                    "type": "string"
-                },
-                "plugins": {
-                    "$ref": "#/definitions/Partial<IPluginList>"
-                },
-                "preset": {
-                    "type": "string"
-                },
-                "serve": {
-                    "properties": {
-                        "fallback": {
-                            "anyOf": [
-                                {
-                                    "$ref": "#/definitions/Record<string,string>"
-                                },
-                                {
-                                    "type": "boolean"
-                                }
-                            ]
-                        },
-                        "host": {
-                            "type": "string"
-                        },
-                        "port": {
-                            "type": "number"
-                        }
-                    },
-                    "type": "object"
-                },
-                "sourcemap": {
-                    "enum": [
-                        "both",
-                        "external",
-                        false,
-                        "inline",
-                        "linked",
-                        true
-                    ]
-                },
-                "splitting": {
-                    "type": "boolean"
-                },
-                "target": {
-                    "anyOf": [
-                        {
-                            "items": {
-                                "type": "string"
-                            },
-                            "type": "array"
-                        },
-                        {
-                            "type": "string"
-                        }
-                    ]
-                },
-                "treeShaking": {
-                    "type": "boolean"
-                },
-                "variables": {
-                    "$ref": "#/definitions/Record<string,string|number|boolean>"
-                }
-            },
-            "type": "object"
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "IJSONBundle": {
+      "properties": {
+        "app": {
+          "$ref": "#/definitions/IPWAApplicationConfig"
         },
-        "IJSXOptions": {
-            "properties": {
-                "dev": {
-                    "type": "boolean"
-                },
-                "factory": {
-                    "type": "string"
-                },
-                "fragment": {
-                    "type": "string"
-                },
-                "importSource": {
-                    "type": "string"
-                },
-                "jsx": {
-                    "enum": [
-                        "automatic",
-                        "preserve",
-                        "transform"
-                    ],
-                    "type": "string"
-                },
-                "sideEffects": {
-                    "type": "boolean"
-                }
-            },
-            "type": "object"
+        "base": {
+          "type": "string"
         },
-        "IPWAApplicationConfig": {
-            "properties": {
-                "bundle": {
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "manifest": {
-                    "$ref": "#/definitions/PWAManifest"
-                },
-                "source": {
-                    "type": "string"
-                }
-            },
-            "type": "object"
+        "build": {
+          "type": "string"
         },
-        "Loader": {
-            "enum": [
-                "base64",
-                "binary",
-                "copy",
-                "css",
-                "dataurl",
-                "default",
-                "empty",
-                "file",
-                "js",
-                "json",
-                "jsx",
-                "local-css",
-                "text",
-                "ts",
-                "tsx"
-            ],
-            "type": "string"
-        },
-        "PWAManifest": {
-            "type": "object"
-        },
-        "Partial<IPluginList>": {
-            "properties": {
-                "@reform/bundle-graphql": {
-                    "properties": {
-                        "filter": {
-                            "$ref": "#/definitions/RegExp"
-                        }
-                    },
-                    "type": "object"
-                },
-                "@reform/bundle-html-entry": {
-                    "properties": {
-                        "artifacts": {
-                            "type": "string"
-                        },
-                        "attach": {
-                            "items": {
-                                "const": "stylesheet",
-                                "type": "string"
-                            },
-                            "type": "array"
-                        },
-                        "filter": {
-                            "$ref": "#/definitions/RegExp"
-                        }
-                    },
-                    "type": "object"
-                },
-                "@reform/bundle-sass": {
-                    "properties": {
-                        "compress": {
-                            "$ref": "#/definitions/RegExp"
-                        },
-                        "filter": {
-                            "type": "string"
-                        },
-                        "resolves": {
-                            "items": {
-                                "type": "string"
-                            },
-                            "type": "array"
-                        }
-                    },
-                    "type": "object"
-                }
-            },
-            "type": "object"
-        },
-        "Record<string,IJSONBundle>": {
-            "type": "object"
-        },
-        "Record<string,string>": {
-            "type": "object"
-        },
-        "Record<string,string|number|boolean>": {
-            "type": "object"
-        },
-        "RegExp": {
-            "properties": {
-                "dotAll": {
-                    "type": "boolean"
-                },
-                "flags": {
-                    "type": "string"
-                },
-                "global": {
-                    "type": "boolean"
-                },
-                "hasIndices": {
-                    "type": "boolean"
-                },
-                "ignoreCase": {
-                    "type": "boolean"
-                },
-                "lastIndex": {
-                    "type": "number"
-                },
-                "multiline": {
-                    "type": "boolean"
-                },
-                "source": {
-                    "type": "string"
-                },
-                "sticky": {
-                    "type": "boolean"
-                },
-                "unicode": {
-                    "type": "boolean"
-                }
-            },
-            "type": "object"
-        }
-    },
-    "properties": {
         "bundle": {
-            "items": {
-                "$ref": "#/definitions/IJSONBundle"
+          "type": "boolean"
+        },
+        "entry": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
             },
-            "type": "array"
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "envFiles": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "environment": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "files": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "format": {
+          "enum": ["cjs", "esm", "iife"],
+          "type": "string"
+        },
+        "id": {
+          "type": ["string", "number"]
+        },
+        "inject": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "jsx": {
+          "$ref": "#/definitions/IJSXOptions"
+        },
+        "loader": {
+          "additionalProperties": {
+            "$ref": "#/definitions/Loader"
+          },
+          "type": "object"
+        },
+        "paths": {
+          "properties": {
+            "asset": {
+              "type": "string"
+            },
+            "chunk": {
+              "type": "string"
+            },
+            "entry": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "platform": {
+          "enum": ["browser", "neutral", "node"],
+          "type": "string"
+        },
+        "plugins": {
+          "$ref": "#/definitions/Partial<IPluginList>"
         },
         "preset": {
-            "$ref": "#/definitions/Record<string,IJSONBundle>"
+          "type": "string"
+        },
+        "serve": {
+          "properties": {
+            "fallback": {
+              "anyOf": [
+                {
+                  "$ref": "#/definitions/Record<string,string>"
+                },
+                {
+                  "type": "boolean"
+                }
+              ]
+            },
+            "host": {
+              "type": "string"
+            },
+            "port": {
+              "type": "number"
+            }
+          },
+          "type": "object"
+        },
+        "sourcemap": {
+          "enum": ["both", "external", false, "inline", "linked", true]
+        },
+        "splitting": {
+          "type": "boolean"
+        },
+        "target": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "treeShaking": {
+          "type": "boolean"
+        },
+        "variables": {
+          "$ref": "#/definitions/Record<string,string|number|boolean>"
         }
+      },
+      "type": "object"
     },
-    "type": "object"
+    "IJSXOptions": {
+      "properties": {
+        "dev": {
+          "type": "boolean"
+        },
+        "factory": {
+          "type": "string"
+        },
+        "fragment": {
+          "type": "string"
+        },
+        "importSource": {
+          "type": "string"
+        },
+        "jsx": {
+          "enum": ["automatic", "preserve", "transform"],
+          "type": "string"
+        },
+        "sideEffects": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "IPWAApplicationConfig": {
+      "properties": {
+        "bundle": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "manifest": {
+          "$ref": "#/definitions/PWAManifest"
+        },
+        "source": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "Loader": {
+      "enum": [
+        "base64",
+        "binary",
+        "copy",
+        "css",
+        "dataurl",
+        "default",
+        "empty",
+        "file",
+        "js",
+        "json",
+        "jsx",
+        "local-css",
+        "text",
+        "ts",
+        "tsx"
+      ],
+      "type": "string"
+    },
+    "PWAManifest": {
+      "type": "object"
+    },
+    "Partial<IPluginList>": {
+      "properties": {
+        "@reform/bundle-graphql": {
+          "properties": {
+            "filter": {
+              "$ref": "#/definitions/RegExp"
+            }
+          },
+          "type": "object"
+        },
+        "@reform/bundle-html-entry": {
+          "properties": {
+            "artifacts": {
+              "type": "string"
+            },
+            "attach": {
+              "items": {
+                "const": "stylesheet",
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "filter": {
+              "$ref": "#/definitions/RegExp"
+            }
+          },
+          "type": "object"
+        },
+        "@reform/bundle-sass": {
+          "properties": {
+            "compress": {
+              "$ref": "#/definitions/RegExp"
+            },
+            "filter": {
+              "type": "string"
+            },
+            "resolves": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "Record<string,IJSONBundle>": {
+      "type": "object"
+    },
+    "Record<string,string>": {
+      "type": "object"
+    },
+    "Record<string,string|number|boolean>": {
+      "type": "object"
+    },
+    "RegExp": {
+      "properties": {
+        "dotAll": {
+          "type": "boolean"
+        },
+        "flags": {
+          "type": "string"
+        },
+        "global": {
+          "type": "boolean"
+        },
+        "hasIndices": {
+          "type": "boolean"
+        },
+        "ignoreCase": {
+          "type": "boolean"
+        },
+        "lastIndex": {
+          "type": "number"
+        },
+        "multiline": {
+          "type": "boolean"
+        },
+        "source": {
+          "type": "string"
+        },
+        "sticky": {
+          "type": "boolean"
+        },
+        "unicode": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "properties": {
+    "bundle": {
+      "items": {
+        "$ref": "#/definitions/IJSONBundle"
+      },
+      "type": "array"
+    },
+    "preset": {
+      "$ref": "#/definitions/Record<string,IJSONBundle>"
+    }
+  },
+  "type": "object"
 }
-

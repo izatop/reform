@@ -26,10 +26,7 @@ export class Element extends NodeAbstract<P5Pick<"element">> {
 
     private updateChildren() {
         this.#children.splice(0, this.#children.length);
-        this.#children.push(...this.node.childNodes
-            .filter(isElement)
-            .map((node) => new Element(node, this)),
-        );
+        this.#children.push(...this.node.childNodes.filter(isElement).map((node) => new Element(node, this)));
     }
 
     public get name() {

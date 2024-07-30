@@ -17,11 +17,13 @@ export function fromEntries<T>(...args: [key: string, value: T][]) {
 }
 
 export type EnsureTargetKey<T extends Record<any, any>, K extends keyof T> = {
-    [S in keyof T]: S extends K ? Exclude<T[S], undefined> : T[S]
+    [S in keyof T]: S extends K ? Exclude<T[S], undefined> : T[S];
 };
 
-export function has<T extends Record<any, any>,
-    K extends keyof T>(target: Partial<T>, key: K): target is EnsureTargetKey<T, K> {
+export function has<T extends Record<any, any>, K extends keyof T>(
+    target: Partial<T>,
+    key: K,
+): target is EnsureTargetKey<T, K> {
     return key in target;
 }
 

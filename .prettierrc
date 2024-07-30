@@ -1,0 +1,19 @@
+{
+  "bracketSpacing": false,
+  "arrowParens": "always",
+  "bracketSameLine": true,
+  "endOfLine": "lf",
+  "semi": true,
+  "overrides": [
+    {
+      "files": [
+        "*.ts",
+        "*.tsx",
+        "*.mts"
+      ],
+      "options": {
+        "parser": "typescript"
+      }
+    }
+  ]
+}

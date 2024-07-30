@@ -35,7 +35,9 @@ export function getArgumentList(root?: string): IArgumentList {
         silent: false,
     };
 
-    const {argv: [...args]} = process;
+    const {
+        argv: [...args],
+    } = process;
     while (args.length > 0) {
         const arg = args.shift();
         switch (arg) {

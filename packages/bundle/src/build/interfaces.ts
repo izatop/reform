@@ -61,7 +61,9 @@ export interface IBundleScriptConfig extends IBundleConfig {
     envFiles?: string[];
 }
 
-export type BuildServerHandle = (vhost: string | undefined,
-    handle: (resource: string) => Promise<{path: string}>) => void;
+export type BuildServerHandle = (
+    vhost: string | undefined,
+    handle: (resource: string) => Promise<{path: string}>,
+) => void;
 
 export type BundleArgs = {config: IBundleScriptConfig; context: BuildContext};

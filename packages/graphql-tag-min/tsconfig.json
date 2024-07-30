@@ -9,7 +9,5 @@
       "path": "../bundle"
     }
   ],
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }

@@ -21,7 +21,7 @@ export class JSONConfig {
         this.config = JSON.parse(readFileSync(path, "utf-8"));
     }
 
-    public async * getBundleArgs(): AsyncGenerator<BundleArgs> {
+    public async *getBundleArgs(): AsyncGenerator<BundleArgs> {
         let increment = 1;
         const {ids} = this.args;
         const {preset: presetList = {}} = this.config;

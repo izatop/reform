@@ -62,20 +62,13 @@ const getTargetId = (target: LogTarget) => {
 };
 
 const getTargetName = (target: LogArgs[0]) => {
-    const label = typeof target === "string"
-        ? format("[%s]", target)
-        : getTargetId(target);
+    const label = typeof target === "string" ? format("[%s]", target) : getTargetId(target);
 
     if (label.length > maxNameLen) {
-        return label
-            .substr(0, maxNameLen + 3)
-            .concat("...", welcome);
+        return label.substr(0, maxNameLen + 3).concat("...", welcome);
     }
 
-    return label
-        .concat(" ".repeat(maxNameLen))
-        .substr(0, maxNameLen)
-        .concat(welcome);
+    return label.concat(" ".repeat(maxNameLen)).substr(0, maxNameLen).concat(welcome);
 };
 
 export const logger = {

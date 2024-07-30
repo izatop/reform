@@ -20,21 +20,21 @@ export class Plugin extends PluginAbstract<Config> {
 
         this.context.addLoaders(resolves.map((extension) => [extension, "file"]));
 
-        this
-            .on("resolve", {filter: resolvesRegex}, (args) => {
-                const path = this.getModulePath(args.importer, args.path);
+        this.on("resolve", {filter: resolvesRegex}, (args) => {
+            const path = this.getModulePath(args.importer, args.path);
 
-                return {path};
-            })
-            .on("load", {filter}, async ({path}) => {
-                const {contents, watchFiles} = await this.render({path, compress});
+            return {path};
+        }).on("load", {filter}, async ({path}) => {
+            const {contents, watchFiles} = await this.render({path, compress});
 
-                return {contents, watchFiles, loader: "css"};
-            });
+            return {contents, watchFiles, loader: "css"};
+        });
     }
 
     private render(options: {path: string; compress?: boolean}) {
-        const {context: {cache}} = this;
+        const {
+            context: {cache},
+        } = this;
         const {path, compress} = options;
 
         return cache.store(path, async () => {
@@ -52,10 +52,7 @@ export class Plugin extends PluginAbstract<Config> {
                         return reject(error);
                     }
 
-                    const watchFiles = [
-                        result.stats.entry,
-                        ...result.stats.includedFiles,
-                    ];
+                    const watchFiles = [result.stats.entry, ...result.stats.includedFiles];
 
                     const contents = result.css.toString("utf-8");
 

@@ -78,10 +78,7 @@ export class BundleCache {
         if (container) {
             logger.debug(this, "check -> %s", key);
             const deps = await Promise.all(container.deps.map((file) => stat(file)));
-            const maxTime = Math.max(
-                ...[ctime, ...deps.map((s) => s.ctime)]
-                    .map((date) => date.getTime()),
-            );
+            const maxTime = Math.max(...[ctime, ...deps.map((s) => s.ctime)].map((date) => date.getTime()));
 
             if (maxTime <= container.modified.getTime()) {
                 logger.debug(this, "hit -> %s", key);
