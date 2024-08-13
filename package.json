@@ -22,13 +22,13 @@
     "check": "yarn lint && yarn build && yarn test"
   },
   "devDependencies": {
-    "lerna": "^8.1.7",
+    "lerna": "^8.1.8",
     "prettier": "^3.3.3",
     "react": "^18.3.1",
     "rimraf": "^6.0.1",
-    "tsx": "^4.16.2",
+    "tsx": "^4.17.0",
     "typescript": "^5.5.4"
   },
   "license": "MIT",
-  "packageManager": "yarn@4.3.1"
+  "packageManager": "yarn@4.4.0"
 }
