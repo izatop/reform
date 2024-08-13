@@ -1,7 +1,5 @@
 #!/bin/sh
 
-#&& yarn test --bail=1 --ci \
-
 yarn clean \
     && yarn build \
     && yarn lint \
