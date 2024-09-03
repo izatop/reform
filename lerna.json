@@ -6,5 +6,5 @@
       "ignoreChanges": ["**/*.md", "packages/*/test", "packages/test"]
     }
   },
-  "version": "0.15.1"
+  "version": "0.15.2"
 }
