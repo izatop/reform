@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@reform/bundle": "^0.16.0",
-    "@types/node": "^22.7.0",
+    "@types/node": "^22.7.4",
     "@types/parse5": "^7.0.0",
     "esbuild": "^0.24.0",
     "parse5": "^7.1.2"

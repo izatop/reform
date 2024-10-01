@@ -1203,16 +1203,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@reform/bundle@npm:^0.15.2, @reform/bundle@workspace:packages/bundle":
+"@reform/bundle@npm:^0.16.0, @reform/bundle@workspace:packages/bundle":
   version: 0.0.0-use.local
   resolution: "@reform/bundle@workspace:packages/bundle"
   dependencies:
     "@types/glob": "npm:^8.1.0"
-    "@types/node": "npm:^22.7.0"
+    "@types/node": "npm:^22.7.4"
     dotenv: "npm:^16.4.5"
     esbuild: "npm:^0.24.0"
     glob: "npm:^11.0.0"
-    path-to-regexp: "npm:^8.1.0"
+    path-to-regexp: "npm:^8.2.0"
     typescript-json-schema: "npm:^0.65.1"
     watcher: "npm:^2.3.1"
   bin:
@@ -1224,8 +1224,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@reform/graphql-tag-min@workspace:packages/graphql-tag-min"
   dependencies:
-    "@reform/bundle": "npm:^0.15.2"
-    "@types/node": "npm:^22.7.0"
+    "@reform/bundle": "npm:^0.16.0"
+    "@types/node": "npm:^22.7.4"
   languageName: unknown
   linkType: soft
 
@@ -1235,8 +1235,8 @@ __metadata:
   dependencies:
     "@graphql-tools/graphql-file-loader": "npm:^8.0.1"
     "@graphql-tools/load": "npm:^8.0.2"
-    "@reform/bundle": "npm:^0.15.2"
-    "@types/node": "npm:^22.7.0"
+    "@reform/bundle": "npm:^0.16.0"
+    "@types/node": "npm:^22.7.4"
     graphql: "npm:^16.9.0"
     graphql-tag: "npm:^2.12.6"
   languageName: unknown
@@ -1246,8 +1246,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@reform/html@workspace:packages/html"
   dependencies:
-    "@reform/bundle": "npm:^0.15.2"
-    "@types/node": "npm:^22.7.0"
+    "@reform/bundle": "npm:^0.16.0"
+    "@types/node": "npm:^22.7.4"
     "@types/parse5": "npm:^7.0.0"
     esbuild: "npm:^0.24.0"
     parse5: "npm:^7.1.2"
@@ -1258,8 +1258,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@reform/sass@workspace:packages/sass"
   dependencies:
-    "@reform/bundle": "npm:^0.15.2"
-    "@types/node": "npm:^22.7.0"
+    "@reform/bundle": "npm:^0.16.0"
+    "@types/node": "npm:^22.7.4"
     "@types/node-sass": "npm:^4.11.7"
     node-sass: "npm:^9.0.0"
   languageName: unknown
@@ -1270,8 +1270,8 @@ __metadata:
   resolution: "@reform/test@workspace:packages/test"
   dependencies:
     "@fortawesome/fontawesome-free": "npm:^6.6.0"
-    "@reform/bundle": "npm:^0.15.2"
-    "@types/react": "npm:^18.3.9"
+    "@reform/bundle": "npm:^0.16.0"
+    "@types/react": "npm:^18.3.10"
     "@types/react-dom": "npm:^18.3.0"
     esbuild: "npm:^0.24.0"
     graphql: "npm:^16.9.0"
@@ -1461,7 +1461,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^22.7.0":
+"@types/node@npm:*":
   version: 22.7.0
   resolution: "@types/node@npm:22.7.0"
   dependencies:
@@ -1476,6 +1476,15 @@ __metadata:
   dependencies:
     undici-types: "npm:~5.26.4"
   checksum: 10/dd24fbdf57f29c21d5732b0fccbb1ee53bb947a17bfa9792e5840566e472a4d043217a0368fca5aa4323fd9aca4a654a262b742aa02868e4c6b8bc34547618e0
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:^22.7.4":
+  version: 22.7.4
+  resolution: "@types/node@npm:22.7.4"
+  dependencies:
+    undici-types: "npm:~6.19.2"
+  checksum: 10/19ddab80c4eba2253c855ed67c9bbc47417183049d01e59010a738bd80d47338bab79fd1f44ae51516bd63a1db4bf21ddb38b16bf6401a2e93252068ec52e88b
   languageName: node
   linkType: hard
 
@@ -1511,13 +1520,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:*, @types/react@npm:^18.3.9":
+"@types/react@npm:*":
   version: 18.3.9
   resolution: "@types/react@npm:18.3.9"
   dependencies:
     "@types/prop-types": "npm:*"
     csstype: "npm:^3.0.2"
   checksum: 10/d1321e874e6523b0a944d4ce514c071cbe44501b04591e17c0b265c9a03fb3e4486337ae1bec74541b72a41f34beef157342205dd07b31d116f4d06fa39cf32f
+  languageName: node
+  linkType: hard
+
+"@types/react@npm:^18.3.10":
+  version: 18.3.10
+  resolution: "@types/react@npm:18.3.10"
+  dependencies:
+    "@types/prop-types": "npm:*"
+    csstype: "npm:^3.0.2"
+  checksum: 10/cdc946f15fcad62387e6485a2bbef3e45609708fd81e3ce30b03580077bb8a8a1bd0d19858d8602b33c3921bbb8907ddbc9411fd25294a2c2e944907dad8dd67
   languageName: node
   linkType: hard
 
@@ -5531,10 +5550,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"path-to-regexp@npm:^8.1.0":
-  version: 8.1.0
-  resolution: "path-to-regexp@npm:8.1.0"
-  checksum: 10/5016a27153d99d3da6a7769a3f34eb4a35538d23a9b4044f517960978876af4d23146f0421e9714be0449f61ffffb04941ffcb7e6bd7c69cf6d891238becd587
+"path-to-regexp@npm:^8.2.0":
+  version: 8.2.0
+  resolution: "path-to-regexp@npm:8.2.0"
+  checksum: 10/23378276a172b8ba5f5fb824475d1818ca5ccee7bbdb4674701616470f23a14e536c1db11da9c9e6d82b82c556a817bbf4eee6e41b9ed20090ef9427cbb38e13
   languageName: node
   linkType: hard
 
