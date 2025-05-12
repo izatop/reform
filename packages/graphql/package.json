@@ -20,11 +20,11 @@
     "build": "tsc"
   },
   "dependencies": {
-    "@graphql-tools/graphql-file-loader": "^8.0.1",
-    "@graphql-tools/load": "^8.0.2",
+    "@graphql-tools/graphql-file-loader": "^8.0.19",
+    "@graphql-tools/load": "^8.1.0",
     "@reform/bundle": "^0.16.1",
-    "@types/node": "^22.7.4",
-    "graphql": "^16.9.0",
+    "@types/node": "^22.15.17",
+    "graphql": "^16.11.0",
     "graphql-tag": "^2.12.6"
   },
   "publishConfig": {

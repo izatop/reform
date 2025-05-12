@@ -1,5 +1,5 @@
 import {assert, assignWithFilter, BuildContext, PluginAbstract, resolveThrough} from "@reform/bundle";
-import {Options, render} from "node-sass";
+import {LegacyOptions, render} from "sass";
 import {dirname, join} from "path";
 
 import importer from "./importer.js";
@@ -40,7 +40,7 @@ export class Plugin extends PluginAbstract<Config> {
         return cache.store(path, async () => {
             const outputStyle = compress ? "compressed" : "expanded";
 
-            const sassOptions: Options = {
+            const sassOptions: LegacyOptions<"sync"> = {
                 file: path,
                 importer,
                 outputStyle,
@@ -48,8 +48,8 @@ export class Plugin extends PluginAbstract<Config> {
 
             return new Promise<{contents: string; watchFiles: string[]}>((resolve, reject) => {
                 render(sassOptions, (error, result) => {
-                    if (error) {
-                        return reject(error);
+                    if (error || !result) {
+                        return reject(error ?? "Unknown error");
                     }
 
                     const watchFiles = [result.stats.entry, ...result.stats.includedFiles];

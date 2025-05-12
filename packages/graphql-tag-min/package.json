@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@reform/bundle": "^0.16.1",
-    "@types/node": "^22.7.4"
+    "@types/node": "^22.15.17"
   },
   "publishConfig": {
     "access": "public"
