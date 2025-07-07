@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.18.0](https://github.com/izatop/reform/compare/v0.17.0...v0.18.0) (2025-07-07)
+
+### Features
+
+- rebuild deps ([d33ca72](https://github.com/izatop/reform/commit/d33ca72da3862e18748c604ccd618145a488cc68))
+- rebuild deps ([0030b72](https://github.com/izatop/reform/commit/0030b72f8b38489bf46361102a58b677c621fb80))
+- upgrade deps ([6e43819](https://github.com/izatop/reform/commit/6e438199c11586deb889db3af34584330137660a))
+
 # [0.17.0](https://github.com/izatop/reform/compare/v0.16.1...v0.17.0) (2025-05-12)
 
 ### Features
